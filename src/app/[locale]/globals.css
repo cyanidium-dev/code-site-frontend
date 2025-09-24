@@ -5,6 +5,7 @@
 
   --color-white: #ffffff;
   --color-black: #121212;
+  --color-dark: #070E4C;
   --color-main: #f80498;
   --color-pink: #ff87d0;
   --color-pink-light: #ffd6ef;
@@ -14,6 +15,7 @@
   --font-actay: var(--font-actay), sans-serif;
   --font-guano-apes: var(--font-guano-apes), sans-serif;
   --font-montserrat: var(--font-montserrat), sans-serif;
+  --font-parkia: var(--font-parkia), sans-serif;
 }
 
 @layer base {
@@ -54,5 +56,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+}
+
+@layer utilities {
+  @keyframes glow {
+    0%,
+    100% {
+      text-shadow: 3.508px 2.923px 8.916px rgba(181, 218, 255, 0.2);
+    }
+    50% {
+      text-shadow: 3.508px 2.923px 10px rgba(181, 218, 255, 0.7);
+    }
+  }
+
+  .animate-text-glow {
+    background-image: linear-gradient(125deg, #fff 22.37%, #b5daff 94.04%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 2s ease-in-out infinite;
   }
 }

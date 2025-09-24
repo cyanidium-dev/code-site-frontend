@@ -2,5 +2,12 @@
   "metadata": {
     "title": "",
     "description": ""
+  },
+  "header": {
+    "logo": "Code-site.art",
+    "home": "Главная",
+    "portfolio": "Портфолио",
+    "blog": "Блог",
+    "contacts": "Контакты"
   }
 }

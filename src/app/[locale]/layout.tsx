@@ -5,6 +5,8 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
+import Header from "@/components/shared/header/Header";
+import Footer from "@/components/shared/footer/Footer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -45,7 +47,9 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} flex min-h-screen flex-col antialiased`}
       >
         <NextIntlClientProvider>
+          <Header />
           <main className="flex-1">{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -34,6 +34,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -41,9 +42,11 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} antialiased`}
+        className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} flex min-h-screen flex-col antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <main className="flex-1">{children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import PageTitle from "@/components/shared/titles/PageTitle";
 import { useTranslations } from "next-intl";
 
 export default function Hero() {
-  const t = useTranslations("homePage");
+  const t = useTranslations("homePage.hero");
 
   return (
     <section className="pt-[25px] xl:pt-[26px] pb-[76px] xl:pb-[534px]">

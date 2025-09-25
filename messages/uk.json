@@ -25,8 +25,15 @@
     "developedBy": "Website developed by the best team"
   },
   "homePage": {
-    "title": "Сайт решает",
-    "description": "Вы хотите, чтобы ваш бизнес приносил деньги?",
-    "button": "Связаться с нами"
+    "hero": {
+      "title": "Сайт решает",
+      "description": "Вы хотите, чтобы ваш бизнес приносил деньги?",
+      "button": "Связаться с нами"
+    },
+    "founder": {
+      "actualSolutions": "Актуальные решения для бизнеса",
+      "designOne": "дизайн ",
+      "designTwo": "цепляет"
+    }
   }
 }

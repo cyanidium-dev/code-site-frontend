@@ -17,11 +17,11 @@ export default function CodeSiteMarquee({
       autoFill={true}
       speed={70}
       className={twMerge(
-        "min-w-[120vw] h-[39px] flex items-center rotate-[-3.68deg] bg-[linear-gradient(90deg,#FE80CD_30.2%,#268DF4_85.69%)] text-dark font-parkia text-[37.67px] font-bold uppercase",
+        "min-w-[120vw] flex items-center pt-2 rotate-[-3.68deg] bg-[linear-gradient(90deg,#FE80CD_30.2%,#268DF4_85.69%)] text-dark font-parkia text-[37.67px] leading-none font-bold uppercase",
         className
       )}
     >
-      <span className="inline-block mx-1.5 pt-2">{t("logo")}</span>
+      <span className="inline-block mx-1.5 leading-none">{t("logo")}</span>
     </Marquee>
   );
 }

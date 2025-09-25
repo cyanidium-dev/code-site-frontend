@@ -23,5 +23,10 @@
     "forCalls": "Для звонков",
     "rights": "© {year} Code-site.art",
     "developedBy": "Website developed by the best team"
+  },
+  "homePage": {
+    "title": "Сайт решает",
+    "description": "Вы хотите, чтобы ваш бизнес приносил деньги?",
+    "button": "Связаться с нами"
   }
 }

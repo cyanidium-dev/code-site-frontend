@@ -21,7 +21,7 @@ export default function NavMenuItem({
         }
         href={link}
         className="block font-actay text-[16px] md:text-[12px] font-bold uppercase
-        leading-[120%] xl:hover:text-pink focus-visible:text-pink transition duration-300 ease-in-out"
+        leading-[120%] xl:hover:text-blue-light focus-visible:text-blue-light transition duration-300 ease-in-out"
       >
         <p className="mb-[18px] md:mb-0">{title}</p>
         <div className="md:hidden w-full h-[1.7px] bg-[linear-gradient(270deg,_#121212_7.18%,_#FF8ED2_93.41%)]"></div>

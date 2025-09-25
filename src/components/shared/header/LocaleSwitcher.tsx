@@ -59,7 +59,7 @@ export default function LocaleSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative z-[60] cursor-pointer flex items-center gap-[9px] outline-none xl:hover:text-pink focus-visible:text-pink transition duration-300 ease-in-out"
+        className="relative z-[60] cursor-pointer flex items-center gap-[9px] outline-none xl:hover:text-blue-light focus-visible:text-blue-light transition duration-300 ease-in-out"
       >
         <span className="text-[16px] font-bold leading-[125%] uppercase">
           {currentLocale === "uk" ? "UA" : currentLocale}
@@ -84,9 +84,9 @@ export default function LocaleSwitcher() {
               <button
                 key={locale}
                 onClick={() => handleLocaleChange(locale)}
-                className={`cursor-pointer w-full flex items-center px-4 py-2 xl:hover:text-pink focus-visible:text-pink transition duration-300 ease-in-out  ${
+                className={`cursor-pointer w-full flex items-center px-4 py-2 xl:hover:text-blue focus-visible:text-blue transition duration-300 ease-in-out  ${
                   currentLocale === locale
-                    ? "text-pink text-[16px] font-bold"
+                    ? "text-blue text-[16px] font-bold"
                     : "text-black text-[16px] font-medium"
                 }`}
               >

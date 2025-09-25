@@ -7,11 +7,13 @@
   --color-black: #121212;
   --color-dark: #070e4c;
   --color-main: #f80498;
-  --color-pink: #ff87d0;
+  --color-main-light: #FF49B8;
+    --color-pink: #ff87d0;
   --color-pink-light: #ffd6ef;
   --color-pink-ultra-light: #ffb5e6;
   --color-blue: #268df4;
   --color-blue-light: #b5daff;
+  --color-purple-light: #EAEBFF;
 
   --font-actay: var(--font-actay), sans-serif;
   --font-guano-apes: var(--font-guano-apes), sans-serif;

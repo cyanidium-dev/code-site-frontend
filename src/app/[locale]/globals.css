@@ -5,10 +5,11 @@
 
   --color-white: #ffffff;
   --color-black: #121212;
-  --color-dark: #070E4C;
+  --color-dark: #070e4c;
   --color-main: #f80498;
   --color-pink: #ff87d0;
   --color-pink-light: #ffd6ef;
+  --color-pink-ultra-light: #ffb5e6;
   --color-blue: #268df4;
   --color-blue-light: #b5daff;
 
@@ -60,7 +61,7 @@
 }
 
 @layer utilities {
-  @keyframes glow {
+  @keyframes glow-blue {
     0%,
     100% {
       text-shadow: 3.508px 2.923px 8.916px rgba(181, 218, 255, 0.2);
@@ -70,11 +71,37 @@
     }
   }
 
-  .animate-text-glow {
-    background-image: linear-gradient(125deg, #fff 22.37%, #b5daff 94.04%);
+  @keyframes glow-pink {
+    0%,
+    100% {
+      text-shadow: 3.508px 2.923px 8.916px rgba(255, 0, 166, 0.2);
+    }
+    50% {
+      text-shadow: 3.508px 2.923px 10px rgba(255, 0, 166, 0.5);
+    }
+  }
+
+  .animate-text-glow-pink {
+    background-image: linear-gradient(
+      125deg,
+      #fff 22.37%,
+      var(--color-pink-ultra-light) 94.04%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    animation: glow 2s ease-in-out infinite;
+    animation: glow-pink 2s ease-in-out infinite;
+  }
+
+  .animate-text-glow-blue {
+    background-image: linear-gradient(
+      125deg,
+      #fff 22.37%,
+      var(--color-blue-light) 94.04%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow-blue 2s ease-in-out infinite;
   }
 }

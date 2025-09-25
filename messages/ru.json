@@ -9,5 +9,19 @@
     "portfolio": "Портфолио",
     "blog": "Блог",
     "contacts": "Контакты"
+  },
+  "footer": {
+    "description": "Мы работаем на ваш результат и наше удовольствие",
+    "home": "Главная",
+    "portfolio": "Портфолио",
+    "blog": "Блог",
+    "contacts": "Контакты",
+    "legalData": "Юридические данные",
+    "publicContract": "Публичный договор",
+    "offer": "Оферта",
+    "policy": "Конфиденциальность",
+    "forCalls": "Для звонков",
+    "rights": "© {year} Code-site.art",
+    "developedBy": "Website developed by the best team"
   }
 }

@@ -4,7 +4,7 @@ import FourPointsStarIcon from "@/components/shared/icons/FourPointsStarIcon";
 
 interface FaqItemProps {
   faqItem: { title: string; answer: string };
-  idx: number
+  idx: number;
 }
 
 export default function FaqItem({ faqItem, idx }: FaqItemProps) {
@@ -41,7 +41,7 @@ export default function FaqItem({ faqItem, idx }: FaqItemProps) {
       </div>
       <div
         className={`overflow-hidden transition-[max-height] duration-700 will-change-transform ${
-          isShownMore ? "max-h-[600px] ease-in" : "max-h-0 ease-out"
+          isShownMore ? "max-h-[800px] ease-in" : "max-h-0 ease-out"
         }`}
       >
         <p

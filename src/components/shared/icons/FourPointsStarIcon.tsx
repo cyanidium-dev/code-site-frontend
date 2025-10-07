@@ -41,8 +41,6 @@ export default function FourPointsStarIcon({
         >
           <stop stopColor="var(--gradient-start)" />
           <stop offset="1" stopColor="var(--gradient-end)" />
-          {/* <stop stopColor="#EAEBFF" />
-          <stop offset="1" stopColor="#6A8FFF" /> */}
         </linearGradient>
       </defs>
     </svg>

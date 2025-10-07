@@ -45,7 +45,7 @@ export default function BurgerMenu({
               art
             </p>
           </motion.div>
-          <div className="flex flex-col gap-y-16 justify-between w-[100vw] h-[calc(100dvh-88px)] mt-22 pt-[150px] pb-[52px] overflow-y-auto overflow-x-hidden">
+          <div className="flex flex-col gap-y-16 justify-between w-[100vw] h-[calc(100dvh-88px)] mt-22 pt-[120px] pb-[52px] overflow-y-auto overflow-x-hidden">
             <Container className="w-full">
               <motion.div
                 initial="hidden"

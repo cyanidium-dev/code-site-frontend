@@ -54,7 +54,7 @@ const partnersImages = [
     height: 29,
   },
   {
-    src: "/images/homePage/partners/raulAuto.png",
+    src: "/images/homePage/partners/raul-auto.png",
     width: 114,
     height: 81,
   },

@@ -1,3 +1,4 @@
+import CTA from "@/components/homePage/cta/CTA";
 import FAQ from "@/components/homePage/faq/FAQ";
 import Founder from "@/components/homePage/founder/Founder";
 import Hero from "@/components/homePage/hero/Hero";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <SiteTypes />
       <Partners />
       <FAQ />
+      <CTA />
     </>
   );
 }

@@ -5,8 +5,9 @@ export default function NavMenu() {
   const t = useTranslations("footer");
 
   const navListOne = [
-    { title: t("home"), link: "/" },
     { title: t("portfolio"), link: "/portfolio" },
+    { title: t("home"), link: "/" },
+    { title: t("services"), link: "/services" },
     { title: t("blog"), link: "/blog" },
     { title: t("contacts"), link: "/contacts" },
   ];

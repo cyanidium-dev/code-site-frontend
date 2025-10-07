@@ -7,7 +7,7 @@ export default function Founder() {
   const t = useTranslations("homePage.founder");
 
   return (
-    <section className="pt-30 xl:pt-[130px]">
+    <section className="pt-[45px] xl:pt-[271px]">
       <Container className="flex flex-col md:flex-row gap-12 md:gap-5">
         <div className="relative rounded-[8px] overflow-hidden w-full md:w-[calc(100%-19px-334px)] h-[514px]">
           <Image

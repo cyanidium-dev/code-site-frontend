@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 interface MainButtonProps {
   children: string | ReactNode;
-  variant?: "pink" | "blue" | "gradient";
+  variant?: "pink" | "blue" | "gradient" | "white";
   className?: string;
   type?: "submit" | "button";
   disabled?: boolean;
@@ -28,14 +28,15 @@ export default function MainButton({
       onClick={onClick}
       className={twMerge(
         `group relative overflow-hidden enabled:cursor-pointer flex items-center justify-center w-full h-[45px] px-3 rounded-full text-white
-        text-[13px] font-actay font-bold leading-none uppercase disabled:text-white/60
-        transition duration-300 ease-in-out ${
-          variant === "pink"
-            ? "bg-main-light disabled:bg-main-light/60"
-            : variant === "blue"
-            ? "bg-blue disabled:bg-blue/60"
-            : "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)]/60"
-        }`,
+      active:scale-[98%] will-change-transform transition duration-300 ease-in-out ${
+        variant === "pink"
+          ? "bg-main-light disabled:bg-main-light/60"
+          : variant === "blue"
+          ? "bg-blue disabled:bg-blue/60"
+          : variant === "gradient"
+          ? "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)]/60"
+          : "bg-white disabled:bg-white/60 text-black"
+      }`,
         className
       )}
     >
@@ -43,7 +44,7 @@ export default function MainButton({
         className="absolute top-0 left-[-150%] w-full h-full bg-gradient-to-r from-white/20 via-blue/40 to-white/20 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
-      <span className="leading-none mt-1.5">
+      <span className="mt-1 text-[12px] font-actay font-bold leading-none uppercase disabled:text-white/60">
         {children}
         {isLoading ? <LoaderIcon /> : null}
       </span>

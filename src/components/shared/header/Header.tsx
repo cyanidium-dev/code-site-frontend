@@ -7,8 +7,11 @@ import BurgerMenu from "./BurgerMenu";
 import NavMenu from "./NavMenu";
 import { useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
+import MainButton from "../buttons/MainButton";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
+  const t = useTranslations("header");
   const [isHeaderMenuOpened, setIsHeaderMenuOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -29,11 +32,15 @@ export default function Header() {
           }`}
         />
         <Logo className="text-[12px] z-[60]" />
-        <div className="flex items-center gap-x-6 md:gap-x-14">
+        <div className="flex items-center gap-x-6 md:gap-x-8 xl:gap-x-12">
+          <NavMenu className="hidden md:flex" />
           <LocaleSwitcher />
-          <div className="hidden md:block">
-            <NavMenu />
-          </div>
+          <MainButton
+            variant="white"
+            className="hidden lg:flex w-[210px] h-[39px] text-[12px]"
+          >
+            {t("discuss")}
+          </MainButton>
           <BurgerMenuButton
             isHeaderMenuOpened={isHeaderMenuOpened}
             toggleHeaderMenuOpen={toggleHeaderMenuOpen}

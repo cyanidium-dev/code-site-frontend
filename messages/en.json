@@ -7,8 +7,10 @@
     "logo": "Code-site.art",
     "home": "Главная",
     "portfolio": "Портфолио",
+    "services": "Услуги",
     "blog": "Блог",
-    "contacts": "Контакты"
+    "contacts": "Контакты",
+    "discuss": "обсудить проект"
   },
   "footer": {
     "description": "Мы работаем на ваш результат и наше удовольствие",

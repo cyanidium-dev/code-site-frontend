@@ -77,7 +77,7 @@ export default function SectionTitle({
         className={`relative pt-2 xl:pt-4 uppercase text-transparent bg-clip-text ${
           variant === "blue"
             ? "bg-[linear-gradient(112deg,_#ffffff_22.37%,_#B5DAFF_93.04%)]"
-            : "bg-[linear-gradient(112deg,_#ffffff_40.05%,_#B22A7C_115.38%)]"
+            : "bg-[linear-gradient(112deg,_#ffffff_22.37%,_#FFB5E6_93.04%)]"
         }`}
       >
         {words.map((word, wordIdx) => (

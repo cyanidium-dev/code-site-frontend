@@ -1,5 +1,7 @@
+import FAQ from "@/components/homePage/faq/FAQ";
 import Founder from "@/components/homePage/founder/Founder";
 import Hero from "@/components/homePage/hero/Hero";
+import Partners from "@/components/homePage/partners/Partners";
 import SiteTypes from "@/components/homePage/siteTypes/SiteTypes";
 import WhyUs from "@/components/homePage/whyUs/WhyUs";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
@@ -17,6 +19,8 @@ export default function HomePage() {
       <Founder />
       <WhyUs />
       <SiteTypes />
+      <Partners />
+      <FAQ />
     </>
   );
 }

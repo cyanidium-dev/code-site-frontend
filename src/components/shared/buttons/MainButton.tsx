@@ -41,7 +41,7 @@ export default function MainButton({
       )}
     >
       <span
-        className="absolute top-0 left-[-150%] w-full h-full bg-gradient-to-r from-white/20 via-blue/40 to-white/20 opacity-50 
+        className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-white/10 via-blue/70 to-white/10 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
       <span className="mt-1 text-[12px] font-actay font-bold leading-none uppercase disabled:text-white/60">

@@ -21,7 +21,7 @@ export default function CallbackFormModal({
 }: CallbackFormModalProps) {
   return (
     <Modal isModalShown={isPopUpShown} setIsModalShown={setIsPopUpShown}>
-      <h3 className="mb-4.5 font-actay text-[24px] xl:text-[32px] font-bold uppercase leading-[122%] text-center">
+      <h3 className="mb-4.5 font-actay text-[24px] xl:text-[32px] font-bold uppercase leading-[122%] text-center text-black">
         {title}
       </h3>
       <p className="mb-[51px] text-[12px] lg:text-[16px] font-light leading-[122%] text-center text-black">

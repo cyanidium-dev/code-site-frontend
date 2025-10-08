@@ -38,6 +38,15 @@
     "submitButton": "Отправить",
     "sending": "Надсилання..."
   },
+  "modals": {
+    "leaveContacts": "Оставьте свои контакты",
+    "fillData": "Заполните свои данные и мы свяжемся с вами в ближайшее время!",
+    "successTitle": "Спасибо, что оставили данные!",
+    "errorTitle": "На жаль, щось пішло не так",
+    "successDescription": "Можете написать нам в Telegram!",
+    "errorDescription": "Но вы можете написать нам в Telegram!",
+    "sendMessage": "Отправить сообщение"
+  },
   "homePage": {
     "hero": {
       "title": "Сайт решает",

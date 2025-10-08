@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import * as motion from "motion/react-client";
-import { fadeInAnimation } from "@/utils/animationVariants";
 import MainButton from "@/components/shared/buttons/MainButton";
 import CallbackFormModal from "../modals/CallbackFormModal";
 import { useTranslations } from "next-intl";
@@ -10,12 +9,16 @@ import NotificationModal from "../modals/NotificationModal";
 
 interface ClientApplicationProps {
   buttonText: string;
-  title: string;
+  variant?: "pink" | "blue" | "gradient" | "white";
+  className?: string;
+  buttonClassName?: string;
 }
 
 export default function ClientApplication({
   buttonText,
-  title,
+  variant = "white",
+  className = "",
+  buttonClassName = "",
 }: ClientApplicationProps) {
   const t = useTranslations();
   const [isPopUpShown, setIsPopUpShown] = useState(false);
@@ -29,10 +32,13 @@ export default function ClientApplication({
         whileInView="visible"
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
-        variants={fadeInAnimation({ delay: 1, scale: 0.9, y: 30 })}
-        className="w-full"
+        className={className}
       >
-        <MainButton onClick={() => setIsPopUpShown(true)}>
+        <MainButton
+          variant={variant}
+          onClick={() => setIsPopUpShown(true)}
+          className={buttonClassName}
+        >
           {buttonText}
         </MainButton>
       </motion.div>
@@ -41,8 +47,8 @@ export default function ClientApplication({
         setIsPopUpShown={setIsPopUpShown}
         setIsNotificationShown={setIsNotificationShown}
         setIsError={setIsError}
-        title={title}
-        description={t("modals.description")}
+        title={t("modals.leaveContacts")}
+        description={t("modals.fillData")}
       />
       <NotificationModal
         title={isError ? t("modals.errorTitle") : t("modals.successTitle")}

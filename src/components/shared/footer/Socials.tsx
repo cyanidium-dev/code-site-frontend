@@ -16,12 +16,14 @@ export default function Socials() {
     <ul className="flex items-center gap-x-5 mb-[43px] md:mb-0">
       {socialsList.map(({ icon, url }, idx) => (
         <li key={idx}>
-          <Link
+          <a
             href={url}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
             className="xl:hover:text-blue-light focus-visible:text-blue-light transition duration-300 ease-in-out"
           >
             {icon}
-          </Link>
+          </a>
         </li>
       ))}
     </ul>

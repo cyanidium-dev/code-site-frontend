@@ -33,7 +33,7 @@ interface CustomizedInputProps {
 
 const labelStyles = "relative flex flex-col w-full";
 const fieldStyles =
-  "relative w-full h-10 px-4 py-2 text-[12px] font-normal leading-[167%] text-dark placeholder-dark border rounded-[4px] outline-none resize-none transition duration-300 ease-out";
+  "relative w-full h-12 px-6 py-3 text-[12px] lg:text-[14px] font-normal leading-[143%] text-black placeholder:text-black border-[1.5px] rounded-full outline-none resize-none transition duration-300 ease-out";
 const errorStyles =
   "absolute bottom-[-11px] left-2 text-[9px] font-normal leading-none text-red-500";
 

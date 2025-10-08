@@ -96,7 +96,7 @@ export default function CallBackForm({
             isValid={isValid}
             isLoading={isLoading}
             text={t("submitButton")}
-            className="mt-1.5 h-10"
+            className="mt-2.5 lg:mt-4.5 h-[47px]"
           />
         </Form>
       )}

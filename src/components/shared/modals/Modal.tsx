@@ -2,6 +2,7 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 
 import IconButton from "../buttons/IconButton";
 import CrossIcon from "../icons/CrossIcon";
+import Image from "next/image";
 
 interface ModalProps {
   isModalShown: boolean;
@@ -26,9 +27,15 @@ export default function Modal({
       px-5 lg:px-[68px] pt-12 lg:pt-[65px] pb-5 lg:pb-15 overflow-y-auto rounded-[8px] scrollbar scrollbar-w-[3px] scrollbar-thumb-rounded-full 
       scrollbar-track-rounded-full scrollbar-thumb-transparent scrollbar-track-blue-light popup-scroll shadow-md ${className}`}
     >
+      <Image
+        src="/images/modal/background.png"
+        alt="background"
+        fill
+        className="-z-10 object-cover object-top-left mix-blend-luminosity"
+      />
       <IconButton
         handleClick={() => setIsModalShown(false)}
-        className="absolute top-4 right-4 size-6"
+        className="absolute top-4 right-4 size-6 text-black"
       >
         {<CrossIcon />}
       </IconButton>

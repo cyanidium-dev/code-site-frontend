@@ -34,14 +34,14 @@ export default function MainButton({
           : variant === "blue"
           ? "bg-blue disabled:bg-blue/60"
           : variant === "gradient"
-          ? "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)]/60"
+          ? "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:opacity-50"
           : "bg-white disabled:bg-white/60 text-black"
       }`,
         className
       )}
     >
       <span
-        className="absolute top-0 left-[-150%] w-full h-full bg-gradient-to-r from-white/20 via-blue/40 to-white/20 opacity-50 
+        className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-white/10 via-blue/70 to-white/10 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
       <span className="mt-1 text-[12px] font-actay font-bold leading-none uppercase disabled:text-white/60">

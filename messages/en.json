@@ -27,6 +27,26 @@
     "rights": "© {year} Code-site.art",
     "developedBy": "Website developed by the best team"
   },
+  "forms": {
+    "namePlaceholder": "Имя",
+    "phonePlaceholder": "Номер телефона / Telegram",
+    "errors": {
+      "required": "Дане поле є обов'язковим до заповнення",
+      "nameMinMaxSymbols": "Повинно містити від 2 до 30 символів",
+      "nameAllowedSymbols": "Допустимі літери та дефіс, апостроф, лапки"
+    },
+    "submitButton": "Отправить",
+    "sending": "Надсилання..."
+  },
+  "modals": {
+    "leaveContacts": "Оставьте свои контакты",
+    "fillData": "Заполните свои данные и мы свяжемся с вами в ближайшее время!",
+    "successTitle": "Спасибо, что оставили данные!",
+    "errorTitle": "На жаль, щось пішло не так",
+    "successDescription": "Можете написать нам в Telegram!",
+    "errorDescription": "Но вы можете написать нам в Telegram!",
+    "sendMessage": "Отправить сообщение"
+  },
   "homePage": {
     "hero": {
       "title": "Сайт решает",

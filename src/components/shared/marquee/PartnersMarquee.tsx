@@ -98,7 +98,7 @@ export default function PartnersMarquee({
       autoFill={true}
       speed={70}
       className={twMerge(
-        "min-w-[120vw] flex items-center h-[59px] lg:h-[115px] rotate-[-3deg] bg-white",
+        "min-w-[120vw] flex items-center py-[10px] lg:py-4 rotate-[-3deg] bg-white",
         className
       )}
     >
@@ -109,18 +109,25 @@ export default function PartnersMarquee({
           (image.width * mobileHeight) / image.height
         );
 
+        const desktopHeight = image.height;
+        const desktopWidth = image.width;
+
         return (
           <Image
             key={index}
             src={image.src}
             alt={`Partner ${index + 1}`}
-            width={image.width}
-            height={image.height}
-            className={`block mx-4 lg:mx-8 object-contain lg:!h-auto lg:!w-auto`}
-            style={{
-              height: `${mobileHeight}px`,
-              width: `${mobileWidth}px`,
-            }}
+            width={desktopWidth}
+            height={desktopHeight}
+            className={`block mx-4 lg:mx-8 object-contain partner-img`}
+            style={
+              {
+                "--mobile-w": `${mobileWidth}px`,
+                "--mobile-h": `${mobileHeight}px`,
+                "--desktop-w": `${desktopWidth}px`,
+                "--desktop-h": `${desktopHeight}px`,
+              } as React.CSSProperties
+            }
             sizes="(max-width: 1023px) 200px, 300px"
           />
         );

@@ -75,20 +75,21 @@ export default function LocaleSwitcher() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute right-0 mt-1 w-[65px] bg-white shadow-social rounded-[8px] z-[60]"
+            className="absolute right-0 mt-2 w-[65px] backdrop-blur-[5px] shadow-social rounded-[8px] z-[60]"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
+            <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
             {locales.map((locale) => (
               <button
                 key={locale}
                 onClick={() => handleLocaleChange(locale)}
-                className={`cursor-pointer w-full flex items-center px-4 py-2 xl:hover:text-blue focus-visible:text-blue transition duration-300 ease-in-out  ${
+                className={`cursor-pointer w-full flex items-center px-4 py-2 xl:hover:text-blue-light focus-visible:text-blue-light transition duration-300 ease-in-out  ${
                   currentLocale === locale
-                    ? "text-blue text-[16px] font-bold"
-                    : "text-black text-[16px] font-medium"
+                    ? "text-blue-light text-[16px] font-bold"
+                    : "text-white text-[16px] font-medium"
                 }`}
               >
                 <span className={`uppercase`}>

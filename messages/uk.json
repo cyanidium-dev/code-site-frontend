@@ -27,6 +27,17 @@
     "rights": "© {year} Code-site.art",
     "developedBy": "Website developed by the best team"
   },
+  "forms": {
+    "namePlaceholder": "Имя",
+    "phonePlaceholder": "Номер телефона / Telegram",
+    "errors": {
+      "required": "Дане поле є обов'язковим до заповнення",
+      "nameMinMaxSymbols": "Повинно містити від 2 до 30 символів",
+      "nameAllowedSymbols": "Допустимі літери та дефіс, апостроф, лапки"
+    },
+    "submitButton": "Отправить",
+    "sending": "Надсилання..."
+  },
   "homePage": {
     "hero": {
       "title": "Сайт решает",

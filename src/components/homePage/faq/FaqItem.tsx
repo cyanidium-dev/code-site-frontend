@@ -26,11 +26,11 @@ export default function FaqItem({ faqItem, idx }: FaqItemProps) {
           isShownMore ? "text-black" : "text-white"
         }`}
       >
-        <p
+        <h3
           className={`text-[14px] lg:text-[20px] font-semibold leading-[120%]`}
         >
           {title}
-        </p>
+        </h3>
         <FourPointsStarIcon
           isShownMore={isShownMore}
           idx={idx}

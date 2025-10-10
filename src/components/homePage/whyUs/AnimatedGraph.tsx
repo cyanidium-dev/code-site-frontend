@@ -2,8 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import * as motion from "motion/react-client";
 import Graph from "./Graph";
+import { twMerge } from "tailwind-merge";
 
-export default function AnimatedGraph() {
+interface AnimatedGraphProps {
+  className?: string;
+}
+
+export default function AnimatedGraph({ className = "" }: AnimatedGraphProps) {
   const svgRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,14 +28,17 @@ export default function AnimatedGraph() {
 
     if (!strokePath || !fillPath) return;
 
-    // Отримуємо довжину path (вони однакові)
+    // Отримуємо довжину path
     const pathLength = strokePath.getTotalLength();
 
-    // Встановлюємо початкові значення для обох path
-    [fillPath, strokePath].forEach((path) => {
-      path.style.strokeDasharray = `${pathLength}`;
-      path.style.strokeDashoffset = `${pathLength}`;
-    });
+    // Встановлюємо початкові значення для stroke path (другого)
+    strokePath.style.strokeDasharray = `${pathLength}`;
+    strokePath.style.strokeDashoffset = `${pathLength}`;
+
+    // Встановлюємо початкові значення для stroke в fillPath (першого)
+    // У першого path є і fill, і stroke
+    fillPath.style.strokeDasharray = `${pathLength}`;
+    fillPath.style.strokeDashoffset = `${pathLength}`;
 
     // Observer для відстеження появи в viewport
     const observer = new IntersectionObserver(
@@ -38,12 +46,13 @@ export default function AnimatedGraph() {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !isVisible) {
             setIsVisible(true);
-            // Додаємо transition і запускаємо анімацію для обох path
+            // Додаємо transition і запускаємо анімацію для обох stroke одночасно
             setTimeout(() => {
-              [fillPath, strokePath].forEach((path) => {
-                path.style.transition = "stroke-dashoffset 12s linear";
-                path.style.strokeDashoffset = "0";
-              });
+              fillPath.style.transition = "stroke-dashoffset 10s linear";
+              fillPath.style.strokeDashoffset = "0";
+
+              strokePath.style.transition = "stroke-dashoffset 10s linear";
+              strokePath.style.strokeDashoffset = "0";
             }, 300); // Даємо час на fade-in
           }
         });
@@ -69,7 +78,7 @@ export default function AnimatedGraph() {
           transition: { duration: 0.3 },
         },
       }}
-      className="w-full overflow-hidden"
+      className={twMerge(`w-full overflow-hidden`, className)}
     >
       <Graph />
     </motion.div>

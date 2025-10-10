@@ -2,7 +2,13 @@
 import { useEffect, useRef } from "react";
 import Map from "./Map";
 
-export default function AnimatedMapWithDots() {
+interface AnimatedMapWithDotsProps {
+  className?: string;
+}
+
+export default function AnimatedMapWithDots({
+  className,
+}: AnimatedMapWithDotsProps) {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,11 +100,11 @@ export default function AnimatedMapWithDots() {
 
     const animateDots = () => {
       // Вибираємо 4-5 випадкових точок
-      const numberOfDots = Math.floor(Math.random() * 2) + 4; // 4 або 5
+      const numberOfDots = Math.floor(Math.random() * 2) + 6; // 6 або 7
       const selectedDots: SVGPathElement[] = [];
 
       // Мінімальна відстань між точками для рівномірного розподілу
-      let minDistance = 100; // Зменшено для гарантії 4-5 точок
+      let minDistance = 100; // Зменшено для гарантії 6-7 точок
       const maxAttempts = 150;
 
       // Вибираємо першу точку випадково
@@ -147,7 +153,7 @@ export default function AnimatedMapWithDots() {
 
       // Fallback: якщо не набралось достатньо точок, зменшуємо відстань
       if (selectedDots.length < numberOfDots) {
-        minDistance = 60;
+        minDistance = 50;
         attempts = 0;
 
         while (selectedDots.length < numberOfDots && attempts < maxAttempts) {
@@ -204,7 +210,7 @@ export default function AnimatedMapWithDots() {
 
   return (
     <div ref={mapRef} className="w-fit h-fit">
-      <Map />
+      <Map className={className} />
     </div>
   );
 }

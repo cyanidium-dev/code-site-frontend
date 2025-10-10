@@ -14,7 +14,7 @@ export default function ReasonsList() {
   ];
 
   return (
-    <ul className="flex flex-col md:flex-row gap-5 md:flex-wrap">
+    <ul className="relative -z-40 lg:z-0 flex flex-col md:flex-row gap-5 md:flex-wrap">
       {reasonsList.map((reason, idx) => (
         <ReasonCard key={idx} reason={reason} idx={idx} />
       ))}

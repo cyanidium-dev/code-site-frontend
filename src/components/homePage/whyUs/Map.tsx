@@ -1,4 +1,8 @@
-export default function Map() {
+interface MapProps {
+  className?: string;
+}
+
+export default function Map({className=""}: MapProps) {
   return (
     <svg
       width="604"
@@ -6,6 +10,8 @@ export default function Map() {
       viewBox="0 0 604 328"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label="map"
+      className={className}
     >
       <path
         d="M591.596 52.2175C593.056 52.1983 594.134 53.3011 594.142 54.8198C594.148 56.3104 593.043 57.4967 591.64 57.5048C590.249 57.5122 589.08 56.3178 589.062 54.8686C589.044 53.4053 590.161 52.2367 591.596 52.2175Z"

@@ -1,4 +1,8 @@
-export default function Graph() {
+interface GraphProps {
+  className?: string;
+}
+
+export default function Graph({ className = ''}: GraphProps) {
   return (
     <svg
       width="936"
@@ -6,6 +10,8 @@ export default function Graph() {
       viewBox="0 0 936 290"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-label="graph"
+      className={className}
     >
       <mask
         id="mask0_118_5624"

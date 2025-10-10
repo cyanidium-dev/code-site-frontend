@@ -48,10 +48,10 @@ export default function AnimatedGraph({ className = "" }: AnimatedGraphProps) {
             setIsVisible(true);
             // Додаємо transition і запускаємо анімацію для обох stroke одночасно
             setTimeout(() => {
-              fillPath.style.transition = "stroke-dashoffset 10s linear";
+              fillPath.style.transition = "stroke-dashoffset 7s linear";
               fillPath.style.strokeDashoffset = "0";
 
-              strokePath.style.transition = "stroke-dashoffset 10s linear";
+              strokePath.style.transition = "stroke-dashoffset 7s linear";
               strokePath.style.strokeDashoffset = "0";
             }, 300); // Даємо час на fade-in
           }

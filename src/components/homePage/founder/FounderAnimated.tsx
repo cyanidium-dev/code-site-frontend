@@ -18,10 +18,10 @@ export default function FounderAnimated({ children }: FounderAnimatedProps) {
   });
 
   // Швидкий параллакс для drops (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const fastY = useTransform(scrollYProgress, [0, 1], [80, -80]);
 
   // Повільний параллакс для figure (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-150, 150]);
+  const slowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
     <section ref={sectionRef} className="pt-[45px] xl:pt-[271px]">

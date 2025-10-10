@@ -98,7 +98,7 @@ export default function FounderDecorations({
       >
         <motion.div
           style={{ y: slowY }}
-          className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"
+          className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"
         ></motion.div>
       </motion.div>
     </>

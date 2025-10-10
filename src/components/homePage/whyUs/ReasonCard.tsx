@@ -1,4 +1,5 @@
-import AnimatedGraph from "./AnimatedGraph";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 interface ReasonCardProps {
   reason: { title: string; description: string };
@@ -9,7 +10,12 @@ export default function ReasonCard({ reason, idx }: ReasonCardProps) {
   const { title, description } = reason;
 
   return (
-    <li
+    <motion.li
+      initial="hidden"
+      whileInView="visible"
+      exit="exit"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={fadeInAnimation({ x: 30, scale: 0.95 })}
       className={`relative lg:z-10 w-[138%] md:first:w-full sm:w-auto md:w-[calc(50%-10px)] ${
         idx === 2
           ? "order-1 md:order-3"
@@ -55,6 +61,6 @@ export default function ReasonCard({ reason, idx }: ReasonCardProps) {
           {description}
         </p>
       </div>
-    </li>
+    </motion.li>
   );
 }

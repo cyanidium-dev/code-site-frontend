@@ -17,7 +17,7 @@ export default function CodeSiteMarquee({
       autoFill={true}
       speed={70}
       className={twMerge(
-        "min-w-[120vw] flex items-center pt-2 rotate-[-3.68deg] bg-[linear-gradient(90deg,#FE80CD_30.2%,#268DF4_85.69%)] text-dark font-parkia text-[37.67px] leading-none font-bold uppercase",
+        "min-w-[120vw] flex items-center pt-2 rotate-[-3.68deg] bg-[linear-gradient(90deg,#FE80CD_30.2%,#268DF4_85.69%)] text-dark font-parkia text-[37.67px] lg:text-[48px] leading-none font-bold uppercase",
         className
       )}
     >

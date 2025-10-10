@@ -4,7 +4,7 @@ export const fadeInAnimation = ({
   scale = 1,
   delay = 0,
   duration = 0.7,
-  opacity = 0.01,
+  opacity = 0,
 }) => ({
   hidden: {
     opacity: opacity,
@@ -40,7 +40,7 @@ export const listVariants = ({
   staggerChildren = 0.3,
   delayChildren = 0,
 } = {}) => ({
-  hidden: { opacity: 0.01 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
@@ -51,7 +51,7 @@ export const listVariants = ({
 });
 
 export const listItemVariants = {
-  hidden: { opacity: 0.01, y: 20 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -65,7 +65,7 @@ export const listItemVariants = {
 };
 
 export const listItemVariantsLeft = {
-  hidden: { opacity: 0.01, x: 20, scale: 0.95 },
+  hidden: { opacity: 0, x: 20, scale: 0.95 },
   visible: {
     opacity: 1,
     x: 0,

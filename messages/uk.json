@@ -24,9 +24,8 @@
     "offer": "Оферта",
     "policy": "Конфиденциальность",
     "forCalls": "Для звонков",
-    "rights": "© {year} Code-site.art",
-    "developedBy": "Website developed by the best team"
-  },
+    "rights": "© {year} Code-site.art"
+   },
   "forms": {
     "namePlaceholder": "Имя",
     "phonePlaceholder": "Номер телефона / Telegram",

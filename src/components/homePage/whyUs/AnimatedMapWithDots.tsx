@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import AnimatedMap from "./AnimatedMap";
+import Map from "./Map";
 
 export default function AnimatedMapWithDots() {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -204,7 +204,7 @@ export default function AnimatedMapWithDots() {
 
   return (
     <div ref={mapRef} className="w-fit h-fit">
-      <AnimatedMap />
+      <Map />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-export default function AnimatedMap() {
+export default function Map() {
   return (
     <svg
       width="604"

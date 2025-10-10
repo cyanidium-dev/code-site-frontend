@@ -1,3 +1,5 @@
+import AnimatedGraph from "./AnimatedGraph";
+
 interface ReasonCardProps {
   reason: { title: string; description: string };
   idx: number;

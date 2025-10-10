@@ -2,6 +2,7 @@ import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
 import ReasonsList from "./ReasonsList";
+import AnimatedMapWithDots from "./AnimatedMapWithDots";
 
 export default function WhyUs() {
   const t = useTranslations("homePage.whyUs");
@@ -13,6 +14,7 @@ export default function WhyUs() {
           {t("title")}
         </SectionTitle>
         <ReasonsList />
+        <AnimatedMapWithDots />
       </Container>
     </section>
   );

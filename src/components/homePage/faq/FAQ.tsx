@@ -28,7 +28,7 @@ export default function FAQ() {
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeInAnimation({
               delay: 0.6,
-              scale: 0.95,
+              scale: 0.85,
               x: 20,
               y: -20,
             })}

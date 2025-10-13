@@ -66,7 +66,7 @@ export default function WhyUsImages() {
       >
         <motion.div
           style={{ y: slowY }}
-          className="w-[190px] lg:w-[469px] h-[207px] lg:h-[512px] rounded-full bg-pink-bright supports-[backdrop-filter]:blur-[66px] lg:supports-[backdrop-filter]:blur-[164px] will-change-transform"
+          className="w-[190px] lg:w-[469px] h-[207px] lg:h-[512px] 2xl:opacity-50 rounded-full bg-pink-bright supports-[backdrop-filter]:blur-[66px] lg:supports-[backdrop-filter]:blur-[164px] will-change-transform"
         />
       </motion.div>
     </div>

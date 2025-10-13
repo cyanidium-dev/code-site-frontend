@@ -164,7 +164,7 @@ export default function FAQDecorations() {
       >
         <motion.div
           style={{ y: slowY }}
-          className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] will-change-transform"
+          className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] 2xl:opacity-50 rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] will-change-transform"
         />
       </motion.div>
       <motion.div
@@ -177,7 +177,7 @@ export default function FAQDecorations() {
       >
         <motion.div
           style={{ y: slowY }}
-          className="w-[363px] h-[363px] rounded-full bg-[#9D5280] supports-[backdrop-filter]:blur-[163px] will-change-transform"
+          className="w-[363px] h-[363px] 2xl:opacity-50 rounded-full bg-[#9D5280] supports-[backdrop-filter]:blur-[163px] will-change-transform"
         />
       </motion.div>
     </div>

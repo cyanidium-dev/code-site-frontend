@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 import { useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { fadeInAnimation } from "@/utils/animationVariants";
 
 export default function PartnersDecorations() {
   const sectionRef = useRef<HTMLDivElement>(null);

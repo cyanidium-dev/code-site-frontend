@@ -110,7 +110,7 @@ export default function PartnersDecorations() {
       >
         <motion.div
           style={{ y: slowY }}
-          className="w-[354px] h-[380px] rounded-full bg-main supports-[backdrop-filter]:blur-[281px] will-change-transform"
+          className="w-[354px] h-[380px] 2xl:opacity-50 rounded-full bg-main supports-[backdrop-filter]:blur-[281px] will-change-transform"
         />
       </motion.div>
     </div>

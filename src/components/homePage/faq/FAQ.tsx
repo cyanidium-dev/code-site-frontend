@@ -3,13 +3,17 @@ import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
 import FaqList from "./FaqList";
 import { TELEGRAM_LINK, EMAIL } from "@/constants/constants";
+import FAQDecorations from "./FAQDecorations";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 export default function FAQ() {
   const t = useTranslations("homePage.faq");
 
   return (
     <section className="pt-[118px] lg:pt-[155px]">
-      <Container>
+      <Container className="relative">
+        <FAQDecorations />
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 mb-8">
           <SectionTitle
             variant="pink"
@@ -17,7 +21,19 @@ export default function FAQ() {
           >
             {t("title")}
           </SectionTitle>
-          <div className="lg:max-w-[271px] text-[16px] font-light leading-[120%]">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({
+              delay: 0.6,
+              scale: 0.85,
+              x: 20,
+              y: -20,
+            })}
+            className="lg:max-w-[271px] text-[16px] font-light leading-[120%]"
+          >
             <p className="mb-6">{t("descriptionOne")}</p>
             <p>
               {t("descriptionTwo")}{" "}
@@ -41,7 +57,7 @@ export default function FAQ() {
               .
             </p>
             <p> {t("descriptionFour")}</p>
-          </div>
+          </motion.div>
         </div>
         <FaqList />
       </Container>

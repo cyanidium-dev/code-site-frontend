@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import FourPointsStarIcon from "@/components/shared/icons/FourPointsStarIcon";
+import * as motion from "motion/react-client";
+import { listItemVariantsLeft } from "@/utils/animationVariants";
 
 interface FaqItemProps {
   faqItem: { title: string; answer: string };
@@ -14,15 +16,17 @@ export default function FaqItem({ faqItem, idx }: FaqItemProps) {
   const { title, answer } = faqItem;
 
   return (
-    <li
+    <motion.li
+      viewport={{ once: true, amount: 0.2 }}
+      variants={listItemVariantsLeft}
       onClick={toggleShowMore}
-      className={`relative cursor-pointer px-[18px] py-8 lg:px-8 rounded-[8px] backdrop-blur-[5px] transition duration-700 ease-in-out ${
+      className={`relative cursor-pointer px-[18px] py-5 lg:py-9 lg:px-8 rounded-[8px] backdrop-blur-[5px] transition-[background-color,filter] duration-700 ease-in-out ${
         isShownMore ? "bg-white" : "xl:hover:brightness-125"
       }`}
     >
       <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
       <div
-        className={`flex items-center gap-6 justify-between transition duration-700 ease-in-out will-change-transform ${
+        className={`flex items-center gap-6 justify-between transition-colors duration-700 ease-in-out will-change-transform ${
           isShownMore ? "text-black" : "text-white"
         }`}
       >
@@ -50,6 +54,6 @@ export default function FaqItem({ faqItem, idx }: FaqItemProps) {
           {answer}
         </p>
       </div>
-    </li>
+    </motion.li>
   );
 }

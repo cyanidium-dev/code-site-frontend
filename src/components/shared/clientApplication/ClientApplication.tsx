@@ -12,6 +12,7 @@ interface ClientApplicationProps {
   variant?: "pink" | "blue" | "gradient" | "white";
   className?: string;
   buttonClassName?: string;
+  variants?: {};
 }
 
 export default function ClientApplication({
@@ -19,6 +20,7 @@ export default function ClientApplication({
   variant = "white",
   className = "",
   buttonClassName = "",
+  variants = {},
 }: ClientApplicationProps) {
   const t = useTranslations();
   const [isPopUpShown, setIsPopUpShown] = useState(false);
@@ -32,6 +34,7 @@ export default function ClientApplication({
         whileInView="visible"
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
+        variants={variants}
         className={className}
       >
         <MainButton

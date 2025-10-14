@@ -43,25 +43,25 @@ export default function SiteTypesList() {
   ];
 
   return (
-    <ul>
+    <ul className="relative">
       {siteTypesList.map(({ title, list, price }, idx) => (
         <li
           key={idx}
           className={`relative w-[339px] lg:w-[399px] pt-9 odd:pl-[102px] lg:odd-pl-30 odd:pr-9 lg:odd:pr-8 even:pl-9 lg:even:pl-8 even:pr-[102px]
-             lg:even:pr-30 odd:ml-[-102px] lg:odd:-ml-30 even:mr-[-102px] lg:-mr-30 even:ml-auto 
+             lg:even:pr-30 odd:ml-[-102px] lg:odd:-ml-30 even:mr-[-102px] lg:-mr-30 even:ml-auto backdrop-blur-md bg-black/26
             lg:px-8 lg:py-13 rounded-[8px] ${
               idx === 0
                 ? "mb-[437px] lg:mb-0 pb-[47px] lg:pb-[138px]"
                 : idx === 1
-                ? "mb-[105px] lg:mb-0 lg:mt-[-38px] pb-[453px] lg:pb-[435px]"
-                : "pb-[210px] lg:pb-[156px] lg:mt-[-172px]"
+                ? "lg:relative lg:z-10 mb-[105px] lg:mb-0 lg:mt-[-38px] pb-[453px] lg:pb-[435px]"
+                : "relative z-10 pb-[210px] lg:pb-[156px] lg:mt-[-172px]"
             }`}
         >
           <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
           <h3 className="mb-6 font-actay text-[16px] lg:text-[22px] font-bold leading-[108%] uppercase">
             {title}
           </h3>
-          <p className="mb-6 lg:mb-3 font-actay text-[12px] lg:text-[16px] font-bold leading-[100%] uppercase">
+          <p className="mb-6 lg:mb-3 font-actay text-[12px] lg:text-[16px] font-bold leading-[122%] uppercase">
             {t("forWhom")}
           </p>
           <ul className="flex flex-col gap-[19px] lg:gap-3 mb-9 lg:mb-10">

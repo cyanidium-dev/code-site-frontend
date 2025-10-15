@@ -30,9 +30,6 @@ export default function Footer() {
           <p className="text-[16px] font-normal leading-[180%]">
             {t("rights", { year })}
           </p>
-          <p className="text-[14px] font-light leading-[180%] text-pink">
-            {t("developedBy")}
-          </p>
         </div>
       </Container>
     </footer>

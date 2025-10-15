@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@plugin 'tailwind-scrollbar' {
+  nocompatible: true;
+  preferredstrategy: "pseudoelements";
+}
 
 @theme inline {
   --breakpoint-xs: 27rem;
@@ -7,13 +11,15 @@
   --color-black: #121212;
   --color-dark: #070e4c;
   --color-main: #f80498;
-  --color-main-light: #FF49B8;
-    --color-pink: #ff87d0;
+  --color-main-light: #ff49b8;
+  --color-pink: #ff87d0;
   --color-pink-light: #ffd6ef;
   --color-pink-ultra-light: #ffb5e6;
+  --color-pink-bright: #ff5bce;
   --color-blue: #268df4;
   --color-blue-light: #b5daff;
-  --color-purple-light: #EAEBFF;
+  --color-blue-bright: #4dd0ff;
+  --color-purple-light: #eaebff;
 
   --font-actay: var(--font-actay), sans-serif;
   --font-guano-apes: var(--font-guano-apes), sans-serif;
@@ -105,5 +111,17 @@
     -webkit-background-clip: text;
     color: transparent;
     animation: glow-blue 2s ease-in-out infinite;
+  }
+
+  .partner-img {
+    width: var(--mobile-w);
+    height: var(--mobile-h);
+  }
+
+  @media (min-width: 1024px) {
+    .partner-img {
+      width: var(--desktop-w);
+      height: var(--desktop-h);
+    }
   }
 }

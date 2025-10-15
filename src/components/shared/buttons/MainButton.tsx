@@ -27,7 +27,8 @@ export default function MainButton({
       disabled={disabled}
       onClick={onClick}
       className={twMerge(
-        `group relative overflow-hidden enabled:cursor-pointer flex items-center justify-center w-full h-[45px] px-3 rounded-full text-white
+        `group relative overflow-hidden enabled:cursor-pointer flex items-center justify-center w-full h-[45px] px-3 rounded-full text-[12px] 
+        font-actay font-bold leading-none uppercase disabled:text-white/60 text-white
       active:scale-[98%] will-change-transform transition duration-300 ease-in-out ${
         variant === "pink"
           ? "bg-main-light disabled:bg-main-light/60"
@@ -44,7 +45,7 @@ export default function MainButton({
         className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-white/10 via-blue/70 to-white/10 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
-      <span className="mt-1 text-[12px] font-actay font-bold leading-none uppercase disabled:text-white/60">
+      <span className="inline-block w-full mt-1">
         {children}
         {isLoading ? <LoaderIcon /> : null}
       </span>

@@ -61,7 +61,8 @@ export default function FounderDecorations({
       {/* Повільний шар - figure */}
       <motion.div
         style={{ y: slowY }}
-        className="absolute bottom-[-332px] lg:bottom-[-669px] right-[-380px] lg:right-[-883px] -z-30 pointer-events-none w-[549px] lg:w-[1243px] aspect-[1243/1167] overflow-visible"
+        className="absolute bottom-[-332px] lg:bottom-[-669px] right-[-380px] lg:right-[-883px] -z-30 pointer-events-none w-[549px] lg:w-[1243px] 
+        aspect-[1243/1167] overflow-visible mix-blend-color-dodge"
       >
         <motion.div
           initial="hidden"
@@ -83,7 +84,7 @@ export default function FounderDecorations({
             alt="figure"
             width={1243}
             height={1167}
-            className="object-cover mix-blend-color-dodge w-full h-full object-top-left"
+            className="object-cover w-full h-full object-top-left"
           />
         </motion.div>
       </motion.div>

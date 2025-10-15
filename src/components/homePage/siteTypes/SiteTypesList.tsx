@@ -48,7 +48,7 @@ export default function SiteTypesList() {
         <li
           key={idx}
           className={`relative w-[339px] lg:w-[399px] pt-9 odd:pl-[102px] lg:odd-pl-30 odd:pr-9 lg:odd:pr-8 even:pl-9 lg:even:pl-8 even:pr-[102px]
-             lg:even:pr-30 odd:ml-[-102px] lg:odd:-ml-30 even:mr-[-102px] lg:-mr-30 even:ml-auto backdrop-blur-md bg-black/26
+             lg:even:pr-30 odd:ml-[-102px] lg:odd:-ml-30 even:mr-[-102px] lg:-mr-30 even:ml-auto backdrop-blur-[18.9px] bg-black/26
             lg:px-8 lg:py-13 rounded-[8px] ${
               idx === 0
                 ? "mb-[437px] lg:mb-0 pb-[47px] lg:pb-[138px]"

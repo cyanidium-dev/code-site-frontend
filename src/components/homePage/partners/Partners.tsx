@@ -8,7 +8,7 @@ export default function Partners() {
   const t = useTranslations("homePage.partners");
 
   return (
-    <section className="pt-[155px] lg:pt-[285px]">
+    <section className="relative z-10 pt-[155px] lg:pt-[285px]">
       <Container className="relative">
         <PartnersDecorations />
         <SectionTitle

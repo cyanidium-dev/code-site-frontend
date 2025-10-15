@@ -241,7 +241,7 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="relative z-[5]"
+          className="relative lg:z-[5]"
         >
           <Image
             src="/images/homePage/siteTypes/laptopTwo.png"
@@ -374,6 +374,40 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="hidden lg:block absolute -z-20 bottom-[577px] right-[-350px] w-[342px] h-auto aspect-[342/326]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/drops-pink-desk.svg"
+            alt="drops"
+            width="157"
+            height="291"
+            className="w-[157px] h-auto"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="hidden lg:block absolute -z-20 top-[679px] right-[333px]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/drops-blue-middle-desk.svg"
+            alt="drops"
+            width="225"
+            height="315"
+            className="w-[225px] h-auto"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           className="hidden lg:block absolute -z-20 bottom-[135px] left-[1178px] lg:w-[586px] h-auto aspect-[259/285]"
         >
           <Image
@@ -397,23 +431,21 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* Laptop Three */}
-      <motion.div
-        //   style={{ y: mediumY }}
-        className="absolute z-10 top-[2190px] left-[-93px] w-[620px] h-auto aspect-[2755/2066]"
-      >
+      <motion.div className="absolute top-[2190px] lg:top-[1662px] left-[-93px] lg:left-[216px] w-[620px] lg:w-[1377px] h-auto aspect-[2755/2066]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="relative z-10 lg:z-20"
         >
           <Image
             src="/images/homePage/siteTypes/laptopThree.png"
             alt="laptop"
             width={2755}
             height={2066}
-            className="w-[620px] h-auto"
+            className=" w-[620px] lg:w-[1377px] h-auto"
           />
         </motion.div>
 
@@ -423,14 +455,14 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="absolute -z-10 top-[-25px] left-[-13px]"
+          className="absolute z-[7] lg:z-[15] top-[-25px] lg:top-[-55px] left-[-13px] lg:left-[-29px]"
         >
           <Image
             src="/images/homePage/siteTypes/phoneThree.png"
             alt="phone"
             width={1885}
             height={1524}
-            className="w-[425px] h-auto"
+            className="w-[425px] lg:w-[943px] h-auto"
           />
         </motion.div>
 
@@ -440,14 +472,21 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="absolute -z-30 top-[-76px] left-[48px]"
+          className="absolute z-[3] lg:-z-30 top-[-76px] lg:top-[237px] left-[48px] lg:left-[120px]"
         >
           <Image
             src="/images/homePage/siteTypes/shoppers.svg"
             alt="shoppers"
             width="364"
             height="338"
-            className="w-[364px] h-auto"
+            className="lg:hidden w-[364px] h-auto"
+          />
+          <Image
+            src="/images/homePage/siteTypes/shoppersDesk.svg"
+            alt="shoppers"
+            width="335"
+            height="423"
+            className="hidden lg:block w-[335px] h-auto"
           />
         </motion.div>
 
@@ -457,7 +496,24 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="absolute z-20 right-[114px] bottom-[-68px]"
+          className="lg:hidden absolute z-20 top-[-45px] left-[175px]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/drops-blue-middle-mob.svg"
+            alt="drops"
+            width="138"
+            height="127"
+            className="w-[138px] h-auto"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="lg:hidden absolute z-20 right-[114px] bottom-[-68px]"
         >
           <Image
             src="/images/homePage/siteTypes/drops-blue-right-mob.svg"
@@ -485,180 +541,15 @@ export default function SiteTypesDecorations() {
           />
         </motion.div>
 
-        <div className="absolute -z-20 top-[59px] left-[-103px] w-[357px] h-[360px] rounded-full bg-[#089AFA] supports-[backdrop-filter]:blur-[105px] will-change-transform" />
-        <div className="absolute rotate-[-8.44deg] bottom-[-125px] left-[-96px] w-[829px] h-[330px] rounded-full bg-black supports-[backdrop-filter]:blur-[55px] will-change-transform" />
+        <div
+          className="absolute z-[5] lg:-z-20 top-[59px] lg:top-[406px] left-[-103px] lg:left-[-72px] w-[357px] lg:w-[448px] h-[360px] lg:h-[451px] rounded-full bg-[#089AFA] 
+        supports-[backdrop-filter]:blur-[105px] lg:supports-[backdrop-filter]:blur-[131px] will-change-transform"
+        />
+        <div
+          className="absolute lg:z-20 rotate-[-8.44deg] lg:rotate-0 bottom-[-125px] lg:bottom-[-198px] left-[-96px] lg:left-[-557px] w-[829px] lg:w-[1964px] h-[330px] lg:h-[636px] rounded-full bg-black 
+        supports-[backdrop-filter]:blur-[55px] lg:supports-[backdrop-filter]:blur-[41px] will-change-transform"
+        />
       </motion.div>
-
-      {/* 3. Dollars - повільний parallax */}
-      {/* <motion.div style={{ y: slowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/dollars.svg"
-            alt="dollars"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 4. Drops Blue Left Mob - дуже повільний parallax */}
-      {/* <motion.div style={{ y: extraSlowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/drops-blue-left-mob.svg"
-            alt="drops"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 5. Drops Blue Right Mob - швидкий parallax */}
-      {/* <motion.div style={{ y: fastY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/drops-blue-right-mob.svg"
-            alt="drops"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 6. Drops Pink - середній parallax */}
-      {/* <motion.div style={{ y: mediumY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/drops-pink.svg"
-            alt="drops"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 11. Phone One - повільний parallax */}
-      {/* <motion.div style={{ y: slowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/phoneOne.png"
-            alt="phone"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 12. Phone Two - дуже повільний parallax */}
-      {/* <motion.div style={{ y: extraSlowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/phoneTwo.png"
-            alt="phone"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 13. Phone Three - швидкий parallax */}
-      {/* <motion.div style={{ y: fastY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/phoneThree.png"
-            alt="phone"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 14. Shoppers - середній parallax */}
-      {/* <motion.div style={{ y: mediumY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/shoppers.svg"
-            alt="shoppers"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* 15. Star - повільний parallax */}
-      {/* <motion.div style={{ y: slowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
-          <Image
-            src="/images/homePage/siteTypes/star.svg"
-            alt="star"
-            width={200}
-            height={200}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
     </div>
   );
 }

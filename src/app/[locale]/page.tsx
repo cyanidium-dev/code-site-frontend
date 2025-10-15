@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import CTA from "@/components/homePage/cta/CTA";
 import FAQ from "@/components/homePage/faq/FAQ";
 import Founder from "@/components/homePage/founder/Founder";
@@ -7,8 +9,23 @@ import Reviews from "@/components/homePage/reviews/Reviews";
 import SiteTypes from "@/components/homePage/siteTypes/SiteTypes";
 import WhyUs from "@/components/homePage/whyUs/WhyUs";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
+import { Locale } from "next-intl";
+import { fetchSanityData } from "@/utils/fetchSanityData";
+import { allReviewsQuery } from "@/lib/queries";
 
-export default function HomePage() {
+interface HomePageProps {
+  params: Promise<{ locale: Locale }>;
+}
+
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
+
+  const reviewsList = await fetchSanityData(allReviewsQuery, {
+    lang: locale,
+  });
+
+  console.log(reviewsList);
+
   return (
     <>
       <div className="md:hidden">

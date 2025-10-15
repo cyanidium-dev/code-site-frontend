@@ -2,6 +2,8 @@ import MainButton from "@/components/shared/buttons/MainButton";
 import StarIcon from "@/components/shared/icons/StarIcon";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 export default function SiteTypesList() {
   const t = useTranslations("homePage.siteTypes");
@@ -44,7 +46,16 @@ export default function SiteTypesList() {
   return (
     <ul className="relative">
       {siteTypesList.map(({ title, list, price }, idx) => (
-        <li
+        <motion.li
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInAnimation({
+            delay: 0.3,
+            scale: 0.95,
+            x: idx === 1 ? 40 : -40,
+          })}
           key={idx}
           className={`relative w-[108.7%] md:w-[399px] pt-9 odd:pl-[102px] md:odd-pl-30 odd:pr-9 md:odd:pr-8 even:pl-9 md:even:pl-8 even:pr-[102px]
              md:even:pr-30 odd:ml-[-102px] md:odd:-ml-30 even:mr-[-102px] even:md:-mr-30 even:ml-auto backdrop-blur-[18.95px] bg-black/26
@@ -102,7 +113,7 @@ export default function SiteTypesList() {
               </span>
             </p>
           </div>
-        </li>
+        </motion.li>
       ))}
     </ul>
   );

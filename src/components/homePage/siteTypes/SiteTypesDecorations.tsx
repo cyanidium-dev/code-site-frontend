@@ -22,11 +22,8 @@ export default function SiteTypesDecorations() {
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
-      {/* Head One - повільний parallax */}
-      <motion.div
-        // style={{ y: slowY }}
-        className="absolute -z-20 left-[-840px] md:left-[-885px] top-[-856px] md:top-[-696px] mix-blend-hard-light md:rotate-[-30deg]"
-      >
+      {/* Head One */}
+      <motion.div className="absolute -z-20 left-[-840px] md:left-[-885px] top-[-856px] md:top-[-696px] mix-blend-hard-light md:rotate-[-30deg]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -92,11 +89,8 @@ export default function SiteTypesDecorations() {
         />
       </div>
 
-      {/* Code Site Pink Gradient - середній parallax */}
-      <motion.div
-        style={{ y: mediumY }}
-        className="md:hidden absolute top-[-294px] right-[-174px]"
-      >
+      {/* Code Site Pink Gradient*/}
+      <motion.div className="md:hidden absolute top-[-294px] right-[-174px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -115,10 +109,7 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* Laptop One  */}
-      <motion.div
-        // style={{ y: slowY }}
-        className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]"
-      >
+      <motion.div className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
         <div className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] will-change-transform" />
         <motion.div
           initial="hidden"
@@ -231,10 +222,7 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* Laptop Two */}
-      <motion.div
-        // style={{ y: fastY }}
-        className="absolute top-[1029px] md:top-[600px] left-[calc(50%-366px)] md:left-[calc(50%-1135px)] w-[743px] md:w-[1598px] h-auto aspect-[3196/2709]"
-      >
+      <motion.div className="absolute top-[1029px] md:top-[600px] left-[calc(50%-366px)] md:left-[calc(50%-1135px)] w-[743px] md:w-[1598px] h-auto aspect-[3196/2709]">
         <motion.div
           initial="hidden"
           whileInView="visible"

@@ -58,7 +58,6 @@ export default function SiteTypesList() {
         >
           <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
           <div className="max-w-[202px] md:max-w-full mx-auto md:mx-0">
-            {" "}
             <h3 className="mb-6 font-actay text-[16px] md:text-[22px] font-bold leading-[108%] uppercase">
               {title}
             </h3>

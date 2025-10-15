@@ -11,7 +11,7 @@ export default function SiteTypes() {
     <section className="relative z-10 pt-[289px] xl:pt-[285px]">
       <div className="absolute -z-50 -top-6 left-0 inset-0 bg-black" />
       {/* <div
-        className="hidden lg:block absolute -z-40 -top-6 left-0 w-full h-[1024px] lg:h-[755px] opacity-30"
+        className="hidden md:block absolute -z-40 -top-6 left-0 w-full h-[1024px] md:h-[755px] opacity-30"
         style={{
           backgroundImage: "url(/images/homePage/cta/texture.png)",
           backgroundRepeat: "repeat-x",
@@ -21,7 +21,7 @@ export default function SiteTypes() {
       /> */}
       <Container className="relative">
         <SiteTypesDecorations />
-        <SectionTitle className="max-w-[325px] lg:max-w-[523px] mx-auto lg:mr-0 lg:ml-[115px] mb-[432px] lg:mb-[95px] text-[64px] lg:text-[111px] font-bold leading-[108%] text-center lg:text-left">
+        <SectionTitle className="max-w-[325px] md:max-w-[523px] mx-auto md:mr-0 md:ml-[115px] mb-[432px] md:mb-[95px] text-[64px] md:text-[80px] lg:text-[111px] font-bold leading-[108%] text-center md:text-left">
           {t("title")}
         </SectionTitle>
         <SiteTypesList />

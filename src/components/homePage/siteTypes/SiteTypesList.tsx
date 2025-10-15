@@ -47,7 +47,7 @@ export default function SiteTypesList() {
       {siteTypesList.map(({ title, list, price }, idx) => (
         <li
           key={idx}
-          className={`relative w-[339px] lg:w-[399px] pt-9 odd:pl-[102px] lg:odd-pl-30 odd:pr-9 lg:odd:pr-8 even:pl-9 lg:even:pl-8 even:pr-[102px]
+          className={`relative w-[108.7%] md:w-[399px] pt-9 odd:pl-[102px] lg:odd-pl-30 odd:pr-9 lg:odd:pr-8 even:pl-9 lg:even:pl-8 even:pr-[102px]
              lg:even:pr-30 odd:ml-[-102px] lg:odd:-ml-30 even:mr-[-102px] lg:-mr-30 even:ml-auto backdrop-blur-[18.9px] bg-black/26
             lg:px-8 lg:py-13 rounded-[8px] ${
               idx === 0
@@ -58,49 +58,52 @@ export default function SiteTypesList() {
             }`}
         >
           <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
-          <h3 className="mb-6 font-actay text-[16px] lg:text-[22px] font-bold leading-[108%] uppercase">
-            {title}
-          </h3>
-          <p className="mb-6 lg:mb-3 font-actay text-[12px] lg:text-[16px] font-bold leading-[122%] uppercase">
-            {t("forWhom")}
-          </p>
-          <ul className="flex flex-col gap-[19px] lg:gap-3 mb-9 lg:mb-10">
-            {list.map((item, idx) => (
-              <li key={idx} className="flex gap-3 items-center">
-                <StarIcon className="shrink-0" />
-                <p className="text-[12px] lg:text-[14px] font-light leading-[122%]">
-                  {item}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <MainButton
-            variant="pink"
-            className="mb-3 lg:mb-6 px-5 text-[10px] lg:text-[12px]"
-          >
-            <div className="flex items-center justify-between w-full">
-              {t("button")}
-              <Image
-                src="/images/homePage/siteTypes/star.svg"
-                alt="star"
-                width={21}
-                height={21}
-                className="inline-block mb-1 rotate-45"
-              />
-            </div>
-          </MainButton>
-          <p className="w-fit ml-auto">
-            <span className="font-actay text-[16px] lg:text-[22px] font-bold leading-[120%] uppercase">
-              {t("from")}
-            </span>
-            &nbsp;&nbsp;
-            <span
-              className="font-guano-apes text-[40px] lg:text-[60px] font-medium leading-[108%] uppercase text-transparent bg-clip-text 
-            bg-gradient-to-r from-white to-[#F671C8]"
+          <div className="max-w-[202px] md:max-w-full">
+            {" "}
+            <h3 className="mb-6 font-actay text-[16px] lg:text-[22px] font-bold leading-[108%] uppercase">
+              {title}
+            </h3>
+            <p className="mb-6 lg:mb-3 font-actay text-[12px] lg:text-[16px] font-bold leading-[122%] uppercase">
+              {t("forWhom")}
+            </p>
+            <ul className="flex flex-col gap-[19px] lg:gap-3 mb-9 lg:mb-10">
+              {list.map((item, idx) => (
+                <li key={idx} className="flex gap-3 items-center">
+                  <StarIcon className="shrink-0" />
+                  <p className="text-[12px] lg:text-[14px] font-light leading-[122%]">
+                    {item}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <MainButton
+              variant="pink"
+              className="mb-3 lg:mb-6 px-5 text-[10px] lg:text-[12px]"
             >
-              {price}$
-            </span>
-          </p>
+              <div className="flex items-center justify-between w-full">
+                {t("button")}
+                <Image
+                  src="/images/homePage/siteTypes/star.svg"
+                  alt="star"
+                  width={21}
+                  height={21}
+                  className="inline-block mb-1 rotate-45"
+                />
+              </div>
+            </MainButton>
+            <p className="w-fit ml-auto">
+              <span className="font-actay text-[16px] lg:text-[22px] font-bold leading-[120%] uppercase">
+                {t("from")}
+              </span>
+              &nbsp;&nbsp;
+              <span
+                className="font-guano-apes text-[40px] lg:text-[60px] font-medium leading-[108%] uppercase text-transparent bg-clip-text 
+            bg-gradient-to-r from-white to-[#F671C8]"
+              >
+                {price}$
+              </span>
+            </p>
+          </div>
         </li>
       ))}
     </ul>

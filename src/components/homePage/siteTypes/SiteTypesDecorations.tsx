@@ -316,20 +316,83 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="absolute -z-30 top-[78px] right-[-276px] w-[1336px] h-auto aspect-[2673/1609]"
+          className="absolute -z-30 top-[78px] lg:top-[543px] right-[-276px] lg:right-[-341px] w-[1336px] h-auto aspect-[2673/1609] lg:mix-blend-difference"
         >
           <Image
             src="/images/homePage/siteTypes/headTwo.png"
-            alt="phone"
+            alt="head"
             width={2673}
             height={1609}
-            className="w-[1336px] h-auto"
+            className="lg:hidden w-[1336px] h-auto"
+          />
+          <Image
+            src="/images/homePage/siteTypes/headTwoDesk.png"
+            alt="head"
+            width={1194}
+            height={1232}
+            className="hidden lg:block w-[1194px] h-auto"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="hidden lg:block absolute z-20 bottom-[158px] left-[401px]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/drops-left-middle-desk.svg"
+            alt="drops"
+            width="316"
+            height="285"
+            className=""
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="hidden lg:block absolute z-20 bottom-[99px] left-[1453px] w-[342px] h-auto aspect-[342/326]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/drops-right-middle-desk.svg"
+            alt="drops"
+            width="342"
+            height="326"
+            className="w-[342px] h-auto"
+          />
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="hidden lg:block absolute -z-20 bottom-[135px] left-[1178px] lg:w-[586px] h-auto aspect-[259/285]"
+        >
+          <Image
+            src="/images/homePage/siteTypes/code-site-blue-gradient.svg"
+            alt="code-site"
+            width={259}
+            height={285}
+            className="w-[586px] h-auto"
           />
         </motion.div>
 
         <div
-          className="absolute lg:z-[7] lg:rotate-[-15deg] bottom-[-103px] lg:bottom-[-95px] left-[-157px] lg:left-[-242px] w-[1025px] lg:w-[1838px] h-[381px] lg:h-[595px]
+          className="absolute lg:z-[7] lg:rotate-[-15deg] bottom-[-103px] lg:bottom-[-135px] left-[-157px] lg:left-[-442px] w-[1025px] lg:w-[1838px] h-[381px] lg:h-[595px]
          rounded-full bg-black supports-[backdrop-filter]:blur-[105px] lg:supports-[backdrop-filter]:blur-[41px] will-change-transform"
+        />
+
+        <div
+          className="hidden lg:block absolute -z-10 top-[780px] right-[55px] w-[684px] h-[722px]
+         rounded-full bg-black supports-[backdrop-filter]:blur-[127px]  will-change-transform"
         />
       </motion.div>
 
@@ -411,7 +474,7 @@ export default function SiteTypesDecorations() {
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className="absolute -z-20 bottom-[-337px] right-[90px]"
+          className="lg:hidden absolute -z-20 bottom-[-337px] right-[90px]"
         >
           <Image
             src="/images/homePage/siteTypes/code-site-blue-gradient.svg"

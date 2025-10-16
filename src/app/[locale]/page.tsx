@@ -24,8 +24,6 @@ export default async function HomePage({ params }: HomePageProps) {
     lang: locale,
   });
 
-  console.log(reviewsList);
-
   return (
     <>
       <div className="md:hidden">
@@ -38,7 +36,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <Founder />
       <WhyUs />
       <SiteTypes />
-      <Reviews />
+      <Reviews reviewsList={reviewsList} />
       <Partners />
       <FAQ />
       <CTA />

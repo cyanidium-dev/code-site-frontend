@@ -1,19 +1,17 @@
 "use client";
+import { Review } from "@/types/review";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { Post } from "@/types/post";
-// import BlogCard from "./BlogCard";
+import ReviewCard from "./ReviewCard";
 
-interface BlogSwiperProps {
-  // postsList: Post[];
+interface ReviewsSwiperProps {
+  reviewsList: Review[];
 }
 
-export default function BlogSwiper({ postsList }: BlogSwiperProps) {
-  if (!postsList) return null;
-
+export default function ReviewsSwiper({ reviewsList }: ReviewsSwiperProps) {
   return (
     <Swiper
       slidesPerView="auto"
@@ -25,9 +23,9 @@ export default function BlogSwiper({ postsList }: BlogSwiperProps) {
       pagination={{ clickable: true }}
       className={``}
     >
-      {postsList.map((post, idx) => (
+      {reviewsList.map((review, idx) => (
         <SwiperSlide key={idx}>
-          {/* <BlogCard post={post} idx={idx} /> */}
+          <ReviewCard review={review} idx={idx} />
         </SwiperSlide>
       ))}
     </Swiper>

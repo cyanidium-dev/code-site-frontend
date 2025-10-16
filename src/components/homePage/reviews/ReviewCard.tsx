@@ -12,10 +12,9 @@ import PauseIcon from "@/components/shared/icons/PauseIcon";
 
 interface ReviewCardProps {
   review: Review;
-  idx: number;
 }
 
-export default function ReviewCard({ review, idx }: ReviewCardProps) {
+export default function ReviewCard({ review }: ReviewCardProps) {
   const t = useTranslations("homePage.reviews");
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -34,17 +33,17 @@ export default function ReviewCard({ review, idx }: ReviewCardProps) {
       variants={listItemVariants}
       className={`relative w-full h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden 
         ${
-          idx % 2 !== 0
+          contentType === "video"
             ? "bg-[linear-gradient(180deg,rgba(2,4,24,0.82)_13.95%,rgba(1,2,12,0)_46.99%,#020418_92.56%)]"
             : ""
         }`}
     >
-      {idx % 2 === 0 && (
+      {contentType === "text" && (
         <div className="absolute z-10 inset-0 shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
       )}
 
       {/* Gradient border layer for odd cards */}
-      {idx % 2 !== 0 && (
+      {contentType === "video" && (
         <div
           className="absolute z-10 inset-0 rounded-[8px] pointer-events-none"
           style={{

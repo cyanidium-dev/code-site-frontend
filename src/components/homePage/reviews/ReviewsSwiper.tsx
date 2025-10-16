@@ -21,11 +21,10 @@ export default function ReviewsSwiper({ reviewsList }: ReviewsSwiperProps) {
       speed={1000}
       modules={[Pagination]}
       pagination={{ clickable: true }}
-      className={``}
     >
       {reviewsList.map((review, idx) => (
         <SwiperSlide key={idx}>
-          <ReviewCard review={review} idx={idx} />
+          <ReviewCard review={review} />
         </SwiperSlide>
       ))}
     </Swiper>

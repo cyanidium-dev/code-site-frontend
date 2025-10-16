@@ -18,12 +18,14 @@ export default function ReviewsDecorations() {
   const fastY = useTransform(scrollYProgress, [0, 1], [150, -150]);
   const mediumY = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const slowY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const extraSlowY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       {/* Code Site */}
-      <motion.div className="absolute -z-30 left-[-113px] top-[-183px]">
+      <motion.div
+        style={{ y: slowY }}
+        className="absolute -z-30 left-[-113px] lg:left-[-96px] top-[-183px] lg:top-[109px]"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -37,13 +39,16 @@ export default function ReviewsDecorations() {
             alt="code-site"
             width={359}
             height={423}
-            className=""
+            className="w-[359px] lg:w-[537px] h-auto"
           />
         </motion.div>
       </motion.div>
 
       {/* Girl */}
-      <motion.div className="absolute -z-50 top-[-154px] right-[-61px] w-[313px] h-auto aspect-[625/1336] mix-blend-plus-lighter">
+      <motion.div
+        style={{ y: fastY }}
+        className="absolute -z-50 top-[-154px] lg:top-[-286px] right-[-61px] lg:right-auto lg:left-[-15px] w-[313px] lg:w-[533px] h-auto aspect-[625/1336] mix-blend-plus-lighter"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -57,16 +62,18 @@ export default function ReviewsDecorations() {
             alt="girl"
             width={313}
             height={668}
-            className="w-[313px] h-auto"
+            className="w-[313px] lg:w-[533px] h-auto"
           />
         </motion.div>
       </motion.div>
 
       <div className="absolute -z-40 top-[104px] left-[-407px] w-[448px] h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[131px] will-change-transform" />
 
+      <div className="hidden lg:block absolute -z-10 top-[42px] right-[-121px] w-[448px] h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[131px] will-change-transform" />
+
       {/* Drops */}
       <motion.div
-        // style={{ y: extraSlowY }}
+        style={{ y: mediumY }}
         className="absolute -z-10 top-[275px] left-[-53px]"
       >
         <motion.div
@@ -88,7 +95,10 @@ export default function ReviewsDecorations() {
       </motion.div>
 
       {/* Head Background */}
-      <motion.div className="absolute -z-30 left-[41px] sm:left-[301px] top-[344px] sm:top-[94px] w-[313px] h-auto aspect-[626/939] mix-blend-color-dodge">
+      <motion.div
+        style={{ y: mediumY }}
+        className="absolute -z-30 left-[41px] sm:left-[301px] top-[344px] sm:top-[94px] w-[313px] h-auto aspect-[626/939] mix-blend-color-dodge"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -107,70 +117,11 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      <div className="absolute -z-20 top-[606px] sm:top-[376px] left-[-82px] sm:left-[100px] w-[524px] h-[337px] rounded-full bg-black supports-[backdrop-filter]:blur-[73px] will-change-transform" />
-
-      {/* Drops Bottom Desk */}
-      {/* <motion.div style={{ y: slowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
-        >
-          <Image
-            src="/images/homePage/reviews/drops-bottom-desk.svg"
-            alt="drops"
-            width={255}
-            height={265}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* Drops Top Desk */}
-      {/* <motion.div style={{ y: mediumY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
-        >
-          <Image
-            src="/images/homePage/reviews/drops-top-desk.svg"
-            alt="drops"
-            width={291}
-            height={255}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
-      {/* Girl Desk */}
-      {/* <motion.div style={{ y: slowY }} className="absolute">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
-        >
-          <Image
-            src="/images/homePage/reviews/girlDesk.png"
-            alt="girl"
-            width={400}
-            height={500}
-            className=""
-          />
-        </motion.div>
-      </motion.div> */}
-
       {/* Tags */}
-      {/* <motion.div style={{ y: extraSlowY }} className="absolute">
+      <motion.div
+        style={{ y: slowY }}
+        className="hidden -z-20 lg:block absolute top-[-212px] right-[-34px]"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -182,12 +133,86 @@ export default function ReviewsDecorations() {
           <Image
             src="/images/homePage/reviews/tags.svg"
             alt="tags"
-            width={291}
-            height={189}
+            width="358"
+            height="336"
             className=""
           />
         </motion.div>
-      </motion.div> */}
+      </motion.div>
+
+      <div
+        className="absolute -z-10 lg:z-20 top-[606px] sm:top-[376px] lg:top-auto lg:bottom-[-586px] left-[-82px] lg:left-[-241px] sm:left-[100px] 
+      w-[524px] lg:w-[1762px] h-[337px] lg:h-[667px] rounded-full bg-black supports-[backdrop-filter]:blur-[73px] will-change-transform"
+      />
+
+      {/* Drops Top Desk */}
+      <motion.div
+        style={{ y: fastY }}
+        className="hidden lg:block absolute top-[-200px] right-[87px]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <Image
+            src="/images/homePage/reviews/drops-top-desk.svg"
+            alt="drops"
+            width="311"
+            height="265"
+            className=""
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Drops Bottom Desk */}
+      <motion.div
+        style={{ y: fastY }}
+        className="hidden lg:block absolute bottom-[-207px] right-[150px]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <Image
+            src="/images/homePage/reviews/drops-bottom-desk.svg"
+            alt="drops"
+            width="345"
+            height="348"
+            className=""
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Girl Desk */}
+      <motion.div
+        style={{ y: mediumY }}
+        className="hidden lg:block absolute z-[15] top-[-56px] right-[-72px]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <Image
+            src="/images/homePage/reviews/girlDesk.png"
+            alt="girl"
+            width={437}
+            height={934}
+            className=""
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

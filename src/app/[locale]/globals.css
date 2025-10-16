@@ -10,10 +10,11 @@
   --color-white: #ffffff;
   --color-black: #121212;
   --color-dark: #070e4c;
+  --color-gray: #3f3f3f;
   --color-main: #f80498;
   --color-main-light: #ff49b8;
   --color-pink: #ff87d0;
-  --color-pink-light: #ffd6ef;
+  --color-pink-light: #fd7dcc;
   --color-pink-ultra-light: #ffb5e6;
   --color-pink-bright: #ff5bce;
   --color-blue: #268df4;
@@ -89,6 +90,15 @@
     }
   }
 
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
   .animate-text-glow-pink {
     background-image: linear-gradient(
       125deg,
@@ -122,6 +132,69 @@
     .partner-img {
       width: var(--desktop-w);
       height: var(--desktop-h);
+    }
+  }
+
+  /* Swiper */
+
+  .swiper {
+    z-index: 20 !important;
+    padding: 0px 0px 60px 0px !important;
+    @media screen and (min-width: 1280px) {
+      padding: 0px 0px 70px 0px !important;
+    }
+  }
+
+  .swiper-wrapper {
+    align-items: stretch !important;
+  }
+
+  .swiper-slide {
+    flex-grow: 1 0;
+    height: 518px !important;
+    width: 245px !important;
+    padding: 0 1px 0 1px;
+    border-radius: 8px;
+  }
+
+  .swiper-pagination-bullet {
+    position: relative;
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important;
+    background-color: transparent !important;
+    border: 0.5px solid var(--color-gray);
+    opacity: 1 !important;
+  }
+
+  .swiper-pagination-bullet::after {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 100%;
+    background-color: var(--color-gray);
+  }
+
+  .swiper-pagination-bullet-active {
+    border: 0.5px solid var(--color-pink-light);
+  }
+
+  .swiper-pagination-bullet-active::after {
+    background-color: var(--color-pink-light);
+  }
+
+  .swiper-button-next {
+    display: none !important;
+  }
+
+  .swiper-button-prev {
+    display: none !important;
+  }
+
+  .swiper-pagination {
+    top: calc(100% - 20px) !important;
+    @media screen and (min-width: 640px) {
+      left: -123px !important;
     }
   }
 }

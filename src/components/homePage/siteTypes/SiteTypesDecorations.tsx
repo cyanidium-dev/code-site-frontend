@@ -16,9 +16,9 @@ export default function SiteTypesDecorations() {
 
   // Різні варіації parallax
   const fastY = useTransform(scrollYProgress, [0, 1], [150, -150]);
-  const mediumY = useTransform(scrollYProgress, [0, 1], [70, -70]);
+  const mediumY = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const slowY = useTransform(scrollYProgress, [0, 1], [-150, 150]);
-  const extraSlowY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
+  const extraSlowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
@@ -403,7 +403,7 @@ export default function SiteTypesDecorations() {
 
         <motion.div
           style={{ y: slowY }}
-          className="hidden md:block absolute z-20 bottom-[99px] left-[1453px] w-[342px] h-auto aspect-[342/326]"
+          className="hidden md:block absolute z-30 bottom-[99px] left-[1453px] w-[342px] h-auto aspect-[342/326]"
         >
           <motion.div
             initial="hidden"
@@ -445,7 +445,7 @@ export default function SiteTypesDecorations() {
 
         <motion.div
           style={{ y: slowY }}
-          className="hidden md:block absolute -z-20 top-[679px] right-[333px]"
+          className="hidden md:block absolute z-20 top-[679px] right-[333px]"
         >
           <motion.div
             initial="hidden"

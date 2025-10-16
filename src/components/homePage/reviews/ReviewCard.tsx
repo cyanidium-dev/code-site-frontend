@@ -35,7 +35,7 @@ export default function ReviewCard({ review, idx }: ReviewCardProps) {
       className={`relative w-full h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden 
         ${
           idx % 2 !== 0
-            ? "border border-[#B14285] bg-[linear-gradient(180deg,rgba(2,4,24,0.82)_13.95%,rgba(1,2,12,0)_46.99%,#020418_92.56%)]"
+            ? "bg-[linear-gradient(180deg,rgba(2,4,24,0.82)_13.95%,rgba(1,2,12,0)_46.99%,#020418_92.56%)]"
             : ""
         }`}
     >
@@ -43,8 +43,24 @@ export default function ReviewCard({ review, idx }: ReviewCardProps) {
         <div className="absolute z-10 inset-0 shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
       )}
 
+      {/* Gradient border layer for odd cards */}
+      {idx % 2 !== 0 && (
+        <div
+          className="absolute z-10 inset-0 rounded-[8px] pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(171.05deg, #B14285 6.81%, #FFFFFF 158.64%)",
+            padding: "1.5px",
+            WebkitMask:
+              "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+            WebkitMaskComposite: "xor",
+            maskComposite: "exclude",
+          }}
+        />
+      )}
+
       {contentType === "video" && videoUrl && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 rounded-[8px]">
           <ReactPlayer
             src={videoUrl}
             playing={isPlaying}
@@ -92,7 +108,7 @@ export default function ReviewCard({ review, idx }: ReviewCardProps) {
             href={projectLink}
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="relative z-10 pointer-events-auto"
+            className="relative z-20 pointer-events-auto"
           >
             <SecondaryButton>{t("seeProject")}</SecondaryButton>
           </a>

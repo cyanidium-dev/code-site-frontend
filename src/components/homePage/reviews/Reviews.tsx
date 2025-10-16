@@ -36,9 +36,12 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
             className="absolute -z-10 bottom-0 right-[-25px] sm:right-0 w-[138px] sm:w-[490px] h-auto mix-blend-hard-light"
           />
         </div>
-        {/* <div className="sm:w-[calc(100%-245px-20px)]"> */}{" "}
+        <div className="hidden sm:block w-[calc(100%-245px-20px)]">
+          <ReviewsSwiper reviewsList={reviewsList} />
+        </div>
+      </div>
+      <div className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto">
         <ReviewsSwiper reviewsList={reviewsList} />
-        {/* </div> */}
       </div>
     </section>
   );

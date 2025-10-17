@@ -58,7 +58,7 @@ export default function IncludedButton({ list }: IncludedButtonProps) {
             animate="visible"
             exit="exit"
             variants={modalVariants}
-            className="absolute z-[100] top-15 left-0 rounded-[6px] bg-white w-[201px] md:w-[247px] h-[304px] p-5 shadow-sm"
+            className="absolute z-[100] top-15 left-0 rounded-[6px] bg-white w-full p-5 shadow-sm"
           >
             <ul className="flex flex-col gap-3">
               {list.map((listItem, idx) => (

@@ -108,23 +108,7 @@ export default function SiteTypesList() {
                 </li>
               ))}
             </ul>
-            {/* <MainButton
-              variant="pink"
-              className="mb-3 md:mb-6 px-5 text-[10px] md:text-[12px]"
-            >
-              <div className="flex items-center justify-between w-full">
-                {t("button")}
-                <Image
-                  src="/images/homePage/siteTypes/star.svg"
-                  alt="star"
-                  width={21}
-                  height={21}
-                  className="inline-block mb-1 rotate-45"
-                />
-              </div>
-            </MainButton> */}
             <IncludedButton list={included} />
-
             <p className="w-fit ml-auto">
               <span className="font-actay text-[16px] md:text-[22px] font-bold leading-[120%] uppercase">
                 {t("from")}

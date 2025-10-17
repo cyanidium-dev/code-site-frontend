@@ -8,7 +8,7 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 export default function SiteTypesDecorations() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Відслідковуємо скрол секції
+  // Відслідковуємо скролл секції
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],

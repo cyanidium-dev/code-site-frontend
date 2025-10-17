@@ -39,7 +39,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <Reviews reviewsList={reviewsList} />
       <Partners />
       <FAQ />
-      <CTA />
+      {/* <CTA /> */}
     </>
   );
 }

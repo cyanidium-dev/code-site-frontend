@@ -61,7 +61,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
             scale: 0.95,
             delay: 0.8,
           })}
-          className="hidden sm:block relative z-20 w-[calc(100%-245px-20px)]"
+          className="hidden sm:block relative z-20 w-[calc(100%-245px-20px)] backdrop-blur-[5px]"
         >
           <ReviewsSwiper reviewsList={reviewsList} />
         </motion.div>
@@ -77,7 +77,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
           scale: 0.95,
           delay: 0.8,
         })}
-        className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto"
+        className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto backdrop-blur-[5px]"
       >
         <ReviewsSwiper reviewsList={reviewsList} />
       </motion.div>

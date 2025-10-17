@@ -53,7 +53,9 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1 pt-22 md:pt-17 xl:pt-25">{children}</main>
+          <main className="flex-1 pt-22 md:pt-17 xl:pt-25 overflow-hidden">
+            {children}
+          </main>
           <Footer />
         </NextIntlClientProvider>
       </body>

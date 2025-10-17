@@ -34,12 +34,12 @@ export default async function HomePage({ params }: HomePageProps) {
         <CodeSiteMarquee className="text-[48px] leading-none rotate-0 bg-[linear-gradient(90deg,#D9E5FF_30.2%,#268DF4_59.69%)]" />
       </div> */}
       <Founder />
-      {/* <WhyUs /> */}
+      <WhyUs />
       <SiteTypes />
       <Reviews reviewsList={reviewsList} />
       <Partners />
       <FAQ />
-      {/* <CTA /> */}
+      <CTA />
     </>
   );
 }

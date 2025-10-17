@@ -4,6 +4,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import LinkButton from "./LinkButton";
+import IncludedButton from "./IncludedButton";
 
 export default function SiteTypesList() {
   const t = useTranslations("homePage.siteTypes");
@@ -18,6 +20,13 @@ export default function SiteTypesList() {
         t("landing.listFour"),
         t("landing.listFive"),
       ],
+      included: [
+        t("landing.included.listOne"),
+        t("landing.included.listTwo"),
+        t("landing.included.listThree"),
+        t("landing.included.listFour"),
+        t("landing.included.listFive"),
+      ],
       price: 800,
     },
     {
@@ -27,6 +36,14 @@ export default function SiteTypesList() {
         t("multipage.listTwo"),
         t("multipage.listThree"),
         t("multipage.listFour"),
+      ],
+      included: [
+        t("multipage.included.listOne"),
+        t("multipage.included.listTwo"),
+        t("multipage.included.listThree"),
+        t("multipage.included.listFour"),
+        t("multipage.included.listFive"),
+        t("multipage.included.listSix"),
       ],
       price: 1500,
     },
@@ -39,13 +56,19 @@ export default function SiteTypesList() {
         t("e-commerce.listFour"),
         t("e-commerce.listFive"),
       ],
+      included: [
+        t("e-commerce.included.listOne"),
+        t("e-commerce.included.listTwo"),
+        t("e-commerce.included.listThree"),
+        t("e-commerce.included.listFour"),
+      ],
       price: 2500,
     },
   ];
 
   return (
     <ul className="relative">
-      {siteTypesList.map(({ title, list, price }, idx) => (
+      {siteTypesList.map(({ title, list, included, price }, idx) => (
         <motion.li
           initial="hidden"
           whileInView="visible"
@@ -63,8 +86,8 @@ export default function SiteTypesList() {
               idx === 0
                 ? "mb-[437px] md:mb-0 pb-[47px] md:pb-[138px]"
                 : idx === 1
-                ? "md:relative md:z-10 mb-[105px] md:mb-0 md:mt-[-38px] pb-[453px] md:pb-[435px]"
-                : "relative z-10 pb-[210px] md:pb-[156px] md:mt-[-172px]"
+                  ? "md:relative md:z-10 mb-[105px] md:mb-0 md:mt-[-38px] pb-[453px] md:pb-[435px]"
+                  : "relative z-10 pb-[210px] md:pb-[156px] md:mt-[-172px]"
             }`}
         >
           <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
@@ -85,21 +108,7 @@ export default function SiteTypesList() {
                 </li>
               ))}
             </ul>
-            <MainButton
-              variant="pink"
-              className="mb-3 md:mb-6 px-5 text-[10px] md:text-[12px]"
-            >
-              <div className="flex items-center justify-between w-full">
-                {t("button")}
-                <Image
-                  src="/images/homePage/siteTypes/star.svg"
-                  alt="star"
-                  width={21}
-                  height={21}
-                  className="inline-block mb-1 rotate-45"
-                />
-              </div>
-            </MainButton>
+            <IncludedButton list={included} />
             <p className="w-fit ml-auto">
               <span className="font-actay text-[16px] md:text-[22px] font-bold leading-[120%] uppercase">
                 {t("from")}
@@ -113,6 +122,9 @@ export default function SiteTypesList() {
               </span>
             </p>
           </div>
+          <LinkButton
+            className={`absolute ${idx === 1 ? "-top-9 md:-top-10 -left-9 md:-left-10" : idx === 0 ? "-bottom-9 md:bottom-auto md:-top-10 -right-9 md:-right-10" : "-top-9 md:-top-10 -right-9 md:-right-10"} `}
+          />
         </motion.li>
       ))}
     </ul>

@@ -12,6 +12,7 @@ import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { allReviewsQuery } from "@/lib/queries";
+import Portfolio from "@/components/homePage/portfolio/Portfolio";
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -36,6 +37,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <Founder />
       <WhyUs />
       <SiteTypes />
+      <Portfolio />
       <Reviews reviewsList={reviewsList} />
       <Partners />
       <FAQ />

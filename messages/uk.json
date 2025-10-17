@@ -48,6 +48,7 @@
   },
   "homePage": {
     "hero": {
+      "freeConsultation": "Бесплатная консультация",
       "slideOne": {
         "title": "Современный сайт для роста бизнеса",
         "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
@@ -122,7 +123,7 @@
         "list": {
           "listOne": { "value": "99%", "description": "Дововльных клиентов" },
           "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listThree": { "value": "5+", "description": "лет опыта" }
         }
       },
       "slideEight": {

@@ -101,7 +101,7 @@ export default function Hero() {
           colorOne: "#73C5FF",
           colorTwo: "#FFFFFF",
           colorThree: "#F4F8FF",
-          colorFour: "#FFFFFF",
+          colorFour: "#73C5FF",
         },
         drops: { colorOne: "#73C5FF", colorTwo: "#73C5FF" },
         marquee: {

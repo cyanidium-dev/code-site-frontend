@@ -8,12 +8,14 @@ interface BenefitsListProps {
   list: { value: string; description: string }[];
   subtitle: string;
   counterColor: string;
+  textColor: string;
 }
 
 export default function BenefitsList({
   list,
   subtitle,
   counterColor,
+  textColor,
 }: BenefitsListProps) {
   const t = useTranslations("homePage.hero");
 
@@ -24,10 +26,11 @@ export default function BenefitsList({
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
       variants={listVariants({ staggerChildren: 0.3, delayChildren: 0.2 })}
-      className="flex flex-wrap md:flex-nowrap gap-2.5 lg:gap-[15px] mt-4 lg:mt-18"
+      style={{ color: textColor }}
+      className="relative z-10 flex flex-wrap md:flex-nowrap gap-2.5 lg:gap-[15px] mt-4 lg:mt-18"
     >
       {list.map((benefit, idx) => (
-        <BenefitItem key={idx} benefit={benefit} />
+        <BenefitItem key={idx} benefit={benefit} textColor={textColor} />
       ))}
       <li className="flex flex-col justify-center w-[calc(50%-5px)] lg:w-[210px] lg:mt-[-61px] lg:ml-[45px]">
         <p className="lg:mb-4 xl:mb-9 font-actay text-[12px] lg:text-[16px] leading-[120%] font-bold uppercase">

@@ -1,20 +1,21 @@
 interface GraphDeskProps {
-  colorOne: string;
-  colorTwo: string;
-  colorThree: string;
-  colorFour: string;
+  graph: {
+    colorOne: string;
+    colorTwo: string;
+    colorThree: string;
+    colorFour: string;
+  };
   idx: number;
   className?: string;
 }
 
 export default function GraphDesk({
-  colorOne = "#4A0124",
-  colorTwo = "#FC077D",
-  colorThree = "#F4F8FF",
-  colorFour = "#0486F8",
+  graph,
   idx,
   className = "",
 }: GraphDeskProps) {
+  const { colorOne, colorTwo, colorThree, colorFour } = graph;
+
   return (
     <svg
       width="936"

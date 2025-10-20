@@ -1,20 +1,21 @@
 interface GraphMobProps {
-  colorOne: string;
-  colorTwo: string;
-  colorThree: string;
-  colorFour: string;
+  graph: {
+    colorOne: string;
+    colorTwo: string;
+    colorThree: string;
+    colorFour: string;
+  };
   idx: number;
   className?: string;
 }
 
 export default function GraphMob({
-  colorOne = "#4A0124",
-  colorTwo = "#FC077D",
-  colorThree = "#F4F8FF",
-  colorFour = "#0486F8",
+  graph,
   idx,
   className = "",
 }: GraphMobProps) {
+  const { colorOne, colorTwo, colorThree, colorFour } = graph;
+
   return (
     <svg
       width="799"

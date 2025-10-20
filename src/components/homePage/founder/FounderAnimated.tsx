@@ -24,7 +24,10 @@ export default function FounderAnimated({ children }: FounderAnimatedProps) {
   const slowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
-    <section ref={sectionRef} className="pt-[45px] xl:pt-[271px]">
+    <section
+      ref={sectionRef}
+      className="relative z-10 bg-black pt-[45px] xl:pt-[271px]"
+    >
       <Container className="relative flex flex-col md:flex-row gap-12 md:gap-5">
         <FounderDecorations fastY={fastY} slowY={slowY} />
         {children}

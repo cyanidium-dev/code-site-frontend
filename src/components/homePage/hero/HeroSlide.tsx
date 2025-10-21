@@ -2,6 +2,8 @@
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
@@ -41,17 +43,9 @@ interface HeroSlideProps {
   };
   idx: number;
   isActive: boolean;
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
 }
 
-export default function HeroSlide({
-  slide,
-  idx,
-  isActive,
-  isModalOpen,
-  setIsModalOpen,
-}: HeroSlideProps) {
+export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
 
@@ -89,12 +83,17 @@ export default function HeroSlide({
           idx={idx}
         />
         {idx === 0 ? (
-          <h1
+          <motion.h1
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInAnimation({ x: 20 })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
             {title}
-          </h1>
+          </motion.h1>
         ) : (
           <h2
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
@@ -103,18 +102,26 @@ export default function HeroSlide({
             {title}
           </h2>
         )}
-        <p
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInAnimation({ y: 20, delay: 0.4 })}
           className="relative z-10 max-w-[223px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%]"
           style={{ color: textColor }}
         >
           {description}
-        </p>
+        </motion.p>
         <ClientApplication
           buttonText={t("freeConsultation")}
           variant="gradient"
           buttonClassName={`relative md:max-w-[291px] h-14 ${buttonGradient}`}
           className="relative z-10"
-          onModalStateChange={setIsModalOpen}
+          variants={fadeInAnimation({
+            delay: 0.8,
+            scale: 0.85,
+          })}
         />
         <BenefitsList
           list={list}

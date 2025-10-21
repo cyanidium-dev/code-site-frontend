@@ -2,11 +2,12 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import HeroSlide from "./HeroSlide";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const heroSlides = [
     {
@@ -355,23 +356,26 @@ export default function Hero() {
     },
   ];
 
-  // Перемикання слайдів кожні 9 секунд, але тільки якщо модалка закрита
+  // Перемикання слайдів кожні 9 секунд
   useEffect(() => {
-    if (isModalOpen) return; // Не змінюємо слайди, якщо модалка відкрита
-
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 9000); // 9 секунд
 
     return () => clearInterval(interval);
-  }, [heroSlides.length, isModalOpen]);
+  }, [heroSlides.length]);
 
   return (
     <section className="relative overflow-hidden">
       {/* Навігаційні кнопки слайдів */}
-      <ul
+      <motion.ul
+        initial="hidden"
+        whileInView="visible"
+        exit="exit"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInAnimation({ scale: 0.9, delay: 0.4 })}
         className="absolute z-20 left-6 sm:left-[calc(50%-320px+24px)] md:left-auto md:right-[calc(50%-384px+24px)] lg:right-auto lg:left-[calc(50%-512px+40px)]
-      xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
+       xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
       >
         {heroSlides.map((slide, idx) => (
           <li key={idx} className="leading-none">
@@ -394,7 +398,7 @@ export default function Hero() {
             />
           </li>
         ))}
-      </ul>
+      </motion.ul>
 
       {heroSlides.map((slide, idx) => (
         <HeroSlide
@@ -402,8 +406,6 @@ export default function Hero() {
           slide={slide}
           idx={idx}
           isActive={idx === currentSlide}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
         />
       ))}
     </section>

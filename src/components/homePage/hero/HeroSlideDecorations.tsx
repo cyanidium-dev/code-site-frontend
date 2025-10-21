@@ -124,7 +124,7 @@ export default function HeroSlideDecorations({
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 1.2, scale: 0.95 })}
           className=""
         >
           <Image

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as motion from "motion/react-client";
 import MainButton from "@/components/shared/buttons/MainButton";
 import CallbackFormModal from "../modals/CallbackFormModal";
@@ -13,7 +13,6 @@ interface ClientApplicationProps {
   className?: string;
   buttonClassName?: string;
   variants?: {};
-  onModalStateChange?: (isOpen: boolean) => void;
 }
 
 export default function ClientApplication({
@@ -22,19 +21,11 @@ export default function ClientApplication({
   className = "",
   buttonClassName = "",
   variants = {},
-  onModalStateChange,
 }: ClientApplicationProps) {
   const t = useTranslations();
   const [isPopUpShown, setIsPopUpShown] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isNotificationShown, setIsNotificationShown] = useState(false);
-
-  // Повідомляємо батьківський компонент про зміни стану модалки
-  useEffect(() => {
-    if (onModalStateChange) {
-      onModalStateChange(isPopUpShown || isNotificationShown);
-    }
-  }, [isPopUpShown, isNotificationShown, onModalStateChange]);
 
   return (
     <>

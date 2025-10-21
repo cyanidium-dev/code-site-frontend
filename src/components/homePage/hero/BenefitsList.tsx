@@ -19,7 +19,7 @@ export default function BenefitsList({
       whileInView="visible"
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
-      variants={listVariants({ staggerChildren: 0.3, delayChildren: 0.2 })}
+      variants={listVariants({ staggerChildren: 0.3, delayChildren: 1.2 })}
       className="relative z-10 flex flex-wrap md:flex-nowrap gap-2.5 lg:gap-[15px] mt-4 lg:mt-18"
     >
       {list.map((benefit, idx) => (

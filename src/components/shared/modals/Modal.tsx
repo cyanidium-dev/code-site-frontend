@@ -1,4 +1,11 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { createPortal } from "react-dom";
 
 import IconButton from "../buttons/IconButton";
 import CrossIcon from "../icons/CrossIcon";
@@ -17,13 +24,21 @@ export default function Modal({
   children,
   className = "bg-white",
 }: ModalProps) {
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className={`${
         isModalShown
           ? " -translate-y-[calc(50dvh-50%)] opacity-100 scale-100"
           : "pointer-events-none opacity-0 scale-90"
-      } fixed left-1/2 bottom-0 transform -translate-x-1/2 transition duration-[600ms] ease-out z-[70] w-[82%] max-w-[470px] lg:max-w-[512px] max-h-dvh
+      } fixed left-1/2 bottom-0 transform -translate-x-1/2 transition duration-[600ms] ease-out z-[9999] w-[82%] max-w-[470px] lg:max-w-[512px] max-h-dvh
       px-5 lg:px-[68px] pt-12 lg:pt-[65px] pb-5 lg:pb-15 overflow-y-auto rounded-[8px] scrollbar scrollbar-w-[3px] scrollbar-thumb-rounded-full 
       scrollbar-track-rounded-full scrollbar-thumb-transparent scrollbar-track-blue-light popup-scroll shadow-md ${className}`}
     >
@@ -41,6 +56,7 @@ export default function Modal({
       </IconButton>
 
       {children}
-    </div>
+    </div>,
+    document.body
   );
 }

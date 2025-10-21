@@ -110,7 +110,7 @@ export default function HeroSlideDecorations({
         </motion.div>
       </motion.div>
 
-      <motion.div className="absolute -z-10 left-[-52px] lg:left-auto lg:right-[-134px] bottom-[155px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]">
+      <motion.div className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]">
         <motion.div
           initial="hidden"
           whileInView="visible"

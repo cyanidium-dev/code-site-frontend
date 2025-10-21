@@ -2,11 +2,11 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import HeroSlide from "./HeroSlide";
-import Container from "@/components/shared/container/Container";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const heroSlides = [
     {
@@ -355,14 +355,16 @@ export default function Hero() {
     },
   ];
 
-  // Перемикання слайдів кожні 9 секунд
+  // Перемикання слайдів кожні 9 секунд, але тільки якщо модалка закрита
   useEffect(() => {
+    if (isModalOpen) return; // Не змінюємо слайди, якщо модалка відкрита
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     }, 9000); // 9 секунд
 
     return () => clearInterval(interval);
-  }, [heroSlides.length]);
+  }, [heroSlides.length, isModalOpen]);
 
   return (
     <section className="relative overflow-hidden">
@@ -400,6 +402,8 @@ export default function Hero() {
           slide={slide}
           idx={idx}
           isActive={idx === currentSlide}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       ))}
     </section>

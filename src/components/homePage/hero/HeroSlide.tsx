@@ -1,11 +1,11 @@
 "use client";
-import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
+import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 
 interface HeroSlideProps {
   slide: {
@@ -41,9 +41,17 @@ interface HeroSlideProps {
   };
   idx: number;
   isActive: boolean;
+  isModalOpen: boolean;
+  setIsModalOpen: (isOpen: boolean) => void;
 }
 
-export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
+export default function HeroSlide({
+  slide,
+  idx,
+  isActive,
+  isModalOpen,
+  setIsModalOpen,
+}: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
 
@@ -106,6 +114,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           variant="gradient"
           buttonClassName={`relative md:max-w-[291px] h-14 ${buttonGradient}`}
           className="relative z-10"
+          onModalStateChange={setIsModalOpen}
         />
         <BenefitsList
           list={list}

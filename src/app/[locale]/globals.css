@@ -104,15 +104,12 @@
       background-color: transparent;
     }
     10% {
-      background-color: transparent;
+      background-color: white;
     }
     30% {
       background-color: white;
     }
     40% {
-      background-color: white;
-    }
-    50% {
       background-color: transparent;
     }
     100% {
@@ -145,13 +142,13 @@
     0% {
       background-color: transparent;
     }
-    60% {
+    70% {
       background-color: transparent;
     }
-    70% {
+    80% {
       background-color: white;
     }
-    80% {
+    90% {
       background-color: white;
     }
     100% {

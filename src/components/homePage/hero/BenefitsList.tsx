@@ -31,19 +31,19 @@ export default function BenefitsList({
         </p>
         <ul className="hidden lg:flex gap-[15px] text-[19px] font-normal leading-none">
           <li
-            className="flex justify-center items-center size-12 rounded-full border-2"
+            className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-1"
             style={{ color: counterColor, borderColor: counterColor }}
           >
             01
           </li>
           <li
-            className="flex justify-center items-center size-12 rounded-full border-2"
+            className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-2"
             style={{ color: counterColor, borderColor: counterColor }}
           >
             02
           </li>
           <li
-            className="flex justify-center items-center size-12 rounded-full border-2"
+            className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-3"
             style={{ color: counterColor, borderColor: counterColor }}
           >
             03

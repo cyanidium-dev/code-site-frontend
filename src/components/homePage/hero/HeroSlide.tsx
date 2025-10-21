@@ -1,6 +1,8 @@
+"use client";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
@@ -38,20 +40,40 @@ interface HeroSlideProps {
     list: { value: string; description: string }[];
   };
   idx: number;
+  isActive: boolean;
 }
 
-export default function HeroSlide({ slide, idx }: HeroSlideProps) {
+export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
+  const slideRef = useRef<HTMLDivElement>(null);
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
+
+  // Простий підхід з transition та природною висотою
+  const getAnimationClasses = () => {
+    const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden";
+    const opacityClass = isActive ? "opacity-100" : "opacity-0";
+    const transitionClass = "transition-opacity duration-[3000ms] ease-in-out";
+
+    return `${baseClasses} ${opacityClass} ${transitionClass}`;
+  };
+
   return (
-    <div className="relative pt-25 lg:pt-[157px] h-auto overflow-hidden">
-      <div
-        className="absolute inset-0 -z-50"
-        style={{ backgroundColor: colorMain }}
-      />
+    <div
+      ref={slideRef}
+      className={getAnimationClasses()}
+      style={{
+        backgroundColor: colorMain,
+        zIndex: isActive ? 10 : 1,
+        position: isActive ? "relative" : "absolute",
+        top: isActive ? "auto" : 0,
+        left: isActive ? "auto" : 0,
+        right: isActive ? "auto" : 0,
+        bottom: isActive ? "auto" : 0,
+      }}
+    >
       <Container className="relative">
         <HeroSlideDecorations
           variant={variant}

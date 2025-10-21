@@ -1,8 +1,12 @@
+"use client";
 import { useTranslations } from "next-intl";
+import { useState, useEffect } from "react";
 import HeroSlide from "./HeroSlide";
+import Container from "@/components/shared/container/Container";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroSlides = [
     {
@@ -14,6 +18,7 @@ export default function Hero() {
         colorLogo: "#93B4FF26",
         counterColor: "#87CBFF",
         bottomBlurColor: "#121212",
+        slideButtonColor: "#87CBFF",
         buttonGradient:
           "bg-[linear-gradient(90deg,#089AFA_0%,#FF49B8_116.67%)]",
         graph: {
@@ -56,6 +61,7 @@ export default function Hero() {
         colorLogo: "#7BB2003D",
         counterColor: "#D1FD5F",
         bottomBlurColor: "#121212",
+        slideButtonColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#121212_0%,#121212_116.67%)]",
         graph: {
@@ -98,6 +104,7 @@ export default function Hero() {
         colorLogo: "#868686",
         counterColor: "#73C5FF",
         bottomBlurColor: "#121212",
+        slideButtonColor: "#73C5FF",
         buttonGradient:
           "bg-[linear-gradient(90deg,#73C5FF_0%,#73C5FF_116.67%)]",
         graph: {
@@ -140,6 +147,7 @@ export default function Hero() {
         colorLogo: "#4B74D83D",
         counterColor: "#87ABFF",
         bottomBlurColor: "#121212",
+        slideButtonColor: "#6A99FF",
         buttonGradient:
           "bg-[linear-gradient(90deg,#75A0FF_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -182,6 +190,7 @@ export default function Hero() {
         colorLogo: "#BFFF9F3D",
         counterColor: "#BFFF9F",
         bottomBlurColor: "#23911E",
+        slideButtonColor: "#BFFF9F",
         buttonGradient:
           "bg-[linear-gradient(90deg,#BFFF9F_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -224,6 +233,7 @@ export default function Hero() {
         colorLogo: "#FAC6023D",
         counterColor: "#FBC702",
         bottomBlurColor: "#121212",
+        slideButtonColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#121212_0%,#121212_116.67%)]",
         graph: {
@@ -265,7 +275,8 @@ export default function Hero() {
         colorSecondary: "#FFD097",
         colorLogo: "#FFD0973D",
         counterColor: "#FFD097",
-         bottomBlurColor: "#DC6532",
+        bottomBlurColor: "#DC6532",
+        slideButtonColor: "#FFD097",
         buttonGradient:
           "bg-[linear-gradient(90deg,#FFD097_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -307,7 +318,8 @@ export default function Hero() {
         colorSecondary: "#FF95A0",
         colorLogo: "#FF95A03D",
         counterColor: "#FF95A0",
-           bottomBlurColor: "#C90218",
+        bottomBlurColor: "#C90218",
+        slideButtonColor: "#FF95A0",
         buttonGradient:
           "bg-[linear-gradient(90deg,#FF95A0_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -343,10 +355,51 @@ export default function Hero() {
     },
   ];
 
+  // Перемикання слайдів кожні 9 секунд
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 9000); // 9 секунд
+
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
   return (
-    <section className="overflow-hidden">
+    <section className="relative overflow-hidden">
+      {/* Навігаційні кнопки слайдів */}
+      <Container className="absolute inset-0 z-20 pointer-events-none">
+        <ul className="absolute left-6 lg:left-10 top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto">
+          {heroSlides.map((slide, idx) => (
+            <li key={idx} className="leading-none">
+              <button
+                onClick={() => setCurrentSlide(idx)}
+                className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out ${
+                  idx === currentSlide ? "" : " xl:hover:bg-white/50"
+                }`}
+                style={{
+                  backgroundColor:
+                    idx === currentSlide
+                      ? slide.variant.slideButtonColor
+                      : undefined,
+                  borderColor:
+                    idx === currentSlide
+                      ? slide.variant.slideButtonColor
+                      : undefined,
+                }}
+                aria-label={`Перейти до слайду ${idx + 1}`}
+              />
+            </li>
+          ))}
+        </ul>
+      </Container>
+
       {heroSlides.map((slide, idx) => (
-        <HeroSlide key={idx} slide={slide} idx={idx} />
+        <HeroSlide
+          key={idx}
+          slide={slide}
+          idx={idx}
+          isActive={idx === currentSlide}
+        />
       ))}
     </section>
   );

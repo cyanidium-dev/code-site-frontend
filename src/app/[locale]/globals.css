@@ -99,6 +99,66 @@
     }
   }
 
+  @keyframes benefit-highlight-1 {
+    0% {
+      background-color: transparent;
+    }
+    10% {
+      background-color: transparent;
+    }
+    30% {
+      background-color: white;
+    }
+    40% {
+      background-color: white;
+    }
+    50% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes benefit-highlight-2 {
+    0% {
+      background-color: transparent;
+    }
+    40% {
+      background-color: transparent;
+    }
+    50% {
+      background-color: white;
+    }
+    60% {
+      background-color: white;
+    }
+    70% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes benefit-highlight-3 {
+    0% {
+      background-color: transparent;
+    }
+    60% {
+      background-color: transparent;
+    }
+    70% {
+      background-color: white;
+    }
+    80% {
+      background-color: white;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
   .animate-text-glow-pink {
     background-image: linear-gradient(
       125deg,
@@ -121,6 +181,18 @@
     -webkit-background-clip: text;
     color: transparent;
     animation: glow-blue 2s ease-in-out infinite;
+  }
+
+  .benefit-highlight-1 {
+    animation: benefit-highlight-1 9s ease-in-out infinite;
+  }
+
+  .benefit-highlight-2 {
+    animation: benefit-highlight-2 9s ease-in-out infinite;
+  }
+
+  .benefit-highlight-3 {
+    animation: benefit-highlight-3 9s ease-in-out infinite;
   }
 
   .partner-img {

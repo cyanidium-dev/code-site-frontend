@@ -15,6 +15,7 @@ interface HeroSlideProps {
       colorLogo: string;
       counterColor: string;
       buttonGradient: string;
+      bottomBlurColor: string;
       graph: {
         colorOne: string;
         colorTwo: string;
@@ -88,7 +89,6 @@ export default function HeroSlide({ slide, idx }: HeroSlideProps) {
           list={list}
           subtitle={subtitle}
           counterColor={counterColor}
-          textColor={textColor}
         />
       </Container>
       <CodeSiteMarquee

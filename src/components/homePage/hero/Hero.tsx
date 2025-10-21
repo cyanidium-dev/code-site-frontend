@@ -13,6 +13,7 @@ export default function Hero() {
         textColor: "#FFFFFF",
         colorLogo: "#93B4FF26",
         counterColor: "#87CBFF",
+        bottomBlurColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#089AFA_0%,#FF49B8_116.67%)]",
         graph: {
@@ -54,6 +55,7 @@ export default function Hero() {
         colorSecondary: "#FFFFFF",
         colorLogo: "#7BB2003D",
         counterColor: "#D1FD5F",
+        bottomBlurColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#121212_0%,#121212_116.67%)]",
         graph: {
@@ -95,6 +97,7 @@ export default function Hero() {
         colorSecondary: "#FFFFFF",
         colorLogo: "#868686",
         counterColor: "#73C5FF",
+        bottomBlurColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#73C5FF_0%,#73C5FF_116.67%)]",
         graph: {
@@ -136,6 +139,7 @@ export default function Hero() {
         colorSecondary: "#0337B3",
         colorLogo: "#4B74D83D",
         counterColor: "#87ABFF",
+        bottomBlurColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#75A0FF_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -177,6 +181,7 @@ export default function Hero() {
         colorSecondary: "#BFFF9F",
         colorLogo: "#BFFF9F3D",
         counterColor: "#BFFF9F",
+        bottomBlurColor: "#23911E",
         buttonGradient:
           "bg-[linear-gradient(90deg,#BFFF9F_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -218,6 +223,7 @@ export default function Hero() {
         colorSecondary: "#FFF6D5",
         colorLogo: "#FAC6023D",
         counterColor: "#FBC702",
+        bottomBlurColor: "#121212",
         buttonGradient:
           "bg-[linear-gradient(90deg,#121212_0%,#121212_116.67%)]",
         graph: {
@@ -259,6 +265,7 @@ export default function Hero() {
         colorSecondary: "#FFD097",
         colorLogo: "#FFD0973D",
         counterColor: "#FFD097",
+         bottomBlurColor: "#DC6532",
         buttonGradient:
           "bg-[linear-gradient(90deg,#FFD097_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {
@@ -300,6 +307,7 @@ export default function Hero() {
         colorSecondary: "#FF95A0",
         colorLogo: "#FF95A03D",
         counterColor: "#FF95A0",
+           bottomBlurColor: "#C90218",
         buttonGradient:
           "bg-[linear-gradient(90deg,#FF95A0_-51.37%,#FFFFFF_69.07%)] text-[#07163D]",
         graph: {

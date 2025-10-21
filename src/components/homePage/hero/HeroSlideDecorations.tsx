@@ -18,6 +18,7 @@ interface HeroSlideDecorationsProps {
     textColor: string;
     colorLogo: string;
     counterColor: string;
+    bottomBlurColor: string;
     graph: {
       colorOne: string;
       colorTwo: string;
@@ -38,8 +39,15 @@ export default function HeroSlideDecorations({
   idx,
   mainImage,
 }: HeroSlideDecorationsProps) {
-  const { textColor, colorMain, colorSecondary, colorLogo, drops, graph } =
-    variant;
+  const {
+    textColor,
+    colorMain,
+    colorSecondary,
+    bottomBlurColor,
+    colorLogo,
+    drops,
+    graph,
+  } = variant;
 
   return (
     <div className="absolute inset-0 pointer-events-none">
@@ -50,7 +58,7 @@ export default function HeroSlideDecorations({
 
       <div
         style={{
-          backgroundColor: textColor === "#FFFFFF" ? "#121212" : colorMain,
+          backgroundColor: bottomBlurColor,
         }}
         className="absolute z-10 bottom-[-97px] md:bottom-[-197px] lg:bottom-[-308px] left-[calc(50%-550px)] md:left-[calc(50%-850px)] lg:left-[calc(50%-930px)]
          w-[1018px] md:w-[1718px] lg:w-[1858px] h-[380px] lg:h-[567px] rounded-full supports-[backdrop-filter]:blur-[30px] 

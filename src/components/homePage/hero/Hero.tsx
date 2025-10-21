@@ -367,31 +367,32 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* Навігаційні кнопки слайдів */}
-      <Container className="absolute inset-0 z-20 pointer-events-none">
-        <ul className="absolute left-6 lg:left-10 top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto">
-          {heroSlides.map((slide, idx) => (
-            <li key={idx} className="leading-none">
-              <button
-                onClick={() => setCurrentSlide(idx)}
-                className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out ${
-                  idx === currentSlide ? "" : " xl:hover:bg-white/50"
-                }`}
-                style={{
-                  backgroundColor:
-                    idx === currentSlide
-                      ? slide.variant.slideButtonColor
-                      : undefined,
-                  borderColor:
-                    idx === currentSlide
-                      ? slide.variant.slideButtonColor
-                      : undefined,
-                }}
-                aria-label={`Перейти до слайду ${idx + 1}`}
-              />
-            </li>
-          ))}
-        </ul>
-      </Container>
+      <ul
+        className="absolute z-20 left-6 sm:left-[calc(50%-320px+24px)] md:left-auto md:right-[calc(50%-384px+24px)] lg:right-auto lg:left-[calc(50%-512px+40px)]
+      xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
+      >
+        {heroSlides.map((slide, idx) => (
+          <li key={idx} className="leading-none">
+            <button
+              onClick={() => setCurrentSlide(idx)}
+              className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out ${
+                idx === currentSlide ? "" : " xl:hover:bg-white/50"
+              }`}
+              style={{
+                backgroundColor:
+                  idx === currentSlide
+                    ? slide.variant.slideButtonColor
+                    : undefined,
+                borderColor:
+                  idx === currentSlide
+                    ? slide.variant.slideButtonColor
+                    : undefined,
+              }}
+              aria-label={`Перейти до слайду ${idx + 1}`}
+            />
+          </li>
+        ))}
+      </ul>
 
       {heroSlides.map((slide, idx) => (
         <HeroSlide

@@ -26,7 +26,7 @@ export default function FounderAnimated({ children }: FounderAnimatedProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-black pt-[45px] xl:pt-[271px]"
+      className="relative z-10 bg-black pt-[45px] lg:pt-[271px]"
     >
       <Container className="relative flex flex-col md:flex-row gap-12 md:gap-5">
         <FounderDecorations fastY={fastY} slowY={slowY} />

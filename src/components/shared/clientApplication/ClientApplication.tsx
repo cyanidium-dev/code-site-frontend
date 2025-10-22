@@ -4,7 +4,6 @@ import * as motion from "motion/react-client";
 import MainButton from "@/components/shared/buttons/MainButton";
 import CallbackFormModal from "../modals/CallbackFormModal";
 import { useTranslations } from "next-intl";
-import Backdrop from "@/components/shared/backdrop/Backdrop";
 import NotificationModal from "../modals/NotificationModal";
 
 interface ClientApplicationProps {
@@ -62,14 +61,6 @@ export default function ClientApplication({
         }
         isPopUpShown={isNotificationShown}
         setIsPopUpShown={setIsNotificationShown}
-      />
-      <Backdrop
-        isVisible={isPopUpShown || isNotificationShown}
-        onClick={
-          isNotificationShown
-            ? () => setIsNotificationShown(false)
-            : () => setIsPopUpShown(false)
-        }
       />
     </>
   );

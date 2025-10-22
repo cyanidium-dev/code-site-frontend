@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import ReviewsSwiper from "./ReviewsSwiper";
 import ReviewsDecorations from "./ReviewsDecorations";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 interface ReviewsProps {
   reviewsList: Review[];
@@ -21,7 +23,19 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
   lg:ml-[calc((100vw-1024px)/2)] xl:mx-auto"
       >
         <ReviewsDecorations />
-        <div className="relative -z-20 sm:w-[245px] sm:h-[518px] px-5 py-9 mb-9 sm:mb-0 rounded-[8px] bg-white overflow-hidden shrink-0">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInAnimation({
+            x: -50,
+            y: -50,
+            scale: 0.95,
+            delay: 0.4,
+          })}
+          className="relative -z-20 sm:w-[245px] sm:h-[518px] px-5 py-9 mb-9 sm:mb-0 rounded-[8px] bg-white overflow-hidden shrink-0"
+        >
           <h2 className="mb-3 font-actay text-[40px] font-bold leading-none bg-[linear-gradient(160deg,#121212_13.21%,#81516E_122.82%)] bg-clip-text text-transparent uppercase">
             {t("title")}
           </h2>
@@ -35,14 +49,38 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
             height={634}
             className="absolute -z-10 bottom-0 right-[-25px] sm:right-0 w-[138px] sm:w-[490px] h-auto mix-blend-hard-light"
           />
-        </div>
-        <div className="hidden sm:block w-[calc(100%-245px-20px)]">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInAnimation({
+            x: 50,
+
+            scale: 0.95,
+            delay: 0.8,
+          })}
+          className="hidden sm:block relative z-20 w-[calc(100%-245px-20px)] backdrop-blur-[5px]"
+        >
           <ReviewsSwiper reviewsList={reviewsList} />
-        </div>
+        </motion.div>
       </div>
-      <div className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        exit="exit"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInAnimation({
+          x: 50,
+
+          scale: 0.95,
+          delay: 0.8,
+        })}
+        className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto backdrop-blur-[5px]"
+      >
         <ReviewsSwiper reviewsList={reviewsList} />
-      </div>
+      </motion.div>
     </section>
   );
 }

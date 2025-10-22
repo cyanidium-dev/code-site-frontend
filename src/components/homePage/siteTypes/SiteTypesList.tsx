@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { Link } from "@/i18n/navigation";
 
 export default function SiteTypesList() {
   const t = useTranslations("homePage.siteTypes");
@@ -18,6 +19,7 @@ export default function SiteTypesList() {
         t("landing.listFour"),
         t("landing.listFive"),
       ],
+
       price: 800,
     },
     {
@@ -28,6 +30,7 @@ export default function SiteTypesList() {
         t("multipage.listThree"),
         t("multipage.listFour"),
       ],
+
       price: 1500,
     },
     {
@@ -39,6 +42,7 @@ export default function SiteTypesList() {
         t("e-commerce.listFour"),
         t("e-commerce.listFive"),
       ],
+
       price: 2500,
     },
   ];
@@ -63,8 +67,8 @@ export default function SiteTypesList() {
               idx === 0
                 ? "mb-[437px] md:mb-0 pb-[47px] md:pb-[138px]"
                 : idx === 1
-                ? "md:relative md:z-10 mb-[105px] md:mb-0 md:mt-[-38px] pb-[453px] md:pb-[435px]"
-                : "relative z-10 pb-[210px] md:pb-[156px] md:mt-[-172px]"
+                  ? "md:relative md:z-10 mb-[105px] md:mb-0 md:mt-[-38px] pb-[453px] md:pb-[435px]"
+                  : "relative z-10 pb-[210px] md:pb-[156px] md:mt-[-172px]"
             }`}
         >
           <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
@@ -85,21 +89,24 @@ export default function SiteTypesList() {
                 </li>
               ))}
             </ul>
-            <MainButton
-              variant="pink"
-              className="mb-3 md:mb-6 px-5 text-[10px] md:text-[12px]"
-            >
-              <div className="flex items-center justify-between w-full">
-                {t("button")}
-                <Image
-                  src="/images/homePage/siteTypes/star.svg"
-                  alt="star"
-                  width={21}
-                  height={21}
-                  className="inline-block mb-1 rotate-45"
-                />
-              </div>
-            </MainButton>
+            <Link href={`/services`}>
+              <MainButton
+                variant="pink"
+                className="mb-3 md:mb-6 px-5 text-[10px] md:text-[12px]"
+              >
+                <div className="flex items-center justify-between w-full">
+                  {t("button")}
+                  <Image
+                    src="/images/homePage/siteTypes/star.svg"
+                    alt="star"
+                    width={21}
+                    height={21}
+                    className="inline-block mb-1 rotate-45"
+                  />
+                </div>
+              </MainButton>
+            </Link>
+
             <p className="w-fit ml-auto">
               <span className="font-actay text-[16px] md:text-[22px] font-bold leading-[120%] uppercase">
                 {t("from")}

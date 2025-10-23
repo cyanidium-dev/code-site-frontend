@@ -1,10 +1,9 @@
-import TravelSlider from "@/components/shared/travelSlider/TravelSlider";
-import Carousel from "./Carousel";
+import TravelSlider from "@/components/homePage/portfolio/TravelSlider";
 
 export default function Portfolio() {
   return (
-    <div>
+    <section className="pt-[190px]">
       <TravelSlider />
-    </div>
+    </section>
   );
 }

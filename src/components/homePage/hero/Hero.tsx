@@ -400,14 +400,24 @@ export default function Hero() {
         ))}
       </motion.ul>
 
-      {heroSlides.map((slide, idx) => (
-        <HeroSlide
-          key={idx}
-          slide={slide}
-          idx={idx}
-          isActive={idx === currentSlide}
-        />
-      ))}
+      {heroSlides.map((slide, idx) => {
+        // Рендеримо тільки активний слайд + попередній + наступний для оптимізації
+        const shouldRender =
+          idx === currentSlide ||
+          idx === (currentSlide - 1 + heroSlides.length) % heroSlides.length ||
+          idx === (currentSlide + 1) % heroSlides.length;
+
+        if (!shouldRender) return null;
+
+        return (
+          <HeroSlide
+            key={idx}
+            slide={slide}
+            idx={idx}
+            isActive={idx === currentSlide}
+          />
+        );
+      })}
     </section>
   );
 }

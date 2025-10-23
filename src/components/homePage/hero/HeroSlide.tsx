@@ -53,9 +53,8 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
 
-  // Простий підхід з transition та природною висотою
   const getAnimationClasses = () => {
-    const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden";
+    const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
     const opacityClass = isActive ? "opacity-100" : "opacity-0";
     const transitionClass = "transition-opacity duration-[3000ms] ease-in-out";
 
@@ -95,12 +94,17 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             {title}
           </motion.h1>
         ) : (
-          <h2
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInAnimation({ x: 20 })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
             {title}
-          </h2>
+          </motion.h2>
         )}
         <motion.p
           initial="hidden"
@@ -119,11 +123,12 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           buttonClassName={`relative md:max-w-[291px] h-14 ${buttonGradient}`}
           className="relative z-10"
           variants={fadeInAnimation({
-            delay: 0.8,
+            delay: 1.2,
             scale: 0.85,
           })}
         />
         <BenefitsList
+          key={`benefits-${idx}`}
           list={list}
           subtitle={subtitle}
           counterColor={counterColor}

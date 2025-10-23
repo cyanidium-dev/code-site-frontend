@@ -53,9 +53,8 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
 
-  // Простий підхід з transition та природною висотою
   const getAnimationClasses = () => {
-    const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden";
+    const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
     const opacityClass = isActive ? "opacity-100" : "opacity-0";
     const transitionClass = "transition-opacity duration-[3000ms] ease-in-out";
 
@@ -129,6 +128,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           })}
         />
         <BenefitsList
+          key={`benefits-${idx}`}
           list={list}
           subtitle={subtitle}
           counterColor={counterColor}

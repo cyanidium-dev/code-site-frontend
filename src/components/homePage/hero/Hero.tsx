@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import HeroSlide from "./HeroSlide";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
@@ -8,6 +8,7 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 export default function Hero() {
   const t = useTranslations("homePage.hero");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const heroSlides = [
     {
@@ -356,14 +357,35 @@ export default function Hero() {
     },
   ];
 
+  // Функція для скидання таймера при ручному переключенні
+  const resetSlideTimer = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 9000);
+  }, [heroSlides.length]);
+
+  // Мемоізована функція для обробки кліку на кнопку слайду
+  const handleSlideClick = useCallback(
+    (idx: number) => {
+      setCurrentSlide(idx);
+      resetSlideTimer();
+    },
+    [resetSlideTimer]
+  );
+
   // Перемикання слайдів кожні 9 секунд
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 9000); // 9 секунд
+    resetSlideTimer();
 
-    return () => clearInterval(interval);
-  }, [heroSlides.length]);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [resetSlideTimer]);
 
   return (
     <section className="relative overflow-hidden">
@@ -376,12 +398,17 @@ export default function Hero() {
         variants={fadeInAnimation({ scale: 0.9, delay: 0.4 })}
         className="absolute z-20 left-6 sm:left-[calc(50%-320px+24px)] md:left-auto md:right-[calc(50%-384px+24px)] lg:right-auto lg:left-[calc(50%-512px+40px)]
        xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
+        style={{
+          willChange: "transform",
+          backfaceVisibility: "hidden",
+          transform: "translateZ(0)",
+        }}
       >
         {heroSlides.map((slide, idx) => (
           <li key={idx} className="leading-none">
             <button
-              onClick={() => setCurrentSlide(idx)}
-              className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out ${
+              onClick={() => handleSlideClick(idx)}
+              className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out will-change-transform ${
                 idx === currentSlide ? "" : " xl:hover:bg-white/50"
               }`}
               style={{
@@ -393,6 +420,8 @@ export default function Hero() {
                   idx === currentSlide
                     ? slide.variant.slideButtonColor
                     : undefined,
+                transform: "translateZ(0)",
+                backfaceVisibility: "hidden",
               }}
               aria-label={`Перейти до слайду ${idx + 1}`}
             />
@@ -411,7 +440,7 @@ export default function Hero() {
 
         return (
           <HeroSlide
-            key={idx}
+            key={`slide-${idx}`}
             slide={slide}
             idx={idx}
             isActive={idx === currentSlide}

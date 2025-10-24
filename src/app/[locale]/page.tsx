@@ -8,10 +8,9 @@ import Partners from "@/components/homePage/partners/Partners";
 import Reviews from "@/components/homePage/reviews/Reviews";
 import SiteTypes from "@/components/homePage/siteTypes/SiteTypes";
 import WhyUs from "@/components/homePage/whyUs/WhyUs";
-import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
-import { allReviewsQuery } from "@/lib/queries";
+import { allProjectsQuery, allReviewsQuery } from "@/lib/queries";
 import Portfolio from "@/components/homePage/portfolio/Portfolio";
 
 interface HomePageProps {
@@ -25,16 +24,17 @@ export default async function HomePage({ params }: HomePageProps) {
     lang: locale,
   });
 
+  const projectsList = await fetchSanityData(allProjectsQuery, {
+    lang: locale,
+  });
+
   return (
     <>
       <Hero />
-      {/* <div className="hidden md:block">
-        <CodeSiteMarquee className="text-[48px] leading-none rotate-0 bg-[linear-gradient(90deg,#D9E5FF_30.2%,#268DF4_59.69%)]" />
-      </div> */}
       <Founder />
       <WhyUs />
       <SiteTypes />
-      <Portfolio />
+      <Portfolio projectsList={projectsList} />
       <Reviews reviewsList={reviewsList} />
       <Partners />
       <FAQ />

@@ -364,7 +364,7 @@ export default function Hero() {
     }
     intervalRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 9000);
+    }, 6000);
   }, [heroSlides.length]);
 
   // Мемоізована функція для обробки кліку на кнопку слайду
@@ -376,7 +376,7 @@ export default function Hero() {
     [resetSlideTimer]
   );
 
-  // Перемикання слайдів кожні 9 секунд
+  // Перемикання слайдів кожні 6 секунд
   useEffect(() => {
     resetSlideTimer();
 

@@ -137,6 +137,9 @@ export default function TravelSlider() {
 
   // Manual navigation
   const goToSlide = (index: number) => {
+    // Pause automatic loop when user interacts
+    stopLoop();
+
     const currentIndex = order[0];
     const steps = (index - currentIndex + data.length) % data.length;
 
@@ -145,6 +148,14 @@ export default function TravelSlider() {
         step();
       }, i * 100);
     }
+
+    // Resume automatic loop after manual navigation
+    setTimeout(
+      () => {
+        startLoop();
+      },
+      steps * 100 + 300
+    );
   };
 
   // Cleanup

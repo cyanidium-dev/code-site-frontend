@@ -69,7 +69,6 @@ export default function TravelSlider() {
   const [detailsEven, setDetailsEven] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const loopIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -113,9 +112,7 @@ export default function TravelSlider() {
     }
 
     loopIntervalRef.current = setInterval(() => {
-      if (!isAnimating) {
-        step();
-      }
+      step();
     }, 3000);
   };
 
@@ -129,9 +126,6 @@ export default function TravelSlider() {
 
   // Step to next slide
   const step = () => {
-    if (isAnimating) return;
-
-    setIsAnimating(true);
     setOrder((prev) => {
       const newOrder = [...prev];
       newOrder.push(newOrder.shift()!);
@@ -139,16 +133,10 @@ export default function TravelSlider() {
     });
     setDetailsEven((prev) => !prev);
     setCurrentSlide((prev) => (prev + 1) % data.length);
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 1500);
   };
 
   // Manual navigation
   const goToSlide = (index: number) => {
-    if (isAnimating) return;
-
     const currentIndex = order[0];
     const steps = (index - currentIndex + data.length) % data.length;
 
@@ -215,11 +203,27 @@ export default function TravelSlider() {
       {/* Main card */}
       <motion.div
         key={`card-${active}`}
-        className="absolute inset-0 bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)]"
+        className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)]"
         style={{ backgroundImage: `url(${activeData.image})` }}
-        initial={{ x: 0, y: 0, width: "100vw", height: "100vh" }}
-        animate={{ x: 0, y: 0, width: "100vw", height: "100vh" }}
-        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+        initial={{
+          x: offsetLeft,
+          y: offsetTop,
+          width: cardWidth,
+          height: cardHeight,
+          borderRadius: 10,
+        }}
+        animate={{
+          x: 0,
+          y: 0,
+          width: "100vw",
+          height: "100vh",
+          borderRadius: 0,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+          delay: 0.1,
+        }}
       />
 
       {/* Card content overlay */}
@@ -227,8 +231,12 @@ export default function TravelSlider() {
         key={`content-${active}`}
         className="absolute left-0 top-0 text-white pl-4"
         initial={{ x: 0, y: 0, opacity: 0 }}
-        animate={{ x: 0, y: 0, opacity: 0 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
+        animate={{ x: 0, y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.3,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+          delay: 0.5,
+        }}
       >
         <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
         <div className="text-[13px] font-medium mb-1">{activeData.place}</div>
@@ -351,16 +359,31 @@ export default function TravelSlider() {
         const y = offsetTop;
 
         return (
-          <motion.div
+          <motion.button
             key={`side-card-${cardIndex}`}
-            className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)] rounded-[10px] z-[30]"
+            onClick={() => goToSlide(cardIndex)}
+            className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)] rounded-[10px] z-[30] cursor-pointer xl:hover:scale-105 transition-transform duration-300"
             style={{ backgroundImage: `url(${cardData.image})` }}
-            initial={{ x: x + 400, y, width: cardWidth, height: cardHeight }}
-            animate={{ x, y, width: cardWidth, height: cardHeight }}
+            initial={{
+              x: x + 400,
+              y,
+              width: cardWidth,
+              height: cardHeight,
+              scale: 1,
+              borderRadius: 10,
+            }}
+            animate={{
+              x,
+              y,
+              width: cardWidth,
+              height: cardHeight,
+              scale: 1,
+              borderRadius: 10,
+            }}
             transition={{
-              duration: 0.8,
-              ease: [0.25, 0.1, 0.25, 1] as const,
-              delay: 0.05 * index + 0.6,
+              duration: 0.6,
+              ease: [0.4, 0.0, 0.2, 1] as const,
+              delay: 0.02 * index + 0.4,
             }}
           >
             <motion.div
@@ -368,9 +391,9 @@ export default function TravelSlider() {
               initial={{ x: x + 400, y: y + cardHeight - 100, opacity: 0 }}
               animate={{ x: 0, y: cardHeight - 100, opacity: 1 }}
               transition={{
-                duration: 0.8,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-                delay: 0.05 * index + 0.6,
+                duration: 0.6,
+                ease: [0.4, 0.0, 0.2, 1] as const,
+                delay: 0.02 * index + 0.5,
               }}
             >
               <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
@@ -384,7 +407,7 @@ export default function TravelSlider() {
                 {cardData.title2}
               </div>
             </motion.div>
-          </motion.div>
+          </motion.button>
         );
       })}
 

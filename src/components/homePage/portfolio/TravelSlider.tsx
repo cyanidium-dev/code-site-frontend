@@ -226,28 +226,6 @@ export default function TravelSlider() {
         }}
       />
 
-      {/* Card content overlay */}
-      <motion.div
-        key={`content-${active}`}
-        className="absolute left-0 top-0 text-white pl-4"
-        initial={{ x: 0, y: 0, opacity: 0 }}
-        animate={{ x: 0, y: 0, opacity: 1 }}
-        transition={{
-          duration: 0.3,
-          ease: [0.25, 0.1, 0.25, 1] as const,
-          delay: 0.5,
-        }}
-      >
-        <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
-        <div className="text-[13px] font-medium mb-1">{activeData.place}</div>
-        <div className="text-[20px] font-semibold font-['Oswald']">
-          {activeData.title}
-        </div>
-        <div className="text-[20px] font-semibold font-['Oswald']">
-          {activeData.title2}
-        </div>
-      </motion.div>
-
       {/* Details panels */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -352,7 +330,7 @@ export default function TravelSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Side cards */}
+      {/* Slide preview cards */}
       {rest.map((cardIndex, index) => {
         const cardData = data[cardIndex];
         const x = offsetLeft + index * (cardWidth + gap);
@@ -385,29 +363,7 @@ export default function TravelSlider() {
               ease: [0.4, 0.0, 0.2, 1] as const,
               delay: 0.02 * index + 0.4,
             }}
-          >
-            <motion.div
-              className="absolute left-0 text-white pl-4 z-[40]"
-              initial={{ x: x + 400, y: y + cardHeight - 100, opacity: 0 }}
-              animate={{ x: 0, y: cardHeight - 100, opacity: 1 }}
-              transition={{
-                duration: 0.6,
-                ease: [0.4, 0.0, 0.2, 1] as const,
-                delay: 0.02 * index + 0.5,
-              }}
-            >
-              <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
-              <div className="text-[13px] font-medium mb-1">
-                {cardData.place}
-              </div>
-              <div className="text-[20px] font-semibold font-['Oswald']">
-                {cardData.title}
-              </div>
-              <div className="text-[20px] font-semibold font-['Oswald']">
-                {cardData.title2}
-              </div>
-            </motion.div>
-          </motion.button>
+          ></motion.button>
         );
       })}
 
@@ -424,7 +380,10 @@ export default function TravelSlider() {
         }}
       >
         {/* Left arrow */}
-        <div className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60]">
+        <button
+          onClick={() => goToSlide((active - 1 + data.length) % data.length)}
+          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -438,10 +397,13 @@ export default function TravelSlider() {
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
-        </div>
+        </button>
 
         {/* Right arrow */}
-        <div className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-5">
+        <button
+          onClick={() => goToSlide((active + 1) % data.length)}
+          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-5 hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -455,11 +417,11 @@ export default function TravelSlider() {
               d="M8.25 4.5l7.5 7.5-7.5 7.5"
             />
           </svg>
-        </div>
+        </button>
 
         {/* Progress bar */}
         <div className="ml-6 z-[60] w-[500px] h-[50px] flex items-center">
-          <div className="w-[500px] h-[3px] bg-white/20">
+          <div className="w-[500px] h-[3px] bg-white/20 relative cursor-pointer group">
             <motion.div
               className="h-[3px] bg-[#ecad29]"
               initial={{ width: 0 }}
@@ -469,15 +431,25 @@ export default function TravelSlider() {
                 ease: [0.25, 0.1, 0.25, 1] as const,
               }}
             />
+            {/* Clickable segments */}
+            {data.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className="absolute top-0 h-[50px] w-[83.33px] cursor-pointer hover:bg-white/5 transition-colors duration-300"
+                style={{ left: `${index * (500 / data.length)}px` }}
+              />
+            ))}
           </div>
         </div>
 
         {/* Slide numbers */}
         <div className="w-[50px] h-[50px] overflow-hidden z-[60] relative">
           {data.map((_, index) => (
-            <motion.div
+            <motion.button
               key={index}
-              className="absolute top-0 left-0 w-[50px] h-[50px] text-white flex items-center justify-center text-[32px] font-bold"
+              onClick={() => goToSlide(index)}
+              className="absolute top-0 left-0 w-[50px] h-[50px] text-white flex items-center justify-center text-[32px] font-bold cursor-pointer hover:bg-white/10 rounded-full transition-all duration-300"
               initial={{ x: (index + 1) * numberSize }}
               animate={{ x: index === active ? 0 : (index + 1) * numberSize }}
               transition={{
@@ -486,7 +458,7 @@ export default function TravelSlider() {
               }}
             >
               {index + 1}
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </motion.div>

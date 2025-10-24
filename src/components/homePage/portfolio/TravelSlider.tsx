@@ -187,7 +187,11 @@ export default function TravelSlider() {
         className="absolute inset-0 bg-white z-[100]"
         initial={{ x: 0 }}
         animate={{ x: "100vw" }}
-        transition={{ duration: 0.8, ease, delay: 0.5 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+          delay: 0.5,
+        }}
       />
 
       {/* Progress indicator */}
@@ -195,7 +199,11 @@ export default function TravelSlider() {
         className="fixed top-0 left-0 right-0 h-[5px] bg-[#ecad29] z-[60]"
         initial={{ x: "-100vw" }}
         animate={{ x: "100vw" }}
-        transition={{ duration: 2, ease, delay: 0.6 }}
+        transition={{
+          duration: 2,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+          delay: 0.6,
+        }}
         onAnimationComplete={() => {
           // Reset indicator position
           setTimeout(() => {
@@ -211,7 +219,7 @@ export default function TravelSlider() {
         style={{ backgroundImage: `url(${activeData.image})` }}
         initial={{ x: 0, y: 0, width: "100vw", height: "100vh" }}
         animate={{ x: 0, y: 0, width: "100vw", height: "100vh" }}
-        transition={{ duration: 0.8, ease }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
       />
 
       {/* Card content overlay */}
@@ -220,7 +228,7 @@ export default function TravelSlider() {
         className="absolute left-0 top-0 text-white pl-4"
         initial={{ x: 0, y: 0, opacity: 0 }}
         animate={{ x: 0, y: 0, opacity: 0 }}
-        transition={{ duration: 0.3, ease }}
+        transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
       >
         <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
         <div className="text-[13px] font-medium mb-1">{activeData.place}</div>
@@ -240,13 +248,21 @@ export default function TravelSlider() {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease, delay: 0.4 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+            delay: 0.4,
+          }}
         >
           <motion.div
             className="h-[46px] overflow-hidden"
             initial={{ y: 100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.1 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.1,
+            }}
           >
             <div className="pt-4 text-[20px] relative">
               <div className="absolute top-0 left-0 w-[30px] h-1 bg-white rounded-full" />
@@ -258,7 +274,11 @@ export default function TravelSlider() {
             className="mt-0.5 h-[100px] overflow-hidden"
             initial={{ y: 100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.15 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.15,
+            }}
           >
             <div className="text-[72px] font-semibold font-['Oswald']">
               {activeData.title}
@@ -269,7 +289,11 @@ export default function TravelSlider() {
             className="mt-0.5 h-[100px] overflow-hidden"
             initial={{ y: 100 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.15 }}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.15,
+            }}
           >
             <div className="text-[72px] font-semibold font-['Oswald']">
               {activeData.title2}
@@ -280,7 +304,11 @@ export default function TravelSlider() {
             className="mt-4 w-[500px]"
             initial={{ y: 50 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.4, ease, delay: 0.3 }}
+            transition={{
+              duration: 0.4,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.3,
+            }}
           >
             {activeData.description}
           </motion.div>
@@ -289,7 +317,11 @@ export default function TravelSlider() {
             className="w-[500px] mt-6 flex items-center"
             initial={{ y: 60 }}
             animate={{ y: 0 }}
-            transition={{ duration: 0.4, ease, delay: 0.35 }}
+            transition={{
+              duration: 0.4,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.35,
+            }}
           >
             <button className="border-none bg-[#ecad29] w-9 h-9 rounded-full text-white flex items-center justify-center">
               <svg
@@ -325,13 +357,21 @@ export default function TravelSlider() {
             style={{ backgroundImage: `url(${cardData.image})` }}
             initial={{ x: x + 400, y, width: cardWidth, height: cardHeight }}
             animate={{ x, y, width: cardWidth, height: cardHeight }}
-            transition={{ duration: 0.8, ease, delay: 0.05 * index + 0.6 }}
+            transition={{
+              duration: 0.8,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+              delay: 0.05 * index + 0.6,
+            }}
           >
             <motion.div
               className="absolute left-0 text-white pl-4 z-[40]"
               initial={{ x: x + 400, y: y + cardHeight - 100, opacity: 0 }}
               animate={{ x: 0, y: cardHeight - 100, opacity: 1 }}
-              transition={{ duration: 0.8, ease, delay: 0.05 * index + 0.6 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+                delay: 0.05 * index + 0.6,
+              }}
             >
               <div className="w-[30px] h-[5px] bg-white rounded-full mb-1.5" />
               <div className="text-[13px] font-medium mb-1">
@@ -354,7 +394,11 @@ export default function TravelSlider() {
         style={{ top: offsetTop + 330, left: offsetLeft }}
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease, delay: 0.6 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+          delay: 0.6,
+        }}
       >
         {/* Left arrow */}
         <div className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60]">
@@ -397,7 +441,10 @@ export default function TravelSlider() {
               className="h-[3px] bg-[#ecad29]"
               initial={{ width: 0 }}
               animate={{ width: `${500 * (1 / data.length) * (active + 1)}px` }}
-              transition={{ duration: 0.8, ease }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+              }}
             />
           </div>
         </div>
@@ -410,7 +457,10 @@ export default function TravelSlider() {
               className="absolute top-0 left-0 w-[50px] h-[50px] text-white flex items-center justify-center text-[32px] font-bold"
               initial={{ x: (index + 1) * numberSize }}
               animate={{ x: index === active ? 0 : (index + 1) * numberSize }}
-              transition={{ duration: 0.8, ease }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1] as const,
+              }}
             >
               {index + 1}
             </motion.div>

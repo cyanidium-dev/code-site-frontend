@@ -232,7 +232,7 @@ export default function Hero() {
         colorMain: "#FBC702",
         textColor: "#121212",
         colorSecondary: "#FFF6D5",
-        colorLogo: "#FAC6023D",
+        colorLogo: "#FFF9E375",
         counterColor: "#FBC702",
         bottomBlurColor: "#121212",
         slideButtonColor: "#121212",

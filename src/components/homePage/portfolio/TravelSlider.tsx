@@ -362,7 +362,7 @@ export default function TravelSlider() {
           <motion.button
             key={`side-card-${cardIndex}`}
             onClick={() => goToSlide(cardIndex)}
-            className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)] rounded-[10px] z-[30] cursor-pointer xl:hover:scale-105 transition-transform duration-300"
+            className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)] rounded-[10px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300"
             style={{ backgroundImage: `url(${cardData.image})` }}
             initial={{
               x: x + 400,

@@ -55,11 +55,11 @@ export default function HeroSlideDecorations({
   });
 
   // Параллакс ефекти для різних елементів
-  const headY = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const mainImageY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const logoY = useTransform(scrollYProgress, [0, 1], [0, 130]);
-  const graphY = useTransform(scrollYProgress, [0, 1], [0, 50]);
-  const dropsY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const headY = useTransform(scrollYProgress, [0, 1], [20, -50]);
+  const mainImageY = useTransform(scrollYProgress, [0, 1], [60, -100]);
+  const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);
+  const graphY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
@@ -143,7 +143,7 @@ export default function HeroSlideDecorations({
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 1.2, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 0.8, scale: 0.95 })}
           className=""
         >
           <Image

@@ -69,6 +69,7 @@ export default function TravelSlider() {
   const [detailsEven, setDetailsEven] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMovingBackward, setIsMovingBackward] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const loopIntervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -135,6 +136,18 @@ export default function TravelSlider() {
     setCurrentSlide((prev) => (prev + 1) % data.length);
   };
 
+  // Step to previous slide
+  const stepBack = () => {
+    setOrder((prev) => {
+      const newOrder = [...prev];
+      // Переміщуємо останній елемент на початок масиву
+      newOrder.unshift(newOrder.pop()!);
+      return newOrder;
+    });
+    setDetailsEven((prev) => !prev);
+    setCurrentSlide((prev) => (prev - 1 + data.length) % data.length);
+  };
+
   // Manual navigation
   const goToSlide = (index: number) => {
     // Pause automatic loop when user interacts
@@ -142,20 +155,29 @@ export default function TravelSlider() {
 
     const currentIndex = order[0];
     const steps = (index - currentIndex + data.length) % data.length;
+    const isBackward = steps > data.length / 2;
 
-    for (let i = 0; i < steps; i++) {
-      setTimeout(() => {
-        step();
-      }, i * 100);
-    }
+    setIsMovingBackward(isBackward);
+
+    // Просто встановлюємо новий порядок без анімації
+    setOrder((prev) => {
+      const newOrder = [...prev];
+      // Знаходимо індекс цільового слайда в поточному порядку
+      const targetIndex = newOrder.indexOf(index);
+      // Переміщуємо цільовий слайд на початок
+      const targetSlide = newOrder.splice(targetIndex, 1)[0];
+      newOrder.unshift(targetSlide);
+      return newOrder;
+    });
+
+    setDetailsEven((prev) => !prev);
+    setCurrentSlide(index);
 
     // Resume automatic loop after manual navigation
-    setTimeout(
-      () => {
-        startLoop();
-      },
-      steps * 100 + 300
-    );
+    setTimeout(() => {
+      startLoop();
+      setIsMovingBackward(false);
+    }, 300);
   };
 
   // Cleanup
@@ -354,7 +376,9 @@ export default function TravelSlider() {
             className="absolute bg-cover bg-center shadow-[6px_6px_10px_2px_rgba(0,0,0,0.6)] rounded-[10px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300"
             style={{ backgroundImage: `url(${cardData.image})` }}
             initial={{
-              x: x + 400,
+              x: isMovingBackward
+                ? x - (cardWidth + gap)
+                : x + (cardWidth + gap),
               y,
               width: cardWidth,
               height: cardHeight,
@@ -392,7 +416,15 @@ export default function TravelSlider() {
       >
         {/* Left arrow */}
         <button
-          onClick={() => goToSlide((active - 1 + data.length) % data.length)}
+          onClick={() => {
+            stopLoop();
+            setIsMovingBackward(true);
+            stepBack();
+            setTimeout(() => {
+              startLoop();
+              setIsMovingBackward(false);
+            }, 300);
+          }}
           className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
         >
           <svg
@@ -412,7 +444,15 @@ export default function TravelSlider() {
 
         {/* Right arrow */}
         <button
-          onClick={() => goToSlide((active + 1) % data.length)}
+          onClick={() => {
+            stopLoop();
+            setIsMovingBackward(false);
+            step();
+            setTimeout(() => {
+              startLoop();
+              setIsMovingBackward(false);
+            }, 300);
+          }}
           className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-5 hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
         >
           <svg

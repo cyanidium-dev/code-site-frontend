@@ -38,15 +38,22 @@ export const allProjectsQuery = `
       crop,
       hotspot
     },
+    "gradientStartColor": gradientStartColor.hex,
+    "gradientEndColor": gradientEndColor.hex,
     "categories": categories[]->{
       "id": _id,
       "name": name[$lang]
     },
-    "type": {
-      "id": _id,
-      "name": name[$lang],
-      "icon": icon
-    },
+   "type": type->{
+     "id": _id,
+     "name": name[$lang],
+     "icon": icon{
+      asset->{
+      _id,
+      url
+    }
+  }
+},
     "blocks": blocks[]{
       _type == "textBlock" => {
         "type": _type,

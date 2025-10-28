@@ -1,4 +1,4 @@
-import TravelSlider from "@/components/homePage/portfolio/TravelSlider";
+import PortfolioSlider from "@/components/homePage/portfolio/PortfolioSlider";
 import MainButton from "@/components/shared/buttons/MainButton";
 import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/titles/SectionTitle";
@@ -11,7 +11,7 @@ interface PortfolioProps {
 }
 
 export default function Portfolio({ projectsList }: PortfolioProps) {
-  console.log(projectsList[0].previewImage);
+  console.log(projectsList[1].type);
 
   const t = useTranslations("homePage.portfolio");
 
@@ -34,7 +34,7 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
           </Link>
         </div>
       </Container>
-      <TravelSlider />
+      <PortfolioSlider projectsList={projectsList} />
       <Container className="lg:hidden mt-8">
         <Link href="/portfolio">
           <MainButton className="">{t("seeProjects")}</MainButton>

@@ -27,7 +27,7 @@ export interface ProjectCategory {
 export interface ProjectType {
   id: string;
   name: string;
-  icon: string;
+  icon: SanityImage;
 }
 
 export interface TextBlock {
@@ -74,6 +74,8 @@ export interface Project {
   advantages: string[];
   portfolioTitle: string;
   portfolioDescription: string;
+  gradientStartColor: string;
+  gradientEndColor: string;
   order: number;
   createdAt: string;
 }

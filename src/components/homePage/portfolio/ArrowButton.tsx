@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
+import { twMerge } from "tailwind-merge";
 
 interface ArrowButtonProps {
   slug: string;
@@ -15,9 +16,12 @@ export default function ArrowButton({
       <button
         type="button"
         aria-label="icon button"
-        className={`group cursor-pointer flex items-center justify-center size-[66px] lg:size-[50px] p-[15px] rounded-full bg-white active:scale-[95%] transition duration-300 ease-out will-change-transform ${className}`}
+        className={twMerge(
+          `group cursor-pointer flex items-center justify-center size-[66px] lg:size-[50px] p-[15px] rounded-full bg-white active:scale-[95%] transition duration-300 ease-out will-change-transform`,
+          className
+        )}
       >
-        <ArrowIcon className="group-active:scale-[95%] group-[focus-visible]:translate-x-1 group-[focus-visible]:-translate-y-1 xl:group-hover:translate-x-1 xl:group-hover:-translate-y-1 transition duration-300 ease-out will-change-transform text-black" />
+        <ArrowIcon className="group-active:scale-[95%] group-[focus-visible]:translate-x-0.5 group-[focus-visible]:-translate-y-0.5 xl:group-hover:translate-x-0.5 xl:group-hover:-translate-y-0.5 transition duration-300 ease-out will-change-transform text-black" />
       </button>
     </Link>
   );

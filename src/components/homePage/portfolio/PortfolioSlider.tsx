@@ -6,6 +6,7 @@ import { Project } from "@/types/project";
 import Container from "@/components/shared/container/Container";
 import Image from "next/image";
 import ArrowButton from "./ArrowButton";
+import ArrowIcon from "@/components/shared/icons/ArrowIcon";
 
 interface PortfolioSliderProps {
   projectsList: Project[];
@@ -32,10 +33,10 @@ export default function PortfolioSlider({
   const getPositions = () => {
     if (typeof window === "undefined")
       return { offsetTop: 200, offsetLeft: 700 };
-    const { innerHeight: height, innerWidth: width } = window;
+    const { innerWidth: width } = window;
     return {
-      offsetTop: height - 430, // Original position - bottom right area
-      offsetLeft: width - 740, // Position of first preview card (original position)
+      offsetTop: 200, // Not used anymore for preview cards Y positioning
+      offsetLeft: width - 530, // Position of first preview card (original position)
     };
   };
 
@@ -343,13 +344,12 @@ export default function PortfolioSlider({
       {rest.map((cardIndex, index) => {
         const cardData = projectsList[cardIndex];
         const x = offsetLeft + index * (cardWidth + gap);
-        const y = offsetTop;
 
         return (
           <motion.button
             key={`side-card-${cardIndex}`}
             onClick={() => goToSlide(cardIndex)}
-            className="absolute bottom-[300px] rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
+            className="absolute bottom-[154px] lg:bottom-5 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
             style={{
               background: `linear-gradient(180deg, ${cardData.gradientStartColor || "#CFFD59"} 0%, ${
                 cardData.gradientEndColor || "#121212"
@@ -359,7 +359,7 @@ export default function PortfolioSlider({
               x: isMovingBackward
                 ? x - (cardWidth + gap)
                 : x + (cardWidth + gap),
-              y,
+              y: 0,
               width: cardWidth,
               height: cardHeight,
               scale: 1,
@@ -367,7 +367,7 @@ export default function PortfolioSlider({
             }}
             animate={{
               x,
-              y,
+              y: 0,
               width: cardWidth,
               height: cardHeight,
               scale: 1,
@@ -394,8 +394,7 @@ export default function PortfolioSlider({
 
       {/* Pagination */}
       <motion.div
-        className="absolute z-[60] flex items-center"
-        style={{ top: offsetTop + 330, left: offsetLeft }}
+        className="absolute left-0 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-0 z-[30] flex items-center"
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -415,7 +414,24 @@ export default function PortfolioSlider({
               setIsMovingBackward(false);
             }, 300);
           }}
-          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+          type="button"
+          aria-label="icon button"
+          className={`group cursor-pointer flex items-center justify-center size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out will-change-transform`}
+        >
+          <ArrowIcon className="rotate-[-135deg] text-white group-active:scale-[95%] group-[focus-visible]:-translate-x-0.5 xl:group-hover:-translate-x-0.5 transition duration-300 ease-out will-change-transform" />
+        </button>
+
+        {/* <button
+          onClick={() => {
+            stopLoop();
+            setIsMovingBackward(true);
+            stepBack();
+            setTimeout(() => {
+              startLoop();
+              setIsMovingBackward(false);
+            }, 300);
+          }}
+          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[30] xl:hover:border-white/60 xl:hover:bg-white/10 transition duration-300 ease-in-out cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -430,9 +446,10 @@ export default function PortfolioSlider({
               d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
-        </button>
+        </button> */}
 
         {/* Right arrow */}
+
         <button
           onClick={() => {
             stopLoop();
@@ -443,7 +460,23 @@ export default function PortfolioSlider({
               setIsMovingBackward(false);
             }, 300);
           }}
-          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-5 hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+          type="button"
+          aria-label="icon button"
+          className={`group cursor-pointer flex items-center justify-center ml-3 size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out will-change-transform`}
+        >
+          <ArrowIcon className="rotate-[45deg] text-white group-active:scale-[95%] group-[focus-visible]:translate-x-0.5 xl:group-hover:translate-x-0.5 transition duration-300 ease-out will-change-transform" />
+        </button>
+        {/* <button
+          onClick={() => {
+            stopLoop();
+            setIsMovingBackward(false);
+            step();
+            setTimeout(() => {
+              startLoop();
+              setIsMovingBackward(false);
+            }, 300);
+          }}
+          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-3 hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -458,7 +491,7 @@ export default function PortfolioSlider({
               d="M8.25 4.5l7.5 7.5-7.5 7.5"
             />
           </svg>
-        </button>
+        </button> */}
 
         {/* Progress bar */}
         <div className="ml-6 z-[60] w-[500px] h-[50px] flex items-center">

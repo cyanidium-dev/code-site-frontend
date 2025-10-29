@@ -7,6 +7,7 @@ import Container from "@/components/shared/container/Container";
 import Image from "next/image";
 import ArrowButton from "./ArrowButton";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
+import ProjectCategory from "./ProjectCategory";
 
 interface PortfolioSliderProps {
   projectsList: Project[];
@@ -257,44 +258,10 @@ export default function PortfolioSlider({
               }}
               className="flex flex-col justify-between h-full"
             >
-              <motion.div
-                className="overflow-hidden"
-                initial={{ y: 100 }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.25, 0.1, 0.25, 1] as const,
-                  delay: 0.1,
-                }}
-              >
-                <p className="w-fit mb-3 bg-white px-5 py-3 rounded-full text-[16px] font-light leading-[130%] text-black">
-                  {activeData.categories[0].name}
-                </p>
-                <div className="flex items-center gap-2 px-5 py-2.5 w-fit h-[45px] rounded-full overflow-hidden bg-dark/24 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] backdrop-blur-[18.95px]">
-                  <div
-                    className="absolute inset-0 rounded-full pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(175.34deg, #FF76C1 3.91%, #6A8FFF 123.62%",
-                      padding: "1px",
-                      WebkitMask:
-                        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                      WebkitMaskComposite: "xor",
-                      maskComposite: "exclude",
-                    }}
-                  />
-                  <Image
-                    src={activeData.type.icon.asset.url}
-                    alt="type icon"
-                    width={20}
-                    height={20}
-                    className="shrink-0"
-                  />
-                  <p className="text-[16px] font-light leading-[130%]">
-                    {activeData.type.name}
-                  </p>
-                </div>
-              </motion.div>
+              <ProjectCategory
+                project={activeData}
+                className="hidden lg:block"
+              />
               <motion.div
                 className=""
                 initial={{ y: 60 }}
@@ -312,6 +279,7 @@ export default function PortfolioSlider({
                 <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%]">
                   {activeData.portfolioDescription}
                 </p>
+                <ProjectCategory project={activeData} className="lg:hidden mt-3" />
               </motion.div>
             </motion.div>
 

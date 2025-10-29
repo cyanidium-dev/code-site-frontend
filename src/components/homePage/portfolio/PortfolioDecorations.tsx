@@ -24,7 +24,7 @@ export default function PortfolioDecorations() {
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
         //  style={{ y: fastY }}
-        className="lg:hidden absolute bottom-[150px] left-[calc(50%-195px)] w-[625px] h-auto aspect-[625/79]"
+        className="lg:hidden absolute bottom-[150px] left-[-15px] w-[625px] h-auto aspect-[625/79]"
       >
         <motion.div
           initial="hidden"
@@ -44,7 +44,7 @@ export default function PortfolioDecorations() {
       </motion.div>
       <motion.div
         //  style={{ y: fastY }}
-        className="absolute -z-10  top-[53px] left-[calc(50%-518px)] w-[650px] lg:w-[908px] h-auto aspect-[1817/1770] bg-black"
+        className="absolute -z-10 top-[53px] left-[-338px] w-[650px] lg:w-[908px] h-auto aspect-[1817/1770] bg-black"
       >
         <motion.div
           initial="hidden"

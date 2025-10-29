@@ -9,6 +9,7 @@ import ArrowButton from "./ArrowButton";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
 import ProjectCategory from "./ProjectCategory";
 import ProjectAdvantages from "./ProjectAdvantages";
+import { useScreenWidth } from "@/hooks/useScreenWidth";
 
 interface PortfolioSliderProps {
   projectsList: Project[];
@@ -25,7 +26,7 @@ export default function PortfolioSlider({
 
   const loopIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { innerWidth: width } = window;
+  const width = useScreenWidth();
 
   // Animation constants
   const cardWidth = 138;

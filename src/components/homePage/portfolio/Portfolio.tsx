@@ -14,8 +14,6 @@ interface PortfolioProps {
 }
 
 export default function Portfolio({ projectsList }: PortfolioProps) {
-  console.log(projectsList[1].type);
-
   const t = useTranslations("homePage.portfolio");
 
   if (!projectsList || !projectsList?.length) return null;

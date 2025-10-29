@@ -54,7 +54,7 @@ export default function PortfolioSlider({
     }
 
     return {
-      offsetTop: 200,
+      offsetTop: width >= 1024 ? 200 : 300,
       containerOffset,
     };
   };
@@ -217,14 +217,14 @@ export default function PortfolioSlider({
           <motion.div
             key={`image-${active}`}
             initial={{
-              x: "300px",
-              y: "300px",
+              x: width >= 1024 ? "300px" : "180px",
+              y: width >= 1024 ? "300px" : "40px",
               width: 338,
               height: 275,
             }}
             animate={{
-              width: width >= 1024 ? 1071 : 521,
-              height: width >= 1024 ? 872 : 424,
+              width: width >= 1024 ? 1071 : width >= 768 ? 740 : 521,
+              height: width >= 1024 ? 872 : width >= 768 ? 602 : 424,
               x: 0,
               y: 0,
             }}
@@ -238,7 +238,7 @@ export default function PortfolioSlider({
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-            className="absolute top-[71px] lg:top-0 left-[calc(50%-247px)] lg:left-[calc(50%-480px)] w-[521px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
+            className="absolute top-[71px] xs:top-5 md:top-0 left-[calc(50%-247px)] lg:left-[calc(50%-480px)] w-[521px] md:w-[740px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
           />
         </motion.div>
       </motion.div>

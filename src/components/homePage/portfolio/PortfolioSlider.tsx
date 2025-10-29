@@ -72,9 +72,9 @@ export default function PortfolioSlider({
   useEffect(() => {
     const init = () => {
       setIsInitialized(true);
-      // setTimeout(() => {
-      //   startLoop();
-      // }, 1000);
+      setTimeout(() => {
+        startLoop();
+      }, 1000);
     };
 
     init();

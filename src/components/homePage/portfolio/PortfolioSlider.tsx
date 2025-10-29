@@ -173,57 +173,60 @@ export default function PortfolioSlider({
       {/* Main card */}
       <motion.div
         key={`bg-${active}`}
-        className="relative h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden"
-        style={{
-          background: `linear-gradient(180deg, ${
-            activeData.gradientStartColor || "#CFFD59"
-          } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
-        }}
-        initial={{
-          x: containerOffset,
-          y: offsetTop,
-          width: cardWidth,
-          height: cardHeight,
-          borderRadius: 8,
-        }}
-        animate={{
-          x: 0,
-          y: 0,
-          width: "100%",
-          height: "100%",
-          borderRadius: 0,
-        }}
-        transition={{
-          duration: 1.0,
-          ease: [0.25, 0.1, 0.25, 1] as const,
-          delay: 0.05,
-        }}
+        className="relative h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden xs:max-w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] px-6 lg:px-20 xl:px-30 mx-auto"
+        // style={{
+        //   background: `linear-gradient(180deg, ${
+        //     activeData.gradientStartColor || "#CFFD59"
+        //   } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
+        // }}
       >
         {/* Background image */}
         <motion.div
           key={`image-${active}`}
           initial={{
-            x: "300px",
-            y: "300px",
-            width: 338,
-            height: 275,
+            x: containerOffset,
+            y: offsetTop,
+            width: cardWidth,
+            height: cardHeight,
+            borderRadius: 8,
           }}
           animate={{
-            width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
-            height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
             x: 0,
             y: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: width >= 1024 ? 18 : 8,
           }}
           transition={{
             duration: 1.0,
             ease: [0.25, 0.1, 0.25, 1] as const,
+            delay: 0.05,
           }}
+          // initial={{
+          //   x: "300px",
+          //   y: "300px",
+          //   width: 338,
+          //   height: 275,
+          // }}
+          // animate={{
+          //   width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
+          //   height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
+          //   x: 0,
+          //   y: 0,
+          // }}
+          // transition={{
+          //   duration: 1.0,
+          //   ease: [0.25, 0.1, 0.25, 1] as const,
+          // }}
           style={{
-            backgroundImage: `url(${activeData.mainImage.asset.url})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
+            // backgroundImage: `url(${activeData.mainImage.asset.url})`,
+            // backgroundSize: "cover",
+            // backgroundRepeat: "no-repeat",
+            background: `linear-gradient(180deg, ${
+              activeData.gradientStartColor || "#CFFD59"
+            } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
           }}
-          className="absolute top-0 left-[calc(50%-480px)] w-[521px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
+          className="absolute top-0 left-0 w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] rounded-[8px] lg:rounded-[18px] overflow-hidden"
         />
       </motion.div>
 

@@ -31,7 +31,7 @@ export default function PortfolioSlider({
   // Animation constants
   const cardWidth = 138;
   const cardHeight = width > 1024 ? 212 : 179;
-  const gap = width > 1024 ? 40 : 14;
+  const gap = 14;
   const numberSize = 50;
 
   // Calculate positions
@@ -172,7 +172,7 @@ export default function PortfolioSlider({
   const activeData = projectsList[active];
 
   return (
-    <div className="relative h-[631px] lg:h-[687px] overflow-hidden pb-[154px] lg:pb-20">
+    <div className="relative h-[631px] lg:h-[687px] overflow-hidden pb-[154px] lg:pb-[74px]">
       {/* Main card */}
       <motion.div
         key={`bg-${active}`}
@@ -336,7 +336,7 @@ export default function PortfolioSlider({
           <motion.button
             key={`side-card-${cardIndex}`}
             onClick={() => goToSlide(cardIndex)}
-            className="absolute bottom-0 lg:bottom-5 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
+            className="absolute bottom-0 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
             style={{
               background: `linear-gradient(140deg, ${cardData.gradientStartColor || "#CFFD59"} 0%, ${
                 cardData.gradientEndColor || "#121212"
@@ -381,7 +381,8 @@ export default function PortfolioSlider({
 
       {/* Pagination */}
       <motion.div
-        className="absolute left-0 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-0 z-[30] flex items-center"
+        className="absolute left-6 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] 
+        xl:left-[calc((100%-1280px+240px)/2)] bottom-[72px] lg:bottom-0 z-[30] flex items-center"
         initial={{ y: 200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -427,13 +428,16 @@ export default function PortfolioSlider({
         </button>
 
         {/* Progress bar */}
-        <div className="ml-6 z-[60] w-[500px] h-[50px] flex items-center">
-          <div className="w-[500px] h-[3px] bg-white/20 relative cursor-pointer group">
+        <div className="hidden lg:flex ml-5 z-[30] w-[385px] xl:w-[465px] h-[50px] items-center">
+          <div className="w-[385px] xl:w-[465px] h-[1px] bg-white/20 relative cursor-pointer group">
             <motion.div
-              className="h-[3px] bg-[#ecad29]"
+              className="h-[1px] bg-white"
               initial={{ width: 0 }}
               animate={{
-                width: `${500 * (1 / projectsList.length) * (active + 1)}px`,
+                width:
+                  width >= 1280
+                    ? `${465 * (1 / projectsList.length) * (active + 1)}px`
+                    : `${385 * (1 / projectsList.length) * (active + 1)}px`,
               }}
               transition={{
                 duration: 0.8,
@@ -445,30 +449,20 @@ export default function PortfolioSlider({
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className="absolute top-0 h-[50px] w-[83.33px] cursor-pointer hover:bg-white/5 transition-colors duration-300"
-                style={{ left: `${index * (500 / projectsList.length)}px` }}
+                className="absolute top-0 h-[50px] cursor-pointer hover:bg-white/5 transition-colors duration-300 ease-in-out"
+                style={{
+                  left:
+                    width >= 1280
+                      ? `${index * (465 / projectsList.length)}px`
+                      : `${index * (385 / projectsList.length)}px`,
+                  width:
+                    width >= 1280
+                      ? 465 / projectsList.length
+                      : 385 / projectsList.length,
+                }}
               />
             ))}
           </div>
-        </div>
-
-        {/* Slide numbers */}
-        <div className="w-[50px] h-[50px] overflow-hidden z-[60] relative">
-          {projectsList.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className="absolute top-0 left-0 w-[50px] h-[50px] text-white flex items-center justify-center text-[32px] font-bold cursor-pointer hover:bg-white/10 rounded-full transition-all duration-300"
-              initial={{ x: (index + 1) * numberSize }}
-              animate={{ x: index === active ? 0 : (index + 1) * numberSize }}
-              transition={{
-                duration: 0.8,
-                ease: [0.25, 0.1, 0.25, 1] as const,
-              }}
-            >
-              {index + 1}
-            </motion.button>
-          ))}
         </div>
       </motion.div>
     </div>

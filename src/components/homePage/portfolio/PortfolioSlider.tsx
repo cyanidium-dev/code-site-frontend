@@ -29,18 +29,32 @@ export default function PortfolioSlider({
   const gap = 40;
   const numberSize = 50;
 
+  const { innerWidth: width } = window;
+
   // Calculate positions
   const getPositions = () => {
     if (typeof window === "undefined")
-      return { offsetTop: 200, offsetLeft: 700 };
-    const { innerWidth: width } = window;
+      return { offsetTop: 200, containerOffset: 0 };
+
+    let containerOffset = 0;
+
+    if (width >= 1280) {
+      containerOffset = (width - 1280) / 2 + 240 + 500; // xl breakpoint
+    } else if (width >= 1024) {
+      containerOffset = (width - 1024) / 2 + 160 + 460; // lg breakpoint
+    } else if (width >= 768) {
+      containerOffset = (width - 768) / 2 + 48; // md breakpoint
+    } else if (width >= 640) {
+      containerOffset = (width - 640) / 2 + 48; // sm breakpoint
+    }
+
     return {
-      offsetTop: 200, // Not used anymore for preview cards Y positioning
-      offsetLeft: width - 530, // Position of first preview card (original position)
+      offsetTop: 200,
+      containerOffset,
     };
   };
 
-  const { offsetTop, offsetLeft } = getPositions();
+  const { offsetTop, containerOffset } = getPositions();
 
   useEffect(() => {
     if (projectsList && projectsList.length > 0) {
@@ -166,7 +180,7 @@ export default function PortfolioSlider({
           } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
         }}
         initial={{
-          x: offsetLeft,
+          x: containerOffset,
           y: offsetTop,
           width: cardWidth,
           height: cardHeight,
@@ -195,8 +209,8 @@ export default function PortfolioSlider({
             height: 275,
           }}
           animate={{
-            width: 1071,
-            height: 872,
+            width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
+            height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
             x: 0,
             y: 0,
           }}
@@ -343,7 +357,7 @@ export default function PortfolioSlider({
       {/* Slide preview cards */}
       {rest.map((cardIndex, index) => {
         const cardData = projectsList[cardIndex];
-        const x = offsetLeft + index * (cardWidth + gap);
+        const x = containerOffset + index * (cardWidth + gap);
 
         return (
           <motion.button

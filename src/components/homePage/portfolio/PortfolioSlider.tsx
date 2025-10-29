@@ -8,6 +8,7 @@ import Image from "next/image";
 import ArrowButton from "./ArrowButton";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
 import ProjectCategory from "./ProjectCategory";
+import ProjectAdvantages from "./ProjectAdvantages";
 
 interface PortfolioSliderProps {
   projectsList: Project[];
@@ -221,8 +222,8 @@ export default function PortfolioSlider({
               height: 275,
             }}
             animate={{
-              width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
-              height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
+              width: width >= 1024 ? 1071 : 521,
+              height: width >= 1024 ? 872 : 424,
               x: 0,
               y: 0,
             }}
@@ -236,7 +237,7 @@ export default function PortfolioSlider({
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-            className="absolute top-0 left-[calc(50%-480px)] w-[521px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
+            className="absolute top-[71px] lg:top-0 left-[calc(50%-247px)] lg:left-[calc(50%-480px)] w-[521px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
           />
         </motion.div>
       </motion.div>
@@ -262,8 +263,13 @@ export default function PortfolioSlider({
                 project={activeData}
                 className="hidden lg:block"
               />
+              <ProjectAdvantages
+                advantages={activeData.advantages}
+                className="lg:hidden"
+              />
               <motion.div
-                className=""
+                className="relative p-5 lg:p-0 rounded-[10px] lg:rounded-none bg-white/6 lg:bg-transparent shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] 
+                lg:shadow-none backdrop-blur-[18.95px] lg:backdrop-blur-none"
                 initial={{ y: 60 }}
                 animate={{ y: 0 }}
                 transition={{
@@ -272,14 +278,32 @@ export default function PortfolioSlider({
                   delay: 0.35,
                 }}
               >
-                <ArrowButton slug={activeData.slug} className="mb-8" />
+                <div
+                  className="lg:hidden absolute inset-0 rounded-[10px] pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(175.34deg, #FF76C1 3.91%, #6A8FFF 123.62%",
+                    padding: "1px",
+                    WebkitMask:
+                      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                    WebkitMaskComposite: "xor",
+                    maskComposite: "exclude",
+                  }}
+                />
+                <ArrowButton
+                  slug={activeData.slug}
+                  className="absolute -top-2 -right-2 lg:static mb-8"
+                />
                 <h3 className="lg:max-w-[291px] mb-2 lg:mb-5 font-actay text-[12px] lg:text-[24px] font-bold leading-[120%] uppercase">
                   {activeData.portfolioTitle}
                 </h3>
                 <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%]">
                   {activeData.portfolioDescription}
                 </p>
-                <ProjectCategory project={activeData} className="lg:hidden mt-3" />
+                <ProjectCategory
+                  project={activeData}
+                  className="lg:hidden mt-3"
+                />
               </motion.div>
             </motion.div>
 
@@ -294,42 +318,9 @@ export default function PortfolioSlider({
                 ease: [0.25, 0.1, 0.25, 1] as const,
                 delay: 0.4,
               }}
+              className="hidden lg:block"
             >
-              <motion.div
-                className="h-full"
-                initial={{ y: 60 }}
-                animate={{ y: 0 }}
-                transition={{
-                  duration: 0.4,
-                  ease: [0.25, 0.1, 0.25, 1] as const,
-                  delay: 0.35,
-                }}
-              >
-                <ul className="flex flex-col gap-2 items-end">
-                  {activeData.advantages.map((advantage, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-center gap-2 px-5 py-2.5 w-fit h-[45px] rounded-full overflow-hidden bg-dark/24 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] backdrop-blur-[18.95px]"
-                    >
-                      <div
-                        className="absolute inset-0 rounded-full pointer-events-none"
-                        style={{
-                          background:
-                            "linear-gradient(175.34deg, #FF76C1 3.91%, #6A8FFF 123.62%",
-                          padding: "1px",
-                          WebkitMask:
-                            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                          WebkitMaskComposite: "xor",
-                          maskComposite: "exclude",
-                        }}
-                      />
-                      <p className="text-[14px] font-light leading-[130%]">
-                        {advantage}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+              <ProjectAdvantages advantages={activeData.advantages} />
             </motion.div>
           </div>
         </AnimatePresence>

@@ -17,7 +17,7 @@ export default function ArrowButton({
         type="button"
         aria-label="icon button"
         className={twMerge(
-          `group cursor-pointer flex items-center justify-center size-[66px] lg:size-[50px] p-[15px] rounded-full bg-white active:scale-[95%] transition duration-300 ease-out will-change-transform`,
+          `group cursor-pointer flex items-center justify-center size-10 lg:size-[50px] p-[13px] lg:p-[15px] rounded-full bg-white active:scale-[95%] transition duration-300 ease-out will-change-transform`,
           className
         )}
       >

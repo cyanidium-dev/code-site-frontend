@@ -421,35 +421,7 @@ export default function PortfolioSlider({
           <ArrowIcon className="rotate-[-135deg] text-white group-active:scale-[95%] group-[focus-visible]:-translate-x-0.5 xl:group-hover:-translate-x-0.5 transition duration-300 ease-out will-change-transform" />
         </button>
 
-        {/* <button
-          onClick={() => {
-            stopLoop();
-            setIsMovingBackward(true);
-            stepBack();
-            setTimeout(() => {
-              startLoop();
-              setIsMovingBackward(false);
-            }, 300);
-          }}
-          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[30] xl:hover:border-white/60 xl:hover:bg-white/10 transition duration-300 ease-in-out cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 stroke-2 text-white/60"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-        </button> */}
-
         {/* Right arrow */}
-
         <button
           onClick={() => {
             stopLoop();
@@ -466,32 +438,6 @@ export default function PortfolioSlider({
         >
           <ArrowIcon className="rotate-[45deg] text-white group-active:scale-[95%] group-[focus-visible]:translate-x-0.5 xl:group-hover:translate-x-0.5 transition duration-300 ease-out will-change-transform" />
         </button>
-        {/* <button
-          onClick={() => {
-            stopLoop();
-            setIsMovingBackward(false);
-            step();
-            setTimeout(() => {
-              startLoop();
-              setIsMovingBackward(false);
-            }, 300);
-          }}
-          className="w-[50px] h-[50px] rounded-full border-2 border-white/30 flex items-center justify-center z-[60] ml-3 hover:border-white/60 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 stroke-2 text-white/60"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-        </button> */}
 
         {/* Progress bar */}
         <div className="ml-6 z-[60] w-[500px] h-[50px] flex items-center">

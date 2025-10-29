@@ -23,13 +23,13 @@ export default function PortfolioSlider({
 
   const loopIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  const { innerWidth: width } = window;
+
   // Animation constants
   const cardWidth = 138;
-  const cardHeight = 212;
-  const gap = 40;
+  const cardHeight = width > 1024 ? 212 : 179;
+  const gap = width > 1024 ? 40 : 14;
   const numberSize = 50;
-
-  const { innerWidth: width } = window;
 
   // Calculate positions
   const getPositions = () => {
@@ -43,9 +43,11 @@ export default function PortfolioSlider({
     } else if (width >= 1024) {
       containerOffset = (width - 1024) / 2 + 160 + 460; // lg breakpoint
     } else if (width >= 768) {
-      containerOffset = (width - 768) / 2 + 48; // md breakpoint
+      containerOffset = (width - 768) / 2 + 48 + 380; // md breakpoint
     } else if (width >= 640) {
-      containerOffset = (width - 640) / 2 + 48; // sm breakpoint
+      containerOffset = (width - 640) / 2 + 48 + 220; // sm breakpoint
+    } else {
+      containerOffset = width / 2 + 48 - 80;
     }
 
     return {
@@ -173,18 +175,19 @@ export default function PortfolioSlider({
       {/* Main card */}
       <motion.div
         key={`bg-${active}`}
-        className="relative h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden xs:max-w-full sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] px-6 lg:px-20 xl:px-30 mx-auto"
-        // style={{
-        //   background: `linear-gradient(180deg, ${
-        //     activeData.gradientStartColor || "#CFFD59"
-        //   } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
-        // }}
+        className="relative h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden max-w-[calc(100%-48px)] sm:max-w-[592px] md:max-w-[720px] 
+        lg:max-w-[864px] xl:max-w-[1040px] px-6 lg:px-20 xl:px-30 mx-auto"
       >
-        {/* Background image */}
+        {/* Background image + gradient in one layer */}
         <motion.div
           key={`image-${active}`}
           initial={{
-            x: containerOffset,
+            x:
+              width >= 1280
+                ? containerOffset - 240
+                : width >= 1024
+                  ? containerOffset - 160
+                  : containerOffset - 48,
             y: offsetTop,
             width: cardWidth,
             height: cardHeight,
@@ -202,38 +205,47 @@ export default function PortfolioSlider({
             ease: [0.25, 0.1, 0.25, 1] as const,
             delay: 0.05,
           }}
-          // initial={{
-          //   x: "300px",
-          //   y: "300px",
-          //   width: 338,
-          //   height: 275,
-          // }}
-          // animate={{
-          //   width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
-          //   height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
-          //   x: 0,
-          //   y: 0,
-          // }}
-          // transition={{
-          //   duration: 1.0,
-          //   ease: [0.25, 0.1, 0.25, 1] as const,
-          // }}
           style={{
-            // backgroundImage: `url(${activeData.mainImage.asset.url})`,
-            // backgroundSize: "cover",
-            // backgroundRepeat: "no-repeat",
-            background: `linear-gradient(180deg, ${
+            background: `linear-gradient(140deg, ${
               activeData.gradientStartColor || "#CFFD59"
             } 0%, ${activeData.gradientEndColor || "#121212"} 100%)`,
           }}
           className="absolute top-0 left-0 w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] rounded-[8px] lg:rounded-[18px] overflow-hidden"
-        />
+        >
+          {/* Background image with specific dimensions */}
+          <motion.div
+            key={`image-${active}`}
+            initial={{
+              x: "300px",
+              y: "300px",
+              width: 338,
+              height: 275,
+            }}
+            animate={{
+              width: width >= 1024 ? 1071 : width >= 1024 ? 940 : 521,
+              height: width >= 1024 ? 872 : width >= 1024 ? 765 : 424,
+              x: 0,
+              y: 0,
+            }}
+            transition={{
+              duration: 1.0,
+              ease: [0.25, 0.1, 0.25, 1] as const,
+            }}
+            style={{
+              backgroundImage: `url(${activeData.mainImage.asset.url})`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+            className="absolute top-0 left-[calc(50%-480px)] w-[521px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
+          />
+        </motion.div>
       </motion.div>
 
       {/* Main card texts */}
       <Container className="absolute top-0 left-0 sm:left-[calc((100%-640px)/2)] md:left-[calc((100%-768px)/2)] lg:left-[calc((100%-1024px)/2)] xl:left-[calc((100%-1280px)/2)] h-[477px] lg:h-[607px] w-full">
         <AnimatePresence mode="wait">
-          <div className="absolute z-[22] flex justify-between w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full py-[50px]">
+          <div className="absolute z-[22] flex justify-between w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full p-[50px]">
             {/* Left side */}
             <motion.div
               key={`details-${detailsEven ? "even" : "odd"}`}
@@ -366,9 +378,9 @@ export default function PortfolioSlider({
           <motion.button
             key={`side-card-${cardIndex}`}
             onClick={() => goToSlide(cardIndex)}
-            className="absolute bottom-[154px] lg:bottom-5 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
+            className="absolute bottom-0 lg:bottom-5 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
             style={{
-              background: `linear-gradient(180deg, ${cardData.gradientStartColor || "#CFFD59"} 0%, ${
+              background: `linear-gradient(140deg, ${cardData.gradientStartColor || "#CFFD59"} 0%, ${
                 cardData.gradientEndColor || "#121212"
               } 100%)`,
             }}

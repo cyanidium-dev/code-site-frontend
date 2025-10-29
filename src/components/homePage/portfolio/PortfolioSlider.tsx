@@ -69,9 +69,9 @@ export default function PortfolioSlider({
   useEffect(() => {
     const init = () => {
       setIsInitialized(true);
-      setTimeout(() => {
-        startLoop();
-      }, 1000);
+      // setTimeout(() => {
+      //   startLoop();
+      // }, 1000);
     };
 
     init();
@@ -168,8 +168,6 @@ export default function PortfolioSlider({
   const [active, ...rest] = order;
   const activeData = projectsList[active];
 
-  console.log(activeData);
-
   return (
     <div className="relative h-[631px] lg:h-[687px] overflow-hidden pb-[154px] lg:pb-20">
       {/* Main card */}
@@ -245,7 +243,7 @@ export default function PortfolioSlider({
       {/* Main card texts */}
       <Container className="absolute top-0 left-0 sm:left-[calc((100%-640px)/2)] md:left-[calc((100%-768px)/2)] lg:left-[calc((100%-1024px)/2)] xl:left-[calc((100%-1280px)/2)] h-[477px] lg:h-[607px] w-full">
         <AnimatePresence mode="wait">
-          <div className="absolute z-[22] flex justify-between w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full p-[50px]">
+          <div className="absolute z-[22] flex justify-between w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full p-[14px] lg:p-[50px]">
             {/* Left side */}
             <motion.div
               key={`details-${detailsEven ? "even" : "odd"}`}
@@ -308,10 +306,10 @@ export default function PortfolioSlider({
                 }}
               >
                 <ArrowButton slug={activeData.slug} className="mb-8" />
-                <h3 className="lg:max-w-[291px] lg:mb-5 font-actay lg:text-[24px] font-bold leading-[120%] uppercase">
+                <h3 className="lg:max-w-[291px] mb-2 lg:mb-5 font-actay text-[12px] lg:text-[24px] font-bold leading-[120%] uppercase">
                   {activeData.portfolioTitle}
                 </h3>
-                <p className="lg:max-w-[252px] text-[12px] font-light leading-[120%]">
+                <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%]">
                   {activeData.portfolioDescription}
                 </p>
               </motion.div>

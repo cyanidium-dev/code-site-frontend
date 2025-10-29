@@ -15,15 +15,17 @@ export default function PortfolioDecorations() {
   });
 
   // Швидкий параллакс (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
+
+  const middleY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   // Повільний параллакс (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+  const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
-        //  style={{ y: fastY }}
+        style={{ y: slowY }}
         className="lg:hidden absolute bottom-[150px] left-[-15px] w-[625px] h-auto aspect-[625/79]"
       >
         <motion.div
@@ -44,7 +46,7 @@ export default function PortfolioDecorations() {
       </motion.div>
 
       <motion.div
-        //  style={{ y: fastY }}
+        style={{ y: middleY }}
         className="absolute -z-10 top-[53px] lg:top-19 left-[-338px] lg:left-auto lg:right-[-148px] w-[650px] lg:w-[763px] h-auto aspect-[1817/1770] bg-black"
       >
         <motion.div
@@ -66,7 +68,7 @@ export default function PortfolioDecorations() {
       </motion.div>
 
       <motion.div
-        //  style={{ y: fastY }}
+        style={{ y: slowY }}
         className="hidden lg:block absolute -z-10 top-[170px] left-[-56px] w-[266px] h-auto aspect-[266/303]"
       >
         <motion.div
@@ -87,7 +89,7 @@ export default function PortfolioDecorations() {
       </motion.div>
 
       <motion.div
-        //  style={{ y: fastY }}
+        style={{ y: fastY }}
         className="hidden lg:block absolute -z-10 top-[308px] left-[-119px] w-[496px] h-auto aspect-[266/303]"
       >
         <motion.div

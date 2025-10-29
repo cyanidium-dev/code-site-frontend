@@ -6,6 +6,8 @@ import { Link } from "@/i18n/navigation";
 import { Project } from "@/types/project";
 import { useTranslations } from "next-intl";
 import PortfolioDecorations from "./PortfolioDecorations";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 interface PortfolioProps {
   projectsList: Project[];
@@ -29,18 +31,35 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
           >
             {t("title")}
           </SectionTitle>
-          <Link href="/portfolio">
-            <MainButton className="hidden lg:flex w-[292px] h-[58px] lg:h-[45px]">
-              {t("seeProjects")}
-            </MainButton>
-          </Link>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          >
+            <Link href="/portfolio">
+              <MainButton className="hidden lg:flex w-[292px] h-[58px] lg:h-[45px]">
+                {t("seeProjects")}
+              </MainButton>
+            </Link>
+          </motion.div>
         </div>
       </Container>
       <PortfolioSlider projectsList={projectsList} />
       <Container className="lg:hidden mt-8">
-        <Link href="/portfolio">
-          <MainButton className="">{t("seeProjects")}</MainButton>
-        </Link>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+        >
+          {" "}
+          <Link href="/portfolio">
+            <MainButton className="">{t("seeProjects")}</MainButton>
+          </Link>
+        </motion.div>
       </Container>
     </section>
   );

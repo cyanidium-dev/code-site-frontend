@@ -5,6 +5,7 @@ import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { Link } from "@/i18n/navigation";
 import { Project } from "@/types/project";
 import { useTranslations } from "next-intl";
+import PortfolioDecorations from "./PortfolioDecorations";
 
 interface PortfolioProps {
   projectsList: Project[];
@@ -18,8 +19,9 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
   if (!projectsList || !projectsList?.length) return null;
 
   return (
-    <section className="relative z-20 pt-[190px]">
-      <Container>
+    <section className="relative z-20 lg:pt-[190px] mt-[-108px] lg:mt-0">
+      <PortfolioDecorations />
+      <Container className="relative">
         <div className="lg:flex items-end justify-between mb-6 lg:mb-8">
           <SectionTitle
             variant="pink"

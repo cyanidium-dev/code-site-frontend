@@ -638,6 +638,8 @@ export default function SiteTypesDecorations() {
         supports-[backdrop-filter]:blur-[55px] md:supports-[backdrop-filter]:blur-[41px] will-change-transform"
         />
       </div>
+
+      <div className="lg:hidden absolute z-20 bottom-[-178px] left-[calc(50%-420px)] w-[233%] h-[278px] rounded-full bg-black supports-[backdrop-filter]:blur-[24.89px] will-change-transform" />
     </div>
   );
 }

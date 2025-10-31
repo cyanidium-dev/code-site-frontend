@@ -98,7 +98,7 @@ export default function Pagination<T>({
           className={`enabled:cursor-pointer flex justify-center items-center p-[10.5px] xl:p-[15px] size-[52px] xl:size-[66px] rounded-full 
           shadow-social transition duration-300 ease-in-out border-[1.5px]
           enabled:hover:brightness-125 enabled:active:scale-95 enabled:focus-visible:brightness-125
-          ${page === 1 ? "bg-black text-white border-transparent" : "bg-main text-white border-main"}`}
+          ${page === 1 ? " text-white border-transparent" : "bg-main text-white border-main"}`}
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={page === 1}
         >
@@ -126,7 +126,7 @@ export default function Pagination<T>({
            shadow-social enabled:hover:brightness-125 enabled:active:scale-95 enabled:focus-visible:brightness-125
           ${
             currentPage === totalPages
-              ? "text-white bg-black border-transparent"
+              ? "text-white border-transparent"
               : "bg-main text-white border-main"
           }`}
           onClick={() => handlePageChange(currentPage + 1)}

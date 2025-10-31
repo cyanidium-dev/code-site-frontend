@@ -17,6 +17,8 @@ export default function HeroDecorations() {
   // Швидкий параллакс (рухається швидше)
   const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
 
+  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 0]);
+
   // Повільний параллакс (рухається повільніше)
   const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
@@ -24,7 +26,7 @@ export default function HeroDecorations() {
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
         style={{ y: slowY }}
-        className="absolute top-[344px] lg:top-15 left-[calc(50%-177px)] lg:left-[calc(50%-97px)] w-[353px] h-auto aspect-[353/530]"
+        className="absolute top-[344px] lg:top-15 left-[calc(50%-177px)] xl:left-[calc(50%-97px)] w-[353px] h-auto aspect-[353/530]"
       >
         <motion.div
           initial="hidden"
@@ -86,7 +88,7 @@ export default function HeroDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: slowY }}
+        style={{ y: middleY }}
         className="absolute -z-10 top-[385px] lg:top-[318px] right-[calc(50%-213px)] lg:right-auto lg:left-[calc(50%-625px)] w-[255px] lg:w-[365px] h-auto aspect-[365/283]"
       >
         <motion.div
@@ -94,7 +96,7 @@ export default function HeroDecorations() {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.7, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/dices.png"

@@ -17,15 +17,13 @@ export default function HeroDecorations() {
   // Швидкий параллакс (рухається швидше)
   const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
 
-  const middleY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-
   // Повільний параллакс (рухається повільніше)
   const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
-        //    style={{ y: slowY }}
+        style={{ y: slowY }}
         className="absolute top-[344px] lg:top-15 left-[calc(50%-177px)] lg:left-[calc(50%-97px)] w-[353px] h-auto aspect-[353/530]"
       >
         <motion.div
@@ -33,7 +31,7 @@ export default function HeroDecorations() {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
             src="/images/blogPage/hero/girl.png"
@@ -46,7 +44,7 @@ export default function HeroDecorations() {
       </motion.div>
 
       <motion.div
-        //    style={{ y: slowY }}
+        style={{ y: fastY }}
         className="absolute top-[115px] lg:top-[101px] right-[calc(50%-180px)] lg:right-[calc(50%-701px)] w-[164px] lg:w-[244px] h-auto aspect-[244/235]"
       >
         <motion.div
@@ -54,7 +52,7 @@ export default function HeroDecorations() {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/drops-blue.svg"
@@ -67,7 +65,7 @@ export default function HeroDecorations() {
       </motion.div>
 
       <motion.div
-        //    style={{ y: slowY }}
+        style={{ y: fastY }}
         className="hidden lg:block absolute z-20 top-[328px] left-[calc(50%-290px)] w-[224px] h-auto aspect-[224/252]"
       >
         <motion.div
@@ -75,7 +73,7 @@ export default function HeroDecorations() {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/drops-pink.svg"
@@ -88,7 +86,7 @@ export default function HeroDecorations() {
       </motion.div>
 
       <motion.div
-        //    style={{ y: slowY }}
+        style={{ y: slowY }}
         className="absolute -z-10 top-[385px] lg:top-[318px] right-[calc(50%-213px)] lg:right-auto lg:left-[calc(50%-625px)] w-[255px] lg:w-[365px] h-auto aspect-[365/283]"
       >
         <motion.div
@@ -96,7 +94,7 @@ export default function HeroDecorations() {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: 0.7, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/dices.png"

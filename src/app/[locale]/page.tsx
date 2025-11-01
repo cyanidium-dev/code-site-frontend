@@ -12,6 +12,8 @@ import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { allProjectsQuery, allReviewsQuery } from "@/lib/queries";
 import Portfolio from "@/components/homePage/portfolio/Portfolio";
+import { Suspense } from "react";
+import Loader from "@/components/shared/loader/Loader";
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -34,8 +36,10 @@ export default async function HomePage({ params }: HomePageProps) {
       <Founder />
       <WhyUs />
       <SiteTypes />
-      <Portfolio projectsList={projectsList} />
-      <Reviews reviewsList={reviewsList} />
+      <Suspense fallback={<Loader />}>
+        <Portfolio projectsList={projectsList} />
+        <Reviews reviewsList={reviewsList} />
+      </Suspense>
       <Partners />
       <FAQ />
       <CTA />

@@ -17,7 +17,7 @@ export default function HeroDecorations() {
   // Швидкий параллакс (рухається швидше)
   const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
 
-  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 0]);
+  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
 
   // Повільний параллакс (рухається повільніше)
   const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
@@ -112,7 +112,7 @@ export default function HeroDecorations() {
       <div className="lg:hidden absolute -z-20 top-[-51px] left-[calc(50%-400px)] w-[697px] h-[392px] rounded-full bg-black supports-[backdrop-filter]:blur-[176.7px] will-change-transform" />
       <div
         className="absolute z-10 bottom-[-168px] lg:bottom-[-330px] left-[calc(-53%)] lg:left-[calc(50%-1019px)] w-[194%] lg:w-[2564px] h-[372px]
-       lg:h-[699px] rounded-full bg-black supports-[backdrop-filter]:blur-[90px] lg:supports-[backdrop-filter]:blur-[106px] will-change-transform"
+       lg:h-[699px] rounded-full bg-black supports-[backdrop-filter]:blur-[90px]  lg:supports-[backdrop-filter]:blur-[106px] will-change-transform"
       />
     </div>
   );

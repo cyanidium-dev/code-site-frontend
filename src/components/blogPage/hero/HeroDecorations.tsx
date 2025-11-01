@@ -17,7 +17,7 @@ export default function HeroDecorations() {
   // Швидкий параллакс (рухається швидше)
   const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
 
-  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 0]);
+  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
 
   // Повільний параллакс (рухається повільніше)
   const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);

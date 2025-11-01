@@ -21,7 +21,7 @@ export default function ArticleCard({ blog }: ArticleCardProps) {
     <motion.li
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
-      className="sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden"
+      className="sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] bg-black/26 backdrop-blur-[10px] overflow-hidden"
     >
       <Link href={`/blog/${slug}`}>
         <div className="absolute z-10 inset-0 shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />

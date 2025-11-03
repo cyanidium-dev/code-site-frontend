@@ -1,7 +1,7 @@
 import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
-import FaqList from "./FaqList";
+import FaqList from "../../shared/faqList/FaqList";
 import { TELEGRAM_LINK, EMAIL } from "@/constants/constants";
 import FAQDecorations from "./FAQDecorations";
 import * as motion from "motion/react-client";

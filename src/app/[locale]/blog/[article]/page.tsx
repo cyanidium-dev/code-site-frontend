@@ -4,6 +4,7 @@ import { singlePostQuery } from "@/lib/queries";
 import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/articlePage/hero/Hero";
+import FAQ from "@/components/articlePage/faq/FAQ";
 
 interface ArticlePageProps {
   params: Promise<{ article: string; locale: Locale }>;
@@ -24,6 +25,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <Suspense fallback={<Loader />}>
         <Hero article={currentArticle} />
       </Suspense>
+      <FAQ />
     </>
   );
 }

@@ -132,3 +132,33 @@ export const allBlogsQuery = `
     "createdAt": _createdAt
   }
 `;
+
+export const singlePostQuery = `
+  *[_type == "blog" && slug.current == $slug][0] {
+    "id": _id,
+    "name": name[$lang],
+    "description": description[$lang],
+    "slug": slug.current,
+    "previewImage": {
+      "url": previewImage.asset->url,
+      "alt": previewImage.asset->altText
+    },
+    "mainImageMobile": {
+      "url": mainImageMobile.asset->url,
+      "alt": mainImageMobile.asset->altText
+    },
+    "mainImageDesktop": {
+      "url": mainImageDesktop.asset->url,
+      "alt": mainImageDesktop.asset->altText
+    },
+    "content": content[$lang],
+    "seo": {
+      "title": seoTitle[$lang],
+      "subtitle": seoSubtitle[$lang],
+      "keywords": seoKeywords[$lang]
+    },
+    "schemaOrg": schemaOrg.asset->url,
+    "order": order,
+    "createdAt": _createdAt
+  }
+`;

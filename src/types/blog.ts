@@ -48,7 +48,7 @@ export interface Blog {
   previewImage?: { url: string; alt?: string | null } | null;
   mainImageMobile?: { url: string; alt?: string | null } | null;
   mainImageDesktop?: { url: string; alt?: string | null } | null;
-  content?: BlogContent | null;
+  content?: BlogContent;
   seo?: {
     title?: string | null;
     subtitle?: string | null;

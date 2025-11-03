@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@portabletext/react": "^4.0.3",
     "@sanity/image-url": "^1.2.0",
     "axios": "^1.12.2",
     "formik": "^2.4.6",

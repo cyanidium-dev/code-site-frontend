@@ -20,7 +20,7 @@ export default function Hero({ article }: HeroProps) {
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
         variants={fadeInAnimation({})}
-        className="sm:hidden absolute -z-10 top-0 left-0 w-full h-full"
+        className="md:hidden absolute -z-10 top-0 left-0 w-full h-full"
       >
         <Image
           src={mainImageMobile?.url || ""}
@@ -37,7 +37,7 @@ export default function Hero({ article }: HeroProps) {
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
         variants={fadeInAnimation({})}
-        className="hidden sm:block absolute -z-10 top-0 left-0 w-full h-full"
+        className="hidden md:block absolute -z-10 top-0 left-0 w-full h-full"
       >
         <Image
           src={mainImageDesktop?.url || ""}
@@ -49,13 +49,49 @@ export default function Hero({ article }: HeroProps) {
         />
       </motion.div>
       <Container className="py-[154px] lg:pt-[171px] lg:pb-[78px]">
-        <h1 className="max-w-[497px] mb-5 font-actay text-[32px] lg:text-[40px] font-bold leading-[107%]">
+        <motion.h1
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({
+            x: -30,
+            y: -30,
+            delay: 0.4,
+            scale: 0.85,
+          })}
+          className="max-w-[497px] mb-5 font-actay text-[32px] lg:text-[40px] font-bold leading-[107%]"
+        >
           {name}
-        </h1>
-        <p className="max-w-[573px] mb-8 text-[14px] font-light leading-[120%]">
+        </motion.h1>
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({
+            x: -60,
+            y: 30,
+            delay: 0.8,
+            scale: 0.85,
+          })}
+          className="max-w-[573px] mb-8 text-[14px] font-light leading-[120%]"
+        >
           {description}
-        </p>
-        <EstimatedReadingTime post={article} />
+        </motion.p>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({
+            delay: 1.2,
+            x: -30,
+            scale: 0.85,
+          })}
+        >
+          <EstimatedReadingTime post={article} />
+        </motion.div>
       </Container>
     </section>
   );

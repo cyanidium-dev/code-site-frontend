@@ -319,4 +319,17 @@
       box-shadow: 0 0 0 10px inset;
     }
   }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .rotation {
+    animation: rotation 1600ms linear infinite;
+  }
 }

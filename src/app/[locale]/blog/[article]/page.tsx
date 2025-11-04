@@ -67,6 +67,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!currentArticle) return null;
 
+  const { schemaOrg } = currentArticle;
+
+  let schemaData = null;
+
+  if (schemaOrg) {
+    const res = await fetch(schemaOrg);
+    schemaData = await res.json();
+  }
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -76,13 +85,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <FAQ />
       <CTA />
 
-      {currentArticle?.schemaOrg ? (
+      {schemaData && (
         <Script
           id="schema-org"
           type="application/ld+json"
-          src={currentArticle?.schemaOrg}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaData),
+          }}
         />
-      ) : null}
+      )}
     </>
   );
 }

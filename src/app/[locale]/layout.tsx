@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import "./globals.css";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
+import { getLocale } from "next-intl/server";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -29,7 +30,8 @@ const parkia = localFont({
 });
 
 export async function generateMetadata() {
-  return await getDefaultMetadata();
+  const locale = await getLocale();
+  return await getDefaultMetadata(locale);
 }
 
 export default async function RootLayout({

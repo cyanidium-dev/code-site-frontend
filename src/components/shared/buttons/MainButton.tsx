@@ -31,7 +31,7 @@ export default function MainButton({
         font-actay font-bold leading-none uppercase disabled:text-white/60 text-white
       enabled:active:scale-[98%] will-change-transform transition duration-300 ease-in-out ${
         variant === "pink"
-          ? "bg-main-light disabled:bg-main-light/60"
+          ? "bg-main-light"
           : variant === "blue"
             ? "bg-blue disabled:bg-blue/60"
             : variant === "gradient"

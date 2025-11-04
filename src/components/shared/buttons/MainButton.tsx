@@ -29,14 +29,14 @@ export default function MainButton({
       className={twMerge(
         `group relative overflow-hidden enabled:cursor-pointer flex items-center justify-center w-full h-[45px] px-3 rounded-full text-[12px] 
         font-actay font-bold leading-none uppercase disabled:text-white/60 text-white
-      active:scale-[98%] will-change-transform transition duration-300 ease-in-out ${
+      enabled:active:scale-[98%] will-change-transform transition duration-300 ease-in-out ${
         variant === "pink"
           ? "bg-main-light disabled:bg-main-light/60"
           : variant === "blue"
-          ? "bg-blue disabled:bg-blue/60"
-          : variant === "gradient"
-          ? "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:opacity-50"
-          : "bg-white disabled:bg-white/60 text-black"
+            ? "bg-blue disabled:bg-blue/60"
+            : variant === "gradient"
+              ? "bg-[linear-gradient(90deg,#0899FC_0%,#FF49B8_116.67%)] disabled:opacity-50"
+              : "bg-white disabled:bg-white/60 text-black"
       }`,
         className
       )}

@@ -1,7 +1,7 @@
 import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
-import CallBackApplication from "./CallBackApplication";
+import CallBackApplication from "../../shared/callBackApplication/CallBackApplication";
 import CTADecorations from "./CTADecorations";
 
 export default function CTA() {

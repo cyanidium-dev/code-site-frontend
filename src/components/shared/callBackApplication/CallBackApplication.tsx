@@ -3,6 +3,7 @@
 import CallBackForm from "@/components/shared/forms/CallBackForm";
 import { useState } from "react";
 import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 import { useTranslations } from "next-intl";
 import NotificationModal from "@/components/shared/modals/NotificationModal";
 
@@ -21,14 +22,23 @@ export default function CallBackApplication() {
   const [isNotificationShown, setIsNotificationShown] = useState(false);
 
   return (
-    <div className="md:max-w-[328px]">
-      <CallBackForm
-        setIsError={setIsError}
-        setIsNotificationShown={setIsNotificationShown}
-        buttonVariant="pink"
-        buttonText={t("articlePage.cta.leaveApplication")}
-        inputVariant="gradient"
-      />
+    <>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        exit="exit"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={fadeInAnimation({ delay: 0.8, scale: 0.85 })}
+        className="md:max-w-[328px]"
+      >
+        <CallBackForm
+          setIsError={setIsError}
+          setIsNotificationShown={setIsNotificationShown}
+          buttonVariant="pink"
+          buttonText={t("articlePage.cta.leaveApplication")}
+          inputVariant="gradient"
+        />
+      </motion.div>
       <NotificationModal
         title={isError ? t("modals.errorTitle") : t("modals.successTitle")}
         description={
@@ -39,6 +49,6 @@ export default function CallBackApplication() {
         isPopUpShown={isNotificationShown}
         setIsPopUpShown={setIsNotificationShown}
       />
-    </div>
+    </>
   );
 }

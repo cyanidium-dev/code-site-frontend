@@ -1,4 +1,9 @@
-import { Link } from "@/i18n/navigation";
+import {
+  INSTAGRAM_LINK,
+  LINKEDIN_LINK,
+  TELEGRAM_LINK,
+  TIKTOK_LINK,
+} from "@/constants/constants";
 import InstagramIcon from "../icons/InstagramIcon";
 import LinkedinIcon from "../icons/LinkedinIcon";
 import TelegramIcon from "../icons/TelegramIcon";
@@ -6,10 +11,10 @@ import TiktokIcon from "../icons/TiktokIcon";
 
 export default function Socials() {
   const socialsList = [
-    { icon: <LinkedinIcon />, url: "/" },
-    { icon: <InstagramIcon />, url: "/" },
-    { icon: <TelegramIcon />, url: "/" },
-    { icon: <TiktokIcon />, url: "/" },
+    { icon: <LinkedinIcon />, url: LINKEDIN_LINK },
+    { icon: <InstagramIcon />, url: INSTAGRAM_LINK },
+    { icon: <TelegramIcon />, url: TELEGRAM_LINK },
+    { icon: <TiktokIcon />, url: TIKTOK_LINK },
   ];
 
   return (

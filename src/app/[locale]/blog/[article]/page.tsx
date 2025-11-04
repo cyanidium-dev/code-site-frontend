@@ -9,6 +9,8 @@ import FAQ from "@/components/articlePage/faq/FAQ";
 import Content from "@/components/articlePage/content/Content";
 import CTA from "@/components/articlePage/cta/CTA";
 import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
+import { Blog } from "@/types/blog";
+import Script from "next/script";
 
 interface ArticlePageProps {
   params: Promise<{ article: string; locale: Locale }>;
@@ -19,7 +21,7 @@ export async function generateMetadata({
 }: ArticlePageProps): Promise<Metadata> {
   const { article, locale } = await params;
 
-  const currentPost = await fetchSanityData(singlePostQuery, {
+  const currentPost: Blog = await fetchSanityData(singlePostQuery, {
     slug: article,
     lang: locale,
   });
@@ -73,6 +75,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </Suspense>
       <FAQ />
       <CTA />
+
+      {currentArticle?.schemaOrg ? (
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          src={currentArticle?.schemaOrg}
+        />
+      ) : null}
     </>
   );
 }

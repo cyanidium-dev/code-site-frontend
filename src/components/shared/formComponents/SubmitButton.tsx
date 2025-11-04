@@ -7,6 +7,7 @@ interface SubmitButtonProps {
   isLoading: boolean;
   text: string;
   className?: string;
+  variant?: "pink" | "blue" | "gradient" | "white";
 }
 
 export default function SubmitButton({
@@ -15,13 +16,14 @@ export default function SubmitButton({
   isLoading,
   text,
   className = "",
+  variant = "gradient",
 }: SubmitButtonProps) {
   const t = useTranslations("forms");
 
   return (
     <MainButton
       type="submit"
-      variant="gradient"
+      variant={variant}
       disabled={!(dirty && isValid) || isLoading}
       isLoading={isLoading}
       className={className}

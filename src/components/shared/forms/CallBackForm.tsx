@@ -17,8 +17,11 @@ export interface ValuesCallBackFormType {
 interface CallBackFormProps {
   setIsError: Dispatch<SetStateAction<boolean>>;
   setIsNotificationShown: Dispatch<SetStateAction<boolean>>;
-  setIsPopUpShown: Dispatch<SetStateAction<boolean>>;
+  setIsPopUpShown?: Dispatch<SetStateAction<boolean>>;
   className?: string;
+  buttonVariant?: "pink" | "blue" | "gradient" | "white";
+  buttonText?: string;
+  inputVariant?: "black" | "gradient";
 }
 
 export default function CallBackForm({
@@ -26,6 +29,9 @@ export default function CallBackForm({
   setIsNotificationShown,
   setIsPopUpShown,
   className = "",
+  buttonVariant = "gradient",
+  buttonText,
+  inputVariant,
 }: CallBackFormProps) {
   const t = useTranslations("forms");
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +63,9 @@ export default function CallBackForm({
           "Content-Type": "application/json",
         },
       });
-      setIsPopUpShown(false);
+      if (setIsPopUpShown) {
+        setIsPopUpShown(false);
+      }
       resetForm();
       setIsNotificationShown(true);
     } catch (error) {
@@ -83,6 +91,7 @@ export default function CallBackForm({
             isRequired
             errors={errors}
             touched={touched}
+            variant={inputVariant}
           />
           <CustomizedInput
             fieldName="phone"
@@ -90,12 +99,14 @@ export default function CallBackForm({
             isRequired
             errors={errors}
             touched={touched}
+            variant={inputVariant}
           />
           <SubmitButton
+            variant={buttonVariant}
             dirty={dirty}
             isValid={isValid}
             isLoading={isLoading}
-            text={t("submitButton")}
+            text={buttonText || t("submitButton")}
             className="mt-2.5 lg:mt-4.5 h-[47px]"
           />
         </Form>

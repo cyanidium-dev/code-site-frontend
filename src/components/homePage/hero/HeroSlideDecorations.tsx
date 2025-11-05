@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { useTransform } from "motion/react";
@@ -49,8 +49,6 @@ export default function HeroSlideDecorations({
     graph,
   } = variant;
 
-  const [isClient, setIsClient] = useState(false);
-
   // Оптимізований хук для parallax скролу
   const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -63,10 +61,6 @@ export default function HeroSlideDecorations({
   const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);
   const graphY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   // Preload LCP image for the first slide
   useEffect(() => {
@@ -89,220 +83,180 @@ export default function HeroSlideDecorations({
     }
   }, [idx, mainImage]);
 
-  // For first slide, render LCP images immediately without waiting for isClient
-  const isFirstSlide = idx === 0;
-  const shouldRenderLCP = isFirstSlide || isClient;
-
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
-      {/* Background elements - only render when isClient is true */}
-      {isClient && (
-        <>
-          <div
-            className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full 
+      {/* Background elements */}
+      <div
+        className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full 
       bg-black supports-[backdrop-filter]:blur-[74px] lg:supports-[backdrop-filter]:blur-[67px] will-change-transform"
-          />
+      />
 
-          <div
-            style={{
-              backgroundColor: bottomBlurColor,
-            }}
-            className="absolute z-10 bottom-[-97px] md:bottom-[-197px] lg:bottom-[-308px] left-[calc(50%-550px)] md:left-[calc(50%-850px)] lg:left-[calc(50%-930px)]
+      <div
+        style={{
+          backgroundColor: bottomBlurColor,
+        }}
+        className="absolute z-10 bottom-[-97px] md:bottom-[-197px] lg:bottom-[-308px] left-[calc(50%-550px)] md:left-[calc(50%-850px)] lg:left-[calc(50%-930px)]
          w-[1018px] md:w-[1718px] lg:w-[1858px] h-[380px] lg:h-[567px] rounded-full supports-[backdrop-filter]:blur-[30px] 
          md:supports-[backdrop-filter]:blur-[40px] lg:supports-[backdrop-filter]:blur-[130px] will-change-transform"
-          />
+      />
 
-          <div
-            style={{ backgroundColor: colorMain }}
-            className="absolute z-10 top-[124px] right-[-454px] w-[443px] h-[440px] rounded-full 
+      <div
+        style={{ backgroundColor: colorMain }}
+        className="absolute z-10 top-[124px] right-[-454px] w-[443px] h-[440px] rounded-full 
        supports-[backdrop-filter]:blur-[98px] lg:supports-[backdrop-filter]:blur-[65px] will-change-transform"
-          />
+      />
 
-          <div
-            style={{ backgroundColor: colorMain }}
-            className="hidden lg:block absolute z-10 top-[4px] lg:top-[-27px] left-[14px] lg:left-[71px] w-[289px] lg:w-[443px] h-[287px] lg:h-[440px] rounded-full 
+      <div
+        style={{ backgroundColor: colorMain }}
+        className="hidden lg:block absolute z-10 top-[4px] lg:top-[-27px] left-[14px] lg:left-[71px] w-[289px] lg:w-[443px] h-[287px] lg:h-[440px] rounded-full 
        supports-[backdrop-filter]:blur-[98px] lg:supports-[backdrop-filter]:blur-[65px] will-change-transform"
-          />
+      />
 
-          <div
-            style={{ backgroundColor: colorSecondary }}
-            className="absolute -z-20 left-[-312px] lg:left-[-273px] top-[-420px] lg:top-[-533px] w-[469px] h-[512px] rounded-full 
+      <div
+        style={{ backgroundColor: colorSecondary }}
+        className="absolute -z-20 left-[-312px] lg:left-[-273px] top-[-420px] lg:top-[-533px] w-[469px] h-[512px] rounded-full 
        supports-[backdrop-filter]:blur-[104px] will-change-transform"
-          />
-        </>
-      )}
+      />
 
-      {/* Head image - render immediately for first slide */}
-      {shouldRenderLCP && (
-        <motion.div
-          className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
+      {/* Head image */}
+      <motion.div
+        className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
-          style={{ y: headY }}
-        >
-          {isClient ? (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <Image
-                src="/images/homePage/hero/head.webp"
-                alt="head"
-                width={725}
-                height={902}
-                priority={idx === 0}
-                sizes="(max-width: 768px) 417px, 725px"
-                className="w-[417px] lg:w-[725px] h-auto"
-              />
-            </motion.div>
-          ) : (
-            <Image
-              src="/images/homePage/hero/head.webp"
-              alt="head"
-              width={725}
-              height={902}
-              priority={idx === 0}
-              sizes="(max-width: 768px) 417px, 725px"
-              className="w-[417px] lg:w-[725px] h-auto"
-            />
-          )}
-        </motion.div>
-      )}
-
-      {/* Logo - only render when isClient is true */}
-      {isClient && (
+        style={{ y: headY }}
+      >
         <motion.div
-          className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
-          style={{ y: logoY }}
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
         >
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            exit="exit"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-            className=""
-          >
-            <CodeSIteArt colorLogo={colorLogo} />
-          </motion.div>
-        </motion.div>
-      )}
-
-      {/* Main LCP image - render immediately for first slide */}
-      {shouldRenderLCP && (
-        <motion.div
-          className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
-          style={{ y: mainImageY }}
-        >
-          {isClient ? (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.8, scale: 0.95 })}
-              className=""
-            >
-              <Image
-                src={mainImage}
-                alt="laptops"
-                width={2064}
-                height={1548}
-                priority={idx === 0}
-                sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
-                className="w-[586px] lg:w-[1032px] h-auto"
-              />
-            </motion.div>
-          ) : (
-            <Image
-              src={mainImage}
-              alt="laptops"
-              width={2064}
-              height={1548}
-              priority={idx === 0}
-              sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
-              className="w-[586px] lg:w-[1032px] h-auto"
-            />
-          )}
-        </motion.div>
-      )}
-
-      {/* Other decorative elements - only render when isClient is true */}
-      {isClient && (
-        <>
-          <div
-            style={{ backgroundColor: colorSecondary }}
-            className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] will-change-transform"
+          <Image
+            src="/images/homePage/hero/head.webp"
+            alt="head"
+            width={725}
+            height={902}
+            priority={idx === 0}
+            sizes="(max-width: 768px) 417px, 725px"
+            className="w-[417px] lg:w-[725px] h-auto"
+            fetchPriority={idx === 0 ? "high" : "auto"}
           />
+        </motion.div>
+      </motion.div>
 
-          <motion.div
-            className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
-            style={{ y: graphY }}
-          >
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <GraphMob graph={graph} idx={idx} />
-            </motion.div>
-          </motion.div>
+      {/* Logo */}
+      <motion.div
+        className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
+        style={{ y: logoY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <CodeSIteArt colorLogo={colorLogo} />
+        </motion.div>
+      </motion.div>
 
-          <motion.div
-            className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
-            style={{ y: graphY }}
-          >
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <GraphDesk graph={graph} idx={idx} />
-            </motion.div>
-          </motion.div>
+      {/* Main LCP image */}
+      <motion.div
+        className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
+        style={{ y: mainImageY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.8, scale: 0.95 })}
+          className=""
+        >
+          <Image
+            src={mainImage}
+            alt="laptops"
+            width={2064}
+            height={1548}
+            priority={idx === 0}
+            sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
+            className="w-[586px] lg:w-[1032px] h-auto"
+            fetchPriority={idx === 0 ? "high" : "auto"}
+          />
+        </motion.div>
+      </motion.div>
 
-          <motion.div
-            className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
-            style={{ y: dropsY }}
-          >
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <Drops drops={drops} />
-            </motion.div>
-          </motion.div>
+      {/* Other decorative elements */}
+      <div
+        style={{ backgroundColor: colorSecondary }}
+        className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] will-change-transform"
+      />
 
-          <motion.div
-            className="absolute z-10 bottom-[460px] lg:bottom-[290px] right-[24px] lg:right-[calc(50%-25px)] lg:-rotate-[83deg]"
-            style={{ y: dropsY }}
-          >
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <DropsTwo drops={drops} />
-            </motion.div>
-          </motion.div>
-        </>
-      )}
+      <motion.div
+        className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
+        style={{ y: graphY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <GraphMob graph={graph} idx={idx} />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
+        style={{ y: graphY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <GraphDesk graph={graph} idx={idx} />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
+        style={{ y: dropsY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <Drops drops={drops} />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="absolute z-10 bottom-[460px] lg:bottom-[290px] right-[24px] lg:right-[calc(50%-25px)] lg:-rotate-[83deg]"
+        style={{ y: dropsY }}
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className=""
+        >
+          <DropsTwo drops={drops} />
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

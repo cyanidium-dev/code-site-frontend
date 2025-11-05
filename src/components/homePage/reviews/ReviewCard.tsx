@@ -1,14 +1,15 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { useTranslations } from "next-intl";
 import * as motion from "motion/react-client";
 import { listItemVariants } from "@/utils/animationVariants";
 import { Review } from "@/types/review";
-import ReactPlayer from "react-player";
 import PlayIcon from "@/components/shared/icons/PlayIcon";
 import PauseIcon from "@/components/shared/icons/PauseIcon";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 interface ReviewCardProps {
   review: Review;

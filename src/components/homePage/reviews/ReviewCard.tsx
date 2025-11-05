@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { useTranslations } from "next-intl";
 import * as motion from "motion/react-client";
@@ -9,7 +10,15 @@ import { Review } from "@/types/review";
 import PlayIcon from "@/components/shared/icons/PlayIcon";
 import PauseIcon from "@/components/shared/icons/PauseIcon";
 
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+const ReactPlayer = dynamic(() => import("react-player"), {
+  ssr: false,
+}) as any;
+
+// Функція для отримання Vimeo video ID
+function getVimeoVideoId(url: string): string | null {
+  const match = url.match(/vimeo.com\/(?:.*\/)?(\d+)/);
+  return match ? match[1] : null;
+}
 
 interface ReviewCardProps {
   review: Review;
@@ -19,6 +28,7 @@ interface ReviewCardProps {
 export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
   const t = useTranslations("homePage.reviews");
   const [isPlaying, setIsPlaying] = useState(false);
+  const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
 
   const {
     authorName,
@@ -28,6 +38,27 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
     projectLink,
     contentType,
   } = review;
+
+  // Отримуємо Vimeo thumbnail через oEmbed API
+  useEffect(() => {
+    if (contentType === "video" && videoUrl) {
+      const vimeoId = getVimeoVideoId(videoUrl);
+      if (vimeoId) {
+        fetch(
+          `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoUrl)}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.thumbnail_url) {
+              setVimeoThumbnail(data.thumbnail_url);
+            }
+          })
+          .catch(() => {
+            // Якщо помилка, залишаємо null
+          });
+      }
+    }
+  }, [contentType, videoUrl]);
 
   return (
     <motion.div
@@ -65,21 +96,35 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
           className="absolute inset-0 rounded-[8px]"
           aria-label={`Відео-відгук від ${authorName}`}
         >
-          <ReactPlayer
-            key={`player-${uniqueKey}-${videoUrl}`}
-            src={videoUrl}
-            playing={isPlaying}
-            controls={false}
-            width="100%"
-            height="100%"
-          />
+          {isPlaying && (
+            <ReactPlayer
+              key={`player-${uniqueKey}-${videoUrl}`}
+              src={videoUrl}
+              playing={isPlaying}
+              controls={false}
+              width="100%"
+              height="100%"
+            />
+          )}
           {!isPlaying && (
-            <button
-              onClick={() => setIsPlaying(true)}
-              className="absolute inset-0 flex items-center justify-center xl:opacity-0 xl:hover:opacity-100 xl:hover:brightness-125 transition duration-300 ease-in-out cursor-pointer"
-            >
-              <PlayIcon />
-            </button>
+            <>
+              {vimeoThumbnail && (
+                <Image
+                  src={vimeoThumbnail}
+                  alt={`Прев'ю відео від ${authorName}`}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 245px, 400px"
+                  loading="lazy"
+                />
+              )}
+              <button
+                onClick={() => setIsPlaying(true)}
+                className="absolute inset-0 flex items-center justify-center xl:opacity-0 xl:hover:opacity-100 xl:hover:brightness-125 transition duration-300 ease-in-out cursor-pointer z-10"
+              >
+                <PlayIcon />
+              </button>
+            </>
           )}
           {isPlaying && (
             <button

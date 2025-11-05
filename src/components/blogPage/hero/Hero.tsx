@@ -1,17 +1,22 @@
+"use client";
+
 import Container from "@/components/shared/container/Container";
 import PageTitle from "@/components/shared/titles/PageTitle";
 import { useTranslations } from "next-intl";
 import HeroDecorations from "./HeroDecorations";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 export default function Hero() {
   const t = useTranslations("blogPage");
 
+  const isLoading = useSplashScreen();
+
   return (
     <section className="overflow-hidden">
       <Container className="relative flex flex-col lg:flex-row-reverse gap-[9px] lg:justify-between lg:items-center pt-[135px] lg:pt-[149px] pb-[479px] lg:pb-[330px]">
-        <HeroDecorations />
+        {!isLoading && <HeroDecorations />}
         <PageTitle className="max-w-[195px] lg:max-w-[295px] text-[64px] lg:text-[96px] leading-none">
           {t("title")}
         </PageTitle>

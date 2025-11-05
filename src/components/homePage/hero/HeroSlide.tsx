@@ -1,13 +1,14 @@
 "use client";
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 interface HeroSlideProps {
   slide: {
@@ -48,8 +49,7 @@ interface HeroSlideProps {
 export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
-
-  const [isLoading, setIsLoading] = useState(true);
+  const isLoading = useSplashScreen();
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
@@ -62,18 +62,6 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
 
     return `${baseClasses} ${opacityClass} ${transitionClass}`;
   };
-
-  useEffect(() => {
-    const alreadyPlayed = sessionStorage.getItem("splashPlayed");
-
-    if (alreadyPlayed) {
-      setIsLoading(false);
-      return;
-    }
-
-    const timer = setTimeout(() => setIsLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <div

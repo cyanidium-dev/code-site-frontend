@@ -60,9 +60,9 @@ export default function FounderDecorations({
 
       {/* Повільний шар - figure */}
       <motion.div
-        style={{ y: slowY }}
-        className="absolute bottom-[-332px] lg:bottom-[-669px] right-[-380px] lg:right-[-883px] -z-30 pointer-events-none w-[549px] lg:w-[1243px] 
-        aspect-[1243/1167] overflow-visible"
+        style={{ y: fastY }}
+        className="absolute bottom-[-254px] lg:bottom-[-295px] right-[-254px] lg:right-[-506px] -z-30 pointer-events-none w-[463px] lg:w-[851px] 
+        aspect-[851/781] overflow-visible"
       >
         <motion.div
           initial="hidden"
@@ -75,7 +75,7 @@ export default function FounderDecorations({
           {" "}
           <Image
             src="/images/homePage/founder/tag.svg"
-            alt="figure"
+            alt="tag"
             width="180"
             height="157"
             className="hidden lg:block absolute left-[207px] top-[62px]"
@@ -83,12 +83,13 @@ export default function FounderDecorations({
           <Image
             src="/images/homePage/founder/figure.webp"
             alt="figure"
-            width={1243}
-            height={1167}
-            sizes="(max-width: 1024px) 549px, 1243px"
+            width={851}
+            height={781}
+            sizes="(max-width: 1024px) 463px, 851px"
             className="object-cover w-full h-full object-top-left  mix-blend-color-dodge"
           />
         </motion.div>
+        <div className="absolute bottom-[-520px] lg:bottom-[-420px] left-[20px] lg:left-[-50px] w-[806px] h-[768px] rounded-full bg-black supports-[backdrop-filter]:blur-[80px] will-change-transform" />
       </motion.div>
 
       <motion.div

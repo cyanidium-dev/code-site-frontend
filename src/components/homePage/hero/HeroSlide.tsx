@@ -8,6 +8,7 @@ import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 interface HeroSlideProps {
   slide: {
@@ -48,6 +49,7 @@ interface HeroSlideProps {
 export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
+  const isLoading = useSplashScreen();
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
@@ -76,11 +78,13 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
       }}
     >
       <Container className="relative">
-        <HeroSlideDecorations
-          variant={variant}
-          mainImage={mainImage}
-          idx={idx}
-        />
+        {!isLoading && (
+          <HeroSlideDecorations
+            variant={variant}
+            mainImage={mainImage}
+            idx={idx}
+          />
+        )}
         {idx === 0 ? (
           <motion.h1
             initial="hidden"

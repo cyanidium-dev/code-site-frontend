@@ -35,7 +35,7 @@ export default function WhyUsImages() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <div
-            className="w-[164px] lg:w-[251px] h-[164px] lg:h-[251px] rounded-full"
+            className="w-[164px] lg:w-[251px] h-[164px] lg:h-[251px] rounded-full mix-blend-overlay"
             style={{
               background: `
                 radial-gradient(89.1% 89.1% at 40.3% 3.43%, #001EFF 0%, #B8C6FF 18.19%, #74B5FF 37.1%, #046AF8 58.61%, #B8DAFF 80.46%, #0451F8 100%),
@@ -45,12 +45,12 @@ export default function WhyUsImages() {
             }}
           >
             <Image
-              src="/images/homePage/whyUs/compact-disk.svg"
+              src="/images/homePage/whyUs/compact-disk.webp"
               alt="compact disk"
               width="164"
               height="164"
               sizes="(max-width: 1024px) 164px, 251px"
-              className="w-full h-full mix-blend-screen"
+              className="w-full h-full bg-blend-screen"
             />
           </div>
         </motion.div>

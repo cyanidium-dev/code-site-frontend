@@ -8,6 +8,8 @@ import {
   LINKEDIN_NAME,
 } from "@/constants/constants";
 import SocialItem from "./SocialItem";
+import * as motion from "motion/react-client";
+import { listVariants } from "@/utils/animationVariants";
 
 export default function SocialsList() {
   const socialsList = [
@@ -18,10 +20,17 @@ export default function SocialsList() {
   ];
 
   return (
-    <ul className="flex flex-col xs:flex-row xs:flex-wrap gap-[52px] lg:ml-[132px] lg:mt-9 h-fit">
+    <motion.ul
+      initial="hidden"
+      whileInView="visible"
+      exit="exit"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={listVariants({ staggerChildren: 0.3, delayChildren: 1.2 })}
+      className="flex flex-col xs:flex-row xs:flex-wrap gap-[52px] lg:ml-[132px] lg:mt-9 h-fit"
+    >
       {socialsList.map((social, idx) => (
         <SocialItem key={idx} social={social} />
       ))}
-    </ul>
+    </motion.ul>
   );
 }

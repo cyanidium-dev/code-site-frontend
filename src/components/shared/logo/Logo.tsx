@@ -12,7 +12,7 @@ export default function Logo({ className = "", variant = "blue" }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`relative inline-block font-actay font-bold uppercase ${
+      className={`relative inline-block font-actay font-bold uppercase outline-none ${
         variant === "blue"
           ? "animate-text-glow-blue"
           : variant === "pink"

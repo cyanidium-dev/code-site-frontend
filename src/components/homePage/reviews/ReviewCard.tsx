@@ -59,7 +59,10 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       )}
 
       {contentType === "video" && videoUrl && (
-        <div className="absolute inset-0 rounded-[8px]">
+        <div
+          className="absolute inset-0 rounded-[8px]"
+          aria-label={`Відео-відгук від ${authorName}`}
+        >
           <ReactPlayer
             src={videoUrl}
             playing={isPlaying}

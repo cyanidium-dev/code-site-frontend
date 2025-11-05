@@ -63,25 +63,25 @@ export default function HeroSlideDecorations({
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   // Preload LCP image for the first slide
-  useEffect(() => {
-    if (idx === 0 && mainImage) {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = mainImage;
-      link.setAttribute("fetchpriority", "high");
-      document.head.appendChild(link);
+  // useEffect(() => {
+  //   if (idx === 0 && mainImage) {
+  //     const link = document.createElement("link");
+  //     link.rel = "preload";
+  //     link.as = "image";
+  //     link.href = mainImage;
+  //     link.setAttribute("fetchpriority", "high");
+  //     document.head.appendChild(link);
 
-      return () => {
-        const existingLink = document.querySelector(
-          `link[href="${mainImage}"]`
-        );
-        if (existingLink) {
-          document.head.removeChild(existingLink);
-        }
-      };
-    }
-  }, [idx, mainImage]);
+  //     return () => {
+  //       const existingLink = document.querySelector(
+  //         `link[href="${mainImage}"]`
+  //       );
+  //       if (existingLink) {
+  //         document.head.removeChild(existingLink);
+  //       }
+  //     };
+  //   }
+  // }, [idx, mainImage]);
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">

@@ -36,7 +36,7 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
             viewport={{ once: true, amount: 0.1 }}
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
-            <Link href="/portfolio">
+            <Link href="/portfolio" aria-label={t("seeProjects")}>
               <MainButton className="hidden lg:flex w-[292px] h-[58px] lg:h-[45px]">
                 {t("seeProjects")}
               </MainButton>
@@ -53,8 +53,7 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
-          {" "}
-          <Link href="/portfolio">
+          <Link href="/portfolio" aria-label={t("seeProjects")}>
             <MainButton className="">{t("seeProjects")}</MainButton>
           </Link>
         </motion.div>

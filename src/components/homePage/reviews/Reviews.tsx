@@ -63,7 +63,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
           })}
           className="hidden sm:block relative z-20 w-[calc(100%-245px-20px)] backdrop-blur-[5px]"
         >
-          <ReviewsSwiper reviewsList={reviewsList} />
+          <ReviewsSwiper reviewsList={reviewsList} variant="desktop" />
         </motion.div>
       </div>
       <motion.div
@@ -79,7 +79,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
         })}
         className="sm:hidden xs:max-w-full sm:max-w-[640px] pl-6 ml-auto backdrop-blur-[5px]"
       >
-        <ReviewsSwiper reviewsList={reviewsList} />
+        <ReviewsSwiper reviewsList={reviewsList} variant="mobile" />
       </motion.div>
     </section>
   );

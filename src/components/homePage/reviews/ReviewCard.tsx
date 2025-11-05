@@ -12,9 +12,10 @@ import PauseIcon from "@/components/shared/icons/PauseIcon";
 
 interface ReviewCardProps {
   review: Review;
+  uniqueKey: string;
 }
 
-export default function ReviewCard({ review }: ReviewCardProps) {
+export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
   const t = useTranslations("homePage.reviews");
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -28,7 +29,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
   } = review;
 
   return (
-    <motion.li
+    <motion.div
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
       className={`relative w-full h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden 
@@ -59,8 +60,12 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       )}
 
       {contentType === "video" && videoUrl && (
-        <div className="absolute inset-0 rounded-[8px]">
+        <div
+          className="absolute inset-0 rounded-[8px]"
+          aria-label={`Відео-відгук від ${authorName}`}
+        >
           <ReactPlayer
+            key={`player-${uniqueKey}-${videoUrl}`}
             src={videoUrl}
             playing={isPlaying}
             controls={false}
@@ -113,6 +118,6 @@ export default function ReviewCard({ review }: ReviewCardProps) {
           </a>
         )}
       </div>
-    </motion.li>
+    </motion.div>
   );
 }

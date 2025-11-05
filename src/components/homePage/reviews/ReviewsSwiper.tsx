@@ -9,9 +9,13 @@ import ReviewCard from "./ReviewCard";
 
 interface ReviewsSwiperProps {
   reviewsList: Review[];
+  variant?: string;
 }
 
-export default function ReviewsSwiper({ reviewsList }: ReviewsSwiperProps) {
+export default function ReviewsSwiper({
+  reviewsList,
+  variant = "",
+}: ReviewsSwiperProps) {
   return (
     <Swiper
       slidesPerView="auto"
@@ -23,8 +27,8 @@ export default function ReviewsSwiper({ reviewsList }: ReviewsSwiperProps) {
       pagination={{ clickable: true }}
     >
       {reviewsList.map((review, idx) => (
-        <SwiperSlide key={idx}>
-          <ReviewCard review={review} />
+        <SwiperSlide key={`${variant}-${idx}`}>
+          <ReviewCard review={review} uniqueKey={`${variant}-${idx}`} />
         </SwiperSlide>
       ))}
     </Swiper>

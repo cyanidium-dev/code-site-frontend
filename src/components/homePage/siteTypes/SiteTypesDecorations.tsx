@@ -88,7 +88,7 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* Texture*/}
-      <div className="xs:hidden absolute -z-40 left-[-34px] top-[768px] h-[1539px]">
+      <div className="xs:hidden absolute -z-40 left-[-34px] top-[768px] w-auto h-[1539px] aspect-[577/1539]">
         <div className="absolute z-10 top-[-240px] left-[62px] w-[512px] h-[339px] rounded-full bg-black supports-[backdrop-filter]:blur-[67px] will-change-transform" />
 
         <Image

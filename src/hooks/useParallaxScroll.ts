@@ -1,5 +1,10 @@
 import { useRef, useMemo } from "react";
-import { useScroll, useTransform, MotionValue } from "motion/react";
+import {
+  useScroll,
+  useTransform,
+  MotionValue,
+  useMotionValueEvent,
+} from "motion/react";
 
 // Тип для offset - використовуємо NonNullable для виключення undefined
 type UseScrollOptions = NonNullable<Parameters<typeof useScroll>[0]>;
@@ -59,4 +64,14 @@ export function useParallaxVariants(
     }),
     [fastY, mediumY, slowY, extraSlowY]
   );
+}
+
+/**
+ * Хук для відстеження абсолютного значення скролу (scrollY)
+ * Корисний для Header та інших компонентів, які потребують значення скролу в пікселях
+ */
+export function useScrollY() {
+  const { scrollY } = useScroll();
+
+  return { scrollY };
 }

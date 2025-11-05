@@ -9,16 +9,17 @@ import Logo from "../logo/Logo";
 import BurgerMenu from "./BurgerMenu";
 import NavMenu from "./NavMenu";
 import { useState } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useMotionValueEvent } from "motion/react";
 import { useTranslations } from "next-intl";
 import ClientApplication from "../clientApplication/ClientApplication";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
+import { useScrollY } from "@/hooks/useParallaxScroll";
 
 export default function Header() {
   const t = useTranslations("header");
   const [isHeaderMenuOpened, setIsHeaderMenuOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
+  const { scrollY } = useScrollY();
   const toggleHeaderMenuOpen = () => setIsHeaderMenuOpened(!isHeaderMenuOpened);
 
   const pathname = usePathname();

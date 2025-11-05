@@ -28,7 +28,7 @@ export default function ReviewsSwiper({
     >
       {reviewsList.map((review, idx) => (
         <SwiperSlide key={`${variant}-${idx}`}>
-          <ReviewCard review={review} />
+          <ReviewCard review={review} uniqueKey={`${variant}-${idx}`} />
         </SwiperSlide>
       ))}
     </Swiper>

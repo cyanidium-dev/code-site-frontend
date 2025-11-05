@@ -12,9 +12,10 @@ import PauseIcon from "@/components/shared/icons/PauseIcon";
 
 interface ReviewCardProps {
   review: Review;
+  uniqueKey: string;
 }
 
-export default function ReviewCard({ review }: ReviewCardProps) {
+export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
   const t = useTranslations("homePage.reviews");
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -64,6 +65,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
           aria-label={`Відео-відгук від ${authorName}`}
         >
           <ReactPlayer
+            key={`player-${uniqueKey}-${videoUrl}`}
             src={videoUrl}
             playing={isPlaying}
             controls={false}

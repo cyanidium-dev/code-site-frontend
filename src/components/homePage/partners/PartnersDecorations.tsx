@@ -57,7 +57,7 @@ export default function PartnersDecorations() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/partners/chainMob.png"
+            src="/images/homePage/partners/chainMob.webp"
             alt="chain"
             width="455"
             height="198"
@@ -78,7 +78,7 @@ export default function PartnersDecorations() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/partners/chainDesk.png"
+            src="/images/homePage/partners/chainDesk.webp"
             alt="chain"
             width="912"
             height="225"

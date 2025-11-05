@@ -25,7 +25,7 @@ export default function SiteTypesDecorations() {
       {/* Head One */}
       <motion.div
         style={{ y: fastY }}
-        className="absolute -z-20 left-[-840px] md:left-[-885px] top-[-856px] md:top-[-696px] mix-blend-hard-light md:rotate-[-30deg]"
+        className="absolute -z-20 left-[-840px] md:left-[-885px] top-[-940px] md:top-[-696px] mix-blend-hard-light md:rotate-[-30deg]"
       >
         <motion.div
           initial="hidden"
@@ -36,7 +36,7 @@ export default function SiteTypesDecorations() {
           className=""
         >
           <Image
-            src="/images/homePage/siteTypes/headOne.png"
+            src="/images/homePage/siteTypes/headOne.webp"
             alt="head"
             width={1152}
             height={1177}
@@ -92,7 +92,7 @@ export default function SiteTypesDecorations() {
         <div className="absolute z-10 top-[-240px] left-[62px] w-[512px] h-[339px] rounded-full bg-black supports-[backdrop-filter]:blur-[67px] will-change-transform" />
 
         <Image
-          src="/images/homePage/siteTypes/texture.png"
+          src="/images/homePage/siteTypes/texture.webp"
           alt="texture"
           width="577"
           height="1539"
@@ -141,7 +141,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/phoneOne.png"
+              src="/images/homePage/siteTypes/phoneOne.webp"
               alt="phone"
               width={299}
               height={529}
@@ -187,7 +187,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/laptopOne.png"
+              src="/images/homePage/siteTypes/laptopOne.webp"
               alt="laptop"
               width={1037}
               height={1033}
@@ -273,7 +273,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/laptopTwo.png"
+              src="/images/homePage/siteTypes/laptopTwo.webp"
               alt="laptop"
               width={3196}
               height={2709}
@@ -301,7 +301,7 @@ export default function SiteTypesDecorations() {
               className="md:hidden w-[237px] h-auto"
             />
             <Image
-              src="/images/homePage/siteTypes/wingDesk.png"
+              src="/images/homePage/siteTypes/wingDesk.webp"
               alt="laptop"
               width="487"
               height="481"
@@ -343,7 +343,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/phoneTwo.png"
+              src="/images/homePage/siteTypes/phoneTwo.webp"
               alt="phone"
               width={753}
               height={926}
@@ -364,14 +364,14 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/headTwo.png"
+              src="/images/homePage/siteTypes/headTwo.webp"
               alt="head"
               width={2673}
               height={1609}
               className="md:hidden w-[1336px] h-auto"
             />
             <Image
-              src="/images/homePage/siteTypes/headTwoDesk.png"
+              src="/images/homePage/siteTypes/headTwoDesk.webp"
               alt="head"
               width={1194}
               height={1232}
@@ -507,7 +507,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/laptopThree.png"
+              src="/images/homePage/siteTypes/laptopThree.webp"
               alt="laptop"
               width={2755}
               height={2066}
@@ -528,7 +528,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/phoneThree.png"
+              src="/images/homePage/siteTypes/phoneThree.webp"
               alt="phone"
               width={1885}
               height={1524}

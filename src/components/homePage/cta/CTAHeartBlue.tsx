@@ -31,7 +31,7 @@ export default function CTAHeartBlue() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/cta/heart-blue.png"
+            src="/images/homePage/cta/heart-blue.webp"
             alt="heart"
             width={390}
             height={377}

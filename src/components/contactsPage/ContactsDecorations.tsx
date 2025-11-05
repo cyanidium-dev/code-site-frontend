@@ -37,7 +37,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/paper.png"
+            src="/images/contactsPage/paper.webp"
             alt="paper"
             width={927}
             height={972}
@@ -101,7 +101,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/headMob.png"
+            src="/images/contactsPage/headMob.webp"
             alt="head"
             width="355"
             height="491"
@@ -123,7 +123,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/headDesk.png"
+            src="/images/contactsPage/headDesk.webp"
             alt="head"
             width="664"
             height="918"
@@ -209,7 +209,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 1.2, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/girl.png"
+            src="/images/contactsPage/girl.webp"
             alt="girl"
             width="335"
             height="717"
@@ -230,7 +230,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 1.2, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/flameMob.png"
+            src="/images/contactsPage/flameMob.webp"
             alt="flame"
             width="513"
             height="179"
@@ -251,7 +251,7 @@ export default function ContactsDecorations() {
           variants={fadeInAnimation({ delay: 1.2, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/contactsPage/flameDesk.png"
+            src="/images/contactsPage/flameDesk.webp"
             alt="flame"
             width="670"
             height="359"

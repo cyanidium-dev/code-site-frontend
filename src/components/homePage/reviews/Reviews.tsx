@@ -43,7 +43,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
             {t("description")}
           </p>
           <Image
-            src="/images/homePage/reviews/head.png"
+            src="/images/homePage/reviews/head.webp"
             alt="head"
             width={490}
             height={634}

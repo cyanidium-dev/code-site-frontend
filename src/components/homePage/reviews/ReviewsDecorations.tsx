@@ -58,7 +58,7 @@ export default function ReviewsDecorations() {
           className=""
         >
           <Image
-            src="/images/homePage/reviews/girl.png"
+            src="/images/homePage/reviews/girl.webp"
             alt="girl"
             width={313}
             height={668}
@@ -108,7 +108,7 @@ export default function ReviewsDecorations() {
           className=""
         >
           <Image
-            src="/images/homePage/reviews/headBg.png"
+            src="/images/homePage/reviews/headBg.webp"
             alt="head background"
             width={626}
             height={939}
@@ -205,7 +205,7 @@ export default function ReviewsDecorations() {
           className=""
         >
           <Image
-            src="/images/homePage/reviews/girlDesk.png"
+            src="/images/homePage/reviews/girlDesk.webp"
             alt="girl"
             width={437}
             height={934}

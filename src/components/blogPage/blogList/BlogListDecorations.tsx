@@ -36,7 +36,7 @@ export default function BlogListDecorations() {
           className="mix-blend-hard-light"
         >
           <Image
-            src="/images/blogPage/blogList/hand.png"
+            src="/images/blogPage/blogList/hand.webp"
             alt="hand"
             width={1192}
             height={1293}
@@ -79,7 +79,7 @@ export default function BlogListDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/homePage/partners/chainDesk.png"
+            src="/images/homePage/partners/chainDesk.webp"
             alt="chain"
             width="912"
             height="225"

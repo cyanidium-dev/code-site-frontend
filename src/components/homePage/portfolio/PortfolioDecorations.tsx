@@ -36,7 +36,7 @@ export default function PortfolioDecorations() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/portfolio/code-site.png"
+            src="/images/homePage/portfolio/code-site.webp"
             alt="code-site.art"
             width={625}
             height={79}
@@ -58,7 +58,7 @@ export default function PortfolioDecorations() {
           className="mix-blend-hard-light"
         >
           <Image
-            src="/images/homePage/portfolio/head.png"
+            src="/images/homePage/portfolio/head.webp"
             alt="head"
             width={1817}
             height={1770}

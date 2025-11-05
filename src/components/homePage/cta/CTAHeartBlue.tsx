@@ -1,21 +1,23 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function CTAHeartBlue() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Повільний параллакс
+  const { slowY } = useParallaxVariants(scrollYProgress, {
+    slow: [-150, 150],
   });
-
-  // Швидкий параллакс
-  const slowY = useTransform(scrollYProgress, [0, 1], [-150, 150]);
 
   return (
     <div

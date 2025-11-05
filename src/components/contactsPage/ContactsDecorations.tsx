@@ -2,30 +2,29 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function ContactsDecorations() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Різні варіації parallax з мемоізацією
+  const { fastY, mediumY, slowY } = useParallaxVariants(scrollYProgress, {
+    fast: [120, -120],
+    medium: [-60, 60],
+    slow: [-120, 120],
   });
-
-  // Швидкий параллакс (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
-
-  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-
-  // Повільний параллакс (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="absolute -z-30 -top-6 lg:top-[-542px] left-[calc(50%-525px)] lg:left-[calc(50%-1082px)] w-[972px] lg:w-[1419px] 
         h-auto aspect-[972/927] rotate-[-8deg] lg:rotate-none mix-blend-hard-light"
       >
@@ -90,7 +89,7 @@ export default function ContactsDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="lg:hidden absolute -z-20 top-[203px] right-[calc(50%-232px)] w-[355px] h-auto aspect-[355/491] 
         mix-blend-color-dodge"
       >
@@ -113,7 +112,7 @@ export default function ContactsDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="hidden lg:block absolute -z-20 top-[-398px] left-[calc(50%-469px)] w-[664px] h-auto aspect-[664/918] 
         mix-blend-color-dodge"
       >
@@ -136,7 +135,7 @@ export default function ContactsDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="lg:hidden absolute -z-20 top-[210px] right-[calc(50%-372px)] w-[355px] h-auto aspect-[355/491] mix-blend-plus-darker"
       >
         <motion.div
@@ -201,7 +200,7 @@ export default function ContactsDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="absolute -z-20 top-20 lg:top-2 left-[calc(50%-201px)] lg:left-[calc(50%-726px)] w-[285px] lg:w-[335px] h-auto aspect-[335/717]"
       >
         <motion.div

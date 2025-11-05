@@ -18,7 +18,7 @@ export default function SocialsList() {
   ];
 
   return (
-    <ul className="flex flex-col lg:flex-row lg:flex-wrap gap-[52px] lg:ml-[132px] lg:mt-9 h-fit">
+    <ul className="flex flex-col xs:flex-row xs:flex-wrap gap-[52px] lg:ml-[132px] lg:mt-9 h-fit">
       {socialsList.map((social, idx) => (
         <SocialItem key={idx} social={social} />
       ))}

@@ -5,13 +5,15 @@ import CallBackApplication from "../shared/callBackApplication/CallBackApplicati
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import SocialsList from "./SocialsList";
+import ContactsDecorations from "./ContactsDecorations";
 
 export default function Contacts() {
   const t = useTranslations("contactsPage");
 
   return (
     <section>
-      <Container className="flex flex-col lg:flex-row-reverse lg:justify-between gap-15 pt-[569px] lg:pt-[180px] pb-30 lg:pb-[174px]">
+      <Container className="relative flex flex-col lg:flex-row-reverse lg:justify-between gap-15 pt-[569px] lg:pt-[180px] pb-30 lg:pb-[174px]">
+        <ContactsDecorations />
         <div>
           <PageTitle
             variant="pink"

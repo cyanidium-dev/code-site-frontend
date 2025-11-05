@@ -1,0 +1,238 @@
+"use client";
+import Image from "next/image";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
+import { useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
+
+export default function ContactsDecorations() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Відслідковуємо скрол секції
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Швидкий параллакс (рухається швидше)
+  const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
+
+  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
+
+  // Повільний параллакс (рухається повільніше)
+  const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
+
+  return (
+    <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
+      <motion.div
+        // style={{ y: middleY }}
+        className="absolute -z-30 -top-6 lg:top-[-542px] left-[calc(50%-525px)] lg:left-[calc(50%-1082px)] w-[972px] lg:w-[1419px] 
+        h-auto aspect-[972/927] rotate-[-8deg] lg:rotate-none mix-blend-hard-light"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/paper.png"
+            alt="paper"
+            width={927}
+            height={972}
+            className="w-[972px] lg:w-[1419px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="absolute z-10 top-[690px] lg:top-[29px] right-[calc(50%-740px)] w-[227px] lg:w-[292px] h-auto aspect-[292/292]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/drops-pink.svg"
+            alt="drops"
+            width="292"
+            height="292"
+            className="w-[227px] lg:w-[292px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="lg:hidden absolute z-10 top-[287px] left-[calc(50%-249px)] w-[224px] h-auto aspect-[224/224]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/drops-blue.svg"
+            alt="drops"
+            width="224"
+            height="224"
+            className="w-[224px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="lg:hidden absolute -z-20 top-[203px] right-[calc(50%-232px)] w-[355px] h-auto aspect-[355/491] 
+        mix-blend-color-dodge"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/headMob.png"
+            alt="head"
+            width="355"
+            height="491"
+            className="w-[355px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="hidden lg:block absolute -z-20 top-[-398px] left-[calc(50%-469px)] w-[664px] h-auto aspect-[664/918] 
+        mix-blend-color-dodge"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/headDesk.png"
+            alt="head"
+            width="664"
+            height="918"
+            className="w-[664px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="lg:hidden absolute -z-10 top-[210px] right-[calc(50%-372px)] w-[355px] h-auto aspect-[355/491] 
+        "
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/code-site-blue-mob.svg"
+            alt="code-site.art"
+            width="355"
+            height="491"
+            className="w-[355px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="hidden lg:block absolute -z-10 top-[-259px] left-[calc(50%-255px)] w-[502px] h-auto aspect-[502/433] mix-blend-plus-darker"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/code-site-blue-desk.svg"
+            alt="code-site.art"
+            width="502"
+            height="433"
+            className="w-[502px] h-auto lg:opacity-30"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="absolute lg:-z-10 bottom-[-10px] lg:bottom-auto lg:top-[347px] right-[calc(50%-454px)] xs:right-[calc(50%-574px)] 
+        md:right-[calc(50%-624px)] lg:right-[calc(50%-367px)] w-[474px] h-auto aspect-[474/493] mix-blend-hard-light rotate-[10deg]
+        "
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/code-site.svg"
+            alt="code-site.art"
+            width="474"
+            height="493"
+            className="w-[474px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        // style={{ y: middleY }}
+        className="hidden lg:block absolute -z-20 top-2 left-[calc(50%-726px)] w-[335px] h-auto aspect-[335/717]"
+      >
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+        >
+          <Image
+            src="/images/contactsPage/girl.png"
+            alt="girl"
+            width="335"
+            height="717"
+            className="w-[335px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+
+      <div
+        className="absolute -z-10 lg:z-[-40] top-[507px] lg:top-[346px] right-[calc(50%-408px)] lg:right-[calc(50%-94px)] w-[265px] lg:w-[345px] h-[241px] lg:h-[315px] rounded-full
+       bg-[#04DCF8] supports-[backdrop-filter]:blur-[92px] lg:supports-[backdrop-filter]:blur-[121px] will-change-transform"
+      />
+
+      <div
+        className="absolute -z-10 top-[569px] lg:top-[474px] left-[-25%] w-[150%] lg:w-[200%] h-[549px] lg:h-[607px] rounded-full
+       bg-black supports-[backdrop-filter]:blur-[55px] lg:supports-[backdrop-filter]:blur-[77px] will-change-transform"
+      />
+
+      <div
+        className="hidden lg:block absolute -z-20 top-[543px] right-[calc(50%-964px)] w-[480px] h-[436px] rounded-full
+       bg-main supports-[backdrop-filter]:blur-[165px] will-change-transform"
+      />
+    </div>
+  );
+}

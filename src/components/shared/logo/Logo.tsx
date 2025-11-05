@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 
 interface LogoProps {
   className?: string;
-  variant?: "blue" | "pink";
+  variant?: "blue" | "pink" | "dark";
 }
 
 export default function Logo({ className = "", variant = "blue" }: LogoProps) {
@@ -13,7 +13,11 @@ export default function Logo({ className = "", variant = "blue" }: LogoProps) {
     <Link
       href="/"
       className={`relative inline-block font-actay font-bold uppercase ${
-        variant === "blue" ? "animate-text-glow-blue" : "animate-text-glow-pink"
+        variant === "blue"
+          ? "animate-text-glow-blue"
+          : variant === "pink"
+            ? "animate-text-glow-pink"
+            : "animate-text-glow-dark"
       } ${className}`}
     >
       {t("logo")}

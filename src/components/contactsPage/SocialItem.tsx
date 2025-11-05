@@ -6,7 +6,7 @@ export default function SocialItem({ social }: SocialItemProps) {
   const { title, name, url } = social;
 
   return (
-    <li className="lg:w-[calc(50%-26px)] h-fit">
+    <li className="xs:w-[calc(50%-26px)] h-fit">
       <h3 className="mb-3 text-[14px] font-light leading-[120%] uppercase lg:text-black">
         {title}
       </h3>

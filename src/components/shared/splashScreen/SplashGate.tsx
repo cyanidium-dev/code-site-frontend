@@ -41,8 +41,9 @@ export default function SplashGate({
       <LottieSplashScreen visible={showSplash} />
 
       <div
+        className="min-h-screen flex flex-col"
         style={{
-          display: showContent ? "block" : "none",
+          display: showContent ? "flex" : "none",
         }}
       >
         {children}

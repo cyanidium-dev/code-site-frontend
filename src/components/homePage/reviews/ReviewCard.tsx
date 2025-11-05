@@ -28,7 +28,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
   } = review;
 
   return (
-    <motion.li
+    <motion.div
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
       className={`relative w-full h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden 
@@ -113,6 +113,6 @@ export default function ReviewCard({ review }: ReviewCardProps) {
           </a>
         )}
       </div>
-    </motion.li>
+    </motion.div>
   );
 }

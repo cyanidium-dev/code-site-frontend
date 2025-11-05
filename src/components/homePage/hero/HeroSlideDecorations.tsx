@@ -117,7 +117,7 @@ export default function HeroSlideDecorations({
               className=""
             >
               <Image
-                src="/images/homePage/hero/head.png"
+                src="/images/homePage/hero/head.webp"
                 alt="head"
                 width={725}
                 height={902}

@@ -35,7 +35,7 @@ export default function CTAPhone() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/cta/phone.png"
+            src="/images/homePage/cta/phone.webp"
             alt="phone"
             width={721}
             height={820}
@@ -79,7 +79,7 @@ export default function CTAPhone() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/cta/code-site.png"
+            src="/images/homePage/cta/code-site.webp"
             alt="code-site.art"
             width={2711}
             height={347}
@@ -123,7 +123,7 @@ export default function CTAPhone() {
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         >
           <Image
-            src="/images/homePage/cta/heart-pink.png"
+            src="/images/homePage/cta/heart-pink.webp"
             alt="heart"
             width={781}
             height={755}

@@ -55,7 +55,7 @@ export default function Modal({
         scrollbar-track-rounded-full scrollbar-thumb-transparent scrollbar-track-blue-light popup-scroll shadow-md ${className}`}
       >
         <Image
-          src="/images/modal/background.png"
+          src="/images/modal/background.webp"
           alt="background"
           fill
           className="-z-10 object-cover object-top-left mix-blend-luminosity"

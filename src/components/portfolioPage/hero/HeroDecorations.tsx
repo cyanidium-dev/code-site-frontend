@@ -37,7 +37,7 @@ export default function HeroDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/portfolioPage/hero/head.png"
+            src="/images/portfolioPage/hero/head.webp"
             alt="head"
             width={337}
             height={475}
@@ -58,7 +58,7 @@ export default function HeroDecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/portfolioPage/hero/phone.png"
+            src="/images/portfolioPage/hero/phone.webp"
             alt="phone"
             width={271}
             height={330}

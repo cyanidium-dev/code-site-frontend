@@ -80,7 +80,7 @@ export default function FounderDecorations({
             className="hidden lg:block absolute left-[207px] top-[62px]"
           />
           <Image
-            src="/images/homePage/founder/figure.png"
+            src="/images/homePage/founder/figure.webp"
             alt="figure"
             width={1243}
             height={1167}

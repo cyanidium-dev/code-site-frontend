@@ -37,7 +37,7 @@ export default function CTADecorations() {
           variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
         >
           <Image
-            src="/images/articlePage/cta/hand.png"
+            src="/images/articlePage/cta/hand.webp"
             alt="hand"
             width={1251}
             height={1761}

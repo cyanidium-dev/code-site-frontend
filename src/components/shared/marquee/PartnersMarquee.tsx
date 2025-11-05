@@ -9,82 +9,82 @@ interface PartnersMarqueeProps {
 
 const partnersImages = [
   {
-    src: "/images/homePage/partners/aleko.png",
+    src: "/images/homePage/partners/aleko.webp",
     width: 507,
     height: 35,
   },
   {
-    src: "/images/homePage/partners/art-lover.png",
+    src: "/images/homePage/partners/art-lover.webp",
     width: 233,
     height: 43,
   },
   {
-    src: "/images/homePage/partners/bravo.png",
+    src: "/images/homePage/partners/bravo.webp",
     width: 159,
     height: 35,
   },
   {
-    src: "/images/homePage/partners/clarion.png",
+    src: "/images/homePage/partners/clarion.webp",
     width: 308,
     height: 41,
   },
   {
-    src: "/images/homePage/partners/efedra.png",
+    src: "/images/homePage/partners/efedra.webp",
     width: 121,
     height: 50,
   },
   {
-    src: "/images/homePage/partners/finance-league.png",
+    src: "/images/homePage/partners/finance-league.webp",
     width: 246,
     height: 43,
   },
   {
-    src: "/images/homePage/partners/glimmer.png",
+    src: "/images/homePage/partners/glimmer.webp",
     width: 150,
     height: 43,
   },
   {
-    src: "/images/homePage/partners/grinchenko.png",
+    src: "/images/homePage/partners/grinchenko.webp",
     width: 257,
     height: 51,
   },
   {
-    src: "/images/homePage/partners/kondor.png",
+    src: "/images/homePage/partners/kondor.webp",
     width: 342,
     height: 29,
   },
   {
-    src: "/images/homePage/partners/raul-auto.png",
+    src: "/images/homePage/partners/raul-auto.webp",
     width: 114,
     height: 81,
   },
   {
-    src: "/images/homePage/partners/solid-renovation.png",
+    src: "/images/homePage/partners/solid-renovation.webp",
     width: 306,
     height: 39,
   },
   {
-    src: "/images/homePage/partners/sytnykov.png",
+    src: "/images/homePage/partners/sytnykov.webp",
     width: 227,
     height: 57,
   },
   {
-    src: "/images/homePage/partners/tatarka.png",
+    src: "/images/homePage/partners/tatarka.webp",
     width: 166,
     height: 25,
   },
   {
-    src: "/images/homePage/partners/uneed.png",
+    src: "/images/homePage/partners/uneed.webp",
     width: 172,
     height: 47,
   },
   {
-    src: "/images/homePage/partners/way-to-ireland.png",
+    src: "/images/homePage/partners/way-to-ireland.webp",
     width: 353,
     height: 43,
   },
   {
-    src: "/images/homePage/partners/yangoly.png",
+    src: "/images/homePage/partners/yangoly.webp",
     width: 130,
     height: 57,
   },

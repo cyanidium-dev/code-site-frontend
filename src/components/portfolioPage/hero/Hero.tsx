@@ -30,7 +30,7 @@ export default function Hero() {
           {t("description")}
         </motion.p>
       </Container>
-      <CodeSiteMarquee className="mb-5" />
+      <CodeSiteMarquee className="mb-10 lg:mb-5" />
     </section>
   );
 }

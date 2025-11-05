@@ -15,7 +15,7 @@ export default function CTA() {
       <div
         className="absolute -z-40 top-0 lg:top-[258px] left-0 w-full h-[1024px] lg:h-[755px] opacity-30"
         style={{
-          backgroundImage: "url(/images/homePage/cta/texture.webp)",
+          backgroundImage: "url(/images/homePage/cta/texture.png)",
           backgroundRepeat: "repeat-x",
           backgroundSize: "auto 100%",
           backgroundPosition: "left top",

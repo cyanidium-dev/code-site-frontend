@@ -78,7 +78,8 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
       }}
     >
       <Container className="relative">
-        {!isLoading && (
+        {/* For first slide, render decorations immediately for LCP. Other slides wait for splash screen */}
+        {(idx === 0 || !isLoading) && (
           <HeroSlideDecorations
             variant={variant}
             mainImage={mainImage}

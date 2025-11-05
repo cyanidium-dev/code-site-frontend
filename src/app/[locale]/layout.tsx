@@ -8,6 +8,7 @@ import "./globals.css";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import { getLocale } from "next-intl/server";
+import SplashGate from "@/components/shared/splashScreen/SplashGate";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -53,9 +54,11 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased`}
       >
         <NextIntlClientProvider>
-          <Header />
-          <main className="flex-1 overflow-hidden">{children}</main>
-          <Footer />
+          <SplashGate>
+            <Header />
+            <main className="flex-1 overflow-hidden">{children}</main>
+            <Footer />
+          </SplashGate>
         </NextIntlClientProvider>
       </body>
     </html>

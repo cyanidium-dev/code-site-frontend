@@ -58,6 +58,7 @@ export default function Modal({
           src="/images/modal/background.webp"
           alt="background"
           fill
+          sizes="(max-width: 1024px) 470px, 512px"
           className="-z-10 object-cover object-top-left mix-blend-luminosity"
         />
         <IconButton

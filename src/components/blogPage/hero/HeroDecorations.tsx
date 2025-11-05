@@ -40,6 +40,7 @@ export default function HeroDecorations() {
             alt="girl"
             width={353}
             height={530}
+            sizes="353px"
             className="w-[353px] h-auto"
           />
         </motion.div>
@@ -103,6 +104,7 @@ export default function HeroDecorations() {
             alt="dices"
             width="365"
             height="283"
+            sizes="(max-width: 1024px) 255px, 365px"
             className="w-[255px] lg:w-[365px] h-auto"
           />
         </motion.div>

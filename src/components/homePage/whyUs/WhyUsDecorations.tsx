@@ -83,6 +83,7 @@ export default function WhyUsDecorations() {
             alt="tag"
             width="82"
             height="63"
+            sizes="82px"
             className="w-[82px] h-auto"
           />
         </motion.div>
@@ -105,6 +106,7 @@ export default function WhyUsDecorations() {
             alt="tag"
             width="110"
             height="85"
+            sizes="(max-width: 1024px) 110px, 229px"
             className="w-[110px] lg:w-[229px] h-auto"
           />
         </motion.div>

@@ -121,6 +121,8 @@ export default function HeroSlideDecorations({
                 alt="head"
                 width={725}
                 height={902}
+                priority={idx === 0}
+                sizes="(max-width: 768px) 417px, 725px"
                 className="w-[417px] lg:w-[725px] h-auto"
               />
             </motion.div>
@@ -159,6 +161,8 @@ export default function HeroSlideDecorations({
                 alt="laptops"
                 width={2064}
                 height={1548}
+                priority={idx === 0}
+                sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
                 className="w-[586px] lg:w-[1032px] h-auto"
               />
             </motion.div>

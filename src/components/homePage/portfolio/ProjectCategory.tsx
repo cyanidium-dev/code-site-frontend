@@ -45,6 +45,7 @@ export default function ProjectCategory({
           alt="type icon"
           width={20}
           height={20}
+          sizes="(max-width: 1024px) 13px, 20px"
           className="shrink-0 size-[13px] lg:size-5"
         />
         <p className="text-[10px] lg:text-[16px] font-light leading-[130%]">

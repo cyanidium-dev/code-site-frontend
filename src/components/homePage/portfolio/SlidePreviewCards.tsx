@@ -73,6 +73,7 @@ export default function SlidePreviewCards({
                 alt="preview image"
                 width={1071}
                 height={872}
+                sizes="338px"
                 className="w-[338px] h-auto object-contain"
               />
             </div>

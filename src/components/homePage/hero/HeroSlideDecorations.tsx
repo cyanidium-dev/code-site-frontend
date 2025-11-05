@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { useScroll, useTransform } from "motion/react";
+import { useTransform } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useParallaxScroll } from "@/hooks/useParallaxScroll";
 import Drops from "./Drops";
 import GraphMob from "./GraphMob";
 import DropsTwo from "./DropsTwo";
@@ -50,13 +51,13 @@ export default function HeroSlideDecorations({
 
   const [isClient, setIsClient] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  // Оптимізований хук для parallax скролу
+  const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Параллакс ефекти для різних елементів
+  // Параллакс ефекти для різних елементів (специфічні значення для Hero)
   const headY = useTransform(scrollYProgress, [0, 1], [20, -50]);
   const mainImageY = useTransform(scrollYProgress, [0, 1], [60, -100]);
   const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);

@@ -2,6 +2,8 @@
 import * as motion from "motion/react-client";
 import { Project } from "@/types/project";
 import { twMerge } from "tailwind-merge";
+import { getOptimizedImageUrl } from "@/utils/sanityImageUrl";
+import { useEffect } from "react";
 
 interface MainCardProps {
   project: Project;
@@ -10,6 +12,7 @@ interface MainCardProps {
   cardWidth: number;
   cardHeight: number;
   width: number;
+  isPriority?: boolean;
   className?: string;
 }
 
@@ -20,8 +23,38 @@ export default function MainCard({
   cardWidth,
   cardHeight,
   width,
+  isPriority = false,
   className,
 }: MainCardProps) {
+  // Оптимізуємо URL зображення для різних breakpoints
+  // Використовуємо "auto" для автоматичного вибору найкращого формату (WebP/AVIF/оригінальний)
+  const imageWidth = width >= 1024 ? 1071 : width >= 768 ? 740 : 521;
+  const optimizedImageUrl =
+    getOptimizedImageUrl(project.mainImage, imageWidth, 80, "auto") ||
+    project.mainImage?.asset?.url ||
+    "";
+
+  // Preload першого зображення для покращення LCP
+  useEffect(() => {
+    if (isPriority && optimizedImageUrl) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = optimizedImageUrl;
+      link.setAttribute("fetchpriority", "high");
+      document.head.appendChild(link);
+
+      return () => {
+        const existingLink = document.querySelector(
+          `link[href="${optimizedImageUrl}"]`
+        );
+        if (existingLink) {
+          document.head.removeChild(existingLink);
+        }
+      };
+    }
+  }, [isPriority, optimizedImageUrl]);
+
   return (
     <motion.div
       key={`bg-${project.slug}`}
@@ -84,7 +117,7 @@ export default function MainCard({
             ease: [0.25, 0.1, 0.25, 1] as const,
           }}
           style={{
-            backgroundImage: `url(${project.mainImage.asset.url})`,
+            backgroundImage: `url(${optimizedImageUrl})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",

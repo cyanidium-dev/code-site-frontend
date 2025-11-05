@@ -179,6 +179,7 @@ export default function PortfolioSlider({
         cardWidth={cardWidth}
         cardHeight={cardHeight}
         width={width}
+        isPriority={currentSlide === 0}
       />
 
       {/* Main card texts */}

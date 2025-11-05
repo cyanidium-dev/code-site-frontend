@@ -1,24 +1,29 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function CTAPhone() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Різні варіації parallax
-  const fastY = useTransform(scrollYProgress, [0, 1], [150, -150]);
-  const mediumY = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const slowY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const extraSlowY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  // Різні варіації parallax з мемоізацією
+  const { fastY, mediumY, slowY, extraSlowY } = useParallaxVariants(
+    scrollYProgress,
+    {
+      fast: [150, -150],
+      medium: [80, -80],
+      slow: [-100, 100],
+      extraSlow: [-50, 50],
+    }
+  );
 
   return (
     <div

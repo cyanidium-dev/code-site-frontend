@@ -1,24 +1,24 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function FAQDecorations() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Різні варіації parallax
+  const { fastY, slowY } = useParallaxVariants(scrollYProgress, {
+    fast: [120, -120],
+    slow: [-120, 120],
   });
-
-  // Швидкий параллакс (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
-
-  // Повільний параллакс (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">

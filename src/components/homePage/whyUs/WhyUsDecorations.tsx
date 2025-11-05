@@ -2,24 +2,24 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import AnimatedMapWithDots from "./AnimatedMapWithDots";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function WhyUsDecorations() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Різні варіації parallax
+  const { fastY, slowY } = useParallaxVariants(scrollYProgress, {
+    fast: [80, -80],
+    slow: [-80, 80],
   });
-
-  // Швидкий параллакс (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [80, -80]);
-
-  // Повільний параллакс (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
     <div ref={sectionRef}>

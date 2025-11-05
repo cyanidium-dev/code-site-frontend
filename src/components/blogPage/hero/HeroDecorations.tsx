@@ -2,25 +2,24 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import {
+  useParallaxScroll,
+  useParallaxVariants,
+} from "@/hooks/useParallaxScroll";
 
 export default function HeroDecorations() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Різні варіації parallax з мемоізацією
+  const { fastY, mediumY, slowY } = useParallaxVariants(scrollYProgress, {
+    fast: [120, -120],
+    medium: [-60, 60],
+    slow: [-120, 120],
   });
-
-  // Швидкий параллакс (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [120, -120]);
-
-  const middleY = useTransform(scrollYProgress, [0, 1], [-60, 60]);
-
-  // Повільний параллакс (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-120, 120]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
@@ -89,7 +88,7 @@ export default function HeroDecorations() {
       </motion.div>
 
       <motion.div
-        style={{ y: middleY }}
+        style={{ y: mediumY }}
         className="absolute -z-10 top-[385px] lg:top-[318px] right-[calc(50%-213px)] lg:right-auto lg:left-[calc(50%-625px)] w-[255px] lg:w-[365px] h-auto aspect-[365/283]"
       >
         <motion.div

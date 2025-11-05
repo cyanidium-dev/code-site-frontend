@@ -1,27 +1,26 @@
 "use client";
-import { useScroll, useTransform } from "motion/react";
-import { useRef, ReactNode } from "react";
+import { useTransform } from "motion/react";
+import { ReactNode } from "react";
 import Container from "@/components/shared/container/Container";
 import FounderDecorations from "./FounderDecorations";
+import { useParallaxScroll, useParallaxVariants } from "@/hooks/useParallaxScroll";
 
 interface FounderAnimatedProps {
   children: ReactNode;
 }
 
 export default function FounderAnimated({ children }: FounderAnimatedProps) {
-  const sectionRef = useRef<HTMLElement>(null);
+  // Оптимізований хук для parallax скролу
+  const { sectionRef, scrollYProgress } = useParallaxScroll([
+    "start end",
+    "end start",
+  ]);
 
-  // Відслідковуємо скрол секції
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+  // Різні варіації parallax
+  const { fastY, slowY } = useParallaxVariants(scrollYProgress, {
+    fast: [80, -80],
+    slow: [-80, 80],
   });
-
-  // Швидкий параллакс для drops (рухається швидше)
-  const fastY = useTransform(scrollYProgress, [0, 1], [80, -80]);
-
-  // Повільний параллакс для figure (рухається повільніше)
-  const slowY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
 
   return (
     <section ref={sectionRef} className="relative pt-[45px] lg:pt-[271px]">

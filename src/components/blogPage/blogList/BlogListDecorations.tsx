@@ -40,6 +40,7 @@ export default function BlogListDecorations() {
             alt="hand"
             width={1192}
             height={1293}
+            sizes="596px"
             className="w-[596px] h-auto"
           />
         </motion.div>
@@ -83,6 +84,7 @@ export default function BlogListDecorations() {
             alt="chain"
             width="912"
             height="225"
+            sizes="(min-width: 1024px) 912px, 0px"
             className="w-[912px] h-auto"
           />
         </motion.div>

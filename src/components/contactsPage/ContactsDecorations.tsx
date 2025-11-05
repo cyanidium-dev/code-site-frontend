@@ -41,6 +41,7 @@ export default function ContactsDecorations() {
             alt="paper"
             width={927}
             height={972}
+            sizes="(max-width: 1024px) 972px, 1419px"
             className="w-[972px] lg:w-[1419px] h-auto"
           />
         </motion.div>
@@ -105,6 +106,7 @@ export default function ContactsDecorations() {
             alt="head"
             width="355"
             height="491"
+            sizes="355px"
             className="w-[355px] h-auto"
           />
         </motion.div>
@@ -127,6 +129,7 @@ export default function ContactsDecorations() {
             alt="head"
             width="664"
             height="918"
+            sizes="(min-width: 1024px) 664px, 0px"
             className="w-[664px] h-auto"
           />
         </motion.div>
@@ -213,6 +216,7 @@ export default function ContactsDecorations() {
             alt="girl"
             width="335"
             height="717"
+            sizes="(max-width: 1024px) 285px, 335px"
             className="w-[285px] lg:w-[335px] h-auto"
           />
         </motion.div>
@@ -234,6 +238,7 @@ export default function ContactsDecorations() {
             alt="flame"
             width="513"
             height="179"
+            sizes="(max-width: 1024px) 513px, 0px"
             className="w-[513px] h-auto"
           />
         </motion.div>
@@ -255,6 +260,7 @@ export default function ContactsDecorations() {
             alt="flame"
             width="670"
             height="359"
+            sizes="(min-width: 1024px) 670px, 0px"
             className="w-[670px] h-auto"
           />
         </motion.div>

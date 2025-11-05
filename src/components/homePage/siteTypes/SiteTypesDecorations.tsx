@@ -40,6 +40,7 @@ export default function SiteTypesDecorations() {
             alt="head"
             width={1152}
             height={1177}
+            sizes="(max-width: 768px) 1152px, 1193px"
             className="w-[1152px] md:w-[1193px] h-auto"
           />
         </motion.div>
@@ -96,6 +97,7 @@ export default function SiteTypesDecorations() {
           alt="texture"
           width="577"
           height="1539"
+          sizes="577px"
           className="h-[1539px] w-auto"
         />
       </div>
@@ -145,6 +147,7 @@ export default function SiteTypesDecorations() {
               alt="phone"
               width={299}
               height={529}
+              sizes="(max-width: 768px) 158px, 299px"
               className="w-[158px] md:w-[299px] h-auto rotate-[-12deg] md:rotate-[0deg]"
             />
           </motion.div>
@@ -191,6 +194,7 @@ export default function SiteTypesDecorations() {
               alt="laptop"
               width={1037}
               height={1033}
+              sizes="(max-width: 768px) 688px, 1377px"
               className=" w-[688px] md:w-[1377px] h-auto"
             />
           </motion.div>
@@ -277,6 +281,7 @@ export default function SiteTypesDecorations() {
               alt="laptop"
               width={3196}
               height={2709}
+              sizes="(max-width: 768px) 743px, 1598px"
               className=" w-[743px] md:w-[1598px] h-auto"
             />
           </motion.div>
@@ -305,6 +310,7 @@ export default function SiteTypesDecorations() {
               alt="laptop"
               width="487"
               height="481"
+              sizes="(min-width: 768px) 487px, 0px"
               className="hidden md:block w-[487px] h-auto"
             />
           </motion.div>
@@ -347,6 +353,7 @@ export default function SiteTypesDecorations() {
               alt="phone"
               width={753}
               height={926}
+              sizes="(max-width: 768px) 175px, 377px"
               className="w-[175px] md:w-[377px] h-auto"
             />
           </motion.div>
@@ -368,6 +375,7 @@ export default function SiteTypesDecorations() {
               alt="head"
               width={2673}
               height={1609}
+              sizes="(max-width: 768px) 1336px, 0px"
               className="md:hidden w-[1336px] h-auto"
             />
             <Image
@@ -375,6 +383,7 @@ export default function SiteTypesDecorations() {
               alt="head"
               width={1194}
               height={1232}
+              sizes="(min-width: 768px) 1194px, 0px"
               className="hidden md:block w-[1194px] h-auto"
             />
           </motion.div>
@@ -511,6 +520,7 @@ export default function SiteTypesDecorations() {
               alt="laptop"
               width={2755}
               height={2066}
+              sizes="(max-width: 768px) 620px, 1377px"
               className=" w-[620px] md:w-[1377px] h-auto"
             />
           </motion.div>
@@ -532,6 +542,7 @@ export default function SiteTypesDecorations() {
               alt="phone"
               width={1885}
               height={1524}
+              sizes="(max-width: 768px) 425px, 943px"
               className="w-[425px] md:w-[943px] h-auto"
             />
           </motion.div>

@@ -40,6 +40,7 @@ export default function PortfolioDecorations() {
             alt="code-site.art"
             width={625}
             height={79}
+            sizes="625px"
             className="w-[625px] h-auto"
           />
         </motion.div>
@@ -62,6 +63,7 @@ export default function PortfolioDecorations() {
             alt="head"
             width={1817}
             height={1770}
+            sizes="(max-width: 1024px) 650px, 908px"
             className="w-[650px] lg:w-[908px] h-auto mix-blend-hard-light"
           />
         </motion.div>

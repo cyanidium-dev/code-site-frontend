@@ -39,6 +39,7 @@ export default function CTAPhone() {
             alt="phone"
             width={721}
             height={820}
+            sizes="(max-width: 1024px) 467px, (max-width: 1280px) 671px, 721px"
             className="w-[467px] lg:w-[671px] xl:w-[721px] h-auto"
           />
         </motion.div>
@@ -83,6 +84,7 @@ export default function CTAPhone() {
             alt="code-site.art"
             width={2711}
             height={347}
+            sizes="(max-width: 1024px) 613px, 1300px"
             className="w-[613px] lg:w-[1300px] h-auto"
           />
         </motion.div>
@@ -127,6 +129,7 @@ export default function CTAPhone() {
             alt="heart"
             width={781}
             height={755}
+            sizes="390px"
             className="w-[390px] h-auto"
           />
         </motion.div>

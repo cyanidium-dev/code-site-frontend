@@ -49,6 +49,7 @@ export default function WhyUsImages() {
               alt="compact disk"
               width="164"
               height="164"
+              sizes="(max-width: 1024px) 164px, 251px"
               className="w-full h-full mix-blend-screen"
             />
           </div>

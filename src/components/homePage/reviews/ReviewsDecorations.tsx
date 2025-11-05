@@ -62,6 +62,7 @@ export default function ReviewsDecorations() {
             alt="girl"
             width={313}
             height={668}
+            sizes="(max-width: 1024px) 313px, 533px"
             className="w-[313px] lg:w-[533px] h-auto"
           />
         </motion.div>
@@ -112,6 +113,7 @@ export default function ReviewsDecorations() {
             alt="head background"
             width={626}
             height={939}
+            sizes="313px"
             className=""
           />
         </motion.div>
@@ -209,6 +211,7 @@ export default function ReviewsDecorations() {
             alt="girl"
             width={437}
             height={934}
+            sizes="437px"
             className=""
           />
         </motion.div>

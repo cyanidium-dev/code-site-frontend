@@ -41,6 +41,7 @@ export default function HeroDecorations() {
             alt="head"
             width={337}
             height={475}
+            sizes="(max-width: 1024px) 337px, 555px"
             className="w-[337px] lg:w-[555px] h-auto"
           />
         </motion.div>
@@ -62,6 +63,7 @@ export default function HeroDecorations() {
             alt="phone"
             width={271}
             height={330}
+            sizes="(max-width: 1024px) 271px, 441px"
             className="w-[271px] lg:w-[441px] h-auto"
           />
         </motion.div>

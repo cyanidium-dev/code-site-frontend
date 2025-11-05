@@ -39,7 +39,7 @@ export default function FounderDecorations({
 
       <motion.div
         style={{ y: slowY }}
-        className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none "
+        className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none"
       >
         <motion.div
           initial="hidden"
@@ -62,7 +62,7 @@ export default function FounderDecorations({
       <motion.div
         style={{ y: slowY }}
         className="absolute bottom-[-332px] lg:bottom-[-669px] right-[-380px] lg:right-[-883px] -z-30 pointer-events-none w-[549px] lg:w-[1243px] 
-        aspect-[1243/1167] overflow-visible mix-blend-color-dodge"
+        aspect-[1243/1167] overflow-visible"
       >
         <motion.div
           initial="hidden"
@@ -70,6 +70,7 @@ export default function FounderDecorations({
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+          className="bg-black"
         >
           {" "}
           <Image
@@ -84,7 +85,8 @@ export default function FounderDecorations({
             alt="figure"
             width={1243}
             height={1167}
-            className="object-cover w-full h-full object-top-left"
+            sizes="(max-width: 1024px) 549px, 1243px"
+            className="object-cover w-full h-full object-top-left  mix-blend-color-dodge"
           />
         </motion.div>
       </motion.div>

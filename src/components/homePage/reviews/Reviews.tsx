@@ -47,6 +47,7 @@ export default function Reviews({ reviewsList }: ReviewsProps) {
             alt="head"
             width={490}
             height={634}
+            sizes="(max-width: 640px) 138px, 490px"
             className="absolute -z-10 bottom-0 right-[-25px] sm:right-0 w-[138px] sm:w-[490px] h-auto mix-blend-hard-light"
           />
         </motion.div>

@@ -153,6 +153,7 @@ const components: Partial<PortableTextReactComponents> = {
             src={imageUrl}
             alt={value?.alt || ""}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             className="object-cover rounded-[8px]"
           />
         </motion.div>

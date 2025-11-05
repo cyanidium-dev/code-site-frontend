@@ -35,6 +35,7 @@ export default function CTAHeartBlue() {
             alt="heart"
             width={390}
             height={377}
+            sizes="390px"
             className="w-[390px] h-auto"
           />
         </motion.div>

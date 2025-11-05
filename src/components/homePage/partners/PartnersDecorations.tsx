@@ -61,6 +61,7 @@ export default function PartnersDecorations() {
             alt="chain"
             width="455"
             height="198"
+            sizes="(max-width: 1024px) 455px, 0px"
           />
         </motion.div>
       </motion.div>
@@ -82,6 +83,7 @@ export default function PartnersDecorations() {
             alt="chain"
             width="912"
             height="225"
+            sizes="(min-width: 1024px) 912px, 0px"
             className="hidden lg:block"
           />
         </motion.div>

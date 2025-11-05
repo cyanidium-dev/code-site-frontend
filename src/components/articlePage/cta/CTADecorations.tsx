@@ -41,6 +41,7 @@ export default function CTADecorations() {
             alt="hand"
             width={1251}
             height={1761}
+            sizes="(max-width: 1024px) 440px, 625px"
             className="w-[440px] lg:w-[625px] h-auto"
           />
         </motion.div>

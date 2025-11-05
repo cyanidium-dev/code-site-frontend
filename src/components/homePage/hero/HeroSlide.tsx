@@ -1,7 +1,7 @@
 "use client";
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import BenefitsList from "./BenefitsList";
@@ -49,6 +49,8 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
@@ -60,6 +62,18 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
 
     return `${baseClasses} ${opacityClass} ${transitionClass}`;
   };
+
+  useEffect(() => {
+    const alreadyPlayed = sessionStorage.getItem("splashPlayed");
+
+    if (alreadyPlayed) {
+      setIsLoading(false);
+      return;
+    }
+
+    const timer = setTimeout(() => setIsLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
@@ -76,11 +90,13 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
       }}
     >
       <Container className="relative">
-        <HeroSlideDecorations
-          variant={variant}
-          mainImage={mainImage}
-          idx={idx}
-        />
+        {!isLoading && (
+          <HeroSlideDecorations
+            variant={variant}
+            mainImage={mainImage}
+            idx={idx}
+          />
+        )}
         {idx === 0 ? (
           <motion.h1
             initial="hidden"

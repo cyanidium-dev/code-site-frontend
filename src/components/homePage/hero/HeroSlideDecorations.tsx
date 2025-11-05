@@ -68,9 +68,35 @@ export default function HeroSlideDecorations({
     setIsClient(true);
   }, []);
 
+  // Preload LCP image for the first slide
+  useEffect(() => {
+    if (idx === 0 && mainImage) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = mainImage;
+      link.setAttribute("fetchpriority", "high");
+      document.head.appendChild(link);
+
+      return () => {
+        const existingLink = document.querySelector(
+          `link[href="${mainImage}"]`
+        );
+        if (existingLink) {
+          document.head.removeChild(existingLink);
+        }
+      };
+    }
+  }, [idx, mainImage]);
+
+  // For first slide, render LCP images immediately without waiting for isClient
+  const isFirstSlide = idx === 0;
+  const shouldRenderLCP = isFirstSlide || isClient;
+
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
-      {isClient ? (
+      {/* Background elements - only render when isClient is true */}
+      {isClient && (
         <>
           <div
             className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full 
@@ -103,12 +129,17 @@ export default function HeroSlideDecorations({
             className="absolute -z-20 left-[-312px] lg:left-[-273px] top-[-420px] lg:top-[-533px] w-[469px] h-[512px] rounded-full 
        supports-[backdrop-filter]:blur-[104px] will-change-transform"
           />
+        </>
+      )}
 
-          <motion.div
-            className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
+      {/* Head image - render immediately for first slide */}
+      {shouldRenderLCP && (
+        <motion.div
+          className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
-            style={{ y: headY }}
-          >
+          style={{ y: headY }}
+        >
+          {isClient ? (
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -127,28 +158,46 @@ export default function HeroSlideDecorations({
                 className="w-[417px] lg:w-[725px] h-auto"
               />
             </motion.div>
-          </motion.div>
+          ) : (
+            <Image
+              src="/images/homePage/hero/head.webp"
+              alt="head"
+              width={725}
+              height={902}
+              priority={idx === 0}
+              sizes="(max-width: 768px) 417px, 725px"
+              className="w-[417px] lg:w-[725px] h-auto"
+            />
+          )}
+        </motion.div>
+      )}
 
+      {/* Logo - only render when isClient is true */}
+      {isClient && (
+        <motion.div
+          className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
+          style={{ y: logoY }}
+        >
           <motion.div
-            className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
-            style={{ y: logoY }}
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
+            className=""
           >
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-              className=""
-            >
-              <CodeSIteArt colorLogo={colorLogo} />
-            </motion.div>
+            <CodeSIteArt colorLogo={colorLogo} />
           </motion.div>
+        </motion.div>
+      )}
 
-          <motion.div
-            className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
-            style={{ y: mainImageY }}
-          >
+      {/* Main LCP image - render immediately for first slide */}
+      {shouldRenderLCP && (
+        <motion.div
+          className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
+          style={{ y: mainImageY }}
+        >
+          {isClient ? (
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -167,8 +216,23 @@ export default function HeroSlideDecorations({
                 className="w-[586px] lg:w-[1032px] h-auto"
               />
             </motion.div>
-          </motion.div>
+          ) : (
+            <Image
+              src={mainImage}
+              alt="laptops"
+              width={2064}
+              height={1548}
+              priority={idx === 0}
+              sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
+              className="w-[586px] lg:w-[1032px] h-auto"
+            />
+          )}
+        </motion.div>
+      )}
 
+      {/* Other decorative elements - only render when isClient is true */}
+      {isClient && (
+        <>
           <div
             style={{ backgroundColor: colorSecondary }}
             className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] will-change-transform"
@@ -238,7 +302,7 @@ export default function HeroSlideDecorations({
             </motion.div>
           </motion.div>
         </>
-      ) : null}
+      )}
     </div>
   );
 }

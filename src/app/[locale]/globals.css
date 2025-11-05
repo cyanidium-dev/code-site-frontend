@@ -181,6 +181,18 @@
     animation: glow-blue 2s ease-in-out infinite;
   }
 
+    .animate-text-glow-dark {
+    background-image: linear-gradient(
+      125deg,
+      #000 22.37%,
+      var(--color-blue-light) 94.04%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow-blue 2s ease-in-out infinite;
+  }
+
   .benefit-highlight-1 {
     animation: benefit-highlight-1 6s ease-in-out infinite;
   }

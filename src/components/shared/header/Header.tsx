@@ -1,4 +1,7 @@
 "use client";
+
+import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 import Container from "../container/Container";
 import BurgerMenuButton from "./BurgerButton";
 import LocaleSwitcher from "./LocaleSwitcher";
@@ -7,9 +10,9 @@ import BurgerMenu from "./BurgerMenu";
 import NavMenu from "./NavMenu";
 import { useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-import MainButton from "../buttons/MainButton";
 import { useTranslations } from "next-intl";
 import ClientApplication from "../clientApplication/ClientApplication";
+import { useScreenWidth } from "@/hooks/useScreenWidth";
 
 export default function Header() {
   const t = useTranslations("header");
@@ -17,6 +20,13 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
   const toggleHeaderMenuOpen = () => setIsHeaderMenuOpened(!isHeaderMenuOpened);
+
+  const pathname = usePathname();
+  const locale = useLocale();
+  const isContacts =
+    pathname === `/${locale}/contacts` || pathname === "/contacts";
+
+  const width = useScreenWidth();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 20);
@@ -32,7 +42,10 @@ export default function Header() {
               : "bg-transparent"
           }`}
         />
-        <Logo className="text-[12px] z-[60]" />
+        <Logo
+          className="text-[12px] z-[60]"
+          variant={isContacts && width >= 1024 ? "dark" : "blue"}
+        />
         <div className="flex items-center gap-x-6 md:gap-x-8 xl:gap-x-12">
           <NavMenu className="hidden md:flex" />
           <LocaleSwitcher />

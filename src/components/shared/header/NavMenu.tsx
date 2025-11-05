@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 import { Dispatch, SetStateAction } from "react";
 import { useTranslations } from "next-intl";
 import NavMenuItem from "./NavMenuItem";
@@ -14,6 +18,11 @@ export default function NavMenu({
 }: NavMenuProps) {
   const t = useTranslations("header");
 
+  const pathname = usePathname();
+  const locale = useLocale();
+  const isContacts =
+    pathname === `/${locale}/contacts` || pathname === "/contacts";
+
   const navMenuList = [
     { title: t("portfolio"), link: "/portfolio" },
     { title: t("home"), link: "/" },
@@ -25,7 +34,7 @@ export default function NavMenu({
   return (
     <ul
       className={twMerge(
-        "flex flex-col md:flex-row md:items-center gap-y-9 gap-x-4 w-full md:w-fit",
+        `flex flex-col md:flex-row md:items-center gap-y-9 gap-x-4 w-full md:w-fit ${isContacts ? "lg:text-black" : "lg:text-white"}`,
         className
       )}
     >

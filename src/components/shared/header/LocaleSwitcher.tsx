@@ -15,6 +15,9 @@ export default function LocaleSwitcher() {
   const pathName = usePathname();
   const router = useRouter();
 
+  const isContacts =
+    pathName === `/${currentLocale}/contacts` || pathName === "/contacts";
+
   const handleLocaleChange = (newLocale: Locale) => {
     const hash = window.location.hash;
 
@@ -56,7 +59,10 @@ export default function LocaleSwitcher() {
   }, [isOpen, handleClickOutside, handleKeyDown]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div
+      className={`relative ${isContacts ? "lg:text-black xl:text-white" : ""}`}
+      ref={dropdownRef}
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="relative z-[60] cursor-pointer flex items-center gap-[9px] outline-none xl:hover:text-blue-light focus-visible:text-blue-light 
@@ -75,7 +81,7 @@ export default function LocaleSwitcher() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute right-0 mt-2 w-[65px] backdrop-blur-[5px] shadow-social rounded-[8px] z-[60]"
+            className="absolute right-0 mt-2 w-[65px] backdrop-blur-[5px] shadow-social rounded-[8px] z-[60]  bg-black/26"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

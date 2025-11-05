@@ -10,3 +10,5 @@ export const TELEGRAM_LINK = "";
 
 export const LINKEDIN_NAME = "@yourusername";
 export const LINKEDIN_LINK = "";
+
+export const TIKTOK_LINK = "";

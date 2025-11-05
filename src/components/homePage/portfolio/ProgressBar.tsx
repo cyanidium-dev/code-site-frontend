@@ -42,6 +42,7 @@ export default function ProgressBar({
         {Array.from({ length: projectsCount }).map((_, index) => (
           <button
             key={index}
+            aria-label={`slide-button-${index + 1}`}
             onClick={() => onSlideClick(index)}
             className="absolute top-0 h-[50px] cursor-pointer hover:bg-white/5 transition-colors duration-300 ease-in-out"
             style={{

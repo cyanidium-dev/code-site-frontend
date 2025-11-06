@@ -124,6 +124,7 @@ export default function HeroSlideDecorations({
           variants={fadeInAnimation({
             delay: headDelay,
             scale: 0.95,
+            useLCPOptimization: idx === 0,
           })}
         >
           <Image
@@ -153,6 +154,7 @@ export default function HeroSlideDecorations({
           variants={fadeInAnimation({
             delay: logoDelay,
             scale: 0.95,
+            useLCPOptimization: idx === 0,
           })}
         >
           <CodeSIteArt colorLogo={colorLogo} />
@@ -173,6 +175,7 @@ export default function HeroSlideDecorations({
           variants={fadeInAnimation({
             delay: mainImageDelay,
             scale: 0.95,
+            useLCPOptimization: idx === 0,
           })}
         >
           <Image
@@ -208,6 +211,7 @@ export default function HeroSlideDecorations({
             variants={fadeInAnimation({
               delay: graphDelay,
               scale: 0.95,
+              useLCPOptimization: idx === 0,
             })}
           >
             <GraphMob graph={graph} idx={idx} />
@@ -227,6 +231,7 @@ export default function HeroSlideDecorations({
             variants={fadeInAnimation({
               delay: graphDelay,
               scale: 0.95,
+              useLCPOptimization: idx === 0,
             })}
           >
             <GraphDesk graph={graph} idx={idx} />
@@ -247,6 +252,7 @@ export default function HeroSlideDecorations({
           variants={fadeInAnimation({
             delay: dropsDelay,
             scale: 0.95,
+            useLCPOptimization: idx === 0,
           })}
         >
           <Drops drops={drops} />
@@ -266,6 +272,7 @@ export default function HeroSlideDecorations({
           variants={fadeInAnimation({
             delay: dropsDelay,
             scale: 0.95,
+            useLCPOptimization: idx === 0,
           })}
         >
           <DropsTwo drops={drops} />

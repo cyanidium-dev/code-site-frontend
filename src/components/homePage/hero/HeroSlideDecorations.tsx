@@ -2,6 +2,7 @@
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { useTransform } from "motion/react";
+import { useEffect } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import { useParallaxScroll } from "@/hooks/useParallaxScroll";
 import Drops from "./Drops";
@@ -74,6 +75,27 @@ export default function HeroSlideDecorations({
   const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
   const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
 
+  // Preload LCP image (head.webp) для першого слайду
+  useEffect(() => {
+    if (idx === 0) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = "/images/homePage/hero/head.webp";
+      link.setAttribute("fetchpriority", "high");
+      document.head.appendChild(link);
+
+      return () => {
+        const existingLink = document.querySelector(
+          'link[href="/images/homePage/hero/head.webp"]'
+        );
+        if (existingLink) {
+          document.head.removeChild(existingLink);
+        }
+      };
+    }
+  }, [idx]);
+
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
       {/* Background elements */}
@@ -116,28 +138,42 @@ export default function HeroSlideDecorations({
         style={{ y: headY }}
         key={`head-${isLoadingSplashScreen}`}
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({
-            delay: headDelay,
-            scale: 0.95,
-            useLCPOptimization: idx === 0,
-          })}
-        >
+        {idx === 0 ? (
+          // Для LCP елемента рендеримо безпосередньо без whileInView, щоб відображалося одразу
           <Image
             src="/images/homePage/hero/head.webp"
             alt="head"
             width={725}
             height={902}
-            priority={idx === 0}
+            priority={true}
             sizes="(max-width: 768px) 417px, 725px"
             className="w-[417px] lg:w-[725px] h-auto"
-            fetchPriority={idx === 0 ? "high" : "auto"}
+            fetchPriority="high"
           />
-        </motion.div>
+        ) : (
+          // Для інших слайдів використовуємо анімацію
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({
+              delay: headDelay,
+              scale: 0.95,
+            })}
+          >
+            <Image
+              src="/images/homePage/hero/head.webp"
+              alt="head"
+              width={725}
+              height={902}
+              priority={false}
+              sizes="(max-width: 768px) 417px, 725px"
+              className="w-[417px] lg:w-[725px] h-auto"
+              fetchPriority="auto"
+            />
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Logo */}

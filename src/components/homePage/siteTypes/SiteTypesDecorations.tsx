@@ -30,7 +30,7 @@ export default function SiteTypesDecorations() {
       {/* Head One */}
       <motion.div
         style={{ y: fastY }}
-        className="absolute -z-20 left-[-840px] md:left-[-885px] top-[-940px] md:top-[-696px] mix-blend-hard-light md:rotate-[-30deg]"
+        className="absolute -z-20 left-[-404px] md:left-[-443px] top-[-430px] md:top-[-325px] mix-blend-hard-light rotate-[30deg] md:rotate-none"
       >
         <motion.div
           initial="hidden"
@@ -43,12 +43,13 @@ export default function SiteTypesDecorations() {
           <Image
             src="/images/homePage/siteTypes/headOne.webp"
             alt="head"
-            width={1152}
-            height={1177}
-            sizes="(max-width: 768px) 1152px, 1193px"
-            className="w-[1152px] md:w-[1193px] h-auto"
+            width={760}
+            height={618}
+            sizes="(max-width: 768px) 661px, 760px"
+            className="w-[661px] md:w-[760px] h-auto"
           />
         </motion.div>
+        <div className="hidden lg:block rotate-[115deg] absolute z-10 top-[-81px] left-[-448px] w-[1038px] h-[595px] rounded-full bg-black supports-[backdrop-filter]:blur-[123px] will-change-transform" />
       </motion.div>
 
       <motion.div
@@ -304,7 +305,7 @@ export default function SiteTypesDecorations() {
             variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
           >
             <Image
-              src="/images/homePage/siteTypes/wing.svg"
+              src="/images/homePage/siteTypes/wing.webp"
               alt="laptop"
               width="277"
               height="321"
@@ -365,8 +366,8 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         <motion.div
-          style={{ y: slowY }}
-          className="absolute -z-30 top-[78px] md:top-[543px] right-[-276px] md:right-[-341px] w-[1336px] h-auto aspect-[2673/1609] md:mix-blend-difference"
+          // style={{ y: slowY }}
+          className="absolute -z-30 top-[74px] md:top-[543px] right-[36px] md:right-[-201px] w-[553px] lg:w-[725px] h-auto aspect-[725/902] md:mix-blend-difference"
         >
           <motion.div
             initial="hidden"
@@ -378,19 +379,19 @@ export default function SiteTypesDecorations() {
             <Image
               src="/images/homePage/siteTypes/headTwo.webp"
               alt="head"
-              width={2673}
-              height={1609}
-              sizes="(max-width: 768px) 1336px, 0px"
-              className="md:hidden w-[1336px] h-auto"
+              width={725}
+              height={902}
+              sizes="(max-width: 768px) 725px, 902px"
+              className="w-[553px] lg:w-[725px] h-auto"
             />
-            <Image
+            {/* <Image
               src="/images/homePage/siteTypes/headTwoDesk.webp"
               alt="head"
               width={1194}
               height={1232}
               sizes="(min-width: 768px) 1194px, 0px"
               className="hidden md:block w-[1194px] h-auto"
-            />
+            /> */}
           </motion.div>
         </motion.div>
 

@@ -66,18 +66,21 @@ export default function Pagination<T>({
     params.set("page", page.toString());
     router.push(`?${params.toString()}`, { scroll: false });
 
-    const targetElement = document.getElementById(scrollTargetId);
-    if (targetElement) {
-      const yOffset = -120; // Зміщення на 120px вгору
-      const yPosition =
-        targetElement.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
+    // Використовуємо requestAnimationFrame для уникнення примусового перекомпонування
+    requestAnimationFrame(() => {
+      const targetElement = document.getElementById(scrollTargetId);
+      if (targetElement) {
+        const yOffset = -120; // Зміщення на 120px вгору
+        const yPosition =
+          targetElement.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
 
-      window.scrollTo({
-        top: yPosition,
-      });
-    }
+        window.scrollTo({
+          top: yPosition,
+        });
+      }
+    });
   };
 
   return (

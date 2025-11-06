@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export function useSplashScreen(duration = 3000) {
+export function useSplashScreen(duration = 0) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

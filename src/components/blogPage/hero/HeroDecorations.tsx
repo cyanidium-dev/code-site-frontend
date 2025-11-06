@@ -6,8 +6,14 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function HeroDecorations() {
+  const isLoadingSplashScreen = useSplashScreen();
+  const girlDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 1.1);
+
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -28,11 +34,12 @@ export default function HeroDecorations() {
         className="absolute top-[344px] lg:top-15 left-[calc(50%-177px)] xl:left-[calc(50%-97px)] w-[353px] h-auto aspect-[353/530]"
       >
         <motion.div
+          key={`girl-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, duration: 2, scale: 0.8 })}
+          variants={fadeInAnimation({ delay: girlDelay, duration: 2, scale: 0.8 })}
         >
           <Image
             src="/images/blogPage/hero/girl.webp"
@@ -50,11 +57,12 @@ export default function HeroDecorations() {
         className="absolute top-[115px] lg:top-[101px] right-[calc(50%-180px)] lg:right-[calc(50%-701px)] w-[164px] lg:w-[244px] h-auto aspect-[244/235]"
       >
         <motion.div
+          key={`drops-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: dropsDelay, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/drops-blue.svg"
@@ -71,11 +79,12 @@ export default function HeroDecorations() {
         className="hidden lg:block absolute z-20 top-[328px] left-[calc(50%-290px)] w-[224px] h-auto aspect-[224/252]"
       >
         <motion.div
+          key={`drops-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: dropsDelay, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/drops-pink.svg"
@@ -92,11 +101,12 @@ export default function HeroDecorations() {
         className="absolute -z-10 top-[385px] lg:top-[318px] right-[calc(50%-213px)] lg:right-auto lg:left-[calc(50%-625px)] w-[255px] lg:w-[365px] h-auto aspect-[365/283]"
       >
         <motion.div
+          key={`drops-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 1.1, scale: 0.95 })}
+          variants={fadeInAnimation({ delay: dropsDelay, scale: 0.95 })}
         >
           <Image
             src="/images/blogPage/hero/dices.webp"

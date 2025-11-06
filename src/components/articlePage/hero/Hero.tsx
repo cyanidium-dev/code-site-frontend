@@ -1,9 +1,12 @@
+"use client";
 import Container from "@/components/shared/container/Container";
 import { Blog } from "@/types/blog";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import EstimatedReadingTime from "@/components/shared/estReadingTime/EstimatedReadingTime";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface HeroProps {
   article: Blog;
@@ -11,15 +14,21 @@ interface HeroProps {
 
 export default function Hero({ article }: HeroProps) {
   const { mainImageMobile, mainImageDesktop, name, description } = article;
+  const isLoadingSplashScreen = useSplashScreen();
+  const imageDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
+  const readingTimeDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
 
   return (
     <section className="relative">
       <motion.div
+        key={`imageMobile-${isLoadingSplashScreen}`}
         initial="hidden"
         whileInView="visible"
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
-        variants={fadeInAnimation({})}
+        variants={fadeInAnimation({ delay: imageDelay })}
         className="md:hidden absolute -z-10 top-0 left-0 w-full h-full"
       >
         <Image
@@ -32,11 +41,12 @@ export default function Hero({ article }: HeroProps) {
         />
       </motion.div>
       <motion.div
+        key={`imageDesktop-${isLoadingSplashScreen}`}
         initial="hidden"
         whileInView="visible"
         exit="exit"
         viewport={{ once: true, amount: 0.1 }}
-        variants={fadeInAnimation({})}
+        variants={fadeInAnimation({ delay: imageDelay })}
         className="hidden md:block absolute -z-10 top-0 left-0 w-full h-full"
       >
         <Image
@@ -50,6 +60,7 @@ export default function Hero({ article }: HeroProps) {
       </motion.div>
       <Container className="py-[154px] lg:pt-[171px] lg:pb-[78px]">
         <motion.h1
+          key={`title-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -57,7 +68,7 @@ export default function Hero({ article }: HeroProps) {
           variants={fadeInAnimation({
             x: -30,
             y: -30,
-            delay: 0.4,
+            delay: titleDelay,
             scale: 0.85,
           })}
           className="max-w-[497px] mb-5 font-actay text-[32px] lg:text-[40px] font-bold leading-[107%]"
@@ -65,6 +76,7 @@ export default function Hero({ article }: HeroProps) {
           {name}
         </motion.h1>
         <motion.p
+          key={`description-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -72,7 +84,7 @@ export default function Hero({ article }: HeroProps) {
           variants={fadeInAnimation({
             x: -60,
             y: 30,
-            delay: 0.8,
+            delay: descriptionDelay,
             scale: 0.85,
           })}
           className="max-w-[573px] mb-8 text-[14px] font-light leading-[120%]"
@@ -80,12 +92,13 @@ export default function Hero({ article }: HeroProps) {
           {description}
         </motion.p>
         <motion.div
+          key={`readingTime-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({
-            delay: 1.2,
+            delay: readingTimeDelay,
             x: -30,
             scale: 0.85,
           })}

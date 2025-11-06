@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client";
 import { useTransform } from "motion/react";
@@ -10,6 +9,8 @@ import GraphMob from "./GraphMob";
 import DropsTwo from "./DropsTwo";
 import CodeSIteArt from "./CodeSIteArt";
 import GraphDesk from "./GraphDesk";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -49,6 +50,8 @@ export default function HeroSlideDecorations({
     graph,
   } = variant;
 
+  const isLoadingSplashScreen = useSplashScreen();
+
   // Оптимізований хук для parallax скролу
   const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -62,26 +65,12 @@ export default function HeroSlideDecorations({
   const graphY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
-  // Preload LCP image for the first slide
-  // useEffect(() => {
-  //   if (idx === 0 && mainImage) {
-  //     const link = document.createElement("link");
-  //     link.rel = "preload";
-  //     link.as = "image";
-  //     link.href = mainImage;
-  //     link.setAttribute("fetchpriority", "high");
-  //     document.head.appendChild(link);
-
-  //     return () => {
-  //       const existingLink = document.querySelector(
-  //         `link[href="${mainImage}"]`
-  //       );
-  //       if (existingLink) {
-  //         document.head.removeChild(existingLink);
-  //       }
-  //     };
-  //   }
-  // }, [idx, mainImage]);
+  // Обчислюємо delay для анімацій
+  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
+  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
@@ -123,14 +112,17 @@ export default function HeroSlideDecorations({
         className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
         style={{ y: headY }}
+        key={`head-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: headDelay,
+            scale: 0.95,
+          })}
         >
           <Image
             src="/images/homePage/hero/head.webp"
@@ -149,14 +141,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
         style={{ y: logoY }}
+        key={`logo-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: logoDelay,
+            scale: 0.95,
+          })}
         >
           <CodeSIteArt colorLogo={colorLogo} />
         </motion.div>
@@ -166,14 +161,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
         style={{ y: mainImageY }}
+        key={`mainImage-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.8, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: mainImageDelay,
+            scale: 0.95,
+          })}
         >
           <Image
             src={mainImage}
@@ -197,14 +195,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
         style={{ y: graphY }}
+        key={`graphMob-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: graphDelay,
+            scale: 0.95,
+          })}
         >
           <GraphMob graph={graph} idx={idx} />
         </motion.div>
@@ -213,14 +214,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
         style={{ y: graphY }}
+        key={`graphDesk-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: graphDelay,
+            scale: 0.95,
+          })}
         >
           <GraphDesk graph={graph} idx={idx} />
         </motion.div>
@@ -229,14 +233,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
         style={{ y: dropsY }}
+        key={`drops-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: dropsDelay,
+            scale: 0.95,
+          })}
         >
           <Drops drops={drops} />
         </motion.div>
@@ -245,14 +252,17 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute z-10 bottom-[460px] lg:bottom-[290px] right-[24px] lg:right-[calc(50%-25px)] lg:-rotate-[83deg]"
         style={{ y: dropsY }}
+        key={`dropsTwo-${isLoadingSplashScreen}`}
       >
         <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-          className=""
+          variants={fadeInAnimation({
+            delay: dropsDelay,
+            scale: 0.95,
+          })}
         >
           <DropsTwo drops={drops} />
         </motion.div>

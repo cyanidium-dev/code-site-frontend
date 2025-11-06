@@ -9,6 +9,7 @@ import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface HeroSlideProps {
   slide: {
@@ -49,11 +50,16 @@ interface HeroSlideProps {
 export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
-  const isLoading = useSplashScreen();
+  const isLoadingSplashScreen = useSplashScreen();
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
+
+  // Обчислюємо delay для анімацій
+  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
+  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
 
   const getAnimationClasses = () => {
     const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
@@ -78,21 +84,20 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
       }}
     >
       <Container className="relative">
-        {/* For first slide, render decorations immediately for LCP. Other slides wait for splash screen */}
-        {(idx === 0 || !isLoading) && (
-          <HeroSlideDecorations
-            variant={variant}
-            mainImage={mainImage}
-            idx={idx}
-          />
-        )}
+        <HeroSlideDecorations
+          variant={variant}
+          mainImage={mainImage}
+          idx={idx}
+        />
+
         {idx === 0 ? (
           <motion.h1
+            key={`title-${isLoadingSplashScreen}`}
             initial="hidden"
             whileInView="visible"
             exit="exit"
             viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInAnimation({ x: 20 })}
+            variants={fadeInAnimation({ x: 20, delay: titleDelay })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
@@ -100,11 +105,12 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           </motion.h1>
         ) : (
           <motion.h2
+            key={`title-${isLoadingSplashScreen}`}
             initial="hidden"
             whileInView="visible"
             exit="exit"
             viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInAnimation({ x: 20 })}
+            variants={fadeInAnimation({ x: 20, delay: titleDelay })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
@@ -112,11 +118,12 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           </motion.h2>
         )}
         <motion.p
+          key={`description-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInAnimation({ y: 20, delay: 0.4 })}
+          variants={fadeInAnimation({ y: 20, delay: descriptionDelay })}
           className="relative z-10 max-w-[223px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%]"
           style={{ color: textColor }}
         >
@@ -128,7 +135,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           buttonClassName={`relative md:max-w-[291px] h-14 ${buttonGradient}`}
           className="relative z-10"
           variants={fadeInAnimation({
-            delay: 1.2,
+            delay: buttonDelay,
             scale: 0.85,
           })}
         />

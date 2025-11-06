@@ -7,25 +7,27 @@ import HeroDecorations from "./HeroDecorations";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function Hero() {
   const t = useTranslations("blogPage");
-
-  const isLoading = useSplashScreen();
+  const isLoadingSplashScreen = useSplashScreen();
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.7);
 
   return (
     <section className="overflow-hidden">
       <Container className="relative flex flex-col lg:flex-row-reverse gap-[9px] lg:justify-between lg:items-center pt-[135px] lg:pt-[149px] pb-[479px] lg:pb-[330px]">
-        {!isLoading && <HeroDecorations />}
+        <HeroDecorations />
         <PageTitle className="max-w-[195px] lg:max-w-[295px] text-[64px] lg:text-[96px] leading-none">
           {t("title")}
         </PageTitle>
         <motion.p
+          key={`description-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.7, scale: 0.95, x: -30, y: 30 })}
+          variants={fadeInAnimation({ delay: descriptionDelay, scale: 0.95, x: -30, y: 30 })}
           className="max-w-[248px] text-[14px] lg:text-[16px] font-light leading-[120%]"
         >
           {t("description")}

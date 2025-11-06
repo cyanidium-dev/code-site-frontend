@@ -369,7 +369,7 @@ export default function Hero() {
     
     // Якщо це перша зміна слайду і splash screen програється, додаємо затримку 3 секунди
     if (isFirstSlideChange.current && isLoadingSplashScreen) {
-      // Перший інтервал з затримкою 9 секунд (6 + 3)
+      // Перший інтервал з затримкою 6 секунд (6 + 0) // TEST: 0 секунд замість 3
       intervalRef.current = setTimeout(() => {
         setCurrentSlide((prev) => {
           isFirstSlideChange.current = false; // Після першої зміни встановлюємо в false
@@ -382,7 +382,7 @@ export default function Hero() {
           
           return nextSlide;
         });
-      }, 9000) as unknown as NodeJS.Timeout;
+      }, 6000) as unknown as NodeJS.Timeout; // TEST: 6000 замість 9000
     } else {
       // Звичайний інтервал на 6 секунд
       intervalRef.current = setInterval(() => {

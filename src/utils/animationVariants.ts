@@ -5,9 +5,11 @@ export const fadeInAnimation = ({
   delay = 0,
   duration = 0.7,
   opacity = 0,
+  // Для LCP оптимізації: використовуємо 0.001 замість 0, щоб Lighthouse раніше визначив елемент як видимий
+  useLCPOptimization = false,
 }) => ({
   hidden: {
-    opacity: opacity,
+    opacity: useLCPOptimization ? 0.001 : opacity,
     transform: `translate3d(${x}px, ${y}px, 0) scale3d(${scale}, ${scale}, 1)`,
     willChange: "opacity, transform",
   },

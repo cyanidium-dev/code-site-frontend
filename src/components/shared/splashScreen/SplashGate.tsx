@@ -41,7 +41,7 @@ export default function SplashGate({
       <LottieSplashScreen visible={showSplash} />
 
       <div
-        className={`min-h-screen flex flex-col ${showContent ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`min-h-screen flex flex-col ${showContent ? "visible" : "invisible"}`}
       >
         {children}
       </div>

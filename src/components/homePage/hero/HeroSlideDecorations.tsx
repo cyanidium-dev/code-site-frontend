@@ -66,11 +66,11 @@ export default function HeroSlideDecorations({
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   // Обчислюємо delay для анімацій
-  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
-  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.3
+  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.3
+  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.8
+  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.3
+  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.3
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">

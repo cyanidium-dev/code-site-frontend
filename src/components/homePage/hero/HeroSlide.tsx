@@ -57,9 +57,9 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
     variant;
 
   // Обчислюємо delay для анімацій
-  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0);
-  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
-  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 0.4
+  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 0); // TEST: 0 замість 1.2
 
   const getAnimationClasses = () => {
     const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";

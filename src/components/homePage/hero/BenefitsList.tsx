@@ -1,6 +1,9 @@
+"use client";
 import * as motion from "motion/react-client";
 import { listVariants, listItemVariantsLeft } from "@/utils/animationVariants";
 import BenefitItem from "./BenefitItem";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface BenefitsListProps {
   list: { value: string; description: string }[];
@@ -13,13 +16,17 @@ export default function BenefitsList({
   subtitle,
   counterColor,
 }: BenefitsListProps) {
+  const isLoadingSplashScreen = useSplashScreen();
+  const delayChildren = getAnimationDelay(isLoadingSplashScreen, 1.2);
+
   return (
     <motion.ul
+      key={`benefits-${isLoadingSplashScreen}`}
       initial="hidden"
       whileInView="visible"
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
-      variants={listVariants({ staggerChildren: 0.3, delayChildren: 1.2 })}
+      variants={listVariants({ staggerChildren: 0.3, delayChildren })}
       className="relative z-10 flex flex-wrap md:flex-nowrap gap-2.5 lg:gap-[15px] mt-4 lg:mt-18"
     >
       {list.map((benefit, idx) => (
@@ -35,19 +42,31 @@ export default function BenefitsList({
         <ul className="hidden lg:flex gap-[15px] text-[19px] font-normal leading-none">
           <li
             className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-1"
-            style={{ color: counterColor, borderColor: counterColor }}
+            style={{
+              color: counterColor,
+              borderColor: counterColor,
+              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+            }}
           >
             01
           </li>
           <li
             className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-2"
-            style={{ color: counterColor, borderColor: counterColor }}
+            style={{
+              color: counterColor,
+              borderColor: counterColor,
+              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+            }}
           >
             02
           </li>
           <li
             className="flex justify-center items-center size-12 rounded-full border-2 benefit-highlight-3"
-            style={{ color: counterColor, borderColor: counterColor }}
+            style={{
+              color: counterColor,
+              borderColor: counterColor,
+              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+            }}
           >
             03
           </li>

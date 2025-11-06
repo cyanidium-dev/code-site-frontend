@@ -12,6 +12,7 @@ export function useSplashScreen(duration = 3000) {
       return;
     }
 
+    // Якщо splash screen ще не програвався, встановлюємо таймер
     const timer = setTimeout(() => {
       setIsLoading(false);
       sessionStorage.setItem("splashPlayed", "true");

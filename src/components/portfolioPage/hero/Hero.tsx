@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/shared/container/Container";
 import PageTitle from "@/components/shared/titles/PageTitle";
 import { useTranslations } from "next-intl";
@@ -5,9 +6,13 @@ import HeroDecorations from "./HeroDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useSplashScreen } from "@/hooks/useSplashScreen";
+import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function Hero() {
   const t = useTranslations("portfolioPage");
+  const isLoadingSplashScreen = useSplashScreen();
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
 
   return (
     <section>
@@ -20,11 +25,12 @@ export default function Hero() {
           {t("title")}
         </PageTitle>
         <motion.p
+          key={`description-${isLoadingSplashScreen}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 1.2, y: 30, scale: 0.85 })}
+          variants={fadeInAnimation({ delay: descriptionDelay, y: 30, scale: 0.85 })}
           className="max-w-[354px] lg:max-w-[235px] text-[14px] lg:text-[16px] font-light leading-[120%]"
         >
           {t("description")}

@@ -1,19 +1,38 @@
 export const revalidate = 60;
 
-import CTA from "@/components/homePage/cta/CTA";
-import FAQ from "@/components/homePage/faq/FAQ";
-import Founder from "@/components/homePage/founder/Founder";
 import Hero from "@/components/homePage/hero/Hero";
-import Partners from "@/components/homePage/partners/Partners";
-import Reviews from "@/components/homePage/reviews/Reviews";
-import SiteTypes from "@/components/homePage/siteTypes/SiteTypes";
-import WhyUs from "@/components/homePage/whyUs/WhyUs";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { allProjectsQuery, allReviewsQuery } from "@/lib/queries";
-import Portfolio from "@/components/homePage/portfolio/Portfolio";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Loader from "@/components/shared/loader/Loader";
+
+// Lazy load компоненти, які не критичні для LCP
+const Founder = dynamic(() => import("@/components/homePage/founder/Founder"), {
+  ssr: true,
+});
+const WhyUs = dynamic(() => import("@/components/homePage/whyUs/WhyUs"), {
+  ssr: true,
+});
+const SiteTypes = dynamic(() => import("@/components/homePage/siteTypes/SiteTypes"), {
+  ssr: true,
+});
+const Portfolio = dynamic(() => import("@/components/homePage/portfolio/Portfolio"), {
+  ssr: true,
+});
+const Reviews = dynamic(() => import("@/components/homePage/reviews/Reviews"), {
+  ssr: true,
+});
+const Partners = dynamic(() => import("@/components/homePage/partners/Partners"), {
+  ssr: true,
+});
+const FAQ = dynamic(() => import("@/components/homePage/faq/FAQ"), {
+  ssr: true,
+});
+const CTA = dynamic(() => import("@/components/homePage/cta/CTA"), {
+  ssr: true,
+});
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;

@@ -11,6 +11,7 @@ import CodeSIteArt from "./CodeSIteArt";
 import GraphDesk from "./GraphDesk";
 import { useSplashScreen } from "@/hooks/useSplashScreen";
 import { getAnimationDelay } from "@/utils/getAnimationDelay";
+import { useScreenWidth } from "@/hooks/useScreenWidth";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -51,6 +52,7 @@ export default function HeroSlideDecorations({
   } = variant;
 
   const isLoadingSplashScreen = useSplashScreen();
+  const screenWidth = useScreenWidth();
 
   // Оптимізований хук для parallax скролу
   const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
@@ -192,43 +194,45 @@ export default function HeroSlideDecorations({
         className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] will-change-transform"
       />
 
-      <motion.div
-        className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
-        style={{ y: graphY }}
-        key={`graphMob-${isLoadingSplashScreen}`}
-      >
+      {screenWidth < 1024 ? (
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({
-            delay: graphDelay,
-            scale: 0.95,
-          })}
+          className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
+          style={{ y: graphY }}
+          key={`graphMob-${isLoadingSplashScreen}`}
         >
-          <GraphMob graph={graph} idx={idx} />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({
+              delay: graphDelay,
+              scale: 0.95,
+            })}
+          >
+            <GraphMob graph={graph} idx={idx} />
+          </motion.div>
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
-        style={{ y: graphY }}
-        key={`graphDesk-${isLoadingSplashScreen}`}
-      >
+      ) : (
         <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({
-            delay: graphDelay,
-            scale: 0.95,
-          })}
+          className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
+          style={{ y: graphY }}
+          key={`graphDesk-${isLoadingSplashScreen}`}
         >
-          <GraphDesk graph={graph} idx={idx} />
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={fadeInAnimation({
+              delay: graphDelay,
+              scale: 0.95,
+            })}
+          >
+            <GraphDesk graph={graph} idx={idx} />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
 
       <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"

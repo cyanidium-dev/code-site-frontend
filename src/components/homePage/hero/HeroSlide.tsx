@@ -137,7 +137,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
         >
           {description}
         </motion.p>
-        <ClientApplication
+        {/* <ClientApplication
           buttonText={t("freeConsultation")}
           variant="gradient"
           buttonClassName={`relative md:max-w-[291px] h-14 ${buttonGradient}`}
@@ -147,7 +147,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             scale: 0.85,
             useLCPOptimization: idx === 0,
           })}
-        />
+        /> */}
         {/* <BenefitsList
           key={`benefits-${idx}`}
           list={list}

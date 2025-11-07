@@ -30,7 +30,7 @@ export default function SplashGate({
 
   return (
     <>
-      {!!showSplash && <LottieSplashScreen />}
+      <LottieSplashScreen visible={showSplash} />
       {children}
     </>
   );

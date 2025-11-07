@@ -233,7 +233,7 @@ export default function HeroSlideDecorations({
         className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] will-change-transform"
       />
 
-      {screenWidth < 1024 ? (
+      {/* {screenWidth < 1024 ? (
         <motion.div
           className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
           style={{ y: graphY }}
@@ -273,7 +273,7 @@ export default function HeroSlideDecorations({
             <GraphDesk graph={graph} idx={idx} />
           </motion.div>
         </motion.div>
-      )}
+      )} */}
 
       <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"

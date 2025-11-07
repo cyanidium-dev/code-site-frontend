@@ -177,7 +177,7 @@ export default function HeroSlideDecorations({
       </motion.div> */}
 
       {/* Logo */}
-      <motion.div
+      {/* <motion.div
         className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
         style={{ y: logoY }}
         key={`logo-${isLoadingSplashScreen}`}
@@ -195,7 +195,7 @@ export default function HeroSlideDecorations({
         >
           <CodeSIteArt colorLogo={colorLogo} />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Main LCP image */}
       {/* <motion.div

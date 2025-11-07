@@ -10,6 +10,8 @@ import DropsTwo from "./DropsTwo";
 import CodeSIteArt from "./CodeSIteArt";
 import GraphDesk from "./GraphDesk";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
+import BottomEllipseMob from "./BottomEllipseMob";
+import BottomEllipseDesk from "./BottomEllipseDesk";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -79,14 +81,8 @@ export default function HeroSlideDecorations({
       bg-black supports-[backdrop-filter]:blur-[74px] lg:supports-[backdrop-filter]:blur-[67px] will-change-transform"
       />
 
-      <div
-        style={{
-          backgroundColor: bottomBlurColor,
-        }}
-        className="absolute z-10 bottom-[-97px] md:bottom-[-197px] lg:bottom-[-308px] left-[calc(50%-550px)] md:left-[calc(50%-850px)] lg:left-[calc(50%-930px)]
-         w-[1018px] md:w-[1718px] lg:w-[1858px] h-[380px] lg:h-[567px] rounded-full supports-[backdrop-filter]:blur-[30px] 
-         md:supports-[backdrop-filter]:blur-[40px] lg:supports-[backdrop-filter]:blur-[130px] will-change-transform"
-      />
+      <BottomEllipseMob color={bottomBlurColor} />
+      <BottomEllipseDesk color={bottomBlurColor} />
 
       <div
         style={{ backgroundColor: colorMain }}

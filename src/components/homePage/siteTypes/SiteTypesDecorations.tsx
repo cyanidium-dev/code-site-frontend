@@ -6,6 +6,7 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import HeadTwoEllipse from "./HeadTwoEllipse";
 
 export default function SiteTypesDecorations() {
   // Оптимізований хук для parallax скролу
@@ -366,7 +367,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         <motion.div
-          // style={{ y: slowY }}
+          style={{ y: slowY }}
           className="absolute -z-30 top-[74px] md:top-[543px] right-[36px] md:right-[-201px] w-[553px] lg:w-[725px] h-auto aspect-[725/902] md:mix-blend-difference"
         >
           <motion.div
@@ -384,15 +385,8 @@ export default function SiteTypesDecorations() {
               sizes="(max-width: 768px) 725px, 902px"
               className="w-[553px] lg:w-[725px] h-auto"
             />
-            {/* <Image
-              src="/images/homePage/siteTypes/headTwoDesk.webp"
-              alt="head"
-              width={1194}
-              height={1232}
-              sizes="(min-width: 768px) 1194px, 0px"
-              className="hidden md:block w-[1194px] h-auto"
-            /> */}
           </motion.div>
+          <HeadTwoEllipse />
         </motion.div>
 
         <motion.div

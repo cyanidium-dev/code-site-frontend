@@ -64,7 +64,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const getAnimationClasses = () => {
     const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
     const opacityClass = isActive ? "opacity-100" : "opacity-0";
-    const transitionClass = "transition-opacity duration-[3000ms] ease-in-out";
+    const transitionClass = "transition-opacity ease-in-out";
 
     return `${baseClasses} ${opacityClass} ${transitionClass}`;
   };

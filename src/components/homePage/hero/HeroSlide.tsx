@@ -155,9 +155,9 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           counterColor={counterColor}
         /> */}
       </Container>
-      <CodeSiteMarquee
+      {/* <CodeSiteMarquee
         className={`z-10 mt-6 lg:-mt-1 ${marquee.gradient} rotate-0`}
-      />
+      /> */}
     </div>
   );
 }

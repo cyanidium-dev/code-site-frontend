@@ -198,12 +198,12 @@ export default function HeroSlideDecorations({
       </motion.div> */}
 
       {/* Main LCP image */}
-      {/* <motion.div
+      <motion.div
         className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
         style={{ y: mainImageY }}
         key={`mainImage-${isLoadingSplashScreen}`}
       >
-        <motion.div
+        {/* <motion.div
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -213,19 +213,19 @@ export default function HeroSlideDecorations({
             scale: 0.95,
             useLCPOptimization: idx === 0,
           })}
-        >
-          <Image
-            src={mainImage}
-            alt="laptops"
-            width={2064}
-            height={1548}
-            priority={idx === 0}
-            sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
-            className="w-[586px] lg:w-[1032px] h-auto"
-            fetchPriority={idx === 0 ? "high" : "auto"}
-          />
-        </motion.div>
-      </motion.div> */}
+        > */}
+        <Image
+          src={mainImage}
+          alt="laptops"
+          width={2064}
+          height={1548}
+          priority={idx === 0}
+          sizes="(max-width: 768px) 586px, (max-width: 1024px) 1032px, 1032px"
+          className="w-[586px] lg:w-[1032px] h-auto"
+          fetchPriority={idx === 0 ? "high" : "auto"}
+        />
+        {/* </motion.div> */}
+      </motion.div>
 
       {/* Other decorative elements */}
       <div

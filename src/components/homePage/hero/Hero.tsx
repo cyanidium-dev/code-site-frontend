@@ -2,16 +2,12 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect, useRef, useCallback } from "react";
 import HeroSlide from "./HeroSlide";
-import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const isLoadingSplashScreen = useSplashScreen();
-  const isFirstSlideChange = useRef(true);
 
   const heroSlides = [
     {
@@ -363,79 +359,42 @@ export default function Hero() {
   // Функція для скидання таймера при ручному переключенні
   const resetSlideTimer = useCallback(() => {
     if (intervalRef.current) {
-      clearTimeout(intervalRef.current);
+      clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
-    // Якщо це перша зміна слайду і splash screen програється, додаємо затримку 3 секунди
-    if (isFirstSlideChange.current && isLoadingSplashScreen) {
-      // Перший інтервал з затримкою 9 секунд (6 + 3)
-      intervalRef.current = setTimeout(() => {
-        setCurrentSlide((prev) => {
-          isFirstSlideChange.current = false; // Після першої зміни встановлюємо в false
-          const nextSlide = (prev + 1) % heroSlides.length;
-
-          // Після першої зміни встановлюємо звичайний інтервал на 6 секунд
-          intervalRef.current = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-          }, 6000);
-
-          return nextSlide;
-        });
-      }, 9000) as unknown as NodeJS.Timeout;
-    } else {
-      // Звичайний інтервал на 6 секунд
-      intervalRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-      }, 6000);
-    }
-  }, [heroSlides.length, isLoadingSplashScreen]);
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+  }, [heroSlides.length]);
 
   // Мемоізована функція для обробки кліку на кнопку слайду
   const handleSlideClick = useCallback(
     (idx: number) => {
       setCurrentSlide(idx);
-      isFirstSlideChange.current = false; // При ручному переключенні скидаємо флаг
       resetSlideTimer();
     },
     [resetSlideTimer]
   );
 
-  // Перемикання слайдів кожні 6 секунд (або 9 секунд для першої зміни, якщо splash screen програється)
+  // Перемикання слайдів кожні 6 секунд
   useEffect(() => {
-    // Скидаємо флаг першої зміни при зміні стану splash screen
-    if (!isLoadingSplashScreen) {
-      isFirstSlideChange.current = false;
-    } else {
-      isFirstSlideChange.current = true;
-    }
-
     resetSlideTimer();
 
     return () => {
       if (intervalRef.current) {
-        clearTimeout(intervalRef.current);
+        clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
     };
-  }, [resetSlideTimer, isLoadingSplashScreen]);
+  }, [resetSlideTimer]);
 
   return (
     <section className="relative overflow-hidden">
       {/* Навігаційні кнопки слайдів */}
-      <motion.ul
-        initial="hidden"
-        whileInView="visible"
-        exit="exit"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={fadeInAnimation({ scale: 0.9, delay: 0.4 })}
+      <ul
         className="absolute z-20 left-6 sm:left-[calc(50%-320px+24px)] md:left-auto md:right-[calc(50%-384px+24px)] lg:right-auto lg:left-[calc(50%-512px+40px)]
        xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
-        style={{
-          willChange: "transform",
-          backfaceVisibility: "hidden",
-          transform: "translateZ(0)",
-        }}
       >
         {heroSlides.map((slide, idx) => (
           <li key={idx} className="leading-none">
@@ -460,7 +419,7 @@ export default function Hero() {
             />
           </li>
         ))}
-      </motion.ul>
+      </ul>
 
       {heroSlides.map((slide, idx) => {
         // Рендеримо тільки активний слайд + попередній + наступний для оптимізації

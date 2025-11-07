@@ -24,11 +24,6 @@ const actay = localFont({
       weight: "700",
       style: "normal",
     },
-    {
-      path: "../../../public/fonts/ActayWide-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
   ],
   variable: "--font-actay",
   display: "swap",
@@ -43,11 +38,6 @@ const guanoApes = localFont({
       weight: "400",
       style: "normal",
     },
-    {
-      path: "../../../public/fonts/GuanoApes.otf",
-      weight: "400",
-      style: "normal",
-    },
   ],
   variable: "--font-guano-apes",
   display: "swap",
@@ -59,11 +49,6 @@ const parkia = localFont({
   src: [
     {
       path: "../../../public/fonts/Parkia-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/Parkia-Bold.otf",
       weight: "700",
       style: "normal",
     },

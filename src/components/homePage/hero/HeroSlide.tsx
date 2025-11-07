@@ -9,6 +9,7 @@ import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 
+
 interface HeroSlideProps {
   slide: {
     variant: {
@@ -50,8 +51,14 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const slideRef = useRef<HTMLDivElement>(null);
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
-  const { colorMain, textColor, counterColor, marquee, buttonGradient } =
-    variant;
+  const {
+    colorMain,
+    textColor,
+    counterColor,
+    marquee,
+    buttonGradient,
+    bottomBlurColor,
+  } = variant;
 
   // Обчислюємо delay для анімацій
   const titleDelay = 0;
@@ -94,7 +101,11 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             whileInView="visible"
             exit="exit"
             viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInAnimation({ x: 20, delay: titleDelay, useLCPOptimization: true })}
+            variants={fadeInAnimation({
+              x: 20,
+              delay: titleDelay,
+              useLCPOptimization: true,
+            })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
@@ -120,7 +131,11 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInAnimation({ y: 20, delay: descriptionDelay, useLCPOptimization: idx === 0 })}
+          variants={fadeInAnimation({
+            y: 20,
+            delay: descriptionDelay,
+            useLCPOptimization: idx === 0,
+          })}
           className="relative z-10 max-w-[223px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%]"
           style={{ color: textColor }}
         >

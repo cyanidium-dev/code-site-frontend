@@ -275,7 +275,7 @@ export default function HeroSlideDecorations({
         </motion.div>
       )} */}
 
-      <motion.div
+      {/* <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
         style={{ y: dropsY }}
         key={`drops-${isLoadingSplashScreen}`}
@@ -313,7 +313,7 @@ export default function HeroSlideDecorations({
         >
           <DropsTwo drops={drops} />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }

@@ -148,12 +148,12 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             useLCPOptimization: idx === 0,
           })}
         />
-        <BenefitsList
+        {/* <BenefitsList
           key={`benefits-${idx}`}
           list={list}
           subtitle={subtitle}
           counterColor={counterColor}
-        />
+        /> */}
       </Container>
       <CodeSiteMarquee
         className={`z-10 mt-6 lg:-mt-1 ${marquee.gradient} rotate-0`}

@@ -8,8 +8,7 @@
 export function getAnimationDelay(
   isLoadingSplashScreen: boolean,
   defaultDelay: number,
-  splashDelay: number = 3
+  splashDelay: number = 0
 ): number {
   return isLoadingSplashScreen ? splashDelay + defaultDelay : defaultDelay;
 }
-

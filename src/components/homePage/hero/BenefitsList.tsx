@@ -2,8 +2,6 @@
 import * as motion from "motion/react-client";
 import { listVariants, listItemVariantsLeft } from "@/utils/animationVariants";
 import BenefitItem from "./BenefitItem";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface BenefitsListProps {
   list: { value: string; description: string }[];
@@ -16,12 +14,11 @@ export default function BenefitsList({
   subtitle,
   counterColor,
 }: BenefitsListProps) {
-  const isLoadingSplashScreen = useSplashScreen();
-  const delayChildren = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const delayChildren = 0;
 
   return (
     <motion.ul
-      key={`benefits-${isLoadingSplashScreen}`}
+      key="benefits"
       initial="hidden"
       whileInView="visible"
       exit="exit"
@@ -45,7 +42,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: "0s",
             }}
           >
             01
@@ -55,7 +52,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: "0s",
             }}
           >
             02
@@ -65,7 +62,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: "0s",
             }}
           >
             03

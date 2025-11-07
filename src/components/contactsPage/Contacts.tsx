@@ -7,17 +7,14 @@ import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import SocialsList from "./SocialsList";
 import ContactsDecorations from "./ContactsDecorations";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 export default function Contacts() {
   const t = useTranslations("contactsPage");
 
-  const isLoading = useSplashScreen();
-
   return (
     <section>
       <Container className="relative flex flex-col lg:flex-row-reverse lg:justify-between gap-15 pt-[569px] lg:pt-[180px] pb-30 lg:pb-[174px]">
-        {!isLoading && <ContactsDecorations />}
+        <ContactsDecorations />
         <div>
           <PageTitle
             variant="pink"

@@ -9,8 +9,6 @@ import GraphMob from "./GraphMob";
 import DropsTwo from "./DropsTwo";
 import CodeSIteArt from "./CodeSIteArt";
 import GraphDesk from "./GraphDesk";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
 
 interface HeroSlideDecorationsProps {
@@ -51,7 +49,6 @@ export default function HeroSlideDecorations({
     graph,
   } = variant;
 
-  const isLoadingSplashScreen = useSplashScreen();
   const screenWidth = useScreenWidth();
 
   // Оптимізований хук для parallax скролу
@@ -68,11 +65,11 @@ export default function HeroSlideDecorations({
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   // Обчислюємо delay для анімацій
-  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
-  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const headDelay = 0;
+  const logoDelay = 0;
+  const mainImageDelay = 0;
+  const graphDelay = 0;
+  const dropsDelay = 0;
 
   return (
     <div ref={containerRef} className="absolute inset-0 pointer-events-none">
@@ -114,7 +111,7 @@ export default function HeroSlideDecorations({
         className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
         style={{ y: headY }}
-        key={`head-${isLoadingSplashScreen}`}
+        key={`head-${idx}`}
       >
         <motion.div
           initial="hidden"
@@ -144,7 +141,7 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
         style={{ y: logoY }}
-        key={`logo-${isLoadingSplashScreen}`}
+        key={`logo-${idx}`}
       >
         <motion.div
           initial="hidden"
@@ -165,7 +162,7 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
         style={{ y: mainImageY }}
-        key={`mainImage-${isLoadingSplashScreen}`}
+        key={`mainImage-${idx}`}
       >
         <motion.div
           initial="hidden"
@@ -201,7 +198,7 @@ export default function HeroSlideDecorations({
         <motion.div
           className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
           style={{ y: graphY }}
-          key={`graphMob-${isLoadingSplashScreen}`}
+          key={`graphMob-${idx}`}
         >
           <motion.div
             initial="hidden"
@@ -221,7 +218,7 @@ export default function HeroSlideDecorations({
         <motion.div
           className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
           style={{ y: graphY }}
-          key={`graphDesk-${isLoadingSplashScreen}`}
+          key={`graphDesk-${idx}`}
         >
           <motion.div
             initial="hidden"
@@ -242,7 +239,7 @@ export default function HeroSlideDecorations({
       <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
         style={{ y: dropsY }}
-        key={`drops-${isLoadingSplashScreen}`}
+        key={`drops-${idx}`}
       >
         <motion.div
           initial="hidden"
@@ -262,7 +259,7 @@ export default function HeroSlideDecorations({
       <motion.div
         className="absolute z-10 bottom-[460px] lg:bottom-[290px] right-[24px] lg:right-[calc(50%-25px)] lg:-rotate-[83deg]"
         style={{ y: dropsY }}
-        key={`dropsTwo-${isLoadingSplashScreen}`}
+        key={`dropsTwo-${idx}`}
       >
         <motion.div
           initial="hidden"

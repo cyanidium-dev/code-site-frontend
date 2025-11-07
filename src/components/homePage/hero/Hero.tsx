@@ -4,14 +4,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import HeroSlide from "./HeroSlide";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const isLoadingSplashScreen = useSplashScreen();
-  const isFirstSlideChange = useRef(true);
 
   const heroSlides = [
     {
@@ -363,62 +360,35 @@ export default function Hero() {
   // Функція для скидання таймера при ручному переключенні
   const resetSlideTimer = useCallback(() => {
     if (intervalRef.current) {
-      clearTimeout(intervalRef.current);
+      clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    
-    // Якщо це перша зміна слайду і splash screen програється, додаємо затримку 3 секунди
-    if (isFirstSlideChange.current && isLoadingSplashScreen) {
-      // Перший інтервал з затримкою 9 секунд (6 + 3)
-      intervalRef.current = setTimeout(() => {
-        setCurrentSlide((prev) => {
-          isFirstSlideChange.current = false; // Після першої зміни встановлюємо в false
-          const nextSlide = (prev + 1) % heroSlides.length;
-          
-          // Після першої зміни встановлюємо звичайний інтервал на 6 секунд
-          intervalRef.current = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-          }, 6000);
-          
-          return nextSlide;
-        });
-      }, 9000) as unknown as NodeJS.Timeout;
-    } else {
-      // Звичайний інтервал на 6 секунд
-      intervalRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-      }, 6000);
-    }
-  }, [heroSlides.length, isLoadingSplashScreen]);
+
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+  }, [heroSlides.length]);
 
   // Мемоізована функція для обробки кліку на кнопку слайду
   const handleSlideClick = useCallback(
     (idx: number) => {
       setCurrentSlide(idx);
-      isFirstSlideChange.current = false; // При ручному переключенні скидаємо флаг
       resetSlideTimer();
     },
     [resetSlideTimer]
   );
 
-  // Перемикання слайдів кожні 6 секунд (або 9 секунд для першої зміни, якщо splash screen програється)
+  // Перемикання слайдів кожні 6 секунд
   useEffect(() => {
-    // Скидаємо флаг першої зміни при зміні стану splash screen
-    if (!isLoadingSplashScreen) {
-      isFirstSlideChange.current = false;
-    } else {
-      isFirstSlideChange.current = true;
-    }
-    
     resetSlideTimer();
 
     return () => {
       if (intervalRef.current) {
-        clearTimeout(intervalRef.current);
+        clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
     };
-  }, [resetSlideTimer, isLoadingSplashScreen]);
+  }, [resetSlideTimer]);
 
   return (
     <section className="relative overflow-hidden">

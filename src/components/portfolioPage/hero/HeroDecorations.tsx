@@ -6,12 +6,9 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function HeroDecorations() {
-  const isLoadingSplashScreen = useSplashScreen();
-  const decorationDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const decorationDelay = 0;
 
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
@@ -34,7 +31,7 @@ export default function HeroDecorations() {
          mix-blend-color-dodge"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-head"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -57,7 +54,7 @@ export default function HeroDecorations() {
         className="absolute -z-40 top-[374px] lg:top-[22px] right-[calc(50%-192px)] lg:right-[calc(50%-244px)] w-[337px] lg:w-[441px] h-auto aspect-[337/475]"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-phone"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -81,7 +78,7 @@ export default function HeroDecorations() {
         lg:rotate-[24deg]"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-logo"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -103,7 +100,7 @@ export default function HeroDecorations() {
         className="hidden lg:block absolute -z-50 top-[234px] right-[calc(50%-681px)] w-[493px] h-auto aspect-[493/375]"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-right"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -125,7 +122,7 @@ export default function HeroDecorations() {
         className="lg:hidden absolute -z-20 top-[50px] right-[calc(50%-270px)] w-[179px] h-auto aspect-[179/177]"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-drops-mob"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -147,7 +144,7 @@ export default function HeroDecorations() {
         className="hidden lg:block absolute -z-20 top-[62px] left-[calc(50%-726px)] w-[224px] h-auto aspect-[224/252]"
       >
         <motion.div
-          key={`decoration-${isLoadingSplashScreen}`}
+          key="decoration-drops-desk"
           initial="hidden"
           whileInView="visible"
           exit="exit"

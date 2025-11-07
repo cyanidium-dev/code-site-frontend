@@ -423,10 +423,10 @@ export default function Hero() {
 
       {heroSlides.map((slide, idx) => {
         // Рендеримо тільки активний слайд + попередній + наступний для оптимізації
-        const shouldRender =
-          idx === currentSlide ||
-          idx === (currentSlide - 1 + heroSlides.length) % heroSlides.length ||
-          idx === (currentSlide + 1) % heroSlides.length;
+        const shouldRender = idx === currentSlide;
+        // ||
+        // idx === (currentSlide - 1 + heroSlides.length) % heroSlides.length ||
+        // idx === (currentSlide + 1) % heroSlides.length;
 
         if (!shouldRender) return null;
 

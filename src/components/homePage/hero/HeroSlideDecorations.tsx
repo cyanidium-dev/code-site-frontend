@@ -198,7 +198,7 @@ export default function HeroSlideDecorations({
       </motion.div>
 
       {/* Main LCP image */}
-      <motion.div
+      {/* <motion.div
         className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
         style={{ y: mainImageY }}
         key={`mainImage-${isLoadingSplashScreen}`}
@@ -225,7 +225,7 @@ export default function HeroSlideDecorations({
             fetchPriority={idx === 0 ? "high" : "auto"}
           />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Other decorative elements */}
       <div

@@ -132,7 +132,7 @@ export default function HeroSlideDecorations({
       />
 
       {/* Head image */}
-      <motion.div
+      {/* <motion.div
         className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
         style={{ y: headY }}
@@ -174,7 +174,7 @@ export default function HeroSlideDecorations({
             />
           </motion.div>
         )}
-      </motion.div>
+      </motion.div> */}
 
       {/* Logo */}
       <motion.div

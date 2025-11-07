@@ -5,6 +5,9 @@ import dynamic from "next/dynamic";
 
 const LottieSplashScreen = dynamic(() => import("./LottieSplashScreen"), {
   ssr: false,
+  loading: () => (
+    <div className="no-doc-scroll fixed inset-0 z-50 flex items-center justify-center bg-[#020418]" />
+  ),
 });
 
 export default function SplashGate({
@@ -12,23 +15,19 @@ export default function SplashGate({
 }: {
   children: React.ReactNode;
 }) {
-  const [showSplash, setShowSplash] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const alreadyPlayed = sessionStorage.getItem("splashPlayed");
 
     if (alreadyPlayed) {
-      setShowContent(true);
+      setShowSplash(false);
       return;
     }
-
-    setShowSplash(true);
 
     const timer = setTimeout(() => {
       sessionStorage.setItem("splashPlayed", "true");
       setShowSplash(false);
-      setShowContent(true);
     }, 3000);
 
     return () => {
@@ -38,13 +37,8 @@ export default function SplashGate({
 
   return (
     <>
+      {children}
       <LottieSplashScreen visible={showSplash} />
-
-      <div
-        className={`min-h-screen flex flex-col ${showContent ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-      >
-        {children}
-      </div>
     </>
   );
 }

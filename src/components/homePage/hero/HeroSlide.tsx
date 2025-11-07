@@ -8,8 +8,6 @@ import BenefitsList from "./BenefitsList";
 import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface HeroSlideProps {
   slide: {
@@ -50,16 +48,15 @@ interface HeroSlideProps {
 export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
   const t = useTranslations("homePage.hero");
   const slideRef = useRef<HTMLDivElement>(null);
-  const isLoadingSplashScreen = useSplashScreen();
 
   const { variant, title, description, list, subtitle, mainImage } = slide;
   const { colorMain, textColor, counterColor, marquee, buttonGradient } =
     variant;
 
   // Обчислюємо delay для анімацій
-  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0);
-  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
-  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const titleDelay = 0;
+  const descriptionDelay = 0;
+  const buttonDelay = 0;
 
   const getAnimationClasses = () => {
     const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
@@ -92,7 +89,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
 
         {idx === 0 ? (
           <motion.h1
-            key={`title-${isLoadingSplashScreen}`}
+            key={`title-${idx}`}
             initial="hidden"
             whileInView="visible"
             exit="exit"
@@ -105,7 +102,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           </motion.h1>
         ) : (
           <motion.h2
-            key={`title-${isLoadingSplashScreen}`}
+            key={`title-${idx}`}
             initial="hidden"
             whileInView="visible"
             exit="exit"
@@ -118,7 +115,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           </motion.h2>
         )}
         <motion.p
-          key={`description-${isLoadingSplashScreen}`}
+          key={`description-${idx}`}
           initial="hidden"
           whileInView="visible"
           exit="exit"

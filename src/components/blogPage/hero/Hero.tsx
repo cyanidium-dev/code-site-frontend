@@ -6,13 +6,10 @@ import { useTranslations } from "next-intl";
 import HeroDecorations from "./HeroDecorations";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function Hero() {
   const t = useTranslations("blogPage");
-  const isLoadingSplashScreen = useSplashScreen();
-  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.7);
+  const descriptionDelay = 0;
 
   return (
     <section className="overflow-hidden">
@@ -22,7 +19,7 @@ export default function Hero() {
           {t("title")}
         </PageTitle>
         <motion.p
-          key={`description-${isLoadingSplashScreen}`}
+          key="description"
           initial="hidden"
           whileInView="visible"
           exit="exit"

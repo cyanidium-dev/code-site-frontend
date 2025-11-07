@@ -5,8 +5,6 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import EstimatedReadingTime from "@/components/shared/estReadingTime/EstimatedReadingTime";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 interface HeroProps {
   article: Blog;
@@ -14,16 +12,15 @@ interface HeroProps {
 
 export default function Hero({ article }: HeroProps) {
   const { mainImageMobile, mainImageDesktop, name, description } = article;
-  const isLoadingSplashScreen = useSplashScreen();
-  const imageDelay = getAnimationDelay(isLoadingSplashScreen, 0);
-  const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
-  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
-  const readingTimeDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const imageDelay = 0;
+  const titleDelay = 0;
+  const descriptionDelay = 0;
+  const readingTimeDelay = 0;
 
   return (
     <section className="relative">
       <motion.div
-        key={`imageMobile-${isLoadingSplashScreen}`}
+        key="imageMobile"
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -41,7 +38,7 @@ export default function Hero({ article }: HeroProps) {
         />
       </motion.div>
       <motion.div
-        key={`imageDesktop-${isLoadingSplashScreen}`}
+        key="imageDesktop"
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -60,7 +57,7 @@ export default function Hero({ article }: HeroProps) {
       </motion.div>
       <Container className="py-[154px] lg:pt-[171px] lg:pb-[78px]">
         <motion.h1
-          key={`title-${isLoadingSplashScreen}`}
+          key="title"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -76,7 +73,7 @@ export default function Hero({ article }: HeroProps) {
           {name}
         </motion.h1>
         <motion.p
-          key={`description-${isLoadingSplashScreen}`}
+          key="description"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -92,7 +89,7 @@ export default function Hero({ article }: HeroProps) {
           {description}
         </motion.p>
         <motion.div
-          key={`readingTime-${isLoadingSplashScreen}`}
+          key="readingTime"
           initial="hidden"
           whileInView="visible"
           exit="exit"

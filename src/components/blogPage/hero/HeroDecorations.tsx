@@ -6,13 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
-import { useSplashScreen } from "@/hooks/useSplashScreen";
-import { getAnimationDelay } from "@/utils/getAnimationDelay";
 
 export default function HeroDecorations() {
-  const isLoadingSplashScreen = useSplashScreen();
-  const girlDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 1.1);
+  const girlDelay = 0;
+  const dropsDelay = 0;
 
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
@@ -34,7 +31,7 @@ export default function HeroDecorations() {
         className="absolute top-[344px] lg:top-15 left-[calc(50%-177px)] xl:left-[calc(50%-97px)] w-[353px] h-auto aspect-[353/530]"
       >
         <motion.div
-          key={`girl-${isLoadingSplashScreen}`}
+          key="girl"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -57,7 +54,7 @@ export default function HeroDecorations() {
         className="absolute top-[115px] lg:top-[101px] right-[calc(50%-180px)] lg:right-[calc(50%-701px)] w-[164px] lg:w-[244px] h-auto aspect-[244/235]"
       >
         <motion.div
-          key={`drops-${isLoadingSplashScreen}`}
+          key="drops-blue"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -79,7 +76,7 @@ export default function HeroDecorations() {
         className="hidden lg:block absolute z-20 top-[328px] left-[calc(50%-290px)] w-[224px] h-auto aspect-[224/252]"
       >
         <motion.div
-          key={`drops-${isLoadingSplashScreen}`}
+          key="drops-pink"
           initial="hidden"
           whileInView="visible"
           exit="exit"
@@ -101,7 +98,7 @@ export default function HeroDecorations() {
         className="absolute -z-10 top-[385px] lg:top-[318px] right-[calc(50%-213px)] lg:right-auto lg:left-[calc(50%-625px)] w-[255px] lg:w-[365px] h-auto aspect-[365/283]"
       >
         <motion.div
-          key={`drops-${isLoadingSplashScreen}`}
+          key="dices"
           initial="hidden"
           whileInView="visible"
           exit="exit"

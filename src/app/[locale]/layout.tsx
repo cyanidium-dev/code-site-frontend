@@ -13,21 +13,65 @@ import SplashGate from "@/components/shared/splashScreen/SplashGate";
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
 });
 
 const actay = localFont({
-  src: "../../../public/fonts/ActayWide-Bold.otf",
+  src: [
+    {
+      path: "../../../public/fonts/ActayWide-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/ActayWide-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-actay",
+  display: "swap",
+  preload: true,
+  fallback: ["Arial", "sans-serif"],
 });
 
 const guanoApes = localFont({
-  src: "../../../public/fonts/GuanoApes.otf",
+  src: [
+    {
+      path: "../../../public/fonts/GuanoApes.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/GuanoApes.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   variable: "--font-guano-apes",
+  display: "swap",
+  preload: true,
+  fallback: ["Arial", "sans-serif"],
 });
 
 const parkia = localFont({
-  src: "../../../public/fonts/Parkia-Bold.otf",
+  src: [
+    {
+      path: "../../../public/fonts/Parkia-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../../public/fonts/Parkia-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
   variable: "--font-parkia",
+  display: "swap",
+  preload: true,
+  fallback: ["Arial", "sans-serif"],
 });
 
 export async function generateMetadata() {

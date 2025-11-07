@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-
-const LottieSplashScreen = dynamic(() => import("./LottieSplashScreen"), {
-  ssr: false,
-  loading: () => (
-    <div className="no-doc-scroll fixed inset-0 z-50 flex items-center justify-center bg-[#020418]" />
-  ),
-});
+import LottieSplashScreen from "./LottieSplashScreen";
 
 export default function SplashGate({
   children,
@@ -37,8 +30,8 @@ export default function SplashGate({
 
   return (
     <>
-      {children}
       <LottieSplashScreen visible={showSplash} />
+      {children}
     </>
   );
 }

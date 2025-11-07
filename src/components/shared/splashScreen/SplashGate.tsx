@@ -13,13 +13,12 @@ export default function SplashGate({
   children: React.ReactNode;
 }) {
   const [showSplash, setShowSplash] = useState(false);
-  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     const alreadyPlayed = sessionStorage.getItem("splashPlayed");
 
     if (alreadyPlayed) {
-      setShowContent(true);
+      setShowSplash(false);
       return;
     }
 
@@ -28,7 +27,6 @@ export default function SplashGate({
     const timer = setTimeout(() => {
       sessionStorage.setItem("splashPlayed", "true");
       setShowSplash(false);
-      setShowContent(true);
     }, 3000);
 
     return () => {
@@ -38,13 +36,8 @@ export default function SplashGate({
 
   return (
     <>
+      {children}
       <LottieSplashScreen visible={showSplash} />
-
-      <div
-        className={`min-h-screen flex flex-col ${showContent ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-      >
-        {children}
-      </div>
     </>
   );
 }

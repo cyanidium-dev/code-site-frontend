@@ -69,11 +69,11 @@ export default function HeroSlideDecorations({
   const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   // Обчислюємо delay для анімацій
-  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0.8);
-  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
-  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0.3);
+  const headDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const logoDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const mainImageDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const graphDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const dropsDelay = getAnimationDelay(isLoadingSplashScreen, 0);
 
   // Preload LCP image (head.webp) для першого слайду
   useEffect(() => {

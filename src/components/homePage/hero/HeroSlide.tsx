@@ -58,8 +58,8 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
 
   // Обчислюємо delay для анімацій
   const titleDelay = getAnimationDelay(isLoadingSplashScreen, 0);
-  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0.4);
-  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const descriptionDelay = getAnimationDelay(isLoadingSplashScreen, 0);
+  const buttonDelay = getAnimationDelay(isLoadingSplashScreen, 0);
 
   const getAnimationClasses = () => {
     const baseClasses = "pt-25 lg:pt-[157px] overflow-hidden min-h-full";
@@ -97,7 +97,11 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             whileInView="visible"
             exit="exit"
             viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInAnimation({ x: 20, delay: titleDelay, useLCPOptimization: true })}
+            variants={fadeInAnimation({
+              x: 20,
+              delay: titleDelay,
+              useLCPOptimization: true,
+            })}
             className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase"
             style={{ color: textColor }}
           >
@@ -123,7 +127,11 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInAnimation({ y: 20, delay: descriptionDelay, useLCPOptimization: idx === 0 })}
+          variants={fadeInAnimation({
+            y: 20,
+            delay: descriptionDelay,
+            useLCPOptimization: idx === 0,
+          })}
           className="relative z-10 max-w-[223px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%]"
           style={{ color: textColor }}
         >

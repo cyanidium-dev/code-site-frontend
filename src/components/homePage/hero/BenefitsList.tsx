@@ -17,7 +17,7 @@ export default function BenefitsList({
   counterColor,
 }: BenefitsListProps) {
   const isLoadingSplashScreen = useSplashScreen();
-  const delayChildren = getAnimationDelay(isLoadingSplashScreen, 1.2);
+  const delayChildren = getAnimationDelay(isLoadingSplashScreen, 0);
 
   return (
     <motion.ul
@@ -26,7 +26,7 @@ export default function BenefitsList({
       whileInView="visible"
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
-      variants={listVariants({ staggerChildren: 0.3, delayChildren })}
+      variants={listVariants({ staggerChildren: 0, delayChildren })}
       className="relative z-10 flex flex-wrap md:flex-nowrap gap-2.5 lg:gap-[15px] mt-4 lg:mt-18"
     >
       {list.map((benefit, idx) => (
@@ -45,7 +45,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: isLoadingSplashScreen ? "0s" : "0s",
             }}
           >
             01
@@ -55,7 +55,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: isLoadingSplashScreen ? "0s" : "0s",
             }}
           >
             02
@@ -65,7 +65,7 @@ export default function BenefitsList({
             style={{
               color: counterColor,
               borderColor: counterColor,
-              animationDelay: isLoadingSplashScreen ? "3s" : "0s",
+              animationDelay: isLoadingSplashScreen ? "0s" : "0s",
             }}
           >
             03

@@ -21,7 +21,7 @@ export default function SplashGate({
     const timer = setTimeout(() => {
       sessionStorage.setItem("splashPlayed", "true");
       setShowSplash(false);
-    }, 3000);
+    }, 3600);
 
     return () => {
       clearTimeout(timer);

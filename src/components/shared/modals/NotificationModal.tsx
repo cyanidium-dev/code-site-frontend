@@ -19,14 +19,26 @@ export default function NotificationModal({
 }: NotificationModalProps) {
   const t = useTranslations("modals");
 
+  // Заменяем текст "Telegram" на ссылку (учитываем разные варианты написания)
+  const descriptionWithLink = description.replace(
+    /(в |на |on |to )?Telegram/gi,
+    (match) => {
+      // Сохраняем предлог, если он есть
+      const prefix = match.match(/^(в |на |on |to )/i)?.[0] || "";
+      const telegramText = match.replace(/^(в |на |on |to )/i, "");
+      return `${prefix}<a href="${TELEGRAM_LINK}" target="_blank" rel="noopener noreferrer nofollow" class="font-semibold underline hover:text-blue-light transition duration-300 ease-in-out">${telegramText}</a>`;
+    }
+  );
+
   return (
     <Modal isModalShown={isPopUpShown} setIsModalShown={setIsPopUpShown}>
       <h3 className="mb-3 font-actay text-[24px] xl:text-[32px] font-bold uppercase leading-[122%] text-center text-black">
         {title}
       </h3>
-      <p className="mb-8 text-[12px] lg:text-[16px] font-light leading-[122%] text-center text-black">
-        {description}
-      </p>
+      <p
+        className="mb-8 text-[12px] lg:text-[16px] font-light leading-[122%] text-center text-black"
+        dangerouslySetInnerHTML={{ __html: descriptionWithLink }}
+      />
       <a
         href={TELEGRAM_LINK}
         target="_blank"

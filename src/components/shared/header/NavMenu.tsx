@@ -25,7 +25,7 @@ export default function NavMenu({
 
   const navMenuList = [
     { title: t("portfolio"), link: "/portfolio" },
-    { title: t("home"), link: "/" },
+    // { title: t("home"), link: "/" },
     { title: t("services"), link: "/services" },
     { title: t("blog"), link: "/blog" },
     { title: t("contacts"), link: "/contacts" },

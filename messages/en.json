@@ -1,266 +1,338 @@
 {
   "metadata": {
-    "title": "Code-site.art. Професійна веброзробка сайтів - чистий код, висока швидкість, сучасний дизайн",
-    "description": "Ми розробляємо сайти, які приносять результат. Code-site.art - чистий код, UX/UI, SEO-оптимізація і найвища швидкість завантаження.",
-    "keywords": "розробка сайту Next.js, сайт на коді, SEO оптимізація, швидкість сайту, бізнес-сайт, створення сайту під ключ, фронтенд розробка",
+    "title": "Code Site Art",
+    "description": "Code Site Art is a web design and development agency that builds fast, SEO-ready websites with clean code, high-converting design and measurable business impact.",
+    "keywords": "coded websites, web development agency, Next.js development, SEO websites, conversion-focused web design, Ukraine web agency",
     "openGraph": {
-      "title": "Code-site.art. Професійна веброзробка сайтів - чистий код, висока швидкість, сучасний дизайн",
-      "description": "Ми розробляємо сайти, які приносять результат. Code-site.art - чистий код, UX/UI, SEO-оптимізація і найвища швидкість завантаження."
+      "title": "Code Site Art",
+      "description": "Order a selling website developed with clean code, UX/UI design and technical SEO — we launch high-speed projects that bring leads."
+    }
+  },
+  "metadataPages": {
+    "home": {
+      "title": "Code Site Art — Coded Websites, Web Design & SEO Agency",
+      "description": "Launch a selling website with lightning-fast Core Web Vitals, custom design and SEO architecture. We design, develop and optimise for conversions."
+    },
+    "services": {
+      "title": "Code Site Art Services — Custom Web Design, Development & SEO",
+      "description": "Strategy, UX/UI, Next.js development, integrations and SEO setup. Full-cycle production of coded websites that rank and convert."
+    },
+    "portfolio": {
+      "title": "Code Site Art Portfolio — Projects & Case Studies",
+      "description": "Explore recent projects, landing pages and corporate websites delivered by Code Site Art. Fast, SEO-friendly and focused on sales."
+    },
+    "blog": {
+      "title": "Code Site Art Blog — Web Development, Design & SEO Insights",
+      "description": "Practical articles about web development, UX/UI, SEO optimisation and conversion growth from the Code Site Art team."
+    },
+    "contacts": {
+      "title": "Contact Code Site Art — Discuss Your Website Project",
+      "description": "Leave a request or write on Telegram to plan a project. We will help choose a format, budget and timeline for your new website."
+    },
+    "legal": {
+      "title": "Legal Information — FOP Alpatov Fedir Mykhailovych | Code Site Art",
+      "description": "Requisites of Code Site Art: FOP Alpatov Fedir Mykhailovych, IBAN UA283220010000026001350098841, TIN 3573202876, UNIVERSAL BANK."
+    },
+    "offer": {
+      "title": "Public Offer — Code Site Art Web Development Services",
+      "description": "Terms of the public offer for web design and development services by Code Site Art. Responsibilities, payment and guarantees."
+    },
+    "publicContract": {
+      "title": "Public Contract — Code Site Art Web Development",
+      "description": "Public contract for providing coded website development services, payment terms and guarantees for clients of Code Site Art."
+    },
+    "policy": {
+      "title": "Privacy Policy — Code Site Art",
+      "description": "How Code Site Art processes and protects personal data. Principles of confidentiality, security measures and user rights."
+    },
+    "notFound": {
+      "title": "Page Not Found — Code Site Art",
+      "description": "The page you requested was not found. Return to the Code Site Art homepage to discover our services and projects."
     }
   },
   "header": {
     "logo": "Code-site.art",
-    "home": "Главная",
-    "portfolio": "Портфолио",
-    "services": "Услуги",
-    "blog": "Блог",
-    "contacts": "Контакты",
-    "discuss": "обсудить проект"
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "blog": "Blog",
+    "contacts": "Contacts",
+    "discuss": "discuss project"
   },
   "footer": {
-    "description": "Мы работаем на ваш результат и наше удовольствие",
-    "home": "Главная",
-    "portfolio": "Портфолио",
-    "blog": "Блог",
-    "services": "Услуги",
-    "contacts": "Контакты",
-    "legalData": "Юридические данные",
-    "publicContract": "Публичный договор",
-    "offer": "Оферта",
-    "policy": "Конфиденциальность",
-    "forCalls": "Для звонков",
+    "description": "We work for your results and our satisfaction",
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "services": "Services",
+    "contacts": "Contacts",
+    "legalData": "Legal Data",
+    "publicContract": "Public Contract",
+    "offer": "Offer",
+    "policy": "Privacy",
+    "forCalls": "For calls",
     "rights": "© {year} Code-site.art"
   },
   "forms": {
-    "namePlaceholder": "Имя",
-    "phonePlaceholder": "Номер телефона / Telegram",
+    "namePlaceholder": "Name",
+    "phonePlaceholder": "Phone Number / Telegram",
     "errors": {
-      "required": "Дане поле є обов'язковим до заповнення",
-      "nameMinMaxSymbols": "Повинно містити від 2 до 30 символів",
-      "nameAllowedSymbols": "Допустимі літери та дефіс, апостроф, лапки"
+      "required": "This field is required",
+      "nameMinMaxSymbols": "Must contain between 2 and 30 characters",
+      "nameAllowedSymbols": "Allowed letters, hyphen, apostrophe, quotes"
     },
-    "submitButton": "Отправить",
-    "sending": "Надсилання..."
+    "submitButton": "Send",
+    "sending": "Sending..."
   },
   "modals": {
-    "leaveContacts": "Оставьте свои контакты",
-    "fillData": "Заполните свои данные и мы свяжемся с вами в ближайшее время!",
-    "successTitle": "Спасибо, что оставили данные!",
-    "errorTitle": "На жаль, щось пішло не так",
-    "successDescription": "Можете написать нам в Telegram!",
-    "errorDescription": "Но вы можете написать нам в Telegram!",
-    "sendMessage": "Отправить сообщение"
+    "leaveContacts": "Leave your contacts",
+    "fillData": "Fill in your details and we will contact you soon!",
+    "successTitle": "Thank you for leaving your details!",
+    "errorTitle": "Unfortunately, something went wrong",
+    "successDescription": "You can write to us on Telegram!",
+    "errorDescription": "But you can write to us on Telegram!",
+    "sendMessage": "Send message"
   },
   "homePage": {
     "hero": {
-      "freeConsultation": "Бесплатная консультация",
+      "freeConsultation": "Free Consultation",
       "slideOne": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Coded Websites with Maximum Speed",
+        "description": "Clean code without unnecessary dependencies. Site loads in 0.5 seconds and ranks top positions in Google",
+        "button": "Free Consultation",
+        "subtitle": "Coded websites work 3 times faster than builders. Higher conversion and better search positions",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "0.5s", "description": "Load Speed" },
+          "listTwo": { "value": "95+", "description": "PageSpeed Score" },
+          "listThree": { "value": "100%", "description": "SEO-Ready" }
         }
       },
       "slideTwo": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Web Design That Sells",
+        "description": "Unique design for your business. Every element works for conversion and increased sales",
+        "button": "Free Consultation",
+        "subtitle": "We analyze your target audience and create design that turns visitors into customers",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "3x", "description": "Conversion Growth" },
+          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listThree": { "value": "99%", "description": "Satisfied Clients" }
         }
       },
       "slideThree": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "SEO Optimization from Day One",
+        "description": "Site is created with all SEO requirements in mind. Technical optimization, structured data and speed",
+        "button": "Free Consultation",
+        "subtitle": "Your site is immediately ready for promotion. Technical foundation for top positions is already laid",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "100%", "description": "SEO-Ready" },
+          "listTwo": { "value": "90+", "description": "Core Web Vitals" },
+          "listThree": { "value": "5+", "description": "Years of Experience" }
         }
       },
       "slideFour": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Selling Websites for Your Business",
+        "description": "Structure and content that turn traffic into leads. Every page works for results",
+        "button": "Free Consultation",
+        "subtitle": "We analyze your niche, competitors and create selling structure that brings clients",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "2x", "description": "Lead Growth" },
+          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listThree": { "value": "7–14", "description": "days to launch" }
         }
       },
       "slideFive": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Turnkey Website Development",
+        "description": "From idea to launch. Design, layout, programming, integrations and setup — all included",
+        "button": "Free Consultation",
+        "subtitle": "You get a ready website with all necessary functions. No hidden fees or additional costs",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "100%", "description": "Turnkey Ready" },
+          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listThree": { "value": "1 year", "description": "Warranty" }
         }
       },
       "slideSix": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Website That Delivers Results",
+        "description": "Not just a beautiful site, but a tool for business growth. Every element works for your ROI",
+        "button": "Free Consultation",
+        "subtitle": "We track results and optimize the site for maximum efficiency and profitability",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "3x", "description": "ROI Growth" },
+          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listThree": { "value": "99%", "description": "Satisfied Clients" }
         }
       },
       "slideSeven": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Individual Approach to Each Project",
+        "description": "No templates. Every website is a unique solution for your business, goals and target audience",
+        "button": "Free Consultation",
+        "subtitle": "We analyze your business, competitors and market. Create a solution that sets you apart from competitors",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "лет опыта" }
+          "listOne": { "value": "100%", "description": "Uniqueness" },
+          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listThree": { "value": "5+", "description": "Years of Experience" }
         }
       },
       "slideEight": {
-        "title": "Современный сайт для роста бизнеса",
-        "description": "Делаем сайты, которые превращают посетителей в клиентов. Запуск за 7–14 дней",
-        "button": "Бесплатная консультация",
-        "subtitle": "Мы анализируем вашу нишу и строим структуру, которая превращает трафик в заявки",
+        "title": "Warranty and Support After Launch",
+        "description": "1 year warranty and technical support. Bug fixes, updates and consultations included",
+        "button": "Free Consultation",
+        "subtitle": "We don't abandon the project after launch. We support and develop your site for maximum results",
         "list": {
-          "listOne": { "value": "99%", "description": "Дововльных клиентов" },
-          "listTwo": { "value": "50+", "description": "Успешных проектов" },
-          "listThree": { "value": "5+", "description": "года опыта" }
+          "listOne": { "value": "1 year", "description": "Warranty" },
+          "listTwo": { "value": "24/7", "description": "Support" },
+          "listThree": { "value": "50+", "description": "Successful Projects" }
         }
       }
     },
     "founder": {
-      "actualSolutions": "Актуальные решения для вашего бизнеса",
-      "descriptionOne": "Чистый код без зависимостей от платформ — сайт работает быстро и стабильно.",
-      "descriptionTwo": "Интеграции с CRM, платежными системами и любыми сервисами.",
-      "descriptionThree": "Кастомный продающий дизайн — красиво, современно и с эмоцией.",
-      "descriptionFour": "Проверенные подходы для разных ниш (от ресторанов до крипты).",
-      "descriptionFive": "SEO-структура и оптимизация “из коробки”."
+      "actualSolutions": "Relevant Solutions for Your Business",
+      "descriptionOne": "Clean code without platform dependencies — the website works fast and stable.",
+      "descriptionTwo": "Integrations with CRM, payment systems and any services.",
+      "descriptionThree": "Custom selling design — beautiful, modern and with emotion.",
+      "descriptionFour": "Proven approaches for different niches (from restaurants to crypto).",
+      "descriptionFive": "SEO structure and optimization \"out of the box\"."
     },
     "whyUs": {
-      "title": "Почему мы?",
+      "title": "Why Us?",
       "reasonOne": {
-        "title": "С нами — просто, эффективно, без брифов и тз",
-        "description": "Обещаем вас не мучать заполнением гигантских брифов и составлением ТЗ. После 15 минутной конференции мы сами найдем и представим вам найлучшии решение под ваш бизнес и аргументируем его."
+        "title": "With us — simple, effective, without briefs and technical specifications",
+        "description": "We promise not to torture you with filling out giant briefs and creating technical specifications. After a 15-minute conference, we will find and present you with the best solution for your business and justify it."
       },
       "reasonTwo": {
-        "title": "быстро и прозрачно",
-        "description": "Работаем по договору, фиксируем сроки. Даем результат в обещанные дедлайны. Возможна оплата на ФОП, крипту, Paypal - как удобно!"
+        "title": "fast and transparent",
+        "description": "We work under a contract, fix deadlines. We deliver results on promised deadlines. Payment possible to FOP, crypto, Paypal - as convenient!"
       },
       "reasonThree": {
-        "title": "Гарантия",
-        "description": "Мы не отдаем сырой продукт. Все наши сайты проходят QA тестирование перед запуском. Предоставляем гарантию на продукт на 1 год. Поддерживаем существуюшие проекты и оперативно вносим любые пожелания без менеджеров и бюрократии."
+        "title": "Guarantee",
+        "description": "We don't deliver raw products. All our websites go through QA testing before launch. We provide a 1-year product warranty. We support existing projects and promptly make any changes without managers and bureaucracy."
       }
     },
     "siteTypes": {
-      "title": "Типы сайтов",
-      "forWhom": "Для кого",
-      "from": "от",
-      "button": "Что включено?",
+      "title": "Website Types",
+      "forWhom": "For Whom",
+      "from": "from",
+      "button": "What's Included?",
       "landing": {
-        "title": "Одностраничный сайт",
-        "listOne": "продажа одного товара или услуги",
-        "listTwo": "привлечение инвесторов",
-        "listThree": "запуск стартапа",
-        "listFour": "промо конференции, концерта или вебинара",
-        "listFive": "сайт-заявка или портфолио"
+        "title": "Single Page Website",
+        "listOne": "selling one product or service",
+        "listTwo": "attracting investors",
+        "listThree": "startup launch",
+        "listFour": "promo conference, concert or webinar",
+        "listFive": "application website or portfolio"
       },
       "multipage": {
-        "title": "Многостраничный сайт",
-        "listOne": "удобный каталог товаров с фильтрами и поиском",
-        "listTwo": "рост продаж — круглосуточный доступ к вашим товарам для клиентов",
-        "listThree": "масштабируемость — можно начинать с небольшого каталога и расширять ассортимент.",
-        "listFour": "повышение доверия клиента"
+        "title": "Multi-page Website",
+        "listOne": "convenient product catalog with filters and search",
+        "listTwo": "sales growth — 24/7 access to your products for customers",
+        "listThree": "scalability — you can start with a small catalog and expand the range.",
+        "listFour": "increased customer trust"
       },
       "e-commerce": {
         "title": "E-commerce",
-        "listOne": "компания с несколькими услугами",
-        "listTwo": "личный бренд или эксперт",
-        "listThree": "агентство или студия",
-        "listFour": "бизнес, который хочет укрепить доверие",
-        "listFive": "организация с постоянными проектами и кейсами"
+        "listOne": "company with multiple services",
+        "listTwo": "personal brand or expert",
+        "listThree": "agency or studio",
+        "listFour": "business that wants to strengthen trust",
+        "listFive": "organization with ongoing projects and cases"
       }
     },
     "portfolio": {
-      "title": "Наше портфолио",
-      "seeProjects": "Смотреть все проекты"
+      "title": "Our Portfolio",
+      "seeProjects": "View All Projects"
     },
     "reviews": {
-      "title": "Отзывы",
-      "description": "Что о нас говорят наши лучшие клиенты",
-      "seeProject": "Смотреть проект"
+      "title": "Reviews",
+      "description": "What our best clients say about us",
+      "seeProject": "View Project"
     },
-    "partners": { "title": "С кем мы работаем" },
+    "partners": { "title": "Who We Work With" },
     "faq": {
-      "title": "Популярные вопросы",
-      "descriptionOne": "Не нашли ответ?",
-      "descriptionTwo": "Напишите нам в ",
-      "descriptionThree": " или на почту ",
-      "descriptionFour": "Мы всегда на связи и ответим максимально быстро.",
+      "title": "Frequently Asked Questions",
+      "descriptionOne": "Didn't find an answer?",
+      "descriptionTwo": "Write to us on ",
+      "descriptionThree": " or email ",
+      "descriptionFour": "We are always in touch and will respond as quickly as possible.",
       "questionOne": {
-        "title": "Сколько стоит создание сайта?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "How much does website creation cost?",
+        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $800. If your business needs a full corporate website with sections and internal pages — the price starts from $2000. For online stores and e-commerce solutions with cart, online payment and integrations — from $3000. We develop each project individually so that the website not only looks modern, but actually delivers results."
       },
       "questionTwo": {
-        "title": "Сколько времени занимает разработка?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "How long does development take?",
+        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
       },
       "questionThree": {
-        "title": "Вы работаете по договору и с предоплатой?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "Do you work under a contract and with prepayment?",
+        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
       },
       "questionFour": {
-        "title": "Что входит в разработку сайта?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "What is included in website development?",
+        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
       },
       "questionFive": {
-        "title": "Могу ли я вносить изменения на сайте самостоятельно?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "Can I make changes to the website independently?",
+        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
       },
       "questionSix": {
-        "title": "Поддерживаете ли вы сайты после запуска?",
-        "answer": "Стоимость разработки зависит от целей вашего бизнеса, сложности структуры и необходимого функционала. Одностраничный лендинг подойдёт для тестирования гипотез или быстрой презентации продукта и обойдётся от 800$. Если вашему бизнесу нужен полноценный корпоративный сайт с разделами и внутренними страницами — цена стартует от 2000$. Для интернет-магазинов и e-commerce решений с корзиной, онлайн-оплатой и интеграциями — от 3000$. Каждый проект мы разрабатываем индивидуально, чтобы сайт не только выглядел современно, но и реально приносил результат."
+        "title": "Do you support websites after launch?",
+        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
       }
     },
     "cta": {
-      "title": "НЕСТАНДАРТНЫЕ САЙТЫ ДЛЯ БОЛЬШИХ ПРОДАЖ",
-      "subtitle": "НАМ ДОВЕРЯЮТ ЛИДЕРЫ И БЛОГЕРЫ",
-      "description": "Мы делаем сайты для компаний и блогеров, которые ценят стиль и результат. Никаких шаблонов — только нестандартные решения, чистый код и дизайн, который продаёт",
-      "button": "Запросить предложение"
+      "title": "NON-STANDARD WEBSITES FOR BIG SALES",
+      "subtitle": "TRUSTED BY LEADERS AND BLOGGERS",
+      "description": "We create websites for companies and bloggers who value style and results. No templates — only non-standard solutions, clean code and design that sells",
+      "button": "Request a Proposal"
     }
   },
   "blogPage": {
-    "title": "Наш блог",
-    "description": "Реальные случаи, стратегии и идеи из мира разработки — все в одном месте.",
-    "readMore": "Читать дальше",
-    "minutes": "{count, plural, one {минута} few {минуты} many {минут} other {минут}}"
+    "title": "Our Blog",
+    "description": "Real cases, strategies and ideas from the world of development — all in one place.",
+    "readMore": "Read More",
+    "minutes": "{count, plural, one {minute} other {minutes}}"
   },
   "articlePage": {
     "cta": {
-      "title": "Обсудим ваш сайт?",
-      "leaveApplication": "Оставить заявку"
+      "title": "Let's Discuss Your Website?",
+      "leaveApplication": "Leave Application"
     }
   },
   "contactsPage": {
-    "title": "напишите нам",
-    "description": "Обращайтесь к нам – сделаем ваш сайт мощным и уникальным!"
+    "title": "write to us",
+    "description": "Contact us – we'll make your website powerful and unique!"
   },
   "portfolioPage": {
-    "title": "Наше портфолио",
-    "description": "Посмотрите наше портфолио с удобной сортировкой по тематике проекта"
+    "title": "Our Portfolio",
+    "description": "View our portfolio with convenient sorting by project theme"
+  },
+  "servicesPage": {
+    "title": "Page Under Development",
+    "description": "This page is under development. Information about our services will appear here soon."
+  },
+  "notFoundPage": {
+    "title": "404",
+    "description": "Page Not Found",
+    "button": "Return to Home"
+  },
+  "legalPage": {
+    "title": "Legal Data",
+    "fopName": "FOP Alpatov Fedir Mykhailovych",
+    "iban": "IBAN: UA283220010000026001350098841",
+    "taxId": "Tax ID/EDRPOU: 3573202876",
+    "bankName": "Joint Stock Company: UNIVERSAL BANK",
+    "bankMfo": "MFO: 322001",
+    "bankEdrpou": "Bank EDRPOU: 21133352"
+  },
+  "offerPage": {
+    "title": "Offer",
+    "content": "This offer is a public offer by FOP Alpatov Fedir Mykhailovych (hereinafter - \"Contractor\") to conclude a contract for the provision of web development services under the conditions specified below.\n\n1. General Provisions\n1.1. This offer regulates the terms of provision of web development services.\n1.2. Acceptance of this offer is payment for services or signing a contract.\n\n2. Subject of the Contract\n2.1. The Contractor undertakes to provide web development services in accordance with the technical specification.\n2.2. The Customer undertakes to accept and pay for the services.\n\n3. Cost and Payment Procedure\n3.1. The cost of services is determined individually for each project.\n3.2. Payment is made according to the terms of the contract.\n\n4. Rights and Obligations of the Parties\n4.1. The Contractor undertakes to perform work within the agreed timeframes.\n4.2. The Customer undertakes to provide necessary information and materials.\n\n5. Liability of the Parties\n5.1. The parties are liable for non-performance of obligations in accordance with the current legislation of Ukraine."
+  },
+  "publicContractPage": {
+    "title": "Public Contract",
+    "content": "Public Contract for the Provision of Web Development Services\n\n1. Parties to the Contract\nContractor: FOP Alpatov Fedir Mykhailovych\nTax ID/EDRPOU: 3573202876\nIBAN: UA283220010000026001350098841\nBank: Joint Stock Company UNIVERSAL BANK\nMFO: 322001\nBank EDRPOU: 21133352\n\nCustomer: an individual or legal entity that has accepted the terms of this contract.\n\n2. Subject of the Contract\n2.1. The Contractor provides services for development, design and programming of websites.\n2.2. The Customer accepts and pays for the services provided.\n\n3. Terms of Performance\n3.1. Work is performed in accordance with the technical specification.\n3.2. Terms of performance are agreed individually.\n\n4. Payment\n4.1. The cost of services is determined separately for each project.\n4.2. Payment is made according to the payment schedule.\n\n5. Guarantees\n5.1. The Contractor provides a warranty on the developed product for 1 year.\n5.2. The warranty includes correction of technical errors and technical support."
+  },
+  "policyPage": {
+    "title": "Privacy Policy",
+    "content": "Privacy Policy Code-site.art\n\n1. General Provisions\n1.1. This Privacy Policy defines the procedure for processing personal data of users of the code-site.art website.\n1.2. The site administration undertakes to comply with the requirements of the current legislation of Ukraine regarding the protection of personal data.\n\n2. Collection of Personal Data\n2.1. We collect only those personal data that are necessary for the provision of services.\n2.2. Personal data is collected when filling out forms on the site.\n\n3. Use of Personal Data\n3.1. Personal data is used exclusively for:\n- communication with clients;\n- provision of services;\n- sending important messages.\n\n4. Protection of Personal Data\n4.1. We take measures to protect personal data from unauthorized access.\n4.2. Personal data is not transferred to third parties without the user's consent.\n\n5. User Rights\n5.1. The user has the right to access their personal data.\n5.2. The user has the right to demand deletion of their personal data.\n\n6. Contact Information\n6.1. For questions related to the processing of personal data, contact us using the contacts specified on the site."
   }
 }

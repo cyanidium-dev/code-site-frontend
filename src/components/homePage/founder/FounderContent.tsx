@@ -14,12 +14,6 @@ const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
 }) as any;
 
-// Функція для отримання Vimeo video ID
-function getVimeoVideoId(url: string): string | null {
-  const match = url.match(/vimeo.com\/(?:.*\/)?(\d+)/);
-  return match ? match[1] : null;
-}
-
 interface FounderContentProps {
   actualSolutionsText: string;
 }
@@ -29,36 +23,12 @@ export default function FounderContent({
 }: FounderContentProps) {
   const locale = useLocale();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
 
-  // Get video URL for current locale
-  const videoUrl = FOUNDER_VIDEO_URLS[locale] || "";
+  const videoUrl = FOUNDER_VIDEO_URLS[locale] || (locale === "ru" ? FOUNDER_VIDEO_URLS["uk"] : "");
 
-  // Отримуємо Vimeo thumbnail через oEmbed API
+  // Reset playing state when locale/video changes
   useEffect(() => {
-    // Reset playing state when locale/video changes
     setIsPlaying(false);
-    
-    if (videoUrl) {
-      const vimeoId = getVimeoVideoId(videoUrl);
-      if (vimeoId) {
-        fetch(
-          `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoUrl)}`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.thumbnail_url) {
-              setVimeoThumbnail(data.thumbnail_url);
-            }
-          })
-          .catch(() => {
-            // Якщо помилка, залишаємо null
-          });
-      }
-    } else {
-      // Reset thumbnail if no video URL
-      setVimeoThumbnail(null);
-    }
   }, [videoUrl]);
 
   return (
@@ -77,42 +47,21 @@ export default function FounderContent({
             className="absolute inset-0 rounded-[8px]"
             aria-label="Founder video"
           >
-            {isPlaying && (
-              <ReactPlayer
-                key={`founder-player-${videoUrl}-${locale}`}
-                src={videoUrl}
-                playing={isPlaying}
-                controls={false}
-                width="100%"
-                height="100%"
-              />
-            )}
+            <ReactPlayer
+              key={`founder-player-${videoUrl}-${locale}`}
+              src={videoUrl}
+              playing={isPlaying}
+              controls={false}
+              width="100%"
+              height="100%"
+            />
             {!isPlaying && (
-              <>
-                {vimeoThumbnail ? (
-                  <Image
-                    src={vimeoThumbnail}
-                    alt="Founder video preview"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                    loading="lazy"
-                  />
-                ) : (
-                  <Image
-                    src="/images/homePage/founder/founder.webp"
-                    alt="founder"
-                    fill
-                    className="object-cover"
-                  />
-                )}
-                <button
-                  onClick={() => setIsPlaying(true)}
-                  className="absolute inset-0 flex items-center justify-center xl:opacity-0 xl:hover:opacity-100 xl:hover:brightness-125 transition duration-300 ease-in-out cursor-pointer z-10"
-                >
-                  <PlayIcon />
-                </button>
-              </>
+              <button
+                onClick={() => setIsPlaying(true)}
+                className="absolute inset-0 flex items-center justify-center xl:opacity-0 xl:hover:opacity-100 xl:hover:brightness-125 transition duration-300 ease-in-out cursor-pointer z-10"
+              >
+                <PlayIcon />
+              </button>
             )}
             {isPlaying && (
               <button

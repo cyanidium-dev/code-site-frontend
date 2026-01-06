@@ -13,8 +13,7 @@ export const LINKEDIN_LINK = "https://www.linkedin.com/in/fediralpatov/";
 
 export const TIKTOK_LINK = "https://www.tiktok.com/@cyanidium.dev";
 
-// Founder video URLs by locale
 export const FOUNDER_VIDEO_URLS: Record<string, string> = {
-  uk: "", // Ukrainian Vimeo video URL placeholder
-  en: "", // English Vimeo video URL placeholder
+  uk: "https://vimeo.com/1151997834?fl=pl&fe=sh",
+  en: "https://vimeo.com/1151995135?fl=pl&fe=sh",
 };

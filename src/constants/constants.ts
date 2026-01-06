@@ -12,3 +12,8 @@ export const LINKEDIN_NAME = "@fediralpatov";
 export const LINKEDIN_LINK = "https://www.linkedin.com/in/fediralpatov/";
 
 export const TIKTOK_LINK = "https://www.tiktok.com/@cyanidium.dev";
+
+export const FOUNDER_VIDEO_URLS: Record<string, string> = {
+  uk: "https://vimeo.com/1151997834?fl=pl&fe=sh",
+  en: "https://vimeo.com/1151995135?fl=pl&fe=sh",
+};

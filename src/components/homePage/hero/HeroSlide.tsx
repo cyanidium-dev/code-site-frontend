@@ -106,7 +106,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
               delay: titleDelay,
               useLCPOptimization: true,
             })}
-            className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase min-h-[4lh]"
+            className="flex justify-center items-center relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase min-h-[4lh]"
             style={{ color: textColor }}
           >
             {title}
@@ -119,7 +119,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             exit="exit"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInAnimation({ x: 20, delay: titleDelay })}
-            className="relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase min-h-[4lh]"
+            className="flex justify-center items-center relative z-10 mb-5 lg:mb-8 max-w-[286px] md:max-w-[340px] lg:max-w-[425px] font-actay text-[32px] md:text-[40px] lg:text-[48px] font-bold leading-[107%] uppercase min-h-[4lh]"
             style={{ color: textColor }}
           >
             {title}

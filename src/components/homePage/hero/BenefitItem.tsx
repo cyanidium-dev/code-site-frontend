@@ -40,12 +40,17 @@ export default function BenefitItem({ benefit }: BenefitItemProps) {
   }
 
   // Для обычных числовых значений используем анимацию
-  const number = parseFloat(value.replace(/[^\d.]/g, ""));
-  const suffix = value.replace(/[\d.]/g, "");
+  const numericPart = value.replace(/[^\d.]/g, "");
+  const number = parseFloat(numericPart);
+  // Извлекаем суффикс, удаляя только числовую часть в начале строки (включая опциональную десятичную точку)
+  const suffix = value.replace(/^\d+\.?\d*/, "");
+  // Проверяем, содержит ли числовая часть десятичную точку между цифрами (например, "3.5" но не "1" в "1 yr.")
+  // Используем регулярное выражение для проверки наличия точки между цифрами
+  const hasDecimal = /^\d+\.\d+$/.test(numericPart);
 
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) =>
-    value.includes(".") ? latest.toFixed(1) : Math.round(latest).toString()
+    hasDecimal ? latest.toFixed(1) : Math.round(latest).toString()
   );
 
   const ref = useRef(null);

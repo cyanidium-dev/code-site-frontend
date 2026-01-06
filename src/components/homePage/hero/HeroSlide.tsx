@@ -136,7 +136,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             delay: descriptionDelay,
             useLCPOptimization: idx === 0,
           })}
-          className="relative z-10 max-w-[255px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%] min-h-[4lh] lg:min-h-[3lh]"
+          className="flex justify-center items-center relative z-10 max-w-[255px] lg:max-w-[372px] mb-[263px] md:mb-[163px] lg:mb-10 text-[14px] lg:text-[16px] font-light leading-[120%] min-h-[4lh] lg:min-h-[3lh]"
           style={{ color: textColor }}
         >
           {description}

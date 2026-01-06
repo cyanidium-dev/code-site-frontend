@@ -67,7 +67,7 @@ export default function SlidePreviewCards({
               delay: 0.02 * index + 0.4,
             }}
           >
-            <div className="absolute top-[20px] left-[-60px] w-[338px] h-auto aspect-[1071/872] flex items-center justify-center overflow-hidden">
+            <div className="absolute top-[20px] left-[-40px] w-[338px] h-auto aspect-[1071/872] flex items-center justify-center overflow-hidden">
               <Image
                 src={cardData.mainImage.asset.url}
                 alt="preview image"

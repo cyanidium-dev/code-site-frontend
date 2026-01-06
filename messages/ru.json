@@ -29,7 +29,7 @@
     "offer": "Оферта",
     "policy": "Конфиденциальность",
     "forCalls": "Для звонков",
-    "rights": "© {year} Code-site.art"
+    "rights": "© 2023-{year} Code-site.art"
   },
   "forms": {
     "namePlaceholder": "Имя",

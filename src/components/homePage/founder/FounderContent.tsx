@@ -8,6 +8,8 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 import BenefitsList from "./BenefitsList";
 import PlayIcon from "@/components/shared/icons/PlayIcon";
 import PauseIcon from "@/components/shared/icons/PauseIcon";
+import RestartIcon from "@/components/shared/icons/RestartIcon";
+import Spinner from "@/components/shared/icons/Spinner";
 import { FOUNDER_VIDEO_URLS } from "@/constants/constants";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
@@ -24,9 +26,12 @@ export default function FounderContent({
   const locale = useLocale();
   const [isPlaying, setIsPlaying] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
+  const [playerKey, setPlayerKey] = useState(0);
+  const [showEnded, setShowEnded] = useState(false);
+  const [isRemounting, setIsRemounting] = useState(false);
   const playerRef = useRef<any>(null);
-  const vimeoPlayerRef = useRef<any>(null);
-  const hasRestartedRef = useRef<boolean>(false);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   const videoUrl = FOUNDER_VIDEO_URLS[locale] || (locale === "ru" ? FOUNDER_VIDEO_URLS["uk"] : "");
 
@@ -34,48 +39,89 @@ export default function FounderContent({
   useEffect(() => {
     setIsPlaying(false);
     setAspectRatio(null);
-    hasRestartedRef.current = false;
+    setVideoDuration(null);
+    setPlayerKey(prev => prev + 1);
+    setShowEnded(false);
+    setIsRemounting(false);
   }, [videoUrl]);
+
+  // Setup Vimeo postMessage communication
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (!event.origin.includes('vimeo.com')) return;
+
+      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      
+      if (data.event === 'ready') {
+        postMessageToVimeo({ method: 'getDuration' });
+        postMessageToVimeo({ method: 'addEventListener', value: 'timeupdate' });
+      } else if (data.event === 'timeupdate') {
+        const currentTime = data.data.seconds;
+        
+        // Pause and show restart button 0.3 seconds before end
+        if (videoDuration && currentTime >= videoDuration - 0.3 && !showEnded) {
+          postMessageToVimeo({ method: 'pause' });
+          setIsPlaying(false);
+          setShowEnded(true);
+        }
+      } else if (data.method === 'getDuration') {
+        setVideoDuration(data.value);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [videoDuration, showEnded]);
+
+  const postMessageToVimeo = (data: any) => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      iframeRef.current.contentWindow.postMessage(JSON.stringify(data), '*');
+    }
+  };
 
   const handleReady = (player: any) => {
     if (player) {
       const internalPlayer = player.getInternalPlayer();
-      vimeoPlayerRef.current = internalPlayer;
+      
       if (internalPlayer && internalPlayer.videoWidth && internalPlayer.videoHeight) {
         const ratio = (internalPlayer.videoHeight / internalPlayer.videoWidth) * 100;
         setAspectRatio(ratio);
       }
-    }
-  };
 
-  const handleProgress = (state: { played: number; playedSeconds: number; loaded: number; loadedSeconds: number }) => {
-    if (state.played >= 0.99 && !hasRestartedRef.current) {
-      hasRestartedRef.current = true;
-      
-      setIsPlaying(false);
-      
-      if (vimeoPlayerRef.current && typeof vimeoPlayerRef.current.setCurrentTime === 'function') {
-        vimeoPlayerRef.current.setCurrentTime(0);
-      } else if (playerRef.current && typeof playerRef.current.seekTo === 'function') {
-        playerRef.current.seekTo(0);
-      }
       setTimeout(() => {
-        hasRestartedRef.current = false;
+        const iframe = document.querySelector('iframe[src*="vimeo.com"]') as HTMLIFrameElement;
+        if (iframe) {
+          iframeRef.current = iframe;
+        }
       }, 500);
+      
+      // Reset remounting state when player is ready
+      setIsRemounting(false);
     }
   };
 
   const handleEnded = () => {
-    if (!hasRestartedRef.current) {
-      hasRestartedRef.current = true;
-      if (vimeoPlayerRef.current && typeof vimeoPlayerRef.current.setCurrentTime === 'function') {
-        vimeoPlayerRef.current.setCurrentTime(0);
-      }
+    postMessageToVimeo({ method: 'pause' });
+    setIsPlaying(false);
+    setShowEnded(true);
+  };
+
+  const handleRestart = () => {
+    setIsRemounting(true);
+    setShowEnded(false);
+    setIsPlaying(false);
+    
+    // Small delay to show loading state, then remount
+    setTimeout(() => {
+      setPlayerKey(prev => prev + 1);
+      setAspectRatio(null);
+      setVideoDuration(null);
+      
+      // Safety timeout: reset remounting state after 5 seconds if onReady doesn't fire
       setTimeout(() => {
-        setIsPlaying(false);
-        hasRestartedRef.current = false;
-      }, 300);
-    }
+        setIsRemounting(false);
+      }, 5000);
+    }, 200);
   };
 
   return (
@@ -107,7 +153,7 @@ export default function FounderContent({
                 <div className="absolute inset-0 rounded-[8px] overflow-hidden [&>div]:rounded-[8px] [&>div>iframe]:rounded-[8px] [&>div>video]:rounded-[8px]">
                   <ReactPlayer
                     ref={playerRef}
-                    key={`founder-player-${videoUrl}-${locale}`}
+                    key={`founder-player-${videoUrl}-${locale}-${playerKey}`}
                     src={videoUrl}
                     playing={isPlaying}
                     controls={false}
@@ -115,7 +161,6 @@ export default function FounderContent({
                     height="100%"
                     style={{ position: 'absolute', top: 0, left: 0 }}
                     onReady={handleReady}
-                    onProgress={handleProgress}
                     onEnded={handleEnded}
                     config={{
                       vimeo: {
@@ -129,19 +174,35 @@ export default function FounderContent({
                     }}
                   />
                 </div>
+                {isRemounting && (
+                  <div className="absolute inset-0 rounded-[8px] bg-black flex items-center justify-center z-20">
+                    <Spinner size={48} />
+                  </div>
+                )}
               </div>
-              {!isPlaying && (
+              {showEnded && !isRemounting && (
+                <button
+                  onClick={handleRestart}
+                  className="absolute inset-0 flex items-center justify-center opacity-100 hover:brightness-125 transition duration-300 ease-in-out cursor-pointer z-10 rounded-[8px]"
+                  aria-label="Restart video"
+                >
+                  <RestartIcon />
+                </button>
+              )}
+              {!showEnded && !isPlaying && !isRemounting && (
                 <button
                   onClick={() => setIsPlaying(true)}
                   className="absolute inset-0 flex items-center justify-center xl:opacity-0 xl:hover:opacity-100 xl:hover:brightness-125 transition duration-300 ease-in-out cursor-pointer z-10 rounded-[8px]"
+                  aria-label="Play video"
                 >
                   <PlayIcon />
                 </button>
               )}
-              {isPlaying && (
+              {!showEnded && isPlaying && !isRemounting && (
                 <button
                   onClick={() => setIsPlaying(false)}
                   className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 xl:group-hover:brightness-125 duration-300 ease-in-out transition cursor-pointer z-10 rounded-[8px]"
+                  aria-label="Pause video"
                 >
                   <PauseIcon />
                 </button>

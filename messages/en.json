@@ -71,7 +71,7 @@
     "offer": "Offer",
     "policy": "Privacy",
     "forCalls": "For calls",
-    "rights": "© {year} Code-site.art"
+    "rights": "© 2023-{year} Code-site.art"
   },
   "forms": {
     "namePlaceholder": "Name",

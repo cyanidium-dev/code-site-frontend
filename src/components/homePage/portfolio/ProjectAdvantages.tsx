@@ -26,7 +26,7 @@ export default function ProjectAdvantages({
         {advantages.map((advantage, idx) => (
           <li
             key={idx}
-            className="flex items-center gap-2 px-5 py-2.5 w-fit h-[29px] lg:h-[45px] rounded-full overflow-hidden bg-dark/24 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] backdrop-blur-[18.95px]"
+            className="relative flex items-center gap-2 px-5 py-2.5 w-fit h-[29px] lg:h-[45px] rounded-full overflow-hidden bg-gray/76 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
           >
             <div
               className="absolute inset-0 rounded-full pointer-events-none"

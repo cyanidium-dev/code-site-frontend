@@ -12,3 +12,9 @@ export const LINKEDIN_NAME = "@yourusername";
 export const LINKEDIN_LINK = "";
 
 export const TIKTOK_LINK = "";
+
+// Founder video URLs by locale
+export const FOUNDER_VIDEO_URLS: Record<string, string> = {
+  uk: "", // Ukrainian Vimeo video URL placeholder
+  en: "", // English Vimeo video URL placeholder
+};

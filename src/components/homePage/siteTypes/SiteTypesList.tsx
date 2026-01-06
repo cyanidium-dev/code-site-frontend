@@ -20,7 +20,7 @@ export default function SiteTypesList() {
         t("landing.listFive"),
       ],
 
-      price: 800,
+      price: 1000,
     },
     {
       title: t("multipage.title"),
@@ -31,7 +31,7 @@ export default function SiteTypesList() {
         t("multipage.listFour"),
       ],
 
-      price: 1500,
+      price: 3000,
     },
     {
       title: t("e-commerce.title"),
@@ -43,7 +43,7 @@ export default function SiteTypesList() {
         t("e-commerce.listFive"),
       ],
 
-      price: 2500,
+      price: 5000,
     },
   ];
 

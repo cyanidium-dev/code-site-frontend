@@ -33,7 +33,7 @@ export default function BenefitsList({
         variants={listItemVariantsLeft}
         className="flex flex-col justify-center w-[calc(50%-5px)] lg:w-[210px] lg:mt-[-61px] lg:ml-[45px]"
       >
-        <p className="lg:mb-4 xl:mb-9 font-actay text-[12px] lg:text-[16px] leading-[120%] font-bold uppercase">
+        <p className="flex items-center lg:mb-4 xl:mb-9 font-actay text-[12px] lg:text-[16px] leading-[120%] font-bold uppercase min-h-[7lh]">
           {subtitle}
         </p>
         <ul className="hidden lg:flex gap-[15px] text-[19px] font-normal leading-none">

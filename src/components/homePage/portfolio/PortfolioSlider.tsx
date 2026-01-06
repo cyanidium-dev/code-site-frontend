@@ -27,7 +27,7 @@ export default function PortfolioSlider({
   const width = useScreenWidth();
 
   // Animation constants
-  const cardWidth = 138;
+  const cardWidth = width > 786 ? 286 : 138;
   const cardHeight = width > 1024 ? 212 : 179;
   const gap = 14;
   const numberSize = 50;

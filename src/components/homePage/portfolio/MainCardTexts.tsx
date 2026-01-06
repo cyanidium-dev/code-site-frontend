@@ -48,7 +48,7 @@ export default function MainCardTexts({
             />
             <motion.div
               className="relative p-5 lg:p-0 rounded-[10px] lg:rounded-none lg:bg-transparent shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] 
-              lg:shadow-none bg-gray/76"
+              lg:shadow-none bg-gray/50"
               initial={{ y: 60 }}
               animate={{ y: 0 }}
               transition={{

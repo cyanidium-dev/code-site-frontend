@@ -148,7 +148,7 @@
         "list": {
           "listOne": { "value": "100%", "description": "Turnkey Ready" },
           "listTwo": { "value": "50+", "description": "Successful Projects" },
-          "listThree": { "value": "1 year", "description": "Warranty" }
+          "listThree": { "value": "1 yr.", "description": "Warranty" }
         }
       },
       "slideSix": {
@@ -179,7 +179,7 @@
         "button": "Free Consultation",
         "subtitle": "We don't abandon the project after launch. We support and develop your site for maximum results",
         "list": {
-          "listOne": { "value": "1 year", "description": "Warranty" },
+          "listOne": { "value": "1 yr.", "description": "Warranty" },
           "listTwo": { "value": "24/7", "description": "Support" },
           "listThree": { "value": "50+", "description": "Successful Projects" }
         }

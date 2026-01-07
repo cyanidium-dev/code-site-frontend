@@ -13,7 +13,7 @@ export default function Partners() {
         <PartnersDecorations />
         <SectionTitle
           variant="pink"
-          className="max-w-[305px] lg:max-w-[624px] mb-[42px] lg:mb-5 mx-auto lg:mx-0 text-center lg:text-left"
+          className="mb-[42px] lg:mb-5 mx-auto lg:mx-0 text-center lg:text-left"
         >
           {t("title")}
         </SectionTitle>

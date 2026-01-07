@@ -91,6 +91,26 @@
     }
   }
 
+  @keyframes svg-glow-blue {
+    0%,
+    100% {
+      filter: drop-shadow(3.508px 2.923px 8.916px rgba(181, 218, 255, 0.2));
+    }
+    50% {
+      filter: drop-shadow(3.508px 2.923px 10px rgba(181, 218, 255, 0.7));
+    }
+  }
+
+  @keyframes svg-glow-pink {
+    0%,
+    100% {
+      filter: drop-shadow(3.508px 2.923px 8.916px rgba(255, 0, 166, 0.2));
+    }
+    50% {
+      filter: drop-shadow(3.508px 2.923px 10px rgba(255, 0, 166, 0.5));
+    }
+  }
+
   @keyframes shimmer {
     0% {
       background-position: -200% 0;
@@ -191,6 +211,18 @@
     -webkit-background-clip: text;
     color: transparent;
     animation: glow-blue 2s ease-in-out infinite;
+  }
+
+  .animate-svg-glow-blue svg {
+    animation: svg-glow-blue 2s ease-in-out infinite;
+  }
+
+  .animate-svg-glow-pink svg {
+    animation: svg-glow-pink 2s ease-in-out infinite;
+  }
+
+  .animate-svg-glow-dark svg {
+    animation: svg-glow-blue 2s ease-in-out infinite;
   }
 
   .benefit-highlight-1 {

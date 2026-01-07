@@ -44,7 +44,7 @@ export default function Header() {
           }`}
         />
         <Logo
-          className="text-[12px] z-[60]"
+          className="z-[60]"
           variant={isContacts && width >= 1024 ? "dark" : "blue"}
         />
         <div className="flex items-center gap-x-6 md:gap-x-8 xl:gap-x-12">

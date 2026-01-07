@@ -1,7 +1,7 @@
 "use client";
-import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
 import { twMerge } from "tailwind-merge";
+import LogoSVG from "../logo/LogoSVG";
 
 interface CodeSiteMarqueeProps {
   className?: string;
@@ -10,8 +10,6 @@ interface CodeSiteMarqueeProps {
 export default function CodeSiteMarquee({
   className = "",
 }: CodeSiteMarqueeProps) {
-  const t = useTranslations("header");
-
   return (
     <Marquee
       autoFill={true}
@@ -21,7 +19,9 @@ export default function CodeSiteMarquee({
         className
       )}
     >
-      <span className="inline-block mx-1.5 leading-none">{t("logo")}</span>
+      <div className="inline-block mx-4 leading-none flex items-center">
+        <LogoSVG variant="blue" animated={false} className="h-[37.67px] lg:h-[48px] w-auto text-dark" />
+      </div>
     </Marquee>
   );
 }

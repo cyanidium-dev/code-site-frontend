@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { twMerge } from "tailwind-merge";
+import LogoSVG from "./LogoSVG";
 
 interface LogoProps {
   className?: string;
@@ -7,20 +8,12 @@ interface LogoProps {
 }
 
 export default function Logo({ className = "", variant = "blue" }: LogoProps) {
-  const t = useTranslations("header");
-
   return (
     <Link
       href="/"
-      className={`relative inline-block font-actay font-bold uppercase outline-none ${
-        variant === "blue"
-          ? "animate-text-glow-blue"
-          : variant === "pink"
-            ? "animate-text-glow-pink"
-            : "animate-text-glow-dark"
-      } ${className}`}
+      className={twMerge("relative inline-block outline-none text-white", className)}
     >
-      {t("logo")}
+      <LogoSVG variant={variant} animated={true} />
     </Link>
   );
 }

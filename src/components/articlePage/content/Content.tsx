@@ -12,10 +12,8 @@ export default function Content({ article }: ContentProps) {
   if (!content) return null;
 
   return (
-    <section>
-      <Container className="flex flex-col gap-15 py-20">
-        <PortableTextRenderer value={content} />
-      </Container>
+    <section className="flex flex-col gap-15 py-20">
+      <PortableTextRenderer value={content} />
     </section>
   );
 }

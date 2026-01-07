@@ -26,11 +26,10 @@ export default function MainCard({
   isPriority = false,
   className,
 }: MainCardProps) {
-  // Оптимізуємо URL зображення для різних breakpoints
+  // Використовуємо нативну ширину зображення
   // Використовуємо "auto" для автоматичного вибору найкращого формату (WebP/AVIF/оригінальний)
-  const imageWidth = width >= 1024 ? 1071 : width >= 768 ? 740 : 521;
   const optimizedImageUrl =
-    getOptimizedImageUrl(project.mainImage, imageWidth, 85, "auto") ||
+    getOptimizedImageUrl(project.mainImage, undefined, 85, "auto") ||
     project.mainImage?.asset?.url ||
     "";
 

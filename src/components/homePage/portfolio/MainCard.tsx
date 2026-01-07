@@ -30,7 +30,7 @@ export default function MainCard({
   // Використовуємо "auto" для автоматичного вибору найкращого формату (WebP/AVIF/оригінальний)
   const imageWidth = width >= 1024 ? 1071 : width >= 768 ? 740 : 521;
   const optimizedImageUrl =
-    getOptimizedImageUrl(project.mainImage, imageWidth, 80, "auto") ||
+    getOptimizedImageUrl(project.mainImage, imageWidth, 100, "auto") ||
     project.mainImage?.asset?.url ||
     "";
 
@@ -107,8 +107,8 @@ export default function MainCard({
             height: 275,
           }}
           animate={{
-            width: width >= 1024 ? 1071 : width >= 768 ? 740 : 521,
-            height: width >= 1024 ? 872 : width >= 768 ? 602 : 424,
+            width: "100%",
+            height: "100%",
             x: 0,
             y: 0,
           }}
@@ -122,7 +122,7 @@ export default function MainCard({
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
           }}
-          className="absolute top-[71px] xs:top-5 md:top-0 left-[calc(50%-247px)] lg:left-[calc(50%-480px)] w-[521px] md:w-[740px] lg:w-[1071px] aspect-[1071/872] rounded-[8px] lg:rounded-[18px]"
+          className="absolute rounded-[8px] lg:rounded-[18px]"
         />
       </motion.div>
     </motion.div>

@@ -30,7 +30,7 @@ export default function MainCard({
   // Використовуємо "auto" для автоматичного вибору найкращого формату (WebP/AVIF/оригінальний)
   const imageWidth = width >= 1024 ? 1071 : width >= 768 ? 740 : 521;
   const optimizedImageUrl =
-    getOptimizedImageUrl(project.mainImage, imageWidth, 100, "auto") ||
+    getOptimizedImageUrl(project.mainImage, imageWidth, 85, "auto") ||
     project.mainImage?.asset?.url ||
     "";
 

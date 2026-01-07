@@ -70,9 +70,6 @@ export default function PortfolioSlider({
   useEffect(() => {
     const init = () => {
       setIsInitialized(true);
-      setTimeout(() => {
-        startLoop();
-      }, 1000);
     };
 
     init();
@@ -148,11 +145,7 @@ export default function PortfolioSlider({
     setDetailsEven((prev) => !prev);
     setCurrentSlide(index);
 
-    // Resume automatic loop after manual navigation
-    setTimeout(() => {
-      startLoop();
-      setIsMovingBackward(false);
-    }, 300);
+    setIsMovingBackward(false);
   };
 
   // Cleanup
@@ -207,7 +200,6 @@ export default function PortfolioSlider({
           setIsMovingBackward(true);
           stepBack();
           setTimeout(() => {
-            startLoop();
             setIsMovingBackward(false);
           }, 300);
         }}
@@ -215,10 +207,6 @@ export default function PortfolioSlider({
           stopLoop();
           setIsMovingBackward(false);
           step();
-          setTimeout(() => {
-            startLoop();
-            setIsMovingBackward(false);
-          }, 300);
         }}
         onSlideClick={goToSlide}
       />

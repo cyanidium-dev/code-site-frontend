@@ -3,7 +3,7 @@ import * as motion from "motion/react-client";
 import { twMerge } from "tailwind-merge";
 
 interface ProjectAdvantagesProps {
-  advantages: string[];
+  advantages: string[] | null | undefined;
   className?: string;
 }
 
@@ -11,6 +11,10 @@ export default function ProjectAdvantages({
   advantages,
   className,
 }: ProjectAdvantagesProps) {
+  if (!advantages || advantages.length === 0) {
+    return null;
+  }
+
   return (
     <motion.div
       className={twMerge("h-full", className)}

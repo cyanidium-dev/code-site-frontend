@@ -67,16 +67,15 @@ export default function SlidePreviewCards({
               delay: 0.02 * index + 0.4,
             }}
           >
-            <div className="absolute top-[20px] left-[-40px] w-[338px] h-auto aspect-[1071/872] flex items-center justify-center overflow-hidden">
-              <Image
+            <Image
                 src={cardData.mainImage.asset.url}
                 alt="preview image"
                 width={1071}
                 height={872}
                 sizes="338px"
-                className="w-[338px] h-auto object-contain"
+                className="w-[338px] h-full object-cover"
               />
-            </div>
+          
           </motion.button>
         );
       })}

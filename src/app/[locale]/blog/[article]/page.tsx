@@ -88,10 +88,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <>
       <Suspense fallback={<Loader />}>
         <Hero article={currentArticle} />
-        <Container className="lg:flex gap-8">
+        <Container className="lg:flex lg:gap-8">
           <div>
             <Content article={currentArticle} />
             <FAQ />
+            <RecommendedPostsMobile
+              posts={blogPosts}
+              uniqueKey={`blog-${currentArticle.slug}-recommended-posts-mobile`}
+            />
             <CTA />
           </div>
           <div className="hidden lg:block w-[333px] shrink-0">
@@ -101,12 +105,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             />
           </div>
         </Container>
-        <div className="lg:hidden">
-          <RecommendedPostsMobile
-            posts={blogPosts}
-            uniqueKey={`blog-${currentArticle.slug}-recommended-posts-mobile`}
-          />
-        </div>
       </Suspense>
 
       {schemaData && (

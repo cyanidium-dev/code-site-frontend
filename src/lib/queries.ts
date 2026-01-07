@@ -95,7 +95,7 @@ export const allProjectsQuery = `
       }
     },
     "websiteUrl": websiteUrl,
-    "advantages": coalesce(advantages[$lang], advantages),
+    "advantages": advantages[$lang],
     "portfolioTitle": portfolioTitle[$lang],
     "portfolioDescription": portfolioDescription[$lang],
     "order": order,

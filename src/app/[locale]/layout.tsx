@@ -80,12 +80,12 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased`}
+        className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}
       >
         <NextIntlClientProvider>
           <SplashGate>
             <Header />
-            <main className="flex-1 overflow-hidden">{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </SplashGate>
         </NextIntlClientProvider>

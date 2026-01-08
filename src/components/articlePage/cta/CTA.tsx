@@ -8,7 +8,8 @@ export default function CTA() {
   const t = useTranslations("articlePage.cta");
 
   return (
-    <section className="relative pt-[153px] lg:pt-[310px] pb-[428px] lg:pb-[294px]">
+    <section>
+      <Container className="relative pt-[153px] lg:pt-[310px] pb-[428px] lg:pb-[294px]">
       <CTADecorations />
       <SectionTitle
         variant="pink"
@@ -18,6 +19,7 @@ export default function CTA() {
         {t("title")}
       </SectionTitle>
       <CallBackApplication />
+      </Container>
     </section>
   );
 }

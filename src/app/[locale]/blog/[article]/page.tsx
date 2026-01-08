@@ -96,7 +96,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               posts={blogPosts}
               uniqueKey={`blog-${currentArticle.slug}-recommended-posts-mobile`}
             />
-            <CTA />
           </div>
           <div className="hidden lg:block w-[333px] shrink-0">
             <RecommendedPostsDesktop
@@ -106,6 +105,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </Container>
       </Suspense>
+      <CTA />
 
       {schemaData && (
         <Script

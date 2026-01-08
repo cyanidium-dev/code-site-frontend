@@ -26,7 +26,7 @@ export default function Pagination({
   return (
     <motion.div
       className={twMerge(
-        "absolute left-6 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-[72px] lg:bottom-0 z-[30] flex items-center",
+        "absolute left-6 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-[84px] lg:bottom-0 z-[30] flex items-center",
         className
       )}
       initial={{ y: 200, opacity: 0 }}

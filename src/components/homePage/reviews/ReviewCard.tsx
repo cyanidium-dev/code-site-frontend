@@ -249,7 +249,7 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-black/50 rounded-full w-[70px] h-[70px] flex items-center justify-center backdrop-blur-sm lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out">
+                  <div className="bg-black/50 rounded-full size-12 flex items-center justify-center backdrop-blur-sm lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out">
                     <ExpandIcon className="text-white" />
                   </div>
                 </div>

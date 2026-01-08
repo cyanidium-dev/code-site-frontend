@@ -36,7 +36,7 @@ export default function RecommendedPostsMobile({
             <ArticleCard
               key={`${uniqueKey}-${post.id}`}
               blog={post}
-              className="w-[calc(100vw-48px-30px)] sm:w-[260px] flex-shrink-0"
+              className="w-[calc(100vw-48px-30px)] sm:w-[333px] flex-shrink-0"
             />
           ))}
         </motion.ul>

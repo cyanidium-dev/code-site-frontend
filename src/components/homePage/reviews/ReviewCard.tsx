@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { useTranslations } from "next-intl";
@@ -33,6 +33,9 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [videoDuration, setVideoDuration] = useState<number | null>(null);
+  const playerRef = useRef<any>(null);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   const {
     authorName,
@@ -62,8 +65,44 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
             // Якщо помилка, залишаємо null
           });
       }
+      // Reset video duration when video URL changes
+      setVideoDuration(null);
     }
   }, [contentType, videoUrl]);
+
+  useEffect(() => {
+    if (contentType !== "video" || !videoUrl || !isPlaying) return;
+
+    const postMessageToVimeo = (data: any) => {
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        iframeRef.current.contentWindow.postMessage(JSON.stringify(data), '*');
+      }
+    };
+
+    const handleMessage = (event: MessageEvent) => {
+      if (!event.origin.includes('vimeo.com')) return;
+
+      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      
+      if (data.event === 'ready') {
+        postMessageToVimeo({ method: 'getDuration' });
+        postMessageToVimeo({ method: 'addEventListener', value: 'timeupdate' });
+      } else if (data.event === 'timeupdate') {
+        const currentTime = data.data.seconds;
+        
+        // Pause 0.3 seconds before end
+        if (videoDuration && currentTime >= videoDuration - 0.3 && isPlaying) {
+          postMessageToVimeo({ method: 'pause' });
+          setIsPlaying(false);
+        }
+      } else if (data.method === 'getDuration') {
+        setVideoDuration(data.value);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [contentType, videoUrl, isPlaying, videoDuration]);
 
   return (
     <>
@@ -99,18 +138,49 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
 
         {contentType === "video" && videoUrl && (
           <div
-            className="absolute inset-0 rounded-[8px]"
+            className="absolute inset-0 rounded-[8px] flex items-center justify-center overflow-hidden"
             aria-label={`Відео-відгук від ${authorName}`}
+            data-review-video-id={uniqueKey}
           >
             {isPlaying && (
-              <ReactPlayer
-                key={`player-${uniqueKey}-${videoUrl}`}
-                src={videoUrl}
-                playing={isPlaying}
-                controls={false}
-                width="100%"
-                height="100%"
-              />
+              <div className="w-full h-full flex items-center justify-center">
+                <div 
+                  className="w-full h-full max-w-full max-h-full"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <ReactPlayer
+                    ref={playerRef}
+                    key={`player-${uniqueKey}-${videoUrl}`}
+                    src={videoUrl}
+                    playing={isPlaying}
+                    controls={false}
+                    width="100%"
+                    height="100%"
+                    style={{ 
+                      maxWidth: "100%", 
+                      maxHeight: "100%"
+                    }}
+                    onReady={(player: any) => {
+                      if (player) {
+                        // Get iframe reference for postMessage communication
+                        setTimeout(() => {
+                          const container = document.querySelector(`[data-review-video-id="${uniqueKey}"]`);
+                          if (container) {
+                            const iframe = container.querySelector('iframe[src*="vimeo.com"]') as HTMLIFrameElement;
+                            if (iframe) {
+                              iframeRef.current = iframe;
+                            }
+                          }
+                        }, 500);
+                      }
+                    }}
+                  />
+                </div>
+              </div>
             )}
             {!isPlaying && (
               <>

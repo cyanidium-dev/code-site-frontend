@@ -19,7 +19,7 @@ export default function RecommendedPostsMobile({
 
   return (
     <section className="w-full overflow-visible lg:hidden mt-20">
-      <div className="w-full overflow-x-auto">
+      <div className="w-full overflow-x-auto overflow-y-hidden">
         <motion.ul
           key={`${uniqueKey}-recommended-posts-scroll`}
           initial="hidden"

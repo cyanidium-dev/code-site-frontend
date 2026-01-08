@@ -38,11 +38,6 @@ export default function SlidePreviewCards({
             key={`side-card-${cardIndex}`}
             onClick={() => onSlideClick(cardIndex)}
             className="absolute bottom-0 md:bottom-16 lg:bottom-0 rounded-[8px] z-[30] cursor-pointer xl:hover:-translate-y-2 transition-transform duration-300 overflow-hidden"
-            style={{
-              background: `linear-gradient(140deg, ${cardData.gradientStartColor || "#CFFD59"} 0%, ${
-                cardData.gradientEndColor || "#121212"
-              } 100%)`,
-            }}
             initial={{
               x: isMovingBackward
                 ? x - (cardWidth + gap)

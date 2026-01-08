@@ -74,8 +74,7 @@ export interface Project {
   advantages: string[];
   portfolioTitle: string;
   portfolioDescription: string;
-  gradientStartColor: string;
-  gradientEndColor: string;
+  backgroundColor: string;
   order: number;
   createdAt: string;
 }

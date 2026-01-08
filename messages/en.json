@@ -303,7 +303,8 @@
   },
   "portfolioPage": {
     "title": "Our Portfolio",
-    "description": "View our portfolio with convenient sorting by project theme"
+    "description": "View our portfolio with convenient sorting by project theme",
+    "seeProject": "View Project"
   },
   "servicesPage": {
     "title": "Page Under Development",

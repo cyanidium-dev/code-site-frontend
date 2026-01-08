@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import BenefitsList from "./BenefitsList";
 import PlayIcon from "@/components/shared/icons/PlayIcon";
@@ -11,6 +11,7 @@ import PauseIcon from "@/components/shared/icons/PauseIcon";
 import RestartIcon from "@/components/shared/icons/RestartIcon";
 import Spinner from "@/components/shared/icons/Spinner";
 import { FOUNDER_VIDEO_URLS } from "@/constants/constants";
+import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
@@ -24,6 +25,7 @@ export default function FounderContent({
   actualSolutionsText,
 }: FounderContentProps) {
   const locale = useLocale();
+  const t = useTranslations("homePage.founder");
   const [isPlaying, setIsPlaying] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
@@ -231,6 +233,12 @@ export default function FounderContent({
           {actualSolutionsText}
         </motion.h2>
         <BenefitsList />
+        <ClientApplication
+            buttonText={t("getOffer")}
+            variant="gradient"
+            className="w-full mt-4 lg:mt-3"
+            buttonClassName="w-full h-[56px]"
+          />
       </div>
     </>
   );

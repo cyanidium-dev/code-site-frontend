@@ -13,7 +13,7 @@ export default function CTA() {
       <SectionTitle
         variant="pink"
         text="separated"
-        className="mb-8 text-[44px] lg:text-[64px] font-bold leading-none"
+        className="mb-8 text-[40px] sm:text-[44px] lg:text-[64px] font-bold leading-none"
       >
         {t("title")}
       </SectionTitle>

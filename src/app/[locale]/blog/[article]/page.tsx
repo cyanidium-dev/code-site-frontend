@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
-import { singlePostQuery } from "@/lib/queries";
+import { limitedBlogsQuery, singlePostQuery } from "@/lib/queries";
 import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/articlePage/hero/Hero";
@@ -11,6 +11,9 @@ import CTA from "@/components/articlePage/cta/CTA";
 import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
 import { Blog } from "@/types/blog";
 import Script from "next/script";
+import Container from "@/components/shared/container/Container";
+import RecommendedPostsDesktop from "@/components/articlePage/recommendedPosts/RecommendedPostsDesktop";
+import RecommendedPostsMobile from "@/components/articlePage/recommendedPosts/RecommendedPostsMobile";
 
 interface ArticlePageProps {
   params: Promise<{ article: string; locale: Locale }>;
@@ -65,6 +68,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     lang: locale,
   });
 
+  const blogPosts = await fetchSanityData(limitedBlogsQuery, {
+    limit: 5,
+    lang: locale,
+  });
+
   if (!currentArticle) return null;
 
   const { schemaOrg } = currentArticle;
@@ -80,9 +88,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     <>
       <Suspense fallback={<Loader />}>
         <Hero article={currentArticle} />
-        <Content article={currentArticle} />
+        <Container className="lg:flex lg:gap-8">
+          <div>
+            <Content article={currentArticle} />
+            <FAQ />
+            <RecommendedPostsMobile
+              posts={blogPosts}
+              uniqueKey={`blog-${currentArticle.slug}-recommended-posts-mobile`}
+            />
+          </div>
+          <div className="hidden lg:block w-[333px] shrink-0">
+            <RecommendedPostsDesktop
+              posts={blogPosts}
+              uniqueKey={`blog-${currentArticle.slug}-recommended-posts-mobile`}
+            />
+          </div>
+        </Container>
       </Suspense>
-      <FAQ />
       <CTA />
 
       {schemaData && (

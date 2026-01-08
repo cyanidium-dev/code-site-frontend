@@ -8,7 +8,6 @@ export default function FAQ() {
 
   return (
     <section>
-      <Container>
         <SectionTitle
           variant="pink"
           className="mb-8 lg:mb-10 text-[24px] lg:text-[32px] font-bold leading-none"
@@ -16,7 +15,6 @@ export default function FAQ() {
           {t("title")}
         </SectionTitle>
         <FaqList />
-      </Container>
     </section>
   );
 }

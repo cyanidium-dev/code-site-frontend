@@ -10,14 +10,15 @@ export default function CTA() {
   return (
     <section>
       <Container className="relative pt-[153px] lg:pt-[310px] pb-[428px] lg:pb-[294px]">
-        <CTADecorations />
-        <SectionTitle
-          variant="pink"
-          className="max-w-[376px] mb-8 text-[44px] lg:text-[64px] font-bold leading-none"
-        >
-          {t("title")}
-        </SectionTitle>
-        <CallBackApplication />
+      <CTADecorations />
+      <SectionTitle
+        variant="pink"
+        text="separated"
+        className="mb-8 text-[40px] sm:text-[44px] lg:text-[64px] font-bold leading-none"
+      >
+        {t("title")}
+      </SectionTitle>
+      <CallBackApplication />
       </Container>
     </section>
   );

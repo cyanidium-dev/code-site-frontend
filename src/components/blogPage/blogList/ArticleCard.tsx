@@ -7,12 +7,14 @@ import { Link } from "@/i18n/navigation";
 import EstimatedReadingTime from "@/components/shared/estReadingTime/EstimatedReadingTime";
 
 import { Blog } from "@/types/blog";
+import { twMerge } from "tailwind-merge";
 
 interface ArticleCardProps {
   blog: Blog;
+  className?: string;
 }
 
-export default function ArticleCard({ blog }: ArticleCardProps) {
+export default function ArticleCard({ blog, className }: ArticleCardProps) {
   const t = useTranslations("blogPage");
 
   const { name, description, previewImage, slug } = blog;
@@ -21,7 +23,7 @@ export default function ArticleCard({ blog }: ArticleCardProps) {
     <motion.li
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
-      className="sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] bg-black/26 backdrop-blur-[10px] overflow-hidden"
+      className={twMerge("sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] bg-black/26 backdrop-blur-[10px] overflow-hidden", className)}
     >
       <Link href={`/blog/${slug}`}>
         <div className="absolute z-10 inset-0 shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />

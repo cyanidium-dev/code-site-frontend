@@ -8,6 +8,9 @@ import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import { BlogContent } from "@/types/blog";
 import Image from "next/image";
+import Link from "next/link";
+import MainButton from "../buttons/MainButton";
+import SecondaryButton from "../buttons/SecondaryButton";
 
 const components: Partial<PortableTextReactComponents> = {
   block: {
@@ -80,17 +83,20 @@ const components: Partial<PortableTextReactComponents> = {
       <span className="line-through">{children}</span>
     ),
     link: ({ value, children }) => {
-      const target = value?.blank ? "_blank" : "_self";
-      const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+      const href = value?.href || "#";
+      const blank = value?.blank || false;
+
       return (
-        <a
-          href={value?.href}
-          target={target}
-          rel={rel}
-          className="text-main focus:brightness-125 xl:hover:brightness-125 transition duration-300 ease-in-out"
+        <Link
+          href={href}
+          target={blank ? "_blank" : undefined}
+          rel={blank ? "noopener noreferrer" : undefined}
+          className="inline-block min-w-[235px]"
         >
-          {children}
-        </a>
+          <SecondaryButton variant="white" className="h-12">
+            {children}
+          </SecondaryButton>
+        </Link>
       );
     },
   },

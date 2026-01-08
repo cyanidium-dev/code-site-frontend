@@ -140,10 +140,10 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-      {/* Blur елемент - повільний parallax */}
-      <motion.div
-        style={{ y: slowY }}
-        className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[105px] lg:supports-[backdrop-filter]:blur-[114px]"
+  
+      <div 
+        className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] 
+        lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]"
       />
     </div>
   );

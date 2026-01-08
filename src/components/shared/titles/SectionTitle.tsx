@@ -5,6 +5,7 @@ interface SectionTitleProps {
   children: string;
   variant?: "pink" | "blue";
   className?: string;
+  text?: "separated" | "normal";
 }
 
 const container = {
@@ -29,6 +30,7 @@ export default function SectionTitle({
   children,
   variant = "blue",
   className = "",
+  text = "normal",
 }: SectionTitleProps) {
   const words = children.split(" ").map((word) => word.split(""));
 
@@ -57,7 +59,7 @@ export default function SectionTitle({
         {words.map((word, wordIdx) => (
           <span
             key={`shadow-word-${wordIdx}`}
-            className="inline-block whitespace-nowrap not-last:mr-[0.25em] leading-none overflow-visible"
+            className={` whitespace-nowrap not-last:mr-[0.25em] leading-none overflow-visible ${text === "separated" ? "block" : "inline-block"}`}
           >
             {word.map((char, charIdx) => (
               <motion.span
@@ -83,7 +85,7 @@ export default function SectionTitle({
         {words.map((word, wordIdx) => (
           <span
             key={`word-${wordIdx}`}
-            className="whitespace-nowrap not-last:mr-[0.25em] inline-block leading-none overflow-visible"
+            className={`whitespace-nowrap not-last:mr-[0.25em] leading-none overflow-visible ${text === "separated" ? "block" : "inline-block"}`}
           >
             {word.map((char, charIdx) => (
               <motion.span

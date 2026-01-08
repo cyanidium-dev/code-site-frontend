@@ -12,7 +12,8 @@ export default function CTA() {
       <CTADecorations />
       <SectionTitle
         variant="pink"
-        className="max-w-[376px] mb-8 text-[44px] lg:text-[64px] font-bold leading-none"
+        text="separated"
+        className="mb-8 text-[44px] lg:text-[64px] font-bold leading-none"
       >
         {t("title")}
       </SectionTitle>

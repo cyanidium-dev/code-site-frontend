@@ -238,6 +238,11 @@ export default function FounderContent({
             variant="gradient"
             className="w-full mt-4 lg:mt-3"
             buttonClassName="w-full h-[56px]"
+            variants={fadeInAnimation({
+              delay: 0.6,
+              scale: 0.85,
+              y: 30,
+            })}
           />
       </div>
     </>

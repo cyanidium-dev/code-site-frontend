@@ -11,7 +11,16 @@ export const allReviewsQuery = `
     "rating": rating,
     "order": order,
     "createdAt": _createdAt,
-    "status": status
+    "status": status,
+    "reviewImage": reviewImage{
+      asset->{
+        _id,
+        url
+      },
+      crop,
+      hotspot,
+      alt
+    }
   }
 `;
 

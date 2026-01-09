@@ -4,8 +4,7 @@ import { allProjectsQuery } from "@/lib/queries";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { Locale } from "next-intl";
 import { Suspense } from "react";
-import ProjectsList from "@/components/portfolioPage/projectsList/ProjectsList";
-import { getTranslations } from "next-intl/server";
+import PortfolioList from "@/components/portfolioPage/projectsList/PortfolioList";
 
 interface PortfolioPageProps {
   params: Promise<{ locale: Locale }>;
@@ -22,7 +21,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
     <>
       <Hero />
       <Suspense fallback={<Loader />}>
-        <ProjectsList projectsList={projectsList} />
+        <PortfolioList projectsList={projectsList} />
       </Suspense>
     </>
   );

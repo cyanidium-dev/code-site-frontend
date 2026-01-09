@@ -51,8 +51,8 @@ skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration
       <span className="relative inline-block w-full mt-1">
         {children}
         {isLoading ? <LoaderIcon /> : null}
-        {icon && !isLoading ? icon : null}
       </span>
+      {icon && !isLoading ? icon : null}
     </button>
   );
 }

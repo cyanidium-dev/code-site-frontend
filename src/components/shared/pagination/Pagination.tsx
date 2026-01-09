@@ -12,6 +12,7 @@ interface PaginationProps<T> {
   useItemsPerPage: () => number;
   maxVisiblePages?: number;
   className?: string;
+  isShowNumbers?: boolean;
 }
 
 export default function Pagination<T>({
@@ -21,6 +22,7 @@ export default function Pagination<T>({
   useItemsPerPage,
   maxVisiblePages = 4,
   className = "",
+  isShowNumbers = true,
 }: PaginationProps<T>) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -109,7 +111,7 @@ export default function Pagination<T>({
         </button>
 
         <div>
-          {pageNumbers.map((page) => (
+          {isShowNumbers && pageNumbers.map((page) => (
             <button
               key={page}
               aria-label={page.toString()}

@@ -24,17 +24,18 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
     "text-white",
     "text-black"
   );
-
-  const backgroundColorClass = backgroundColor ? `bg-[${backgroundColor}]` : "bg-black";
   
   return (
     <motion.li
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
-      className={twMerge("sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] overflow-hidden", backgroundColorClass, className)}
+      className={twMerge("relative sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] overflow-hidden", className)}
+      style={{
+        backgroundColor: backgroundColor || "#000",
+      }}
     >
       <div
-        className="absolute inset-0 rounded-[8px] pointer-events-none"
+        className="absolute z-10 inset-0 rounded-[8px] pointer-events-none"
         style={{
           background: "radial-gradient(78.44% 78.44% at 25.08% 14.06%, #EEF3FF 0%, #5B92D0 46%, #101A33 100%)",
           padding: "1.5px",
@@ -45,27 +46,37 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         }}
       />
       <Link href={`/portfolio/${slug}`}>
-        <div className="relative flex items-end px-[26px] py-4 w-full h-[222px] rounded-t-[8px] overflow-hidden">
+        <div className="relative px-[26px] py-4 w-full h-[222px] rounded-t-[8px] overflow-hidden">
           <Image
             src={previewImage?.asset?.url || ""}
             alt="project image"
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="absolute -z-10 object-cover"
+            className="object-cover"
           />
         </div>
         <div className="p-5 xl:pb-8">
-          <h3 className={twMerge("mb-4 font-actay text-[20px] font-bold leading-[120%] uppercase line-clamp-2", textColorClass)}>
+          <h3 className={twMerge("min-h-[2lh] mb-4 font-actay text-[20px] font-bold leading-[120%] uppercase line-clamp-2", textColorClass)}>
             {portfolioTitle}
           </h3>
-          <p className={twMerge("mb-8 text-[12px] lg:text-[14px] font-light leading-[120%] line-clamp-4", textColorClass)}>
+          <p className={twMerge("min-h-[4lh] mb-8 text-[12px] lg:text-[14px] font-light leading-[120%] line-clamp-4", textColorClass)}>
             {portfolioDescription}  
           </p>
           <MainButton 
             variant="icon"
-            className={twMerge("h-[47px] text-[16px] text-raleway font-bold uppercase", getTextColorClass(backgroundColor || "#000", "text-black", "text-white"), backgroundColorClass)}
-            icon={<ArrowIcon className={twMerge("absolute right-6 top-1/2 -translate-y-1/2 w-9 h-9", textColorClass, backgroundColorClass)} />}
-            >{t("viewProject")}</MainButton>
+            className={twMerge("h-[47px] text-[16px] text-raleway font-bold uppercase text-left p-5", getTextColorClass(backgroundColor || "#000", "bg-white text-black", "bg-black text-white"))}
+            icon={
+            <span 
+              className="absolute flex items-center justify-center right-[6px] size-9 top-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                backgroundColor: backgroundColor || "#000",
+              }}
+            >
+              <ArrowIcon className={twMerge("size-5", textColorClass)} />
+            </span>
+            }
+            >{t("seeProject")}
+          </MainButton>
         </div>
       </Link>
     </motion.li>

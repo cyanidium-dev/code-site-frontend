@@ -19,12 +19,11 @@ export default function ProjectsList({ projectsList }: ProjectsListProps) {
       scrollTargetId={SECTION_ID}
       useItemsPerPage={useItemsPerPage}
       isShowNumbers={false}
-      renderItems={(currentItems) => (
+      renderItems={currentItems => (
         <motion.ul
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           exit="exit"
-          viewport={{ once: true, amount: 0.2 }}
           variants={listVariants({
             staggerChildren: 0.3,
             delayChildren: 0.3,
@@ -32,7 +31,7 @@ export default function ProjectsList({ projectsList }: ProjectsListProps) {
           id={SECTION_ID}
           className="flex flex-col gap-5 xl:gap-y-6 sm:flex-row sm:flex-wrap"
         >
-          {currentItems.map((project) => (
+          {currentItems.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.ul>

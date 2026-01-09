@@ -1,6 +1,7 @@
 import Container from "@/components/shared/container/Container";
 import { Project } from "@/types/project";
 import ProjectsList from "./ProjectsList";
+import PortfolioDecorations from "./PortfolioDecorations";
 
 interface PortfolioListProps {
     projectsList: Project[];
@@ -13,7 +14,8 @@ export default function PortfolioList({ projectsList }: PortfolioListProps) {
 
   return (
     <section id={SECTION_ID} className="relative z-10">
-      <Container className="relative pt-[50px] lg:pt-0 pb-[413px] lg:pb-[431px]">
+      <Container className="relative pt-[50px] lg:pt-22 pb-[176px] lg:pb-[214px]">
+        <PortfolioDecorations />
         <ProjectsList projectsList={projectsList} />
       </Container>
     </section>

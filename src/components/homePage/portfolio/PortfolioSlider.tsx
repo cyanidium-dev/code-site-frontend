@@ -1,7 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import * as motion from "motion/react-client";
-import { AnimatePresence } from "motion/react";
+import { useState, useEffect } from "react";
 import { Project } from "@/types/project";
 import MainCard from "./MainCard";
 import MainCardTexts from "./MainCardTexts";
@@ -22,15 +20,12 @@ export default function PortfolioSlider({
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMovingBackward, setIsMovingBackward] = useState(false);
 
-  const loopIntervalRef = useRef<NodeJS.Timeout | null>(null);
-
   const width = useScreenWidth();
 
   // Animation constants
-  const cardWidth = width > 786 ? 286 : 138;
-  const cardHeight = width > 1024 ? 212 : 179;
+  const cardWidth = width > 786 ? 286 : 150;
+  const cardHeight = width > 786 ? 212 : 111;
   const gap = 14;
-  const numberSize = 50;
 
   // Calculate positions
   const getPositions = () => {
@@ -68,31 +63,8 @@ export default function PortfolioSlider({
 
   // Initialize component
   useEffect(() => {
-    const init = () => {
-      setIsInitialized(true);
-    };
-
-    init();
+    setIsInitialized(true);
   }, []);
-
-  // Start automatic loop
-  const startLoop = () => {
-    if (loopIntervalRef.current) {
-      clearInterval(loopIntervalRef.current);
-    }
-
-    loopIntervalRef.current = setInterval(() => {
-      step();
-    }, 3000);
-  };
-
-  // Stop loop
-  const stopLoop = () => {
-    if (loopIntervalRef.current) {
-      clearInterval(loopIntervalRef.current);
-      loopIntervalRef.current = null;
-    }
-  };
 
   // Step to next slide
   const step = () => {
@@ -121,9 +93,6 @@ export default function PortfolioSlider({
 
   // Manual navigation
   const goToSlide = (index: number) => {
-    // Pause automatic loop when user interacts
-    stopLoop();
-
     const currentIndex = order[0];
     const steps =
       (index - currentIndex + projectsList.length) % projectsList.length;
@@ -147,13 +116,6 @@ export default function PortfolioSlider({
 
     setIsMovingBackward(false);
   };
-
-  // Cleanup
-  useEffect(() => {
-    return () => {
-      stopLoop();
-    };
-  }, []);
 
   if (!isInitialized) {
     return null;
@@ -196,7 +158,6 @@ export default function PortfolioSlider({
         activeIndex={active}
         width={width}
         onPrevious={() => {
-          stopLoop();
           setIsMovingBackward(true);
           stepBack();
           setTimeout(() => {
@@ -204,7 +165,6 @@ export default function PortfolioSlider({
           }, 300);
         }}
         onNext={() => {
-          stopLoop();
           setIsMovingBackward(false);
           step();
         }}

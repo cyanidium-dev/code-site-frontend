@@ -75,6 +75,8 @@ export interface Project {
   portfolioTitle: string;
   portfolioDescription: string;
   backgroundColor: string;
+  textColor: string;
+  buttonColor: string;
   order: number;
   createdAt: string;
 }

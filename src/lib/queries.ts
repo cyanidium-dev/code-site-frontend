@@ -48,6 +48,8 @@ export const allProjectsQuery = `
       hotspot
     },
     "backgroundColor": backgroundColor.hex,
+    "textColor": textColor,
+    "buttonColor": buttonColor,
     "categories": categories[]->{
       "id": _id,
       "name": name[$lang]

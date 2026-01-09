@@ -5,7 +5,6 @@ import { listItemVariants } from "@/utils/animationVariants";
 import { twMerge } from "tailwind-merge";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { getTextColorClass } from "@/utils/colorUtils";
 import MainButton from "@/components/shared/buttons/MainButton";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
 
@@ -23,13 +22,14 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
     previewImage,
     slug,
     backgroundColor,
+    textColor,
+    buttonColor,
   } = project;
 
-  const textColorClass = getTextColorClass(
-    backgroundColor || "#000",
-    "text-white",
-    "text-black"
-  );
+  // default to white text and white button
+  const textColorClass = textColor === "black" ? "text-black" : "text-white";
+  const buttonColorClass =
+    buttonColor === "black" ? "bg-black text-white" : "bg-white text-black";
 
   return (
     <motion.li
@@ -87,11 +87,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
               variant="icon"
               className={twMerge(
                 "h-[47px] text-[16px] lg:text-[14px] xl:text-[16px] text-raleway font-bold uppercase text-left p-5",
-                getTextColorClass(
-                  backgroundColor || "#000",
-                  "bg-white text-black",
-                  "bg-black text-white"
-                )
+                buttonColorClass
               )}
               icon={
                 <span

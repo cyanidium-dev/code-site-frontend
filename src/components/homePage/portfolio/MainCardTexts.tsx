@@ -22,12 +22,12 @@ export default function MainCardTexts({
   return (
     <Container
       className={twMerge(
-        "absolute top-0 left-0 sm:left-[calc((100%-640px)/2)] md:left-[calc((100%-768px)/2)] lg:left-[calc((100%-1024px)/2)] xl:left-[calc((100%-1280px)/2)] h-[477px] lg:h-[607px] w-full",
+        "sm:absolute top-0 left-0 sm:left-[calc((100%-640px)/2)] md:left-[calc((100%-768px)/2)] lg:left-[calc((100%-1024px)/2)] xl:left-[calc((100%-1280px)/2)] h-[253px] sm:h-[477px] lg:h-[607px] w-full mt-3 sm:mt-0",
         className
       )}
     >
       <AnimatePresence mode="wait">
-        <div className="absolute z-[22] flex justify-between w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full p-[14px] lg:p-[50px]">
+        <div className="sm:absolute z-[22] flex justify-between w-full sm:w-[calc(100%-48px)] lg:w-[calc(100%-160px)] xl:w-[calc(100%-240px)] h-full sm:p-[14px] lg:p-[50px]">
           {/* Left side */}
           <motion.div
             key={`details-${detailsEven ? "even" : "odd"}`}
@@ -44,7 +44,7 @@ export default function MainCardTexts({
             <ProjectCategory project={project} className="hidden lg:block" />
             <ProjectAdvantages
               advantages={project.advantages}
-              className="lg:hidden"
+              className="hidden sm:block lg:hidden"
             />
             <motion.div
               className="relative p-5 lg:p-0 rounded-[10px] lg:rounded-none lg:bg-transparent shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)] 
@@ -73,13 +73,14 @@ export default function MainCardTexts({
                 slug={project.slug}
                 className="absolute -top-2 -right-2 lg:static mb-8"
               /> */}
-              <h3 className="lg:max-w-[291px] mb-2 lg:mb-5 font-actay text-[12px] lg:text-[24px] font-bold leading-[120%] uppercase">
+              <h3 className="lg:max-w-[291px] mb-2 lg:mb-5 font-actay text-[12px] lg:text-[24px] font-bold leading-[120%] uppercase min-h-[3lh] sm:min-h-0 line-clamp-3">
                 {project.portfolioTitle}
               </h3>
-              <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%]">
+              <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%] min-h-[3lh] sm:min-h-0 line-clamp-3">
                 {project.portfolioDescription}
               </p>
-              <ProjectCategory project={project} className="lg:hidden mt-3" />
+              <ProjectCategory project={project} className="hidden sm:block lg:hidden mt-3" />
+              <ProjectAdvantages advantages={project.advantages} className="sm:hidden mt-3" />
             </motion.div>
           </motion.div>
 

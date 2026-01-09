@@ -44,7 +44,7 @@ export default function ProjectAdvantages({
                 maskComposite: "exclude",
               }}
             />
-            <p className="text-[10px] lg:text-[14px] font-light leading-[130%]">
+            <p className="text-[9px] sm:text-[10px] lg:text-[14px] font-light leading-[130%] whitespace-nowrap">
               {advantage}
             </p>
           </li>

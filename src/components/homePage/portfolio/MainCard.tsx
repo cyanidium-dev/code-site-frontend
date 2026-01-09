@@ -3,7 +3,8 @@ import * as motion from "motion/react-client";
 import { Project } from "@/types/project";
 import { twMerge } from "tailwind-merge";
 import { getOptimizedImageUrl } from "@/utils/sanityImageUrl";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import ProjectCategory from "./ProjectCategory";
 
 interface MainCardProps {
   project: Project;
@@ -33,6 +34,12 @@ export default function MainCard({
     project.mainImage?.asset?.url ||
     "";
 
+  // Calculate final dimensions in pixels for smooth animation
+  // Parent container: h-[235px] on mobile, max-w-[calc(100%-48px)]
+  // For mobile, the width is viewport width minus 48px (24px margin on each side)
+  const finalWidth = typeof window !== "undefined" ? width - 48 : 0;
+  const finalHeight = 235; // h-[235px] on mobile
+
   // Preload першого зображення для покращення LCP
   useEffect(() => {
     if (isPriority && optimizedImageUrl) {
@@ -58,10 +65,41 @@ export default function MainCard({
     <motion.div
       key={`bg-${project.slug}`}
       className={twMerge(
-        "relative h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden max-w-[calc(100%-48px)] sm:max-w-[592px] md:max-w-[720px] lg:max-w-[864px] xl:max-w-[1040px] px-6 lg:px-20 xl:px-30 mx-auto",
+        "relative h-[235px] sm:h-[477px] lg:h-[607px] rounded-[8px] lg:rounded-[18px] overflow-hidden max-w-[calc(100%-48px)] sm:max-w-[592px] md:max-w-[720px] lg:max-w-[864px] xl:max-w-[1040px] sm:px-6 lg:px-20 xl:px-30 mx-auto",
         className
       )}
     >
+      <motion.div 
+        key={`image-mobile-${project.slug}`}
+        initial={{
+          x: containerOffset - 48,
+          y: offsetTop,
+          width: cardWidth,
+          height: cardHeight,
+        }}
+        animate={{
+          width: finalWidth > 0 ? finalWidth : "100%",
+          height: finalHeight,
+          x: 0,
+          y: 0,
+        }}
+        transition={{
+          duration: 1.0,
+          ease: [0.25, 0.1, 0.25, 1] as const,
+        }}
+        style={{
+          backgroundImage: `url(${optimizedImageUrl})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+        className="rounded-[8px] lg:rounded-[18px] sm:hidden p-[14px]">
+        <ProjectCategory project={project} className="flex justify-between w-full" />
+      </motion.div>
+      
       {/* Background image with specific dimensions */}
       <motion.div
         key={`image-${project.slug}`}
@@ -92,7 +130,7 @@ export default function MainCard({
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
-        className="absolute inset-0 rounded-[8px] lg:rounded-[18px]"
+        className="absolute inset-0 rounded-[8px] lg:rounded-[18px] hidden sm:block"
       />
     </motion.div>
   );

@@ -1,15 +1,17 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import LoaderIcon from "../icons/LoaderIcon";
 import { twMerge } from "tailwind-merge";
+import ArrowIcon from "../icons/ArrowIcon";
 
 interface MainButtonProps {
   children: string | ReactNode;
-  variant?: "pink" | "blue" | "gradient" | "white";
+  variant?: "pink" | "blue" | "gradient" | "white" | "icon";
   className?: string;
   type?: "submit" | "button";
   disabled?: boolean;
   isLoading?: boolean;
   onClick?: () => void | Dispatch<SetStateAction<boolean>>;
+  icon?: ReactNode;
 }
 
 export default function MainButton({
@@ -20,6 +22,7 @@ export default function MainButton({
   disabled = false,
   isLoading = false,
   onClick,
+  icon,
 }: MainButtonProps) {
   return (
     <button
@@ -45,10 +48,11 @@ export default function MainButton({
         className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-white/10 via-blue/70 to-white/10 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
-      <span className="inline-block w-full mt-1">
+      <span className="relative inline-block w-full mt-1">
         {children}
         {isLoading ? <LoaderIcon /> : null}
       </span>
+      {icon && !isLoading ? icon : null}
     </button>
   );
 }

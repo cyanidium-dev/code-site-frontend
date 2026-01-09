@@ -12,6 +12,7 @@ interface PaginationProps<T> {
   useItemsPerPage: () => number;
   maxVisiblePages?: number;
   className?: string;
+  isShowNumbers?: boolean;
 }
 
 export default function Pagination<T>({
@@ -21,6 +22,7 @@ export default function Pagination<T>({
   useItemsPerPage,
   maxVisiblePages = 4,
   className = "",
+  isShowNumbers = true,
 }: PaginationProps<T>) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -85,7 +87,7 @@ export default function Pagination<T>({
 
   return (
     <>
-      <div key={currentPage} className={`${className}`}>
+      <div key={`${currentPage}-${itemsPerPage}`} className={`${className}`}>
         {renderItems(currentItems)}
       </div>
       <motion.div
@@ -109,17 +111,18 @@ export default function Pagination<T>({
         </button>
 
         <div>
-          {pageNumbers.map((page) => (
-            <button
-              key={page}
-              aria-label={page.toString()}
-              className={`enabled:cursor-pointer px-1.5 py-2 text-[20px] font-medium leading-[120%] transition duration-300 ease-in-out
+          {isShowNumbers &&
+            pageNumbers.map(page => (
+              <button
+                key={page}
+                aria-label={page.toString()}
+                className={`enabled:cursor-pointer px-1.5 py-2 text-[20px] font-medium leading-[120%] transition duration-300 ease-in-out
             ${page === currentPage ? "text-main-light" : " xl:hover:text-main-light"}`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </button>
-          ))}
+                onClick={() => handlePageChange(page)}
+              >
+                {page}
+              </button>
+            ))}
         </div>
 
         <button

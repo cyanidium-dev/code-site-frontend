@@ -47,8 +47,9 @@ export const allProjectsQuery = `
       crop,
       hotspot
     },
-    "gradientStartColor": gradientStartColor.hex,
-    "gradientEndColor": gradientEndColor.hex,
+    "backgroundColor": backgroundColor.hex,
+    "textColor": textColor,
+    "buttonColor": buttonColor,
     "categories": categories[]->{
       "id": _id,
       "name": name[$lang]

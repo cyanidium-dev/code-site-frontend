@@ -86,7 +86,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
             <MainButton
               variant="icon"
               className={twMerge(
-                "h-[47px] text-[16px] text-raleway font-bold uppercase text-left p-5",
+                "h-[47px] text-[16px] lg:text-[14px] xl:text-[16px] text-raleway font-bold uppercase text-left p-5",
                 getTextColorClass(
                   backgroundColor || "#000",
                   "bg-white text-black",

@@ -5,13 +5,10 @@ import { singleProjectQuery } from "@/lib/queries";
 import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/projectPage/hero/Hero";
-import FAQ from "@/components/articlePage/faq/FAQ";
-import Content from "@/components/articlePage/content/Content";
+import Content from "@/components/projectPage/content/Content";
 import CTA from "@/components/articlePage/cta/CTA";
 import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
-import { Blog } from "@/types/blog";
 import Script from "next/script";
-import Container from "@/components/shared/container/Container";
 import { Project } from "@/types/project";
 
 interface ProjectPageProps {
@@ -87,6 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           clientName={currentProject.clientName}
           websiteUrl={currentProject.websiteUrl}
         />
+        <Content project={currentProject} />
         <CTA />
       </Suspense>
 

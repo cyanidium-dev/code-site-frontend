@@ -268,7 +268,10 @@
     "seeProject": "Дивитися проєкт"
   },
   "projectPage": {
-    "openWebsite": "Відкрити сайт"
+    "openWebsite": "Відкрити сайт",
+    "review": {
+      "title": "Відгук клієнта"
+    }
   },
   "servicesPage": {
     "title": "Сторінка в розробці",

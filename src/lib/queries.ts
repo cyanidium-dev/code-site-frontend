@@ -27,9 +27,6 @@ export const allReviewsQuery = `
 export const allProjectsQuery = `
   *[_type == "project"] | order(order asc, _createdAt desc) {
     "id": _id,
-    "name": name[$lang],
-    "clientName": clientName[$lang],
-    "shortDescription": shortDescription[$lang],
     "slug": slug.current,
     "previewImage": previewImage{
       asset->{
@@ -54,62 +51,19 @@ export const allProjectsQuery = `
       "id": _id,
       "name": name[$lang]
     },
-   "type": type->{
-     "id": _id,
-     "name": name[$lang],
-     "icon": icon{
-      asset->{
-      _id,
-      url
-    }
-  }
-},
-    "blocks": blocks[]{
-      _type == "textBlock" => {
-        "type": _type,
-        "firstParagraph": firstParagraph[$lang],
-        "secondParagraph": secondParagraph[$lang]
-      },
-      _type == "imageBlock" => {
-        "type": _type,
-        "mobileImage": mobileImage{
-          asset->{
-            _id,
-            url
-          },
-          crop,
-          hotspot
-        },
-        "desktopImage": desktopImage{
-          asset->{
-            _id,
-            url
-          },
-          crop,
-          hotspot
-        },
-        "alt": alt[$lang]
-      },
-      _type == "reviewBlock" => {
-        "type": _type,
-        "review": {
-          "id": review._id,
-          "authorName": review.authorName[$lang],
-          "description": review.description[$lang],
-          "projectLink": review.projectLink,
-          "contentType": review.contentType,
-          "videoUrl": review.videoUrl,
-          "reviewText": review.reviewText[$lang],
-          "rating": review.rating
+    "type": type->{
+      "id": _id,
+      "name": name[$lang],
+      "icon": icon{
+        asset->{
+          _id,
+          url
         }
       }
     },
-    "websiteUrl": websiteUrl,
     "advantages": advantages[$lang],
     "portfolioTitle": portfolioTitle[$lang],
-    "portfolioDescription": portfolioDescription[$lang],
-    "order": order,
-    "createdAt": _createdAt
+    "portfolioDescription": portfolioDescription[$lang]
   }
 `;
 

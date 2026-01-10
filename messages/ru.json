@@ -265,7 +265,10 @@
     "seeProject": "Смотреть проект"
   },
   "projectPage": {
-    "openWebsite": "Открыть сайт"
+    "openWebsite": "Открыть сайт",
+    "review": {
+      "title": "Отзыв клиента"
+    }
   },
   "servicesPage": {
     "title": "Страница в разработке",

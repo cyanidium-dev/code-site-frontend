@@ -50,8 +50,9 @@ export interface ReviewBlock {
     authorName: string;
     description: string;
     projectLink?: string;
-    contentType: "video" | "text";
+    contentType: "video" | "text" | "image";
     videoUrl?: string;
+    reviewImage?: SanityImage;
     reviewText?: string;
     rating?: number;
   };

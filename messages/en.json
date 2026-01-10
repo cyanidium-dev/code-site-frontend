@@ -307,7 +307,10 @@
     "seeProject": "View Project"
   },
   "projectPage": {
-    "openWebsite": "Open Website"
+    "openWebsite": "Open Website",
+    "review": {
+      "title": "Client Review"
+    }
   },
   "servicesPage": {
     "title": "Page Under Development",

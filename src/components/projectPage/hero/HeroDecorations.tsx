@@ -26,8 +26,8 @@ export default function HeroDecorations() {
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
-        style={{ y: mediumY }}
-        className="md:hidden absolute -z-30 bottom-[-354px] left-[calc(50%-64px)] w-[421px] h-auto aspect-[421/459] 
+        style={{ y: slowY }}
+        className="md:hidden absolute -z-30 bottom-[-456px] left-[calc(50%-64px)] w-[421px] h-auto aspect-[421/459] 
          mix-blend-color-dodge"
       >
         <motion.div
@@ -53,8 +53,8 @@ export default function HeroDecorations() {
         </motion.div>
       </motion.div>
       <motion.div
-        style={{ y: fastY }}
-        className="md:hidden absolute -z-40 bottom-[-228px] left-[50%-160px] w-[445px] h-auto aspect-[445/476]"
+        style={{ y: mediumY }}
+        className="md:hidden absolute -z-40 bottom-[-338px] left-[50%-160px] w-[445px] h-auto aspect-[445/476]"
       >
         <motion.div
           key="decoration-middle"
@@ -78,7 +78,7 @@ export default function HeroDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute md:hidden -z-10 bottom-[-32px] left-[calc(50%-1073px/2+54.5px)] top-[466px] w-[298%] h-[709px] rounded-full
+        className="absolute md:hidden -z-10 bottom-[-743px] left-[calc(50%-1073px/2+54.5px)] w-[298%] h-[709px] rounded-full
             bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
       />
     </div>

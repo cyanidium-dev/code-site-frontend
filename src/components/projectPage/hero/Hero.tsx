@@ -23,7 +23,7 @@ export default function Hero({
   const t = useTranslations("projectPage");
 
   return (
-    <section className="overflow-hidden">
+    <section className="relative">
       <HeroDecorations />
       <Container className="relative pt-[116px] lg:pt-[141px] pb-0">
         <PageTitle className="max-w-[484px] text-[32px] xl:text-[40px] leading-[110%] mb-6">
@@ -55,7 +55,7 @@ export default function Hero({
           href={websiteUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          className="block sm:max-w-[277px] cursor-pointer"
+          className="block sm:max-w-[277px] cursor-pointer p-0 m-0"
         >
           <MainButton variant="pink">{t("openWebsite")}</MainButton>
         </a>

@@ -47,6 +47,7 @@ export default function ReviewVideo({
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
   const playerRef = useRef<any>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const videoDurationRef = useRef<number | null>(null);
 
   // Отримуємо Vimeo thumbnail через oEmbed API
   useEffect(() => {
@@ -74,6 +75,7 @@ export default function ReviewVideo({
       }
       // Reset video duration when video URL changes
       setVideoDuration(null);
+      videoDurationRef.current = null;
     }
   }, [videoUrl]);
 
@@ -95,22 +97,29 @@ export default function ReviewVideo({
       if (data.event === "ready") {
         postMessageToVimeo({ method: "getDuration" });
         postMessageToVimeo({ method: "addEventListener", value: "timeupdate" });
+        postMessageToVimeo({ method: "addEventListener", value: "ended" });
       } else if (data.event === "timeupdate") {
         const currentTime = data.data.seconds;
+        const duration = videoDurationRef.current;
 
-        // Pause 0.3 seconds before end
-        if (videoDuration && currentTime >= videoDuration - 0.3 && isPlaying) {
+        // Pause 0.4 seconds before end
+        if (duration && currentTime >= duration - 0.4 && isPlaying) {
           postMessageToVimeo({ method: "pause" });
           setIsPlaying(false);
         }
+      } else if (data.event === "ended") {
+        // Fallback: pause if video ends naturally
+        setIsPlaying(false);
       } else if (data.method === "getDuration") {
-        setVideoDuration(data.value);
+        const duration = data.value;
+        videoDurationRef.current = duration;
+        setVideoDuration(duration);
       }
     };
 
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
-  }, [videoUrl, isPlaying, videoDuration]);
+  }, [videoUrl, isPlaying]);
 
   return (
     <motion.div

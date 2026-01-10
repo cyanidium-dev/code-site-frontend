@@ -8,6 +8,7 @@ import * as motion from "motion/react-client";
 import { useEffect, useState, RefObject } from "react";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import Image from "next/image";
+import { useScreenWidth } from "@/hooks/useScreenWidth";
 
 interface ReviewDecorationsProps {
   authorNameRef: RefObject<HTMLHeadingElement | null>;
@@ -33,7 +34,7 @@ export default function ReviewDecorations({
 
   const decorationDelay = 0;
 
-  const [topPosition, setTopPosition] = useState<number | null>(null);
+  const [topOffset, setTopOffset] = useState<number | null>(null);
 
   useEffect(() => {
     const updatePosition = () => {
@@ -43,7 +44,7 @@ export default function ReviewDecorations({
 
         if (sectionRect) {
           const relativeTop = headingRect.top - sectionRect.top;
-          setTopPosition(relativeTop);
+          setTopOffset(relativeTop);
         }
       }
     };
@@ -68,28 +69,33 @@ export default function ReviewDecorations({
     };
   }, [authorNameRef, sectionRef]);
 
+  const screenWidth = useScreenWidth();
+  const isMobile = screenWidth < 768;
+
   const textOffset = isTextReview ? 0 : 84;
-  console.log(topPosition);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
-      {topPosition !== null && (
+      {topOffset !== null && (
         <>
           <motion.div
-            style={{ y: slowY, top: `${topPosition - 84 - textOffset}px` }}
-            className="absolute -z-10 left-[calc(50%-47px)] scale-75 origin-left pointer-events-none"
+            style={{
+              y: slowY,
+              top: isMobile ? `${topOffset - 84 - textOffset}px` : "120px",
+            }}
+            className="absolute -z-10 md:-z-20 md:top-0 left-[calc(50%-47px)] scale-75 md:scale-100 origin-left pointer-events-none"
           >
             <AnimatedGraph />
           </motion.div>
           <motion.div
             style={{
               y: mediumY,
-              top: `${topPosition + 71 - textOffset * 2}px`,
+              top: isMobile ? `${topOffset + 71 - textOffset * 2}px` : "181px",
             }}
-            className="md:hidden absolute -z-40 bottom-[-228px] left-[50%-40px] w-[376px] h-auto aspect-[376/329]"
+            className="absolute -z-10 left-[calc(50%-40px)] md:left-auto md:right-0 md:translate-x-1/2 w-[376px] h-auto aspect-[376/329]"
           >
             <motion.div
-              key="decoration-middle"
+              key="decoration-text"
               initial="hidden"
               whileInView="visible"
               exit="exit"
@@ -110,9 +116,11 @@ export default function ReviewDecorations({
             </motion.div>
           </motion.div>
           <div
-            style={{ top: `${topPosition + 85 - textOffset * 2}px` }}
-            className="absolute md:hidden -z-10 bottom-[-4694.17px] left-[calc(50%-598.99px/2+6.5px)] w-[598.99px] h-[335.08px] rounded-full
-            bg-black supports-[backdrop-filter]:blur-[66.2px] will-change-transform"
+            key="decoration-circle"
+            style={{
+              top: isMobile ? `${topOffset + 85 - textOffset * 2}px` : "216px",
+            }}
+            className="absolute -z-10 left-[calc(50%-599px/2+6.5px)] md:left-[calc(50%-808px/2+189px)] w-[598.99px] h-[335.08px] md:w-[808px] md:h-[452px] rounded-full bg-black supports-[backdrop-filter]:blur-[66.2px] will-change-transform"
           />
         </>
       )}

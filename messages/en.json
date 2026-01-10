@@ -306,6 +306,9 @@
     "description": "View our portfolio with convenient sorting by project theme",
     "seeProject": "View Project"
   },
+  "projectPage": {
+    "openWebsite": "Open Website"
+  },
   "servicesPage": {
     "title": "Page Under Development",
     "description": "This page is under development. Information about our services will appear here soon."

@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/projectPage/hero/Hero";
 import Content from "@/components/projectPage/content/Content";
-import CTA from "@/components/articlePage/cta/CTA";
+import CTA from "@/components/projectPage/cta/CTA";
 import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
 import Script from "next/script";
 import { Project } from "@/types/project";
@@ -20,10 +20,32 @@ export async function generateMetadata({
 }: ProjectPageProps): Promise<Metadata> {
   const { project, locale } = await params;
 
-  const currentProject: Project = await fetchSanityData(singleProjectQuery, {
-    slug: project,
-    lang: locale,
-  });
+  const currentProject: Project | null = await fetchSanityData(
+    singleProjectQuery,
+    {
+      slug: project,
+      lang: locale,
+    }
+  );
+
+  // If project not found, return default metadata
+  if (!currentProject) {
+    const defaultMetadata = await getDefaultMetadata(locale);
+    return {
+      title: defaultMetadata.title,
+      description: defaultMetadata.description,
+      openGraph: {
+        images: [
+          {
+            url: "/opengraph-image.jpg",
+            width: 1200,
+            height: 630,
+            alt: "Code-site.art",
+          },
+        ],
+      },
+    };
+  }
 
   const { name, description, mainImageDesktop, seo } = currentProject;
 
@@ -86,6 +108,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         />
         <Content project={currentProject} />
       </Suspense>
+      <CTA />
 
       {schemaData && (
         <Script

@@ -25,7 +25,7 @@ export default function Hero({
   return (
     <section className="relative">
       <HeroDecorations />
-      <Container className="relative pt-[116px] lg:pt-[141px] pb-0">
+      <Container className="relative pt-[116px] lg:pt-[141px] pb-20 lg:pb-15">
         <PageTitle className="max-w-[484px] text-[32px] xl:text-[40px] leading-[110%] mb-6">
           {name}
         </PageTitle>

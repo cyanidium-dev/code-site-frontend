@@ -310,6 +310,10 @@
     "openWebsite": "Open Website",
     "review": {
       "title": "Client Review"
+    },
+    "cta": {
+      "title": "Let's Discuss Your Website?",
+      "button": "Leave Application"
     }
   },
   "servicesPage": {

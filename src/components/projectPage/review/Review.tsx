@@ -19,7 +19,7 @@ export default function Review({ review }: ReviewProps) {
   const isTextReview = review.contentType === "text";
 
   return (
-    <section className="relative z-10 pt-20 lg:pt-[144px] bg-black">
+    <section className="relative z-10 pt-20 lg:pt-[144px]">
       <ReviewDecorations
         authorNameRef={authorNameRef}
         isTextReview={isTextReview}

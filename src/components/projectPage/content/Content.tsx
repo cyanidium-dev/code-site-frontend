@@ -27,7 +27,7 @@ export default function Content({ project }: ContentProps) {
   }
 
   return (
-    <div className="flex flex-col gap-15 py-20">
+    <div className="flex flex-col">
       {blocks.map((block, index) => renderBlock(block, index))}
       {blocks.map(
         block =>

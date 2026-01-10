@@ -5,14 +5,16 @@ import ReviewRating from "./ReviewRating";
 import ReviewVideo from "./ReviewVideo";
 import ReviewText from "./ReviewText";
 import ReviewImage from "./ReviewImage";
+import { forwardRef } from "react";
 
 interface ReviewBlockComponentProps {
   review: ReviewBlock["review"];
 }
 
-export default function ReviewBlockComponent({
-  review,
-}: ReviewBlockComponentProps) {
+const ReviewBlockComponent = forwardRef<
+  HTMLHeadingElement,
+  ReviewBlockComponentProps
+>(({ review }, ref) => {
   const {
     id,
     authorName,
@@ -45,7 +47,10 @@ export default function ReviewBlockComponent({
         viewport={{ once: true, amount: 0.2 }}
         variants={listItemVariants}
       >
-        <h3 className="mb-8 font-actay text-[20px] font-bold leading-[120%] uppercase">
+        <h3
+          ref={ref}
+          className="mb-8 font-actay text-[20px] font-bold leading-[120%] uppercase"
+        >
           {authorName.split(" ").map((name, index) => (
             <span key={index} className="block">
               {name}
@@ -61,4 +66,8 @@ export default function ReviewBlockComponent({
       )}
     </>
   );
-}
+});
+
+ReviewBlockComponent.displayName = "ReviewBlockComponent";
+
+export default ReviewBlockComponent;

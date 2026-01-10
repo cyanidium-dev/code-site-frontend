@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/shared/container/Container";
 import { useTranslations } from "next-intl";
 import type { ReviewBlock } from "@/types/project";
@@ -5,6 +6,7 @@ import ReviewBlockComponent from "./ReviewBlockComponent";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import * as motion from "motion/react-client";
 import ReviewDecorations from "./ReviewDecorations";
+import { useRef } from "react";
 
 interface ReviewProps {
   review: ReviewBlock["review"];
@@ -13,10 +15,11 @@ interface ReviewProps {
 export default function Review({ review }: ReviewProps) {
   const t = useTranslations("projectPage.review");
   const title = t("title").split(" ");
-  console.log("review", review);
+  const authorNameRef = useRef<HTMLHeadingElement>(null);
+
   return (
     <section className="relative z-10 pt-30 lg:pt-[233px] bg-black">
-      <ReviewDecorations />
+      <ReviewDecorations authorNameRef={authorNameRef} />
       <Container>
         <motion.h2
           initial="hidden"
@@ -29,7 +32,7 @@ export default function Review({ review }: ReviewProps) {
           {title[0]}
           <span className="text-white">{title[1]}</span>
         </motion.h2>
-        <ReviewBlockComponent review={review} />
+        <ReviewBlockComponent review={review} ref={authorNameRef} />
       </Container>
     </section>
   );

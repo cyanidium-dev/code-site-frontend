@@ -27,7 +27,7 @@ export default function Content({ project }: ContentProps) {
   }
 
   return (
-    <section className="flex flex-col gap-15 py-20">
+    <div className="flex flex-col gap-15 py-20">
       {blocks.map((block, index) => renderBlock(block, index))}
       {blocks.map(
         block =>
@@ -35,6 +35,6 @@ export default function Content({ project }: ContentProps) {
             <Review key={block.review.id} review={block.review} />
           )
       )}
-    </section>
+    </div>
   );
 }

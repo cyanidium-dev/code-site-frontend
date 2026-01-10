@@ -18,6 +18,17 @@ function getVimeoVideoId(url: string): string | null {
   return match ? match[1] : null;
 }
 
+// Функція для отримання високоякісного thumbnail від Vimeo
+function getHighQualityThumbnail(
+  thumbnailUrl: string,
+  width: number = 1280,
+  height: number = 720
+): string {
+  // Замінюємо розміри в URL на більші
+  // Паттерн: d_{width}x{height}
+  return thumbnailUrl.replace(/d_\d+x\d+/, `d_${width}x${height}`);
+}
+
 interface ReviewVideoProps {
   id: string;
   authorName: string;
@@ -48,7 +59,13 @@ export default function ReviewVideo({
           .then(res => res.json())
           .then(data => {
             if (data.thumbnail_url) {
-              setVimeoThumbnail(data.thumbnail_url);
+              // Отримуємо високоякісний thumbnail (360x720 для кращої якості)
+              const highQualityThumbnail = getHighQualityThumbnail(
+                data.thumbnail_url,
+                360,
+                720
+              );
+              setVimeoThumbnail(highQualityThumbnail);
             }
           })
           .catch(() => {

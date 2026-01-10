@@ -16,10 +16,14 @@ export default function Review({ review }: ReviewProps) {
   const t = useTranslations("projectPage.review");
   const title = t("title").split(" ");
   const authorNameRef = useRef<HTMLHeadingElement>(null);
+  const isTextReview = review.contentType === "text";
 
   return (
     <section className="relative z-10 pt-30 lg:pt-[233px] bg-black">
-      <ReviewDecorations authorNameRef={authorNameRef} />
+      <ReviewDecorations
+        authorNameRef={authorNameRef}
+        isTextReview={isTextReview}
+      />
       <Container>
         <motion.h2
           initial="hidden"

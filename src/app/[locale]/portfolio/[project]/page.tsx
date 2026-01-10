@@ -85,7 +85,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           websiteUrl={currentProject.websiteUrl}
         />
         <Content project={currentProject} />
-        <CTA />
       </Suspense>
 
       {schemaData && (

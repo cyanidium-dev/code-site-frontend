@@ -81,9 +81,9 @@ export default function ReviewDecorations({
           <motion.div
             style={{
               y: slowY,
-              top: isMobile ? `${topOffset - 84 - textOffset}px` : "120px",
+              top: isMobile ? `${topOffset - 84 - textOffset}px` : "99px",
             }}
-            className="absolute -z-10 md:-z-20 md:top-0 left-[calc(50%-47px)] scale-75 md:scale-100 origin-left pointer-events-none"
+            className="absolute -z-10 md:-z-20 md:top-0 left-[calc(50%-47px)] md:left-[calc(50%+127px)] scale-75 md:scale-100 origin-left pointer-events-none"
           >
             <AnimatedGraph />
           </motion.div>
@@ -92,7 +92,7 @@ export default function ReviewDecorations({
               y: mediumY,
               top: isMobile ? `${topOffset + 71 - textOffset * 2}px` : "181px",
             }}
-            className="absolute -z-10 left-[calc(50%-40px)] md:left-auto md:right-0 md:translate-x-1/2 w-[376px] h-auto aspect-[376/329]"
+            className="absolute -z-10 left-[calc(50%-40px)] md:left-auto md:right-0 md:translate-x-1/2 w-[376px] md:w-[508px] h-auto aspect-[376/329] md:aspect-[508/444]"
           >
             <motion.div
               key="decoration-text"
@@ -111,7 +111,8 @@ export default function ReviewDecorations({
                 alt="code-site"
                 width="376"
                 height="329"
-                className="w-[376px] h-auto"
+                sizes="(max-width: 1024px) 376px, 508px"
+                className="w-[376px] md:w-[508px] h-auto"
               />
             </motion.div>
           </motion.div>
@@ -124,7 +125,7 @@ export default function ReviewDecorations({
           />
           <div
             key="decoration-circle-right"
-            className="hidden md:block absolute -z-10 right-[-169px] w-[469px] h-[420px] rounded-full bg-black supports-[backdrop-filter]:blur-[89.25px] will-change-transform"
+            className="hidden md:block absolute -z-10 top-[500px] right-[-169px] w-[469px] h-[420px] rounded-full bg-black supports-[backdrop-filter]:blur-[89.25px] will-change-transform"
           />
         </>
       )}

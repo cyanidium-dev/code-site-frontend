@@ -52,7 +52,7 @@ const ReviewBlockComponent = forwardRef<
           exit="exit"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInAnimation({ x: 50 })}
-          className="hidden md:flex mb-[79px] font-actay flex-col text-[46px] font-bold leading-[110%] bg-[linear-gradient(90deg,#FF8ED2,#73C5FF)] bg-clip-text text-transparent uppercase"
+          className="hidden md:flex mb-[79px] font-actay flex-col text-[40px] font-bold leading-[110%] bg-[linear-gradient(90deg,#FF8ED2,#73C5FF)] bg-clip-text text-transparent uppercase"
         >
           {title[0]}
           <span className="text-white">{title[1]}</span>

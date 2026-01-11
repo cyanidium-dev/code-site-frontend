@@ -27,7 +27,7 @@ export default function HeroDecorations() {
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
         style={{ y: slowY }}
-        className="md:hidden absolute -z-30 bottom-[-456px] left-[calc(50%-64px)] w-[421px] h-auto aspect-[421/459] 
+        className="absolute -z-30 bottom-[-386px] md:bottom-auto md:top-[76px] left-[calc(50%-64px)] md:left-[calc(50%+120px)] w-[421px] h-auto aspect-[421/459] 
          mix-blend-color-dodge"
       >
         <motion.div
@@ -54,7 +54,32 @@ export default function HeroDecorations() {
       </motion.div>
       <motion.div
         style={{ y: mediumY }}
-        className="md:hidden absolute -z-40 bottom-[-338px] left-[50%-160px] w-[445px] h-auto aspect-[445/476]"
+        className="absolute -z-40 bottom-[-264px] md:bottom-auto md:top-[90px] left-[50%-160px] md:left-1/2 w-[445px] h-auto aspect-[445/476]"
+      >
+        <motion.div
+          key="decoration-middle"
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({
+            delay: decorationDelay,
+            duration: 2,
+            scale: 0.8,
+          })}
+        >
+          <Image
+            src="/images/projectPage/hero/code-site.svg"
+            alt="code-site"
+            width="445"
+            height="476"
+            className="w-[445px] h-auto"
+          />
+        </motion.div>
+      </motion.div>
+      <motion.div
+        style={{ y: mediumY }}
+        className="hidden md:block absolute -z-40 top-[25px] right-[-200px] w-[445px] h-auto aspect-[445/476]"
       >
         <motion.div
           key="decoration-middle"
@@ -78,7 +103,7 @@ export default function HeroDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute md:hidden -z-10 bottom-[-743px] left-[calc(50%-1073px/2+54.5px)] w-[298%] h-[709px] rounded-full
+        className="absolute -z-10 bottom-[-743px] md:bottom-auto md:top-[263px] left-[calc(50%-1073px/2+54.5px)] md:left-auto md:right-[-137px] w-[298%] md:w-[1073px] h-[709px] rounded-full
             bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
       />
     </div>

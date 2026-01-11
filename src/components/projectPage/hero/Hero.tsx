@@ -47,7 +47,7 @@ export default function Hero({
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
           variants={fadeInAnimation({ delay: 0.2, scale: 0.95, x: -30, y: 30 })}
-          className="font-actay text-[16px] font-bold leading-[120%] mb-7 uppercase"
+          className="font-actay text-[16px] md:text-[20px] font-bold leading-[120%] mb-7 lg:mb-[50px] uppercase"
         >
           {clientName}
         </motion.p>

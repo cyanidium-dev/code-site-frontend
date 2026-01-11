@@ -46,19 +46,24 @@ export default function Hero({
           whileInView="visible"
           exit="exit"
           viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.2, scale: 0.95, x: -30, y: 30 })}
+          variants={fadeInAnimation({ delay: 0.4, scale: 0.95, x: -30, y: 30 })}
           className="font-actay text-[16px] md:text-[20px] font-bold leading-[120%] mb-7 lg:mb-[50px] uppercase"
         >
           {clientName}
         </motion.p>
-        <a
+        <motion.a
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeInAnimation({ delay: 0.5, scale: 0.95, y: 30 })}
           href={websiteUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
           className="block sm:max-w-[277px] cursor-pointer p-0 m-0"
         >
           <MainButton variant="pink">{t("openWebsite")}</MainButton>
-        </a>
+        </motion.a>
       </Container>
     </section>
   );

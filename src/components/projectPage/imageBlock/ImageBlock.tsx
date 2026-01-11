@@ -69,7 +69,7 @@ export default function ImageBlock({
         alt={block.alt}
         fill
         sizes="100vw"
-        className="hidden md:block object-contain object-center"
+        className="hidden md:block object-cover object-center"
         style={{
           imageRendering: "auto",
         }}

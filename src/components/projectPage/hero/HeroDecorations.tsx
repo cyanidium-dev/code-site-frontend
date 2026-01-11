@@ -79,7 +79,7 @@ export default function HeroDecorations() {
       </motion.div>
       <motion.div
         style={{ y: mediumY }}
-        className="hidden md:block absolute -z-40 top-[25px] right-[-200px] w-[445px] h-auto aspect-[445/476]"
+        className="hidden lg:block absolute -z-40 top-[25px] right-[-200px] w-[445px] h-auto aspect-[445/476]"
       >
         <motion.div
           key="decoration-middle"

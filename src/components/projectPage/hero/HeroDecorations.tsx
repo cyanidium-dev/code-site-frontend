@@ -79,7 +79,7 @@ export default function HeroDecorations() {
       </motion.div>
       <motion.div
         style={{ y: mediumY }}
-        className="hidden lg:block absolute -z-40 top-[25px] right-[-200px] w-[445px] h-auto aspect-[445/476]"
+        className="hidden lg:block absolute -z-40 top-[25px] left-[calc(50%+402px)] w-[445px] h-auto aspect-[445/476]"
       >
         <motion.div
           key="decoration-middle"
@@ -103,7 +103,7 @@ export default function HeroDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute -z-10 bottom-[-743px] md:bottom-auto md:top-[263px] left-[calc(50%-1073px/2+54.5px)] md:left-auto md:right-[-137px] w-[298%] md:w-[1073px] h-[709px] rounded-full
+        className="absolute -z-10 bottom-[-743px] md:bottom-auto md:top-[263px] left-[calc(50%-1073px/2+54.5px)] md:left-[calc(50%-300px)] w-[298%] md:w-[1073px] h-[709px] rounded-full
             bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
       />
     </div>

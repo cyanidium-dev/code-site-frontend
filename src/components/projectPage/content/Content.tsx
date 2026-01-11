@@ -7,20 +7,34 @@ interface ContentProps {
   project: Project;
 }
 
-function renderBlock(block: ProjectBlock, index: number) {
+function renderBlock(
+  block: ProjectBlock,
+  backgroundColor: string,
+  textColor: string,
+  index: number
+) {
   if (block.type === "textBlock") {
-    return <TextBlock key={index} block={block} />;
+    return (
+      <TextBlock
+        key={index}
+        block={block}
+        backgroundColor={backgroundColor}
+        textColor={textColor}
+      />
+    );
   }
 
   if (block.type === "imageBlock") {
-    return <ImageBlock key={index} block={block} />;
+    return (
+      <ImageBlock key={index} block={block} backgroundColor={backgroundColor} />
+    );
   }
 
   return null;
 }
 
 export default function Content({ project }: ContentProps) {
-  const { blocks } = project;
+  const { blocks, backgroundColor, textColor } = project;
 
   if (!blocks || blocks.length === 0) {
     return null;
@@ -28,7 +42,9 @@ export default function Content({ project }: ContentProps) {
 
   return (
     <div className="flex flex-col">
-      {blocks.map((block, index) => renderBlock(block, index))}
+      {blocks.map((block, index) =>
+        renderBlock(block, backgroundColor, textColor, index)
+      )}
       {blocks.map(
         block =>
           block.type === "reviewBlock" && (

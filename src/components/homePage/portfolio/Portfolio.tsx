@@ -29,7 +29,7 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
           >
             {t("title")}
           </SectionTitle>
-          {/* <motion.div
+          <motion.div
             initial="hidden"
             whileInView="visible"
             exit="exit"
@@ -41,11 +41,11 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
                 {t("seeProjects")}
               </MainButton>
             </Link>
-          </motion.div> */}
+          </motion.div>
         </div>
       </Container>
       <PortfolioSlider projectsList={projectsList} />
-      {/* <Container className="lg:hidden mt-8">
+      <Container className="lg:hidden mt-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -57,7 +57,7 @@ export default function Portfolio({ projectsList }: PortfolioProps) {
             <MainButton className="">{t("seeProjects")}</MainButton>
           </Link>
         </motion.div>
-      </Container> */}
+      </Container>
     </section>
   );
 }

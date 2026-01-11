@@ -29,7 +29,8 @@ export default function ImageBlock({
 
       img.onload = () => {
         const ratio = img.naturalWidth / img.naturalHeight;
-        setAspectRatio(ratio);
+        // Round to 4 decimal places to avoid subpixel rendering issues
+        setAspectRatio(Math.round(ratio * 100) / 100);
       };
 
       img.src = imageUrl;
@@ -46,10 +47,11 @@ export default function ImageBlock({
       exit="exit"
       viewport={{ once: true, amount: 0.05 }}
       variants={fadeInAnimation({ delay: 0.2, y: 20 })}
-      className="relative w-full shrink-0 min-h-[100px] overflow-hidden"
+      className="relative w-full shrink-0 min-h-[10px] overflow-hidden"
       style={{
         backgroundColor: backgroundColor,
         aspectRatio: aspectRatio ? `${aspectRatio}` : undefined,
+        isolation: "isolate",
       }}
     >
       <Image
@@ -57,14 +59,20 @@ export default function ImageBlock({
         alt={block.alt}
         fill
         sizes="100vw"
-        className="md:hidden object-contain"
+        className="md:hidden object-cover object-center"
+        style={{
+          imageRendering: "auto",
+        }}
       />
       <Image
         src={getOptimizedImageUrl(block.desktopImage, undefined, 95, "auto")}
         alt={block.alt}
         fill
         sizes="100vw"
-        className="hidden md:block object-contain"
+        className="hidden md:block object-contain object-center"
+        style={{
+          imageRendering: "auto",
+        }}
       />
     </motion.div>
   );

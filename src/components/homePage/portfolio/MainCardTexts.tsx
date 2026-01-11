@@ -3,7 +3,7 @@ import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import { Project } from "@/types/project";
 import Container from "@/components/shared/container/Container";
-// import ArrowButton from "./ArrowButton";
+import ArrowButton from "./ArrowButton";
 import ProjectCategory from "./ProjectCategory";
 import ProjectAdvantages from "./ProjectAdvantages";
 import { twMerge } from "tailwind-merge";
@@ -69,18 +69,24 @@ export default function MainCardTexts({
                   maskComposite: "exclude",
                 }}
               />
-              {/* <ArrowButton
+              <ArrowButton
                 slug={project.slug}
                 className="absolute -top-2 -right-2 lg:static mb-8"
-              /> */}
+              />
               <h3 className="lg:max-w-[291px] mb-2 lg:mb-5 font-actay text-[12px] lg:text-[24px] font-bold leading-[120%] uppercase min-h-[3lh] sm:min-h-0 line-clamp-3">
                 {project.portfolioTitle}
               </h3>
               <p className="lg:max-w-[252px] text-[10px] lg:text-[12px] font-light leading-[120%] min-h-[3lh] sm:min-h-0 line-clamp-3">
                 {project.portfolioDescription}
               </p>
-              <ProjectCategory project={project} className="hidden sm:block lg:hidden mt-3" />
-              <ProjectAdvantages advantages={project.advantages} className="sm:hidden mt-3" />
+              <ProjectCategory
+                project={project}
+                className="hidden sm:block lg:hidden mt-3"
+              />
+              <ProjectAdvantages
+                advantages={project.advantages}
+                className="sm:hidden mt-3"
+              />
             </motion.div>
           </motion.div>
 

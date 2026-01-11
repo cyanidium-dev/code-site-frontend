@@ -22,9 +22,10 @@ export default function ImageBlock({
     const loadImageDimensions = () => {
       const img = new window.Image();
       const isMobile = window.innerWidth < 768;
+      // Use low quality (10) for dimension calculation only - reduces data transfer
       const imageUrl = isMobile
-        ? getOptimizedImageUrl(block.mobileImage, undefined, 90, "auto")
-        : getOptimizedImageUrl(block.desktopImage, undefined, 90, "auto");
+        ? getOptimizedImageUrl(block.mobileImage, undefined, 10, "auto")
+        : getOptimizedImageUrl(block.desktopImage, undefined, 10, "auto");
 
       img.onload = () => {
         const ratio = img.naturalWidth / img.naturalHeight;
@@ -52,14 +53,14 @@ export default function ImageBlock({
       }}
     >
       <Image
-        src={getOptimizedImageUrl(block.mobileImage, undefined, 90, "auto")}
+        src={getOptimizedImageUrl(block.mobileImage, undefined, 100, "auto")}
         alt={block.alt}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
         className="md:hidden object-contain"
       />
       <Image
-        src={getOptimizedImageUrl(block.desktopImage, undefined, 90, "auto")}
+        src={getOptimizedImageUrl(block.desktopImage, undefined, 100, "auto")}
         alt={block.alt}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"

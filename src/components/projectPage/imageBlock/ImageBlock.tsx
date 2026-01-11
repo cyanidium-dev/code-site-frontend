@@ -44,26 +44,26 @@ export default function ImageBlock({
       initial="hidden"
       whileInView="visible"
       exit="exit"
-      viewport={{ once: true, amount: 0, margin: "0px 0px -100px 0px" }}
-      variants={fadeInAnimation({ y: 20 })}
-      className="relative w-full shrink-0 min-h-[300px] overflow-hidden"
+      viewport={{ once: true, amount: 0.05 }}
+      variants={fadeInAnimation({ delay: 0.2, y: 20 })}
+      className="relative w-full shrink-0 min-h-[100px] overflow-hidden"
       style={{
         backgroundColor: backgroundColor,
         aspectRatio: aspectRatio ? `${aspectRatio}` : undefined,
       }}
     >
       <Image
-        src={getOptimizedImageUrl(block.mobileImage, undefined, 100, "auto")}
+        src={getOptimizedImageUrl(block.mobileImage, undefined, 95, "auto")}
         alt={block.alt}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+        sizes="100vw"
         className="md:hidden object-contain"
       />
       <Image
-        src={getOptimizedImageUrl(block.desktopImage, undefined, 100, "auto")}
+        src={getOptimizedImageUrl(block.desktopImage, undefined, 95, "auto")}
         alt={block.alt}
         fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+        sizes="100vw"
         className="hidden md:block object-contain"
       />
     </motion.div>

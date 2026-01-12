@@ -27,9 +27,6 @@ export const allReviewsQuery = `
 export const allProjectsQuery = `
   *[_type == "project"] | order(order asc, _createdAt desc) {
     "id": _id,
-    "name": name[$lang],
-    "clientName": clientName[$lang],
-    "shortDescription": shortDescription[$lang],
     "slug": slug.current,
     "previewImage": previewImage{
       asset->{
@@ -54,16 +51,66 @@ export const allProjectsQuery = `
       "id": _id,
       "name": name[$lang]
     },
-   "type": type->{
-     "id": _id,
-     "name": name[$lang],
-     "icon": icon{
-      asset->{
-      _id,
-      url
-    }
+    "type": type->{
+      "id": _id,
+      "name": name[$lang],
+      "icon": icon{
+        asset->{
+          _id,
+          url
+        }
+      }
+    },
+    "advantages": advantages[$lang],
+    "portfolioTitle": portfolioTitle[$lang],
+    "portfolioDescription": portfolioDescription[$lang]
   }
-},
+`;
+
+export const singleProjectQuery = `
+  *[_type == "project" && slug.current == $slug][0] {
+    "id": _id,
+    "name": name[$lang],
+    "clientName": clientName[$lang],
+    "shortDescription": shortDescription[$lang],
+    "description": shortDescription[$lang],
+    "slug": slug.current,
+    "previewImage": previewImage{
+      asset->{
+        _id,
+        url
+      },
+      crop,
+      hotspot
+    },
+    "mainImage": mainImageDesktop{
+      asset->{
+        _id,
+        url
+      },
+      crop,
+      hotspot
+    },
+    "mainImageDesktop": {
+      "url": mainImageDesktop.asset->url
+    },
+    "backgroundColor": backgroundColor.hex,
+    "textColor": textColor,
+    "buttonColor": buttonColor,
+    "categories": categories[]->{
+      "id": _id,
+      "name": name[$lang]
+    },
+    "type": type->{
+      "id": _id,
+      "name": name[$lang],
+      "icon": icon{
+        asset->{
+          _id,
+          url
+        }
+      }
+    },
     "blocks": blocks[]{
       _type == "textBlock" => {
         "type": _type,
@@ -92,15 +139,27 @@ export const allProjectsQuery = `
       },
       _type == "reviewBlock" => {
         "type": _type,
-        "review": {
-          "id": review._id,
-          "authorName": review.authorName[$lang],
-          "description": review.description[$lang],
-          "projectLink": review.projectLink,
-          "contentType": review.contentType,
-          "videoUrl": review.videoUrl,
-          "reviewText": review.reviewText[$lang],
-          "rating": review.rating
+        "review": review->{
+          "id": _id,
+          "authorName": authorName[$lang],
+          "description": description[$lang],
+          "projectLink": projectLink,
+          "contentType": contentType,
+          "videoUrl": videoUrl,
+          "reviewText": reviewText[$lang],
+          "rating": rating,
+          "order": order,
+          "createdAt": _createdAt,
+          "status": status,
+          "reviewImage": reviewImage{
+            asset->{
+              _id,
+              url
+            },
+            crop,
+            hotspot,
+            alt
+          }
         }
       }
     },
@@ -108,8 +167,14 @@ export const allProjectsQuery = `
     "advantages": advantages[$lang],
     "portfolioTitle": portfolioTitle[$lang],
     "portfolioDescription": portfolioDescription[$lang],
+    "seo": {
+      "title": seoTitle[$lang],
+      "subtitle": seoSubtitle[$lang],
+      "keywords": seoKeywords[$lang]
+    },
     "order": order,
-    "createdAt": _createdAt
+    "createdAt": _createdAt,
+    "updatedAt": _updatedAt
   }
 `;
 

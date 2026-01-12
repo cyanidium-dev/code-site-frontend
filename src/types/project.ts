@@ -50,8 +50,9 @@ export interface ReviewBlock {
     authorName: string;
     description: string;
     projectLink?: string;
-    contentType: "video" | "text";
+    contentType: "video" | "text" | "image";
     videoUrl?: string;
+    reviewImage?: SanityImage;
     reviewText?: string;
     rating?: number;
   };
@@ -64,9 +65,13 @@ export interface Project {
   name: string;
   clientName: string;
   shortDescription: string;
+  description?: string;
   slug: string;
   previewImage: SanityImage;
   mainImage: SanityImage;
+  mainImageDesktop?: {
+    url: string;
+  };
   categories: ProjectCategory[];
   type: ProjectType;
   blocks: ProjectBlock[];
@@ -77,6 +82,11 @@ export interface Project {
   backgroundColor: string;
   textColor: string;
   buttonColor: string;
+  seo?: {
+    title?: string;
+    subtitle?: string;
+    keywords?: string;
+  };
   order: number;
   createdAt: string;
 }

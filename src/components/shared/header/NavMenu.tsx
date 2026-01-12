@@ -24,7 +24,7 @@ export default function NavMenu({
     pathname === `/${locale}/contacts` || pathname === "/contacts";
 
   const navMenuList = [
-    // { title: t("portfolio"), link: "/portfolio" },
+    { title: t("portfolio"), link: "/portfolio" },
     // { title: t("home"), link: "/" },
     { title: t("services"), link: "/services" },
     { title: t("blog"), link: "/blog" },

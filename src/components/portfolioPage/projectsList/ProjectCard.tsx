@@ -15,7 +15,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
   const t = useTranslations("portfolioPage");
-  console.log(project);
+
   const {
     portfolioTitle,
     portfolioDescription,

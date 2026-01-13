@@ -356,8 +356,8 @@
           "Integration of contact forms and analytics",
           "CRM integration (on request)"
         ],
-        "seeMore": "View details",
-        "wantIt": "I want a landing page",
+        "seeMore": "See details",
+        "wantIt": "Want a landing page",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": 1 },
@@ -382,8 +382,8 @@
           "Integration with maps and messengers",
           "Admin panel for content editing"
         ],
-        "seeMore": "View details",
-        "wantIt": "I want a corporate website",
+        "seeMore": "See details",
+        "wantIt": "Want a corporate website",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": "up to 10" },
@@ -408,8 +408,8 @@
           "Payment systems integration (cards, PayPal, crypto)",
           "CRM/ERP integration"
         ],
-        "seeMore": "View details",
-        "wantIt": "I want an e-commerce store",
+        "seeMore": "See details",
+        "wantIt": "Want an e-commerce store",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": "up to 15" },
@@ -435,7 +435,7 @@
         "Sales functions (cart, payment, delivery)",
         "Support and warranty"
       ],
-      "buttonText": "I want a website"
+      "buttonText": "Want a website"
     },
     "extraInfo": [
       {

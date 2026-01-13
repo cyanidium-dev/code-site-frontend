@@ -10,14 +10,16 @@ export default function Hero() {
       <Container>
         <PageTitle
           variant="pink"
-          className="mb-4 text-[24px] lg:text-[40px] lx:text-[40px] leading-[108%]"
+          className="mb-4 lg:mb-[50px] text-[24px] lg:text-[40px] xl:text-[40px] leading-[108%]"
         >
           {t("title")}
         </PageTitle>
-        <p className="text-[14px] font-light leading-[122%] mb-4">
-          {t("description")}
-        </p>
-        <DesignToggle />
+        <div className="lg:flex lg:flex-row-reverse lg:justify-between lg:items-center">
+          <p className="text-[14px] lg:text-[16px] font-light leading-[122%] mb-4 lg:mb-0 max-w-[297px]">
+            {t("description")}
+          </p>
+          <DesignToggle />
+        </div>
       </Container>
     </section>
   );

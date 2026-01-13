@@ -17,7 +17,7 @@ export default async function ServicesList({
   return (
     <section className={twMerge(className)}>
       <Container>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-9 items-stretch">
           {servicesList.map(service => (
             <ServiceCard key={service.title} service={service} />
           ))}

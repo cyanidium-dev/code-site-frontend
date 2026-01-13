@@ -44,62 +44,73 @@ export default async function ComparisonTable({
   return (
     <section className={twMerge(className)}>
       <Container>
-        <table className="w-full mb-10">
-          <thead>
-            <tr className="border-b border-white/10">
-              <th className="text-left px-4 py-3 border-r border-white/10 last:border-r-0">
-                <p className="font-actay text-[16px] leading-[125%] uppercase font-bold">
-                  {comparisonTable.title}
-                  <span className="block text-[12px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
-                    {comparisonTable.description}
-                  </span>
-                </p>
-              </th>
-              {servicesList.map(service => (
-                <th
-                  key={service.title}
-                  className="px-4 py-3 border-r border-white/10 last:border-r-0"
-                >
-                  <p className="font-actay text-[12px] leading-[125%] uppercase font-bold whitespace-nowrap">
-                    {service.title}
-                  </p>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="text-[14px] leading-[122%]">
-            {comparisonTable.table.map((rowHeading, rowIndex) => (
-              <tr
-                key={rowHeading}
-                className="border-b border-white/10 last:border-b-0"
-              >
-                <td className="px-4 py-3 min-h-12 border-r border-white/10 last:border-r-0 grow-1">
-                  <p>{rowHeading}</p>
-                </td>
-                {servicesList.map(service => {
-                  const feature =
-                    service.comparisonFeatures[rowIndex.toString()];
-                  return (
-                    <td
-                      key={`${service.title}-${rowIndex}`}
-                      className="px-4 py-3 border-r border-white/10 last:border-r-0"
+        <div className="relative -mx-4 md:-mx-6 lg:-mx-8 mb-10 lg:mb-0">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+            <div className="relative pr-4 md:pr-6 lg:pr-8">
+              <table className="min-w-full">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] relative after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                      <p className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold">
+                        {comparisonTable.title}
+                        <span className="block text-[12px] lg:text-[14px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
+                          {comparisonTable.description}
+                        </span>
+                      </p>
+                    </th>
+                    {servicesList.map(service => (
+                      <th
+                        key={service.title}
+                        className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[152px] min-w-[152px] max-w-[152px]"
+                      >
+                        <p className="font-actay text-[12px] leading-[125%] uppercase font-bold lg:text-left mb-3">
+                          {service.title}
+                        </p>
+                        <SecondaryButton className="hidden lg:block w-full h-[39px] text-[12px] leading-[123%] uppercase font-bold">
+                          {service.wantIt}
+                        </SecondaryButton>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="text-[14px] leading-[122%]">
+                  {comparisonTable.table.map((rowHeading, rowIndex) => (
+                    <tr
+                      key={rowHeading}
+                      className="border-b border-white/10 last:border-b-0"
                     >
-                      <div className="flex flex-col items-center gap-2">
-                        {formatFeatureValue(feature)}
-                        {feature?.text && (
-                          <span className="block whitespace-nowrap">
-                            {formatFeatureText(feature)}
-                          </span>
-                        )}
-                      </div>
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <SecondaryButton>{comparisonTable.buttonText}</SecondaryButton>
+                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] relative after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                        <p>{rowHeading}</p>
+                      </td>
+                      {servicesList.map(service => {
+                        const feature =
+                          service.comparisonFeatures[rowIndex.toString()];
+                        return (
+                          <td
+                            key={`${service.title}-${rowIndex}`}
+                            className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[152px] min-w-[152px] max-w-[152px]"
+                          >
+                            <div className="flex flex-col items-center gap-2">
+                              {formatFeatureValue(feature)}
+                              {feature?.text && (
+                                <span className="block whitespace-nowrap">
+                                  {formatFeatureText(feature)}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <SecondaryButton className="lg:hidden">
+          {comparisonTable.buttonText}
+        </SecondaryButton>
       </Container>
     </section>
   );

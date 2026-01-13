@@ -47,7 +47,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         {title}
         <span className="block">{subtitle}</span>
       </h3>
-      <p className="font-actay text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
+      <p className="flex gap-3 items-end font-actay text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
         {priceText}
         <span className="block font-guano-apes text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
           {price}

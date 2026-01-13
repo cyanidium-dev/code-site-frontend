@@ -41,7 +41,7 @@ export default function DesignToggle({ className }: DesignToggleProps) {
   }, [activeButton]);
 
   return (
-    <div className={twMerge(`flex items-center gap-2 md:gap-8 ${className}`)}>
+    <div className={twMerge("flex items-center gap-2 md:gap-8", className)}>
       <div
         ref={containerRef}
         className="relative flex items-center gap-2 bg-black/26 rounded-full backdrop-blur-[10px] p-1"
@@ -58,23 +58,23 @@ export default function DesignToggle({ className }: DesignToggleProps) {
         <button
           ref={normalButtonRef}
           onClick={() => setActiveButton("normal")}
-          className="relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
+          className="flex items-center justify-center relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
         >
-          <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold">
+          <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
             {t("normal")}
           </span>
         </button>
         <button
           ref={wowButtonRef}
           onClick={() => setActiveButton("wow")}
-          className="relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
+          className="flex items-center justify-center relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
         >
-          <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold">
+          <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
             {t("wow")}
           </span>
         </button>
       </div>
-      <div className="relative flex items-center justify-center size-[53px] md:size-[55px] rounded-full cursor-pointer">
+      <div className="relative flex items-center justify-center shrink-0 size-[53px] md:size-[55px] rounded-full cursor-pointer">
         <div
           className="absolute z-10 inset-0 rounded-full pointer-events-none"
           style={{

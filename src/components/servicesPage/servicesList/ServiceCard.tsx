@@ -1,6 +1,7 @@
+"use client";
 import StarIcon from "@/components/shared/icons/StarIcon";
 import MainButton from "@/components/shared/buttons/MainButton";
-import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+//import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import type { Service } from "@/types/service";
@@ -8,9 +9,14 @@ import type { Service } from "@/types/service";
 interface ServiceCardProps {
   service: Service;
   delay: number;
+  designType: "normal" | "wow";
 }
 
-export default function ServiceCard({ service, delay }: ServiceCardProps) {
+export default function ServiceCard({
+  service,
+  delay,
+  designType,
+}: ServiceCardProps) {
   const {
     title,
     subtitle,
@@ -18,11 +24,13 @@ export default function ServiceCard({ service, delay }: ServiceCardProps) {
     price,
     description,
     pros,
-    seeMore,
+    //seeMore,
     wantIt,
     seeMoreLink,
     wantItLink,
   } = service;
+
+  const displayPrice = price[designType];
   return (
     <motion.li
       initial="hidden"
@@ -53,7 +61,7 @@ export default function ServiceCard({ service, delay }: ServiceCardProps) {
         <p className="flex gap-3 items-end font-actay text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
           {priceText}
           <span className="block font-guano-apes text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
-            {price}
+            {displayPrice}
           </span>
         </p>
         <p className="text-[14px] leading-[122%] font-light mb-8 min-h-[4lh]">
@@ -69,12 +77,12 @@ export default function ServiceCard({ service, delay }: ServiceCardProps) {
         </ul>
       </div>
       <div className="mt-auto">
-        <SecondaryButton
+        {/* <SecondaryButton
           variant="white"
           className="mb-2 h-12 text-[12.8103px] leading-[123%] uppercase font-bold"
         >
           {seeMore}
-        </SecondaryButton>
+        </SecondaryButton> */}
         <MainButton
           variant="pink"
           className="h-12 text-[12.8103px] leading-[123%] uppercase font-bold"

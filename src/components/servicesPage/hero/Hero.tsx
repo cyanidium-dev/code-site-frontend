@@ -5,7 +5,11 @@ import DesignToggle from "../designToggle/DesignToggle";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 
-export default function Hero() {
+interface HeroProps {
+  designType: "normal" | "wow";
+}
+
+export default function Hero({ designType }: HeroProps) {
   const t = useTranslations("servicesPage");
   return (
     <section className="pt-[118px] lg:pt-[159px] pb-10 lg:pb-[50px]">
@@ -27,7 +31,7 @@ export default function Hero() {
           >
             {t("description")}
           </motion.p>
-          <DesignToggle />
+          <DesignToggle designType={designType} />
         </div>
       </Container>
     </section>

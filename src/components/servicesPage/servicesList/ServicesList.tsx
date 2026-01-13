@@ -7,11 +7,13 @@ import Container from "@/components/shared/container/Container";
 interface ServicesListProps {
   className?: string;
   servicesList: Service[];
+  designType: "normal" | "wow";
 }
 
 export default async function ServicesList({
   className,
   servicesList,
+  designType,
 }: ServicesListProps) {
   const t = await getTranslations("servicesPage");
   return (
@@ -23,6 +25,7 @@ export default async function ServicesList({
               key={service.title}
               service={service}
               delay={idx * 0.1}
+              designType={designType}
             />
           ))}
         </ul>

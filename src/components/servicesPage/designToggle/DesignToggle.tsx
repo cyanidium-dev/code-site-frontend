@@ -1,6 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { useState, useRef, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import DesignHintPopup from "./DesignHintPopup";
 import * as motion from "motion/react-client";
@@ -8,11 +9,19 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 
 interface DesignToggleProps {
   className?: string;
+  designType: "normal" | "wow";
 }
 
-export default function DesignToggle({ className }: DesignToggleProps) {
+export default function DesignToggle({
+  className,
+  designType: initialDesignType,
+}: DesignToggleProps) {
   const t = useTranslations("servicesPage.designToggle");
-  const [activeButton, setActiveButton] = useState<"normal" | "wow">("normal");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeButton, setActiveButton] = useState<"normal" | "wow">(
+    initialDesignType
+  );
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const normalButtonRef = useRef<HTMLButtonElement>(null);
   const wowButtonRef = useRef<HTMLButtonElement>(null);
@@ -20,6 +29,15 @@ export default function DesignToggle({ className }: DesignToggleProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const questionButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const currentDesign = searchParams.get("design");
+    if (currentDesign === "wow") {
+      setActiveButton("wow");
+    } else {
+      setActiveButton("normal");
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const updateBackground = () => {
@@ -45,6 +63,17 @@ export default function DesignToggle({ className }: DesignToggleProps) {
     window.addEventListener("resize", updateBackground);
     return () => window.removeEventListener("resize", updateBackground);
   }, [activeButton]);
+
+  const handleDesignChange = (type: "normal" | "wow") => {
+    setActiveButton(type);
+    const params = new URLSearchParams(searchParams.toString());
+    if (type === "wow") {
+      params.set("design", "wow");
+    } else {
+      params.delete("design");
+    }
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -77,7 +106,7 @@ export default function DesignToggle({ className }: DesignToggleProps) {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInAnimation({ delay: 0.6, x: -30 })}
           ref={containerRef}
-          className="relative flex items-center gap-2 bg-black/26 rounded-full backdrop-blur-[10px] p-1"
+          className="group relative flex items-center bg-black/26 rounded-full backdrop-blur-[10px] p-1"
         >
           <div className="absolute z-10 inset-0 rounded-full shadow-[inset_0px_4px_12.6px_#FFFFFF40] pointer-events-none" />
           {/* Sliding pink background */}
@@ -88,10 +117,11 @@ export default function DesignToggle({ className }: DesignToggleProps) {
               left: "4px",
             }}
           />
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(110deg,_rgba(255,181,230,0)_0%,_rgba(255,181,230,0.3)_50%,_rgba(255,181,230,0)_100%)] bg-[length:200%_100%] opacity-0 transition-opacity duration-500 ease-in-out animate-[shimmer_2.5s_linear_infinite] group-hover:opacity-100 z-[15]" />
           <button
             ref={normalButtonRef}
-            onClick={() => setActiveButton("normal")}
-            className="flex items-center justify-center relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
+            onClick={() => handleDesignChange("normal")}
+            className="flex items-center justify-center relative z-20 w-fit rounded-l-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer bg-transparent"
           >
             <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
               {t("normal")}
@@ -99,8 +129,8 @@ export default function DesignToggle({ className }: DesignToggleProps) {
           </button>
           <button
             ref={wowButtonRef}
-            onClick={() => setActiveButton("wow")}
-            className="flex items-center justify-center relative z-20 w-fit rounded-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer"
+            onClick={() => handleDesignChange("wow")}
+            className="flex items-center justify-center relative z-20 w-fit rounded-r-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer bg-transparent"
           >
             <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
               {t("wow")}
@@ -116,7 +146,7 @@ export default function DesignToggle({ className }: DesignToggleProps) {
             variants={fadeInAnimation({ delay: 0.8, x: 30, scale: 0.9 })}
             ref={questionButtonRef}
             onClick={() => setIsPopupOpen(!isPopupOpen)}
-            className="relative flex items-center justify-center shrink-0 size-[53px] md:size-[55px] rounded-full cursor-pointer"
+            className="group relative flex items-center justify-center shrink-0 size-[53px] md:size-[55px] rounded-full cursor-pointer"
           >
             <div
               className="absolute z-10 inset-0 rounded-full pointer-events-none"
@@ -129,7 +159,8 @@ export default function DesignToggle({ className }: DesignToggleProps) {
                 maskComposite: "exclude",
               }}
             />
-            <span className="text-[32px] leading-[80%] uppercase text-guano-apes font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
+            <div className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(110deg,_rgba(255,181,230,0)_0%,_rgba(255,181,230,0.3)_50%,_rgba(255,181,230,0)_100%)] bg-[length:200%_100%] opacity-0 transition-opacity duration-500 ease-in-out animate-[shimmer_2.5s_linear_infinite] group-hover:opacity-100" />
+            <span className="relative z-20 text-[32px] leading-[80%] uppercase text-guano-apes font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
               ?
             </span>
           </motion.button>

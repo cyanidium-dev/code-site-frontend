@@ -347,7 +347,7 @@
         "title": "Landing page",
         "subtitle": "(single-page website)",
         "priceText": "from",
-        "price": "1000$",
+        "price": { "normal": "1000$", "wow": "1300$" },
         "description": "Suitable for startups, advertising campaigns, and niche testing. Great option for quick business launch.",
         "pros": [
           "Responsive layout (PC, tablet, mobile)",
@@ -373,7 +373,7 @@
         "title": "Corporate website",
         "subtitle": "(multi-page website)",
         "priceText": "from",
-        "price": "3000$",
+        "price": { "normal": "3000$", "wow": "4000$" },
         "description": "Suitable for companies that value presenting services, stories, and case studies. Helps build trust and find clients.",
         "pros": [
           "Up to 10 unique pages (Cases, Services, etc.)",
@@ -399,7 +399,7 @@
         "title": "E-commerce",
         "subtitle": "(e-commerce)",
         "priceText": "from",
-        "price": "5000$",
+        "price": { "normal": "5000$", "wow": "6500$" },
         "description": "Suitable for businesses with products and online sales. Full functionality for convenient management and sales growth.",
         "pros": [
           "Product catalog with categories",

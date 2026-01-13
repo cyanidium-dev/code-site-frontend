@@ -2,7 +2,10 @@ export interface Service {
   title: string;
   subtitle: string;
   priceText: string;
-  price: string;
+  price: {
+    normal: string;
+    wow: string;
+  };
   description: string;
   pros: string[];
   seeMore: string;

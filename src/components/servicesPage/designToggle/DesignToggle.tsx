@@ -3,6 +3,8 @@ import { useTranslations } from "next-intl";
 import { useState, useRef, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import DesignHintPopup from "./DesignHintPopup";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
 interface DesignToggleProps {
   className?: string;
@@ -68,7 +70,12 @@ export default function DesignToggle({ className }: DesignToggleProps) {
   return (
     <>
       <div className={twMerge("flex items-center gap-2 md:gap-8", className)}>
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInAnimation({ delay: 0.6, x: -30 })}
           ref={containerRef}
           className="relative flex items-center gap-2 bg-black/26 rounded-full backdrop-blur-[10px] p-1"
         >
@@ -99,9 +106,14 @@ export default function DesignToggle({ className }: DesignToggleProps) {
               {t("wow")}
             </span>
           </button>
-        </div>
+        </motion.div>
         <div className="relative">
-          <button
+          <motion.button
+            initial="hidden"
+            whileInView="visible"
+            exit="exit"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInAnimation({ delay: 0.8, x: 30, scale: 0.9 })}
             ref={questionButtonRef}
             onClick={() => setIsPopupOpen(!isPopupOpen)}
             className="relative flex items-center justify-center shrink-0 size-[53px] md:size-[55px] rounded-full cursor-pointer"
@@ -120,7 +132,7 @@ export default function DesignToggle({ className }: DesignToggleProps) {
             <span className="text-[32px] leading-[80%] uppercase text-guano-apes font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
               ?
             </span>
-          </button>
+          </motion.button>
           <DesignHintPopup
             isOpen={isPopupOpen}
             popupRef={popupRef}

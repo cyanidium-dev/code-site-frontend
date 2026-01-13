@@ -18,8 +18,12 @@ export default async function ExtraInfoList({ className }: ExtraInfoListProps) {
       <Container>
         <ExtraInfoListClient>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-            {extraInfo.map(info => (
-              <ExtraInfoCard key={info.title} extraInfo={info} />
+            {extraInfo.map((info, idx) => (
+              <ExtraInfoCard
+                key={info.title}
+                extraInfo={info}
+                delay={idx * 0.1}
+              />
             ))}
           </ul>
         </ExtraInfoListClient>

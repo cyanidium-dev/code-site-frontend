@@ -1,7 +1,17 @@
 import StarIcon from "@/components/shared/icons/StarIcon";
 import { ExtraInfo } from "@/types/service";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
 
-export default function ExtraInfoCard({ extraInfo }: { extraInfo: ExtraInfo }) {
+interface ExtraInfoCardProps {
+  extraInfo: ExtraInfo;
+  delay: number;
+}
+
+export default function ExtraInfoCard({
+  extraInfo,
+  delay,
+}: ExtraInfoCardProps) {
   const { title, description, infoList } = extraInfo;
 
   if (!infoList || !infoList.items || !Array.isArray(infoList.items)) {
@@ -9,7 +19,14 @@ export default function ExtraInfoCard({ extraInfo }: { extraInfo: ExtraInfo }) {
   }
 
   return (
-    <li className="relative px-3 py-6 lg:py-8 lg:px-5backdrop-blur-[37.9px] bg-black/26 rounded-[8px] flex flex-col h-full">
+    <motion.li
+      initial="hidden"
+      whileInView="visible"
+      exit="exit"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeInAnimation({ delay: delay + 0.1, y: 30 })}
+      className="relative px-3 py-6 lg:py-8 lg:px-5 backdrop-blur-[37.9px] bg-black/26 rounded-[8px] flex flex-col h-full"
+    >
       <div className="mb-8 lg:mb-11 px-3 flex-1 flex flex-col">
         <h3 className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold mb-4 lg:mb-6">
           {title}
@@ -18,7 +35,12 @@ export default function ExtraInfoCard({ extraInfo }: { extraInfo: ExtraInfo }) {
           {description}
         </p>
       </div>
-      <div
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        exit="exit"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeInAnimation({ y: 20, delay: 0.2 })}
         data-inner-card
         className="relative backdrop-blur-[37.9px] bg-black/26 rounded-[8px] px-5 py-6"
       >
@@ -36,7 +58,7 @@ export default function ExtraInfoCard({ extraInfo }: { extraInfo: ExtraInfo }) {
             </li>
           ))}
         </ul>
-      </div>
-    </li>
+      </motion.div>
+    </motion.li>
   );
 }

@@ -1,21 +1,16 @@
 import StarIcon from "@/components/shared/icons/StarIcon";
 import MainButton from "@/components/shared/buttons/MainButton";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import * as motion from "motion/react-client";
+import { fadeInAnimation } from "@/utils/animationVariants";
+import type { Service } from "@/types/service";
 
-interface Service {
-  title: string;
-  subtitle: string;
-  priceText: string;
-  price: string;
-  description: string;
-  pros: string[];
-  seeMore: string;
-  wantIt: string;
-  seeMoreLink?: string;
-  wantItLink?: string;
+interface ServiceCardProps {
+  service: Service;
+  delay: number;
 }
 
-export default function ServiceCard({ service }: { service: Service }) {
+export default function ServiceCard({ service, delay }: ServiceCardProps) {
   const {
     title,
     subtitle,
@@ -29,7 +24,14 @@ export default function ServiceCard({ service }: { service: Service }) {
     wantItLink,
   } = service;
   return (
-    <li className="relative group rounded-[8px] overflow-hidden p-8 pb-7 backdrop-blur-[37.9px] bg-black/26 flex flex-col h-full">
+    <motion.li
+      initial="hidden"
+      whileInView="visible"
+      exit="exit"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeInAnimation({ delay: delay + 0.1, y: 30 })}
+      className="relative group rounded-[8px] overflow-hidden p-8 pb-7 backdrop-blur-[37.9px] bg-black/26 flex flex-col h-full"
+    >
       <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
       <div
         className="absolute z-10 inset-0 rounded-[8px] pointer-events-none"
@@ -80,6 +82,6 @@ export default function ServiceCard({ service }: { service: Service }) {
           {wantIt}
         </MainButton>
       </div>
-    </li>
+    </motion.li>
   );
 }

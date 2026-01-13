@@ -5,6 +5,8 @@ import Container from "@/components/shared/container/Container";
 import TickIcon from "@/components/shared/icons/TickIcon";
 import FalseIcon from "@/components/shared/icons/FalseIcon";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import { fadeInAnimation } from "@/utils/animationVariants";
+import * as motion from "motion/react-client";
 
 interface ComparisonTableProps {
   className?: string;
@@ -49,8 +51,15 @@ export default async function ComparisonTable({
             <div className="relative pr-4 md:pr-6 lg:pr-8">
               <table className="min-w-full">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] relative after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                  <motion.tr
+                    initial="hidden"
+                    whileInView="visible"
+                    exit="exit"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={fadeInAnimation({ x: 20, delay: 0.2 })}
+                    className="border-b border-white/10"
+                  >
+                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                       <p className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold">
                         {comparisonTable.title}
                         <span className="block text-[12px] lg:text-[14px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
@@ -71,15 +80,23 @@ export default async function ComparisonTable({
                         </SecondaryButton>
                       </th>
                     ))}
-                  </tr>
+                  </motion.tr>
                 </thead>
                 <tbody className="text-[14px] leading-[122%]">
                   {comparisonTable.table.map((rowHeading, rowIndex) => (
-                    <tr
+                    <motion.tr
                       key={rowHeading}
+                      initial="hidden"
+                      whileInView="visible"
+                      exit="exit"
+                      viewport={{ once: true, amount: 0.2 }}
+                      variants={fadeInAnimation({
+                        x: 20,
+                        delay: 0.2 + rowIndex * 0.1,
+                      })}
                       className="border-b border-white/10 last:border-b-0"
                     >
-                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] relative after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                         <p>{rowHeading}</p>
                       </td>
                       {servicesList.map(service => {
@@ -101,16 +118,24 @@ export default async function ComparisonTable({
                           </td>
                         );
                       })}
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <SecondaryButton className="lg:hidden">
-          {comparisonTable.buttonText}
-        </SecondaryButton>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeInAnimation({ y: 20, delay: 0.2 })}
+        >
+          <SecondaryButton className="lg:hidden">
+            {comparisonTable.buttonText}
+          </SecondaryButton>
+        </motion.div>
       </Container>
     </section>
   );

@@ -2,6 +2,8 @@
 import { useTranslations } from "next-intl";
 import { RefObject, useEffect, useState } from "react";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
+import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 interface DesignHintPopupProps {
   isOpen: boolean;
@@ -70,64 +72,69 @@ export default function DesignHintPopup({
     };
   }, [isOpen, popupRef, questionButtonRef]);
 
-  if (!isOpen) return null;
-
   return (
-    <div
-      ref={popupRef}
-      className="absolute top-full mt-3 z-40 w-[calc(100vw-2rem)] max-w-[480px] bg-white rounded-[8px] shadow-lg"
-      style={{
-        left: position.left,
-        transform: position.transform,
-      }}
-    >
-      <div
-        className="absolute -top-2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white z-10"
-        style={{ left: pointerLeft, transform: "translateX(-50%)" }}
-      />
-      <div
-        className="absolute -top-[9px] w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-b-[7px] border-b-gray-300 z-0"
-        style={{ left: pointerLeft, transform: "translateX(-50%)" }}
-      />
-      <div className="p-4">
-        <h3 className="mb-4 font-actay text-[16px] md:text-[18px] leading-[125%] uppercase font-bold text-black">
-          {tHint("normal.title")}
-        </h3>
-        <div className="mb-4 pb-4 border-b border-black/10 flex flex-col gap-3">
-          {((tHint.raw("normal.description") as string[]) || []).map(
-            (text, index) => (
-              <p
-                key={index}
-                className="text-[12px] md:text-[14px] leading-[122%] text-light text-black"
-              >
-                {text}
-              </p>
-            )
-          )}
-        </div>
-        <h3 className="mb-4 font-actay text-[16px] md:text-[18px] leading-[125%] uppercase font-bold text-black">
-          {tHint("wow.title")}
-        </h3>
-        <div className="mb-6 flex flex-col gap-3">
-          {((tHint.raw("wow.description") as string[]) || []).map(
-            (text, index) => (
-              <p
-                key={index}
-                className="text-[12px] md:text-[14px] leading-[122%] text-light text-black"
-              >
-                {text}
-              </p>
-            )
-          )}
-        </div>
-        <SecondaryButton
-          variant="outline"
-          className="w-full max-w-[300px] mx-auto h-[48px] text-[12.8103px] leading-[120%] uppercase font-bold"
-          onClick={onClose}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          ref={popupRef}
+          initial={{ opacity: 0, scale: 0.95, y: -10, x: "-50%" }}
+          animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}
+          exit={{ opacity: 0, scale: 0.95, y: -10, x: "-50%" }}
+          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          className="absolute top-full mt-3 z-40 w-[calc(100vw-2rem)] max-w-[480px] bg-white rounded-[8px] shadow-lg"
+          style={{
+            left: position.left,
+          }}
         >
-          {tHint("lookMore")}
-        </SecondaryButton>
-      </div>
-    </div>
+          <div
+            className="absolute -top-2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white z-10"
+            style={{ left: pointerLeft, transform: "translateX(-50%)" }}
+          />
+          <div
+            className="absolute -top-[9px] w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-b-[7px] border-b-gray-300 z-0"
+            style={{ left: pointerLeft, transform: "translateX(-50%)" }}
+          />
+          <div className="p-4">
+            <h3 className="mb-4 font-actay text-[16px] md:text-[18px] leading-[125%] uppercase font-bold text-black">
+              {tHint("normal.title")}
+            </h3>
+            <div className="mb-4 pb-4 border-b border-black/10 flex flex-col gap-3">
+              {((tHint.raw("normal.description") as string[]) || []).map(
+                (text, index) => (
+                  <p
+                    key={index}
+                    className="text-[12px] md:text-[14px] leading-[122%] text-light text-black"
+                  >
+                    {text}
+                  </p>
+                )
+              )}
+            </div>
+            <h3 className="mb-4 font-actay text-[16px] md:text-[18px] leading-[125%] uppercase font-bold text-black">
+              {tHint("wow.title")}
+            </h3>
+            <div className="mb-6 flex flex-col gap-3">
+              {((tHint.raw("wow.description") as string[]) || []).map(
+                (text, index) => (
+                  <p
+                    key={index}
+                    className="text-[12px] md:text-[14px] leading-[122%] text-light text-black"
+                  >
+                    {text}
+                  </p>
+                )
+              )}
+            </div>
+            <SecondaryButton
+              variant="outline"
+              className="w-full max-w-[300px] mx-auto h-[48px] text-[12.8103px] leading-[120%] uppercase font-bold"
+              onClick={onClose}
+            >
+              {tHint("lookMore")}
+            </SecondaryButton>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

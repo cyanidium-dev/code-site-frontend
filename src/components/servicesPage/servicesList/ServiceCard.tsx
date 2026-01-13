@@ -58,9 +58,9 @@ export default function ServiceCard({
           {title}
           <span className="block">{subtitle}</span>
         </h3>
-        <p className="flex gap-3 items-end font-actay text-[22px] md:text-[18px] xl:text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
+        <p className="flex items-end font-actay text-[22px] md:text-[18px] xl:text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
           {priceText}
-          <span className="block font-guano-apes text-[60px] md:text-[46px] xl:text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
+          <span className="pl-3 block font-guano-apes text-[60px] md:text-[46px] xl:text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
             {displayPrice}
           </span>
         </p>

@@ -317,8 +317,154 @@
     }
   },
   "servicesPage": {
-    "title": "Page Under Development",
-    "description": "This page is under development. Information about our services will appear here soon."
+    "title": "Simple and transparent website development prices",
+    "description": "Choose the format that best suits your business.",
+    "designToggle": {
+      "normal": "Standard design",
+      "wow": "Wow design"
+    },
+    "designHint": {
+      "normal": {
+        "title": "Standard design",
+        "description": [
+          "This solution is for companies that need to quickly launch a website without complex visual effects.",
+          "The main goal is simplicity and cost savings while maintaining functionality.",
+          "Suitable for e-commerce stores and projects where simplicity, speed, and cost-effectiveness of development are important."
+        ]
+      },
+      "wow": {
+        "title": "Wow design",
+        "description": [
+          "A creative solution focused on attracting attention and creating a wow effect.",
+          "The main goal is to stand out from competitors and generate interest from the audience.",
+          "Suitable for web studios, production companies, creative agencies, arbitrage teams, crypto and IT projects."
+        ]
+      },
+      "lookMore": "Learn more about wow design"
+    },
+    "servicesList": [
+      {
+        "title": "Landing page",
+        "subtitle": "(single-page website)",
+        "priceText": "from",
+        "price": "1000$",
+        "description": "Suitable for startups, advertising campaigns, and niche testing. Great option for quick business launch.",
+        "pros": [
+          "Responsive layout (PC, tablet, mobile)",
+          "SEO structure optimization",
+          "Speed optimization",
+          "Integration of contact forms and analytics",
+          "CRM integration (on request)"
+        ],
+        "seeMore": "View details",
+        "wantIt": "I want a landing page",
+        "comparisonFeatures": {
+          "0": { "value": true },
+          "1": { "value": 1 },
+          "2": { "value": false },
+          "3": { "value": false },
+          "4": { "value": true, "text": "(on request)" },
+          "5": { "value": true },
+          "6": { "value": false },
+          "7": { "value": "basic" }
+        }
+      },
+      {
+        "title": "Corporate website",
+        "subtitle": "(multi-page website)",
+        "priceText": "from",
+        "price": "3000$",
+        "description": "Suitable for companies that value presenting services, stories, and case studies. Helps build trust and find clients.",
+        "pros": [
+          "Up to 10 unique pages (Cases, Services, etc.)",
+          "Responsive design for all devices",
+          "Blog/news for promotion",
+          "Integration with maps and messengers",
+          "Admin panel for content editing"
+        ],
+        "seeMore": "View details",
+        "wantIt": "I want a corporate website",
+        "comparisonFeatures": {
+          "0": { "value": true },
+          "1": { "value": "up to 10" },
+          "2": { "value": true },
+          "3": { "value": true, "text": "news, articles" },
+          "4": { "value": true, "text": "(on request)" },
+          "5": { "value": true },
+          "6": { "value": false },
+          "7": { "value": "extended" }
+        }
+      },
+      {
+        "title": "E-commerce",
+        "subtitle": "(e-commerce)",
+        "priceText": "from",
+        "price": "5000$",
+        "description": "Suitable for businesses with products and online sales. Full functionality for convenient management and sales growth.",
+        "pros": [
+          "Product catalog with categories",
+          "Search and filters",
+          "Shopping cart and checkout",
+          "Payment systems integration (cards, PayPal, crypto)",
+          "CRM/ERP integration"
+        ],
+        "seeMore": "View details",
+        "wantIt": "I want an e-commerce store",
+        "comparisonFeatures": {
+          "0": { "value": true },
+          "1": { "value": "up to 15" },
+          "2": { "value": true, "text": "products, categories" },
+          "3": { "value": true, "text": "(on request)" },
+          "4": { "value": true },
+          "5": { "value": true },
+          "6": { "value": true },
+          "7": { "value": "extended 24/7" }
+        }
+      }
+    ],
+    "comparisonTable": {
+      "title": "Service Comparison",
+      "description": "Service / Feature",
+      "table": [
+        "Custom design",
+        "Number of pages",
+        "Admin panel for editing",
+        "Unlimited adding of posts/products through admin",
+        "SEO and loading speed",
+        "Contact forms + Telegram bot integration",
+        "Sales functions (cart, payment, delivery)",
+        "Support and warranty"
+      ],
+      "buttonText": "I want a website"
+    },
+    "extraInfo": [
+      {
+        "title": "Integration of any functions into your website",
+        "description": "Your website is not limited to a standard set of features. We can add any tools that will be useful for your business:",
+        "infoList": {
+          "title": "What can be added:",
+          "items": [
+            "online payment and shopping cart even in a landing page;",
+            "blog or news section;",
+            "contact forms with integration to CRM or Telegram;",
+            "widgets, maps, chats, and other services."
+          ]
+        }
+      },
+      {
+        "title": "Custom solutions for business needs",
+        "description": "We create digital products tailored to company tasks and business processes, allowing project development without limitations.",
+        "infoList": {
+          "title": "What we can develop:",
+          "items": [
+            "CRM system tailored to company processes;",
+            "Telegram bot for automation;",
+            "internal panels and services for employees;",
+            "complex integrations with external systems."
+          ]
+        }
+      }
+    ]
   },
   "notFoundPage": {
     "title": "404",

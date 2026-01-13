@@ -7,6 +7,7 @@ import FalseIcon from "@/components/shared/icons/FalseIcon";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import * as motion from "motion/react-client";
+import ComparisonTableDecorations from "./ComparisonTableDecorations";
 
 interface ComparisonTableProps {
   className?: string;
@@ -44,7 +45,8 @@ export default async function ComparisonTable({
   };
 
   return (
-    <section className={twMerge(className)}>
+    <section className={twMerge(className, "relative")}>
+      <ComparisonTableDecorations />
       <Container>
         <div className="relative -mx-4 md:-mx-6 lg:-mx-8 mb-10 lg:mb-0">
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent scrollbar-thumb-rounded-full">
@@ -59,7 +61,7 @@ export default async function ComparisonTable({
                     variants={fadeInAnimation({ x: 20, delay: 0.2 })}
                     className="border-b border-white/10"
                   >
-                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black md:bg-transparent w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                       <p className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold">
                         {comparisonTable.title}
                         <span className="block text-[12px] lg:text-[14px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
@@ -96,7 +98,7 @@ export default async function ComparisonTable({
                       })}
                       className="border-b border-white/10 last:border-b-0"
                     >
-                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black md:bg-transparent w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                         <p>{rowHeading}</p>
                       </td>
                       {servicesList.map(service => {

@@ -3,6 +3,7 @@ import ServiceCard from "./ServiceCard";
 import { Service } from "@/types/service";
 import { twMerge } from "tailwind-merge";
 import Container from "@/components/shared/container/Container";
+import ServicesDecorations from "./ServicesDecorations";
 
 interface ServicesListProps {
   className?: string;
@@ -17,9 +18,10 @@ export default async function ServicesList({
 }: ServicesListProps) {
   const t = await getTranslations("servicesPage");
   return (
-    <section className={twMerge(className)}>
+    <section className={twMerge(className, "relative")}>
+      <ServicesDecorations />
       <Container>
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-9 items-stretch">
+        <ul className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-9 items-stretch">
           {servicesList.map((service, idx) => (
             <ServiceCard
               key={service.title}

@@ -2,15 +2,18 @@ import StarIcon from "@/components/shared/icons/StarIcon";
 import { ExtraInfo } from "@/types/service";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import ExtraInfoCardDecorations from "./ExtraInfoCardDecorations";
 
 interface ExtraInfoCardProps {
   extraInfo: ExtraInfo;
   delay: number;
+  variant?: "odd" | "even";
 }
 
 export default function ExtraInfoCard({
   extraInfo,
   delay,
+  variant,
 }: ExtraInfoCardProps) {
   const { title, description, infoList } = extraInfo;
 
@@ -25,8 +28,9 @@ export default function ExtraInfoCard({
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeInAnimation({ delay: delay + 0.1, y: 30 })}
-      className="relative px-3 py-6 lg:py-8 lg:px-5 backdrop-blur-[37.9px] bg-black/26 rounded-[8px] flex flex-col h-full"
+      className="relative overflow-hidden px-3 py-6 lg:py-8 lg:px-5 backdrop-blur-[37.9px] bg-black/26 rounded-[8px] flex flex-col h-full"
     >
+      {variant && <ExtraInfoCardDecorations variant={variant} />}
       <div className="mb-8 lg:mb-11 px-3 flex-1 flex flex-col">
         <h3 className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold mb-4 lg:mb-6">
           {title}

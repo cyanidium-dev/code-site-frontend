@@ -1,6 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, startTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import DesignHintPopup from "./DesignHintPopup";
@@ -10,11 +10,13 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 interface DesignToggleProps {
   className?: string;
   designType: "normal" | "wow";
+  onDesignChange?: (type: "normal" | "wow") => void;
 }
 
 export default function DesignToggle({
   className,
   designType: initialDesignType,
+  onDesignChange,
 }: DesignToggleProps) {
   const t = useTranslations("servicesPage.designToggle");
   const router = useRouter();
@@ -30,14 +32,10 @@ export default function DesignToggle({
   const popupRef = useRef<HTMLDivElement>(null);
   const questionButtonRef = useRef<HTMLButtonElement>(null);
 
+  // Sync with prop changes
   useEffect(() => {
-    const currentDesign = searchParams.get("design");
-    if (currentDesign === "wow") {
-      setActiveButton("wow");
-    } else {
-      setActiveButton("normal");
-    }
-  }, [searchParams]);
+    setActiveButton(initialDesignType);
+  }, [initialDesignType]);
 
   useEffect(() => {
     const updateBackground = () => {
@@ -65,14 +63,20 @@ export default function DesignToggle({
   }, [activeButton]);
 
   const handleDesignChange = (type: "normal" | "wow") => {
+    // Update local state immediately for instant UI feedback
     setActiveButton(type);
-    const params = new URLSearchParams(searchParams.toString());
-    if (type === "wow") {
-      params.set("design", "wow");
-    } else {
-      params.delete("design");
-    }
-    router.push(`?${params.toString()}`, { scroll: false });
+    // Notify parent component
+    onDesignChange?.(type);
+    // Update URL in a transition to avoid blocking the UI
+    startTransition(() => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (type === "wow") {
+        params.set("design", "wow");
+      } else {
+        params.delete("design");
+      }
+      router.replace(`?${params.toString()}`, { scroll: false });
+    });
   };
 
   useEffect(() => {

@@ -27,7 +27,7 @@ export default function ServicesDecorations() {
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       <motion.div
         style={{ y: fastY }}
-        className="absolute top-[-248px] md:top-[-355px] right-[calc(50%+55px)] md:right-[calc(50%+437px)] w-[225px] md:w-[325px] h-auto aspect-[225/229]"
+        className="absolute top-[-180px] md:top-[-185px] right-[calc(50%+55px)] md:right-[calc(50%+437px)] w-[225px] md:w-[325px] h-auto aspect-[225/229]"
       >
         <motion.div
           initial="hidden"
@@ -48,7 +48,7 @@ export default function ServicesDecorations() {
       </motion.div>
       <motion.div
         style={{ y: fastY }}
-        className="hidden md:block absolute top-[-366px] left-[calc(50%+428px)] w-[350px] h-auto aspect-[350/352]"
+        className="hidden md:block absolute top-[-266px] left-[calc(50%+428px)] w-[350px] h-auto aspect-[350/352]"
       >
         <motion.div
           initial="hidden"
@@ -120,11 +120,11 @@ export default function ServicesDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute -z-20 lg:-z-20 top-[19px] md:top-[-135px] right-[calc(50%+60px)] md:right-[calc(50%+573px)] w-[70%] md:w-[295px] h-[259px] md:h-[347px] rounded-full
-       bg-pink-bright/50 md:bg-pink-bright supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className="absolute -z-20 lg:-z-20 top-[100px] md:top-[-35px] right-[calc(50%+60px)] md:right-[calc(50%+573px)] w-[70%] md:w-[295px] h-[259px] md:h-[347px] rounded-full
+       bg-pink-bright/30 md:bg-pink-bright supports-[backdrop-filter]:blur-[164px] will-change-transform"
       />
       <div
-        className="absolute -z-10 top-[99px] md:top-[-689px] left-1/2 -translate-x-1/2 w-[180%] md:w-[100%] h-[408px] md:h-[532px] rounded-full
+        className="absolute -z-10 top-[180px] md:top-[-689px] left-1/2 -translate-x-1/2 w-[180%] md:w-[100%] h-[408px] md:h-[532px] rounded-full
        bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
       />
       <div

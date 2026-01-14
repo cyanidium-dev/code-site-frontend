@@ -160,7 +160,7 @@ export default function DesignToggle({
               }}
             />
             <div className="pointer-events-none absolute inset-0 rounded-full bg-[linear-gradient(110deg,_rgba(255,181,230,0)_0%,_rgba(255,181,230,0.3)_50%,_rgba(255,181,230,0)_100%)] bg-[length:200%_100%] opacity-0 transition-opacity duration-500 ease-in-out animate-[shimmer_2.5s_linear_infinite] group-hover:opacity-100" />
-            <span className="relative z-20 text-[32px] leading-[80%] uppercase text-guano-apes font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
+            <span className="relative z-20 text-[32px] leading-[80%] uppercase font-guano-apes font-medium text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
               ?
             </span>
           </motion.button>

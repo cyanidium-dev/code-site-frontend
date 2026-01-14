@@ -37,6 +37,9 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   const [isNavigating, setIsNavigating] = useState(false);
   const prevKeyRef = useRef(key);
   const navigationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hideLoaderTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const absoluteFallbackTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const navigationStartedRef = useRef(false);
 
   useEffect(() => {
     const handleLinkClick = (e: MouseEvent) => {
@@ -72,17 +75,31 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       }
 
       setIsNavigating(true);
+      navigationStartedRef.current = false;
 
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
       }
+      if (absoluteFallbackTimeoutRef.current) {
+        clearTimeout(absoluteFallbackTimeoutRef.current);
+      }
 
       // Fallback: hide loader if navigation doesn't occur (cancelled/failed)
       navigationTimeoutRef.current = setTimeout(() => {
-        if (key === prevKeyRef.current) {
+        if (key === prevKeyRef.current && !navigationStartedRef.current) {
           setIsNavigating(false);
         }
-      }, 2000);
+      }, 5000);
+
+      // Absolute fallback: always hide loader after max time, even if animation is stuck
+      absoluteFallbackTimeoutRef.current = setTimeout(() => {
+        setIsNavigating(false);
+        navigationStartedRef.current = false;
+        if (hideLoaderTimeoutRef.current) {
+          clearTimeout(hideLoaderTimeoutRef.current);
+          hideLoaderTimeoutRef.current = null;
+        }
+      }, 3000);
     };
 
     document.addEventListener("click", handleLinkClick, true);
@@ -91,6 +108,12 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
       }
+      if (hideLoaderTimeoutRef.current) {
+        clearTimeout(hideLoaderTimeoutRef.current);
+      }
+      if (absoluteFallbackTimeoutRef.current) {
+        clearTimeout(absoluteFallbackTimeoutRef.current);
+      }
     };
   }, [key]);
 
@@ -98,27 +121,82 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (key !== prevKeyRef.current) {
       setIsNavigating(true);
+      navigationStartedRef.current = true;
       prevKeyRef.current = key;
 
       if (navigationTimeoutRef.current) {
         clearTimeout(navigationTimeoutRef.current);
         navigationTimeoutRef.current = null;
       }
+
+      // Clear absolute fallback since navigation succeeded
+      if (absoluteFallbackTimeoutRef.current) {
+        clearTimeout(absoluteFallbackTimeoutRef.current);
+        absoluteFallbackTimeoutRef.current = null;
+      }
+
+      if (hideLoaderTimeoutRef.current) {
+        clearTimeout(hideLoaderTimeoutRef.current);
+      }
+      // Hide loader when pathname changes - ensure it always executes
+      hideLoaderTimeoutRef.current = setTimeout(() => {
+        setIsNavigating(false);
+        navigationStartedRef.current = false;
+        hideLoaderTimeoutRef.current = null;
+      }, 100);
+
+      // Additional safety: ensure loader is hidden even if hideLoaderTimeout gets cleared
+      // This handles cases where animation gets stuck
+      const safetyTimeoutRef = { current: null as NodeJS.Timeout | null };
+      safetyTimeoutRef.current = setTimeout(() => {
+        setIsNavigating(false);
+        navigationStartedRef.current = false;
+        if (hideLoaderTimeoutRef.current) {
+          clearTimeout(hideLoaderTimeoutRef.current);
+          hideLoaderTimeoutRef.current = null;
+        }
+      }, 2000);
+
+      return () => {
+        if (safetyTimeoutRef.current) {
+          clearTimeout(safetyTimeoutRef.current);
+        }
+      };
     }
   }, [key]);
 
   const handleAnimationStart = (definition: string) => {
     if (definition === "exit") {
       setIsNavigating(true);
+      navigationStartedRef.current = true;
+
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+        navigationTimeoutRef.current = null;
+      }
+      // Clear absolute fallback since animation started
+      if (absoluteFallbackTimeoutRef.current) {
+        clearTimeout(absoluteFallbackTimeoutRef.current);
+        absoluteFallbackTimeoutRef.current = null;
+      }
     }
   };
 
   const handleEnterComplete = () => {
+    navigationStartedRef.current = false;
     setIsNavigating(false);
 
     if (navigationTimeoutRef.current) {
       clearTimeout(navigationTimeoutRef.current);
       navigationTimeoutRef.current = null;
+    }
+    if (hideLoaderTimeoutRef.current) {
+      clearTimeout(hideLoaderTimeoutRef.current);
+      hideLoaderTimeoutRef.current = null;
+    }
+    if (absoluteFallbackTimeoutRef.current) {
+      clearTimeout(absoluteFallbackTimeoutRef.current);
+      absoluteFallbackTimeoutRef.current = null;
     }
   };
 

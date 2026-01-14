@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, createContext } from "react";
+import { useLayoutEffect, useState, createContext } from "react";
 import LottieSplashScreen from "./LottieSplashScreen";
 
 export const SplashContext = createContext<{
@@ -12,15 +12,17 @@ export default function SplashGate({
 }: {
   children: React.ReactNode;
 }) {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState<boolean | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const alreadyPlayed = sessionStorage.getItem("splashPlayed");
 
     if (alreadyPlayed) {
       setShowSplash(false);
       return;
     }
+
+    setShowSplash(true);
 
     const timer = setTimeout(() => {
       sessionStorage.setItem("splashPlayed", "true");
@@ -33,8 +35,11 @@ export default function SplashGate({
   }, []);
 
   return (
-    <SplashContext.Provider value={{ isSplashVisible: showSplash }}>
-      <LottieSplashScreen visible={showSplash} />
+    <SplashContext.Provider value={{ isSplashVisible: showSplash ?? false }}>
+      {(showSplash === null || showSplash === true) && (
+        <div className="fixed inset-0 no-doc-scroll z-[9998] bg-[#020418]" />
+      )}
+      {showSplash === true && <LottieSplashScreen visible={true} />}
       {children}
     </SplashContext.Provider>
   );

@@ -12,7 +12,7 @@ export default function LottieSplashScreen({
   visible,
 }: LottieSplashScreenProps) {
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {visible && (
         <motion.div
           key="splash-screen"

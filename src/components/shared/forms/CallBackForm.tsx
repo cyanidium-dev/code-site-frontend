@@ -5,6 +5,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { CallBackValidation } from "@/schemas/CallbackValidation";
+import { translateFormSource } from "@/utils/translateFormSource";
 
 import CustomizedInput from "../formComponents/CustomizedInput";
 import SubmitButton from "../formComponents/SubmitButton";
@@ -22,6 +23,7 @@ interface CallBackFormProps {
   buttonVariant?: "pink" | "blue" | "gradient" | "white";
   buttonText?: string;
   inputVariant?: "black" | "gradient";
+  source?: string;
 }
 
 export default function CallBackForm({
@@ -32,6 +34,7 @@ export default function CallBackForm({
   buttonVariant = "gradient",
   buttonText,
   inputVariant,
+  source,
 }: CallBackFormProps) {
   const t = useTranslations("forms");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,10 +51,14 @@ export default function CallBackForm({
     formikHelpers: FormikHelpers<ValuesCallBackFormType>
   ) => {
     const { resetForm } = formikHelpers;
-    const data =
+    let data =
       `<b>Форма "Залиш свої контакти"</b>\n` +
       `<b>Ім'я:</b> ${values.name.trim()}\n` +
       `<b>Email:</b> ${values.phone.trim()}\n`;
+    if (source) {
+      const translatedSource = translateFormSource(source);
+      data += `<b>Джерело:</b> ${translatedSource}\n`;
+    }
     try {
       setIsLoading(true);
       setIsError(false);

@@ -5,6 +5,7 @@ import MainButton from "@/components/shared/buttons/MainButton";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import type { Service } from "@/types/service";
+import ClientApplicationWrapper from "@/components/shared/clientApplication/ClientApplicationWrapper";
 
 interface ServiceCardProps {
   service: Service;
@@ -83,12 +84,14 @@ export default function ServiceCard({
         >
           {seeMore}
         </SecondaryButton> */}
-        <MainButton
-          variant="pink"
-          className="h-12 text-[12.8103px] leading-[123%] uppercase font-bold"
-        >
-          {wantIt}
-        </MainButton>
+        <ClientApplicationWrapper source={`service-card-${title}`}>
+          <MainButton
+            variant="pink"
+            className="h-12 text-[12.8103px] leading-[123%] uppercase font-bold"
+          >
+            {wantIt}
+          </MainButton>
+        </ClientApplicationWrapper>
       </div>
     </motion.li>
   );

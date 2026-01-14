@@ -4,6 +4,7 @@ import { RefObject, useEffect, useState } from "react";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
+import ClientApplicationWrapper from "@/components/shared/clientApplication/ClientApplicationWrapper";
 
 interface DesignHintPopupProps {
   isOpen: boolean;
@@ -125,13 +126,15 @@ export default function DesignHintPopup({
                 )
               )}
             </div>
-            <SecondaryButton
-              variant="outline"
-              className="w-full max-w-[300px] mx-auto h-[48px] text-[12.8103px] leading-[120%] uppercase font-bold"
-              onClick={onClose}
-            >
-              {tHint("lookMore")}
-            </SecondaryButton>
+            <ClientApplicationWrapper source="wow-design-learn-more">
+              <SecondaryButton
+                variant="outline"
+                className="w-full max-w-[300px] mx-auto h-[48px] text-[12.8103px] leading-[120%] uppercase font-bold"
+                onClick={onClose}
+              >
+                {tHint("lookMore")}
+              </SecondaryButton>
+            </ClientApplicationWrapper>
           </div>
         </motion.div>
       )}

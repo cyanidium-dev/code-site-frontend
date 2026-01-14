@@ -8,6 +8,7 @@ import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import * as motion from "motion/react-client";
 import ComparisonTableDecorations from "./ComparisonTableDecorations";
+import ClientApplicationWrapper from "@/components/shared/clientApplication/ClientApplicationWrapper";
 
 interface ComparisonTableProps {
   className?: string;
@@ -49,7 +50,7 @@ export default async function ComparisonTable({
       <ComparisonTableDecorations />
       <Container>
         <div className="relative -mx-4 md:-mx-6 lg:-mx-8 mb-10 lg:mb-0">
-          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thin-mobile scrollbar-thumb-white/20 scrollbar-track-transparent scrollbar-thumb-rounded-full">
             <div className="relative pr-4 md:pr-6 lg:pr-8">
               <table className="min-w-full">
                 <thead>
@@ -77,9 +78,13 @@ export default async function ComparisonTable({
                         <p className="font-actay text-[12px] leading-[125%] uppercase font-bold lg:text-left mb-3">
                           {service.title}
                         </p>
-                        <SecondaryButton className="hidden lg:block w-full h-[39px] text-[12px] leading-[123%] uppercase font-bold">
-                          {service.wantIt}
-                        </SecondaryButton>
+                        <ClientApplicationWrapper
+                          source={`comparison-table-header-${service.title}`}
+                        >
+                          <SecondaryButton className="hidden lg:block w-full h-[39px] text-[12px] leading-[123%] uppercase font-bold">
+                            {service.wantIt}
+                          </SecondaryButton>
+                        </ClientApplicationWrapper>
                       </th>
                     ))}
                   </motion.tr>
@@ -134,9 +139,11 @@ export default async function ComparisonTable({
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInAnimation({ y: 20, delay: 0.2 })}
         >
-          <SecondaryButton className="lg:hidden">
-            {comparisonTable.buttonText}
-          </SecondaryButton>
+          <ClientApplicationWrapper source="comparison-table-mobile">
+            <SecondaryButton className="lg:hidden">
+              {comparisonTable.buttonText}
+            </SecondaryButton>
+          </ClientApplicationWrapper>
         </motion.div>
       </Container>
     </section>

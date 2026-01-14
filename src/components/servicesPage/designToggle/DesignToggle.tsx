@@ -123,7 +123,7 @@ export default function DesignToggle({
             onClick={() => handleDesignChange("normal")}
             className="flex items-center justify-center relative z-20 w-fit rounded-l-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer bg-transparent"
           >
-            <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
+            <span className="font-actay text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
               {t("normal")}
             </span>
           </button>
@@ -132,7 +132,7 @@ export default function DesignToggle({
             onClick={() => handleDesignChange("wow")}
             className="flex items-center justify-center relative z-20 w-fit rounded-r-full px-[15px] py-4 md:px-6 transition-colors duration-300 cursor-pointer bg-transparent"
           >
-            <span className="text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
+            <span className="font-actay text-[10px] md:text-[12px] leading-[120%] uppercase text-white font-bold whitespace-nowrap">
               {t("wow")}
             </span>
           </button>

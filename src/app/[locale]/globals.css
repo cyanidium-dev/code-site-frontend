@@ -387,4 +387,19 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Thinner horizontal scrollbar on mobile */
+  .scrollbar-thin-mobile::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .scrollbar-thin-mobile::-webkit-scrollbar {
+      height: 6px;
+    }
+  }
+
+  .scrollbar-thin-mobile {
+    scrollbar-width: thin;
+  }
 }

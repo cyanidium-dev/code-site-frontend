@@ -47,7 +47,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: fastY }}
-        className="absolute bottom-[-16px] md:bottom-[27px] md:-z-30 right-[calc(50%+23px)] md:right-[calc(50%+404px)] w-[188px] md:w-[299px] h-auto aspect-[188/164]"
+        className="absolute bottom-[-16px] md:bottom-[27px] md:-z-10 right-[calc(50%+23px)] md:right-[calc(50%+404px)] w-[188px] md:w-[299px] h-auto aspect-[188/164]"
       >
         <motion.div
           initial="hidden"
@@ -68,7 +68,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: slowY }}
-        className="absolute bottom-[188px] md:bottom-[234px] md:-z-30 right-[calc(100%-32px)] md:right-[calc(100%-87px)] w-[56px] md:w-[116px] h-auto aspect-[56/52]"
+        className="absolute bottom-[188px] md:bottom-[204px] md:-z-30 right-[calc(100%-32px)] md:right-[calc(50%+553px)] w-[56px] md:w-[116px] h-auto aspect-[56/52]"
       >
         <motion.div
           initial="hidden"
@@ -89,7 +89,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: mediumY }}
-        className="absolute bottom-[212px] md:bottom-[316px] md:-z-30 right-[calc(50%+104px)] md:right-[calc(50%+478px)] w-[74px] md:w-[170px] h-auto aspect-[74/67]"
+        className="absolute bottom-[212px] md:bottom-[286px] md:-z-30 right-[calc(50%+104px)] md:right-[calc(50%+478px)] w-[74px] md:w-[170px] h-auto aspect-[74/67]"
       >
         <motion.div
           initial="hidden"
@@ -113,7 +113,7 @@ export default function ExtraInfoDecorations() {
        bg-pink-bright/50 supports-[backdrop-filter]:blur-[164px] will-change-transform"
       />
       <div
-        className="absolute -z-10 md:-z-20 top-[47px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
+        className="absolute -z-10 md:-z-20 top-[0px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
        bg-black supports-[backdrop-filter]:blur-[47.5px] will-change-transform"
       />
     </div>

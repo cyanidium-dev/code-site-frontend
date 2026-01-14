@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { NavigationContext } from "../pageTransitionEffect/PageTransitionEffect";
 import { SplashContext } from "../splashScreen/SplashGate";
 import PageLoader from "./PageLoader";
@@ -9,9 +9,24 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function NavigationLoader() {
   const { isNavigating } = useContext(NavigationContext);
   const { isSplashVisible } = useContext(SplashContext);
+  const [shouldUseBlur, setShouldUseBlur] = useState(true);
 
   // Don't show navigation loader while splash is visible
   const shouldShow = isNavigating && !isSplashVisible;
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const hasLowMemory =
+      // @ts-ignore - navigator.deviceMemory is not in all browsers
+      navigator.deviceMemory && navigator.deviceMemory < 4;
+
+    const isMobile = window.innerWidth < 768;
+
+    setShouldUseBlur(!prefersReducedMotion && !hasLowMemory && !isMobile);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -23,7 +38,14 @@ export default function NavigationLoader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[9998] bg-black/44 backdrop-blur-sm"
+            className={`fixed inset-0 z-[9998] bg-black/44 ${
+              shouldUseBlur ? "backdrop-blur-sm" : ""
+            }`}
+            style={{
+              willChange: "opacity",
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+            }}
           />
           <motion.div
             key="navigation-loader"
@@ -32,6 +54,11 @@ export default function NavigationLoader() {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
+            style={{
+              willChange: "opacity, transform",
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+            }}
           >
             <PageLoader size={120} color="white" />
           </motion.div>

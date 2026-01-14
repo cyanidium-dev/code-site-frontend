@@ -1,6 +1,18 @@
 /* PageLoader Styles */
+.page-loader {
+  transform: translateZ(0);
+  will-change: transform;
+  contain: layout style paint;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
 .page-loader__ring {
   animation: pageLoaderRingA 2s linear infinite;
+  transform: translateZ(0);
+  will-change: stroke-dasharray, stroke-dashoffset, stroke-width;
+  contain: layout style paint;
+  backface-visibility: hidden;
 }
 
 .page-loader__ring--a {

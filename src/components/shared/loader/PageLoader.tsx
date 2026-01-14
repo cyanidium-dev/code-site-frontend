@@ -16,6 +16,10 @@ export default function PageLoader({
   return (
     <div
       className={twMerge(clsx("flex items-center justify-center"), className)}
+      style={{
+        willChange: "transform",
+        transform: "translateZ(0)",
+      }}
     >
       <svg
         viewBox="0 0 240 240"
@@ -23,6 +27,7 @@ export default function PageLoader({
         height={size}
         className="page-loader"
         style={{ color }}
+        shapeRendering="geometricPrecision"
       >
         <circle
           className="page-loader__ring page-loader__ring--a"

@@ -47,7 +47,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: fastY }}
-        className="absolute bottom-[-16px] md:bottom-[27px] md:-z-10 right-[calc(50%+23px)] md:right-[calc(50%+404px)] w-[188px] md:w-[299px] h-auto aspect-[188/164]"
+        className="absolute bottom-[-16px] md:bottom-[27px] md:-z-10 right-[calc(50%+23px)] md:right-[calc(50%+302px)] xl:right-[calc(50%+404px)] w-[188px] md:w-[299px] h-auto aspect-[188/164]"
       >
         <motion.div
           initial="hidden"
@@ -68,7 +68,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: slowY }}
-        className="absolute bottom-[188px] md:bottom-[204px] md:-z-30 right-[calc(100%-32px)] md:right-[calc(50%+553px)] w-[56px] md:w-[116px] h-auto aspect-[56/52]"
+        className="absolute bottom-[188px] md:bottom-[204px] md:-z-30 right-[calc(100%-32px)] md:right-[calc(50%+453px)] xl:right-[calc(50%+553px)] w-[56px] md:w-[116px] h-auto aspect-[56/52]"
       >
         <motion.div
           initial="hidden"
@@ -89,7 +89,7 @@ export default function ExtraInfoDecorations() {
       </motion.div>
       <motion.div
         style={{ y: mediumY }}
-        className="absolute bottom-[212px] md:bottom-[286px] md:-z-30 right-[calc(50%+104px)] md:right-[calc(50%+478px)] w-[74px] md:w-[170px] h-auto aspect-[74/67]"
+        className="absolute bottom-[212px] md:bottom-[286px] md:-z-30 right-[calc(50%+104px)] md:right-[calc(50%+387px)] xl:right-[calc(50%+478px)] w-[74px] md:w-[170px] h-auto aspect-[74/67]"
       >
         <motion.div
           initial="hidden"

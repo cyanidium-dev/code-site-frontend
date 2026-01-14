@@ -1,7 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import LottieSplashScreen from "./LottieSplashScreen";
+
+export const SplashContext = createContext<{
+  isSplashVisible: boolean;
+}>({ isSplashVisible: true });
 
 export default function SplashGate({
   children,
@@ -29,9 +33,9 @@ export default function SplashGate({
   }, []);
 
   return (
-    <>
+    <SplashContext.Provider value={{ isSplashVisible: showSplash }}>
       <LottieSplashScreen visible={showSplash} />
       {children}
-    </>
+    </SplashContext.Provider>
   );
 }

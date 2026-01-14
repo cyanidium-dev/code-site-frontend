@@ -62,10 +62,10 @@ export default async function ComparisonTable({
                     variants={fadeInAnimation({ x: 20, delay: 0.2 })}
                     className="border-b border-white/10"
                   >
-                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black md:bg-transparent w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                    <th className="text-left px-4 py-3 sticky left-0 z-10 bg-black md:bg-transparent w-[130px] min-w-[130px] sm:w-[160px] sm:min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                       <p className="font-actay text-[16px] lg:text-[22px] leading-[125%] uppercase font-bold">
                         {comparisonTable.title}
-                        <span className="block text-[12px] lg:text-[14px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
+                        <span className="block text-[10px] sm:text-[12px] lg:text-[14px] leading-[108%] font-normal font-montserrat whitespace-nowrap">
                           {comparisonTable.description}
                         </span>
                       </p>
@@ -73,9 +73,9 @@ export default async function ComparisonTable({
                     {servicesList.map(service => (
                       <th
                         key={service.title}
-                        className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[152px] min-w-[152px] max-w-[152px]"
+                        className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[113px] min-w-[113px] max-w-[113px] sm:w-[152px] sm:min-w-[152px] sm:max-w-[152px]"
                       >
-                        <p className="font-actay text-[12px] leading-[125%] uppercase font-bold lg:text-left mb-3">
+                        <p className="font-actay text-[10px] sm:text-[12px] leading-[125%] uppercase font-bold lg:text-left mb-3">
                           {service.title}
                         </p>
                         <ClientApplicationWrapper
@@ -89,7 +89,7 @@ export default async function ComparisonTable({
                     ))}
                   </motion.tr>
                 </thead>
-                <tbody className="text-[14px] leading-[122%]">
+                <tbody className="text-[10px] sm:text-[14px] leading-[122%]">
                   {comparisonTable.table.map((rowHeading, rowIndex) => (
                     <motion.tr
                       key={rowHeading}
@@ -103,7 +103,7 @@ export default async function ComparisonTable({
                       })}
                       className="border-b border-white/10 last:border-b-0"
                     >
-                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black md:bg-transparent w-[160px] min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
+                      <td className="px-4 py-3 min-h-12 sticky left-0 z-10 bg-black md:bg-transparent w-[130px] min-w-[130px] sm:w-[160px] sm:min-w-[160px] lg:w-[270px] lg:min-w-[270px] lg:max-w-[270px] after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:w-px after:bg-white/10 after:z-20 shadow-[2px_0_4px_rgba(0,0,0,0.3)]">
                         <p>{rowHeading}</p>
                       </td>
                       {servicesList.map(service => {
@@ -112,7 +112,7 @@ export default async function ComparisonTable({
                         return (
                           <td
                             key={`${service.title}-${rowIndex}`}
-                            className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[152px] min-w-[152px] max-w-[152px]"
+                            className="px-4 py-3 border-r border-white/10 last:border-r-0 w-[113px] min-w-[113px] max-w-[113px] sm:w-[152px] sm:min-w-[152px] sm:max-w-[152px]"
                           >
                             <div className="flex flex-col items-center gap-2">
                               {formatFeatureValue(feature)}

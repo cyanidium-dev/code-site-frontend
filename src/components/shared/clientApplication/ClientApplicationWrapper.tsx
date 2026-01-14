@@ -1,51 +1,45 @@
 "use client";
-import { useState } from "react";
-import * as motion from "motion/react-client";
-import MainButton from "@/components/shared/buttons/MainButton";
+import { useState, ReactNode, cloneElement, isValidElement } from "react";
 import CallbackFormModal from "../modals/CallbackFormModal";
 import { useTranslations } from "next-intl";
 import NotificationModal from "../modals/NotificationModal";
 
-interface ClientApplicationProps {
-  buttonText: string;
-  variant?: "pink" | "blue" | "gradient" | "white";
-  className?: string;
-  buttonClassName?: string;
-  variants?: {};
-  source?: string;
+interface ClientApplicationWrapperProps {
+  children: ReactNode;
+  source: string;
 }
 
-export default function ClientApplication({
-  buttonText,
-  variant = "white",
-  className = "",
-  buttonClassName = "",
-  variants = {},
+export default function ClientApplicationWrapper({
+  children,
   source,
-}: ClientApplicationProps) {
+}: ClientApplicationWrapperProps) {
   const t = useTranslations();
   const [isPopUpShown, setIsPopUpShown] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isNotificationShown, setIsNotificationShown] = useState(false);
 
+  const handleClick = () => {
+    setIsPopUpShown(true);
+  };
+
+  // Clone the child element and add onClick handler
+  const buttonWithClick = isValidElement(children)
+    ? cloneElement(children as React.ReactElement<any>, {
+        onClick: (e: any) => {
+          // Call original onClick if it exists
+          const originalOnClick = (children as React.ReactElement<any>).props
+            ?.onClick;
+          if (typeof originalOnClick === "function") {
+            originalOnClick(e);
+          }
+          handleClick();
+        },
+      })
+    : children;
+
   return (
     <>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        exit="exit"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={variants}
-        className={className}
-      >
-        <MainButton
-          variant={variant}
-          onClick={() => setIsPopUpShown(true)}
-          className={buttonClassName}
-        >
-          {buttonText}
-        </MainButton>
-      </motion.div>
+      {buttonWithClick}
       <CallbackFormModal
         isPopUpShown={isPopUpShown}
         setIsPopUpShown={setIsPopUpShown}

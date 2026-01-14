@@ -20,8 +20,10 @@
   --color-blue: #268df4;
   --color-blue-light: #b5daff;
   --color-blue-bright: #4dd0ff;
+  --color-blue-dark: #0c96fa;
   --color-purple-bright: #4f5dff;
   --color-purple-light: #6a8fff;
+  --color-purple-ultra-light: #75a7ff;
 
   --font-actay: var(--font-actay), sans-serif;
   --font-guano-apes: var(--font-guano-apes), sans-serif;
@@ -201,7 +203,7 @@
     animation: glow-blue 2s ease-in-out infinite;
   }
 
-    .animate-text-glow-dark {
+  .animate-text-glow-dark {
     background-image: linear-gradient(
       125deg,
       #000 22.37%,
@@ -384,5 +386,20 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Thinner horizontal scrollbar on mobile */
+  .scrollbar-thin-mobile::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .scrollbar-thin-mobile::-webkit-scrollbar {
+      height: 6px;
+    }
+  }
+
+  .scrollbar-thin-mobile {
+    scrollbar-width: thin;
   }
 }

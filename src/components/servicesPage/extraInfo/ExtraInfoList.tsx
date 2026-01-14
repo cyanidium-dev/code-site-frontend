@@ -19,7 +19,7 @@ export default async function ExtraInfoList({ className }: ExtraInfoListProps) {
       <ExtraInfoDecorations />
       <Container>
         <ExtraInfoListClient>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {extraInfo.map((info, idx) => (
               <ExtraInfoCard
                 key={info.title}

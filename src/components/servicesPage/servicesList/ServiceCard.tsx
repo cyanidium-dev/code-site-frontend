@@ -3,6 +3,7 @@ import StarIcon from "@/components/shared/icons/StarIcon";
 import MainButton from "@/components/shared/buttons/MainButton";
 //import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import type { Service } from "@/types/service";
 import ClientApplicationWrapper from "@/components/shared/clientApplication/ClientApplicationWrapper";
@@ -61,8 +62,22 @@ export default function ServiceCard({
         </h3>
         <p className="flex items-end font-actay text-[22px] md:text-[18px] xl:text-[22px] leading-[120%] uppercase text-white font-bold mb-5">
           {priceText}
-          <span className="pl-3 block font-guano-apes text-[60px] md:text-[46px] xl:text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright">
-            {displayPrice}
+          <span className="pl-3 block font-guano-apes text-[60px] md:text-[46px] xl:text-[60px] leading-[108.28%] uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-bright relative">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={displayPrice}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{
+                  duration: 0.3,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                className="block"
+              >
+                {displayPrice}
+              </motion.span>
+            </AnimatePresence>
           </span>
         </p>
         <p className="text-[14px] leading-[122%] font-light mb-8 min-h-[4lh]">

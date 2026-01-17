@@ -9,6 +9,7 @@ import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import { getLocale } from "next-intl/server";
 import SplashGate from "@/components/shared/splashScreen/SplashGate";
+import PageTransitionEffect from "@/components/shared/pageTransitionEffect/PageTransitionEffect";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -85,7 +86,9 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <SplashGate>
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <PageTransitionEffect>{children}</PageTransitionEffect>
+            </main>
             <Footer />
           </SplashGate>
         </NextIntlClientProvider>

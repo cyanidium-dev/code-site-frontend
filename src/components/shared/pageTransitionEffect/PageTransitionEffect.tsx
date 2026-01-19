@@ -211,6 +211,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
           exit="exit"
           variants={variants}
           transition={{ ease: "easeInOut", duration: 0.75 }}
+          className="min-h-screen"
           onAnimationStart={definition => {
             handleAnimationStart(definition as string);
           }}

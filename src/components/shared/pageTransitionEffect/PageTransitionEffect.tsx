@@ -203,7 +203,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   return (
     <NavigationContext.Provider value={{ isNavigating }}>
       <NavigationLoader />
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         <motion.div
           key={key}
           initial="hidden"

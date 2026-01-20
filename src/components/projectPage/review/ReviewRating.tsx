@@ -13,6 +13,9 @@ export default function ReviewRating({ rating, className }: ReviewRatingProps) {
       {Array.from({ length: rating }).map((_, index) => (
         <motion.div
           key={`review-rating-${index}`}
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
           viewport={{ once: true, amount: 0.2 }}
           variants={listItemVariants}
           className="size-[49px] flex items-center justify-center"

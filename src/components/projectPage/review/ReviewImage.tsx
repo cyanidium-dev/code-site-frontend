@@ -26,6 +26,9 @@ export default function ReviewImage({
   return (
     <>
       <motion.div
+        initial="hidden"
+        whileInView="visible"
+        exit="exit"
         viewport={{ once: true, amount: 0.2 }}
         variants={listItemVariants}
         className={`relative w-full h-auto aspect-[312/468] md:w-[333px] md:h-[468px] ${className}`}

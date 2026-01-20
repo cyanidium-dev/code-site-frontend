@@ -58,6 +58,9 @@ const ReviewBlockComponent = forwardRef<
           <span className="text-white">{title[1]}</span>
         </motion.h2>
         <motion.div
+          initial="hidden"
+          whileInView="visible"
+          exit="exit"
           viewport={{ once: true, amount: 0.2 }}
           variants={listItemVariants}
         >

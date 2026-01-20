@@ -10,7 +10,7 @@ export default function CTA() {
 
   return (
     <section>
-      <Container className="relative pt-[128px] lg:pt-[206px] pb-[605px] lg:pb-[274px]">
+      <Container className="relative z-10 pt-[128px] lg:pt-[206px] pb-[605px] lg:pb-[274px]">
         <CTADecorations />
         <SectionTitle
           variant="pink"

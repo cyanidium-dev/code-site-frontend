@@ -6,8 +6,16 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import PortfolioDecorationsStatic from "./PortfolioDecorationsStatic";
 
 export default function PortfolioDecorations() {
+  const { isIos } = useIosDevice();
+
+  if (isIos) {
+    return <PortfolioDecorationsStatic />;
+  }
+
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([

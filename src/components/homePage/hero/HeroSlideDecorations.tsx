@@ -12,6 +12,8 @@ import GraphDesk from "./GraphDesk";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
 import BottomEllipseMob from "./BottomEllipseMob";
 import BottomEllipseDesk from "./BottomEllipseDesk";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import HeroSlideDecorationsStatic from "./HeroSlideDecorationsStatic";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -42,6 +44,18 @@ export default function HeroSlideDecorations({
   idx,
   mainImage,
 }: HeroSlideDecorationsProps) {
+  const { isIos } = useIosDevice();
+
+  if (isIos) {
+    return (
+      <HeroSlideDecorationsStatic
+        variant={variant}
+        idx={idx}
+        mainImage={mainImage}
+      />
+    );
+  }
+
   const {
     colorMain,
     colorSecondary,

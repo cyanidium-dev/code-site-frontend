@@ -7,8 +7,16 @@ import {
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
 import HeadTwoEllipse from "./HeadTwoEllipse";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import SiteTypesDecorationsStatic from "./SiteTypesDecorationsStatic";
 
 export default function SiteTypesDecorations() {
+  const { isIos } = useIosDevice();
+
+  if (isIos) {
+    return <SiteTypesDecorationsStatic />;
+  }
+
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([

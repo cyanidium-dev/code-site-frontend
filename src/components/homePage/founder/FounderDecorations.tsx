@@ -3,6 +3,8 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import { MotionValue } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import FounderDecorationsStatic from "./FounderDecorationsStatic";
 
 interface FounderDecorationsProps {
   fastY: MotionValue<number>;
@@ -13,6 +15,12 @@ export default function FounderDecorations({
   fastY,
   slowY,
 }: FounderDecorationsProps) {
+  const { isIos } = useIosDevice();
+
+  if (isIos) {
+    return <FounderDecorationsStatic />;
+  }
+
   return (
     <>
       {/* Швидкий шар - drops. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}

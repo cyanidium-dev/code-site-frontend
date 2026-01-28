@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function PortfolioDecorations() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -23,8 +24,8 @@ export default function PortfolioDecorations() {
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
+      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="lg:hidden absolute bottom-[150px] left-[-15px] w-[625px] h-auto aspect-[625/79]"
       >
         <motion.div
@@ -45,8 +46,8 @@ export default function PortfolioDecorations() {
         </motion.div>
       </motion.div>
 
+      {/* PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
       <motion.div
-        style={{ y: mediumY }}
         className="absolute -z-10 top-[53px] lg:top-19 left-[-338px] lg:left-auto lg:right-[-148px] w-[650px] lg:w-[763px] h-auto aspect-[1817/1770] bg-black"
       >
         <motion.div
@@ -68,8 +69,8 @@ export default function PortfolioDecorations() {
         </motion.div>
       </motion.div>
 
+      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="hidden lg:block absolute -z-10 top-[170px] left-[-56px] w-[266px] h-auto aspect-[266/303]"
       >
         <motion.div
@@ -89,8 +90,8 @@ export default function PortfolioDecorations() {
         </motion.div>
       </motion.div>
 
+      {/* PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="hidden lg:block absolute -z-10 top-[308px] left-[-119px] w-[496px] h-auto aspect-[266/303]"
       >
         <motion.div

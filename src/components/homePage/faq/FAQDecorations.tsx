@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function FAQDecorations() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -22,9 +23,8 @@ export default function FAQDecorations() {
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
-      {/* Швидкий шар - qa */}
+      {/* Швидкий шар - qa. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute top-[291px] lg:top-[116px] right-[-93px] lg:right-[-61px]"
       >
         <motion.div
@@ -44,9 +44,8 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - questions */}
+      {/* Швидкий шар - questions. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute bottom-[-85px] lg:bottom-[85px] right-[-149px] lg:right-[-99px]"
       >
         <motion.div
@@ -66,9 +65,8 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - tag */}
+      {/* Повільний шар - tag. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="absolute top-[280px] lg:top-[143px] left-[-86px] lg:left-[17px]"
       >
         <motion.div
@@ -88,9 +86,8 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - dropsDesk (desktop) */}
+      {/* Швидкий шар - dropsDesk (desktop). PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="hidden lg:block absolute left-0 bottom-[-87px]"
       >
         <motion.div
@@ -110,9 +107,8 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - dropsMob (mobile) */}
+      {/* Швидкий шар - dropsMob (mobile). PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="lg:hidden absolute bottom-[-15px] left-[-10px]"
       >
         <motion.div
@@ -132,9 +128,8 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - dropsBottom */}
+      {/* Повільний шар - dropsBottom. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="hidden lg:block absolute bottom-[-267px] right-[-67px]"
       >
         <motion.div
@@ -153,7 +148,7 @@ export default function FAQDecorations() {
           />
         </motion.div>
       </motion.div>
-      {/* Повільний шар - blur */}
+      {/* Повільний шар - blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -163,10 +158,10 @@ export default function FAQDecorations() {
         className="absolute -z-20 bottom-[-73px] lg:bottom-[109px] left-[-245px] lg:left-[-238px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] 2xl:opacity-50 rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] will-change-transform"
         />
       </motion.div>
+      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -176,7 +171,6 @@ export default function FAQDecorations() {
         className="hidden lg:block absolute -z-20 bottom-[226px] right-[-272px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[363px] h-[363px] 2xl:opacity-50 rounded-full bg-[#9D5280] supports-[backdrop-filter]:blur-[163px] will-change-transform"
         />
       </motion.div>

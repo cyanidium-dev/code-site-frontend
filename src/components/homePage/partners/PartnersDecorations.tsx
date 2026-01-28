@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function PartnersDecorations() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -22,9 +23,8 @@ export default function PartnersDecorations() {
 
   return (
     <div ref={sectionRef}>
-      {/* Швидкий шар - drops */}
+      {/* Швидкий шар - drops. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute -z-10 top-[49px] right-[-40px]"
       >
         <motion.div
@@ -44,9 +44,8 @@ export default function PartnersDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - chain mobile */}
+      {/* Повільний шар - chain mobile. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="lg:hidden absolute -z-30 top-[77px] left-[calc(50%-205px)]"
       >
         <motion.div
@@ -66,9 +65,8 @@ export default function PartnersDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - chain desktop */}
+      {/* Повільний шар - chain desktop. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="hidden lg:block absolute -z-30 top-[26px] right-[-302px]"
       >
         <motion.div
@@ -101,7 +99,7 @@ export default function PartnersDecorations() {
         <motion.div className="w-[399px] lg:w-[800px] h-[286px] lg:h-[373px] rounded-full bg-black supports-[backdrop-filter]:blur-[60px] lg:supports-[backdrop-filter]:blur-[60px] will-change-transform" />
       </motion.div>
 
-      {/* Повільний шар - main blur */}
+      {/* Повільний шар - main blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -111,7 +109,6 @@ export default function PartnersDecorations() {
         className="hidden lg:block absolute -z-20 top-[-159px] left-[-425px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[354px] h-[380px] 2xl:opacity-50 rounded-full bg-main supports-[backdrop-filter]:blur-[281px] will-change-transform"
         />
       </motion.div>

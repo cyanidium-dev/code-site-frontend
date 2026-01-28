@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function WhyUsImages() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -22,9 +23,8 @@ export default function WhyUsImages() {
 
   return (
     <div ref={sectionRef}>
-      {/* Швидкий шар - compact disk */}
+      {/* Швидкий шар - compact disk. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute z-20 bottom-[-35px] lg:bottom-[-115px] right-[-78px] lg:right-[-82px]"
       >
         <motion.div
@@ -56,7 +56,7 @@ export default function WhyUsImages() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - pink blur */}
+      {/* Повільний шар - pink blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -66,7 +66,6 @@ export default function WhyUsImages() {
         className="absolute z-10 bottom-[-32px] lg:bottom-[-249px] right-[-91px] lg:right-[-242px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[190px] lg:w-[469px] h-[207px] lg:h-[512px] rounded-full bg-pink-bright supports-[backdrop-filter]:blur-[66px] lg:supports-[backdrop-filter]:blur-[124px] will-change-transform"
         />
       </motion.div>

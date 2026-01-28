@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function CTAHeartBlue() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -24,7 +25,8 @@ export default function CTAHeartBlue() {
       ref={sectionRef}
       className="hidden lg:block absolute -z-[15] top-[-136px] right-[-196px] w-[390px] h-auto aspect-[390/377]"
     >
-      <motion.div style={{ y: slowY }}>
+      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      <motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"

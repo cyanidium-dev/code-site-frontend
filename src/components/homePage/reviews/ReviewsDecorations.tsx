@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function ReviewsDecorations() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -23,9 +24,8 @@ export default function ReviewsDecorations() {
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
-      {/* Code Site */}
+      {/* Code Site. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="absolute -z-30 left-[-113px] lg:left-[-96px] top-[-183px] lg:top-[109px]"
       >
         <motion.div
@@ -46,9 +46,8 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Girl */}
+      {/* Girl. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute -z-50 top-[-154px] lg:top-[-286px] right-[-61px] lg:right-auto lg:left-[-15px] w-[313px] lg:w-[533px] h-auto aspect-[625/1336] mix-blend-plus-lighter"
       >
         <motion.div
@@ -74,9 +73,8 @@ export default function ReviewsDecorations() {
 
       <div className="hidden lg:block absolute -z-10 top-[42px] right-[-121px] w-[448px] h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[131px] will-change-transform" />
 
-      {/* Drops */}
+      {/* Drops. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
       <motion.div
-        style={{ y: mediumY }}
         className="absolute -z-10 top-[275px] left-[-53px]"
       >
         <motion.div
@@ -97,9 +95,8 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Head Background */}
+      {/* Head Background. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
       <motion.div
-        style={{ y: mediumY }}
         className="absolute -z-30 left-[41px] sm:left-[301px] top-[344px] sm:top-[94px] w-[313px] h-auto aspect-[626/939] mix-blend-color-dodge"
       >
         <motion.div
@@ -121,9 +118,8 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Tags */}
+      {/* Tags. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="hidden -z-20 lg:block absolute top-[-212px] right-[-34px]"
       >
         <motion.div
@@ -149,9 +145,8 @@ export default function ReviewsDecorations() {
       w-[524px] lg:w-[1762px] h-[337px] lg:h-[667px] rounded-full bg-black supports-[backdrop-filter]:blur-[73px] will-change-transform"
       />
 
-      {/* Drops Top Desk */}
+      {/* Drops Top Desk. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="hidden lg:block absolute top-[-200px] right-[87px]"
       >
         <motion.div
@@ -172,9 +167,8 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Drops Bottom Desk */}
+      {/* Drops Bottom Desk. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="hidden lg:block absolute bottom-[-207px] right-[150px]"
       >
         <motion.div
@@ -195,9 +189,8 @@ export default function ReviewsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Girl Desk */}
+      {/* Girl Desk. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
       <motion.div
-        style={{ y: mediumY }}
         className="hidden lg:block absolute z-[15] top-[-56px] right-[-72px]"
       >
         <motion.div

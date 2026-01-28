@@ -8,6 +8,7 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function CTAPhone() {
+  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -30,8 +31,8 @@ export default function CTAPhone() {
       ref={sectionRef}
       className="absolute left-[calc(50%-233px)] lg:left-[calc(50%-395px)] xl:left-[calc(50%-465px)] top-[203px] lg:top-[-200px] xl:top-[-250px] w-[467px] lg:w-[671px] xl:w-[721px] aspect-[721/820]"
     >
-      {/* Phone - середній parallax */}
-      <motion.div style={{ y: mediumY }}>
+      {/* Phone - середній parallax. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
+      <motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -50,9 +51,8 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-      {/* Drops - повільний parallax */}
+      {/* Drops - повільний parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="hidden lg:block absolute -z-10 top-[-66px] left-[55px] w-[291px] h-[301px]"
       >
         <motion.div
@@ -72,9 +72,8 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-      {/* Code Site - дуже повільний parallax */}
+      {/* Code Site - дуже повільний parallax. PARALLAX DISABLED: style={{ y: extraSlowY }} закоментовано */}
       <motion.div
-        style={{ y: extraSlowY }}
         className="absolute -z-20 left-[calc(50%-126px)] lg:left-[-114px] top-[-22px] lg:top-[204px] w-[613px] lg:w-[1300px] h-auto aspect-[2711/347]"
       >
         <motion.div
@@ -95,9 +94,8 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-      {/* Tag - швидкий parallax */}
+      {/* Tag - швидкий parallax. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div
-        style={{ y: fastY }}
         className="absolute -z-10 top-[-27px] lg:top-0 right-[64px] lg:right-[23px] w-[180px] lg:w-[341px] h-auto aspect-[341/300]"
       >
         <motion.div
@@ -117,9 +115,8 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-      {/* Heart Pink - середній parallax */}
+      {/* Heart Pink - середній parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
-        style={{ y: slowY }}
         className="lg:hidden absolute -z-20 top-[71px] left-[calc(50%-203px)] w-[390px] h-auto aspect-[781/755]"
       >
         <motion.div

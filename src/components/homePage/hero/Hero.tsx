@@ -4,9 +4,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import HeroSlide from "./HeroSlide";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function Hero() {
   const t = useTranslations("homePage.hero");
+  const { isIos } = useIosDevice();
   const [currentSlide, setCurrentSlide] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -402,7 +404,7 @@ export default function Hero() {
         className="absolute z-20 left-6 sm:left-[calc(50%-320px+24px)] md:left-auto md:right-[calc(50%-384px+24px)] lg:right-auto lg:left-[calc(50%-512px+40px)]
        xl:left-[calc(50%-640px+40px)] top-[338px] lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-3 lg:gap-5 pointer-events-auto"
         style={{
-          willChange: "transform",
+          ...(!isIos && { willChange: "transform" }),
           backfaceVisibility: "hidden",
           transform: "translateZ(0)",
         }}
@@ -411,7 +413,7 @@ export default function Hero() {
           <li key={idx} className="leading-none">
             <button
               onClick={() => handleSlideClick(idx)}
-              className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out will-change-transform ${
+              className={`cursor-pointer w-3 h-3 border rounded-full transition duration-300 ease-in-out ${!isIos ? "will-change-transform" : ""} ${
                 idx === currentSlide ? "" : " xl:hover:bg-white/50"
               }`}
               style={{

@@ -3,6 +3,7 @@ import * as motion from "motion/react-client";
 import ArrowIcon from "@/components/shared/icons/ArrowIcon";
 import ProgressBar from "./ProgressBar";
 import { twMerge } from "tailwind-merge";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface PaginationProps {
   projectsCount: number;
@@ -14,6 +15,8 @@ interface PaginationProps {
   className?: string;
 }
 
+const willChangeClass = "will-change-transform";
+
 export default function Pagination({
   projectsCount,
   activeIndex,
@@ -23,6 +26,8 @@ export default function Pagination({
   onSlideClick,
   className,
 }: PaginationProps) {
+  const { isIos } = useIosDevice();
+  const wc = isIos ? "" : willChangeClass;
   return (
     <motion.div
       className={twMerge(
@@ -42,9 +47,9 @@ export default function Pagination({
         onClick={onPrevious}
         type="button"
         aria-label="icon button"
-        className="group cursor-pointer flex items-center justify-center size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out will-change-transform"
+        className={twMerge("group cursor-pointer flex items-center justify-center size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out", wc)}
       >
-        <ArrowIcon className="rotate-[-135deg] text-white group-active:scale-[95%] group-[focus-visible]:-translate-x-0.5 xl:group-hover:-translate-x-0.5 transition duration-300 ease-out will-change-transform" />
+        <ArrowIcon className={twMerge("rotate-[-135deg] text-white group-active:scale-[95%] group-[focus-visible]:-translate-x-0.5 xl:group-hover:-translate-x-0.5 transition duration-300 ease-out", wc)} />
       </button>
 
       {/* Right arrow */}
@@ -52,9 +57,9 @@ export default function Pagination({
         onClick={onNext}
         type="button"
         aria-label="icon button"
-        className="group cursor-pointer flex items-center justify-center ml-3 size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out will-change-transform"
+        className={twMerge("group cursor-pointer flex items-center justify-center ml-3 size-[50px] p-[15px] rounded-full border-[1.5px] border-white active:scale-[95%] transition duration-300 ease-out", wc)}
       >
-        <ArrowIcon className="rotate-[45deg] text-white group-active:scale-[95%] group-[focus-visible]:translate-x-0.5 xl:group-hover:translate-x-0.5 transition duration-300 ease-out will-change-transform" />
+        <ArrowIcon className={twMerge("rotate-[45deg] text-white group-active:scale-[95%] group-[focus-visible]:translate-x-0.5 xl:group-hover:translate-x-0.5 transition duration-300 ease-out", wc)} />
       </button>
 
       {/* Progress bar */}

@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function WhyUsImages() {
+  const { isIos } = useIosDevice();
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
@@ -66,7 +68,7 @@ export default function WhyUsImages() {
         className="absolute z-10 bottom-[-32px] lg:bottom-[-249px] right-[-91px] lg:right-[-242px]"
       >
         <motion.div
-          className="w-[190px] lg:w-[469px] h-[207px] lg:h-[512px] rounded-full bg-pink-bright supports-[backdrop-filter]:blur-[66px] lg:supports-[backdrop-filter]:blur-[124px] will-change-transform"
+          className={`w-[190px] lg:w-[469px] h-[207px] lg:h-[512px] rounded-full bg-pink-bright supports-[backdrop-filter]:blur-[66px] lg:supports-[backdrop-filter]:blur-[124px] ${!isIos ? "will-change-transform" : ""}`}
         />
       </motion.div>
     </div>

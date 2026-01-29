@@ -40,7 +40,7 @@ export default function WhyUsDecorationsStatic() {
       </div>
 
       {/* Tag large */}
-      <div className="absolute top-[82px] lg:top-[71px] right[89px] lg:right-[calc(50%-78px)] -z-20 pointer-events-none">
+      <div className="absolute top-[82px] lg:top-[71px] right-[89px] lg:right-[calc(50%-78px)] -z-20 pointer-events-none">
         <Image
           src="/images/homePage/whyUs/tag-large.svg"
           alt="tag"
@@ -58,7 +58,7 @@ export default function WhyUsDecorationsStatic() {
 
       {/* Blur */}
       <div className="absolute -z-10 top-[-66px] left-[-51px] lg:top-[-290px] lg:left-auto lg:right-[43px]">
-        <div className="w-[303px] lg:w-[777px] h-[238px] lg:h-[611px] rounded-full bg-black supports-[backdrop-filter]:blur-[53px] lg:supports-[backdrop-filter]:blur-[72px] will-change-transform" />
+        <div className="w-[303px] lg:w-[777px] h-[238px] lg:h-[611px] rounded-full bg-black supports-[backdrop-filter]:blur-[53px] lg:supports-[backdrop-filter]:blur-[72px] " />
       </div>
     </div>
   );

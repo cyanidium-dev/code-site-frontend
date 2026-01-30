@@ -11,10 +11,7 @@ import PartnersDecorationsStatic from "./PartnersDecorationsStatic";
 
 export default function PartnersDecorations() {
   const { isIos } = useIosDevice();
-
-  if (isIos) {
-    return <PartnersDecorationsStatic />;
-  }
+  if (isIos) return <PartnersDecorationsStatic />;
 
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу

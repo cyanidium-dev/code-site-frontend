@@ -12,10 +12,7 @@ import SiteTypesDecorationsStatic from "./SiteTypesDecorationsStatic";
 
 export default function SiteTypesDecorations() {
   const { isIos } = useIosDevice();
-
-  if (isIos) {
-    return <SiteTypesDecorationsStatic />;
-  }
+  if (isIos) return <SiteTypesDecorationsStatic />;
 
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу

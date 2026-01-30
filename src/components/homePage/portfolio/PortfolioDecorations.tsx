@@ -11,10 +11,7 @@ import PortfolioDecorationsStatic from "./PortfolioDecorationsStatic";
 
 export default function PortfolioDecorations() {
   const { isIos } = useIosDevice();
-
-  if (isIos) {
-    return <PortfolioDecorationsStatic />;
-  }
+  if (isIos) return <PortfolioDecorationsStatic />;
 
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу

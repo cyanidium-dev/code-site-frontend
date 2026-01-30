@@ -46,13 +46,16 @@ export default function FounderDecorationsStatic() {
             className="object-cover w-full h-full object-top-left  mix-blend-color-dodge"
           />
         </div>
+        {/* Blur (disabled on iOS)
         <div className="absolute bottom-[-520px] lg:bottom-[-420px] left-[20px] lg:left-[-50px] w-[806px] h-[768px] rounded-full bg-black supports-[backdrop-filter]:blur-[80px] " />
+        */}
       </div>
 
-      {/* Blue blur */}
+      {/* Blue blur (disabled on iOS)
       <div className="absolute -z-20 bottom-[-128px] lg:bottom-[-46px] right-[-391px] lg:right-[-748px]">
         <div className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] " />
       </div>
+      */}
     </>
   );
 }

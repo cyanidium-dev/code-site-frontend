@@ -53,31 +53,33 @@ export default function HeroSlideDecorationsStatic({
   return (
     <div className="absolute inset-0 pointer-events-none">
       {/* Background elements */}
+      {/* Blur (disabled on iOS): top ellipse
       <div
         className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full 
       bg-black supports-[backdrop-filter]:blur-[74px] lg:supports-[backdrop-filter]:blur-[67px] "
       />
+      */}
 
       <BottomEllipseMob color={bottomBlurColor} />
       <BottomEllipseDesk color={bottomBlurColor} />
 
+      {/* Blur (disabled on iOS): colorMain circles
       <div
         style={{ backgroundColor: colorMain }}
         className="absolute z-10 top-[124px] right-[-454px] w-[443px] h-[440px] rounded-full 
        supports-[backdrop-filter]:blur-[98px] lg:supports-[backdrop-filter]:blur-[65px] "
       />
-
       <div
         style={{ backgroundColor: colorMain }}
         className="hidden lg:block absolute z-10 top-[4px] lg:top-[-27px] left-[14px] lg:left-[71px] w-[289px] lg:w-[443px] h-[287px] lg:h-[440px] rounded-full 
        supports-[backdrop-filter]:blur-[98px] lg:supports-[backdrop-filter]:blur-[65px] "
       />
-
       <div
         style={{ backgroundColor: colorSecondary }}
         className="absolute -z-20 left-[-312px] lg:left-[-273px] top-[-420px] lg:top-[-533px] w-[469px] h-[512px] rounded-full 
        supports-[backdrop-filter]:blur-[104px] "
       />
+      */}
 
       {/* Head image */}
       <div
@@ -122,11 +124,12 @@ export default function HeroSlideDecorationsStatic({
         />
       </div>
 
-      {/* Other decorative elements */}
+      {/* Other decorative elements — blur disabled on iOS
       <div
         style={{ backgroundColor: colorSecondary }}
         className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full supports-[backdrop-filter]:blur-[142px] "
       />
+      */}
 
       {screenWidth < 1024 ? (
         <div

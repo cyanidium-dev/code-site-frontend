@@ -16,10 +16,7 @@ export default function FounderDecorations({
   slowY,
 }: FounderDecorationsProps) {
   const { isIos } = useIosDevice();
-
-  if (isIos) {
-    return <FounderDecorationsStatic />;
-  }
+  if (isIos) return <FounderDecorationsStatic />;
 
   return (
     <>

@@ -28,9 +28,10 @@ export default function ReviewsDecorationsStatic() {
         />
       </div>
 
+      {/* Blur (disabled on iOS)
       <div className="absolute -z-40 top-[104px] left-[-407px] w-[448px] h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[131px] " />
-
       <div className="hidden lg:block absolute -z-10 top-[42px] right-[-121px] w-[448px] h-[451px] rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[131px] " />
+      */}
 
       {/* Drops */}
       <div className="absolute -z-10 top-[275px] left-[-53px]">
@@ -63,10 +64,12 @@ export default function ReviewsDecorationsStatic() {
         />
       </div>
 
+      {/* Blur (disabled on iOS)
       <div
         className="absolute -z-10 lg:z-20 top-[606px] sm:top-[376px] lg:top-auto lg:bottom-[-586px] left-[-82px] lg:left-[-241px] sm:left-[100px] 
       w-[524px] lg:w-[1762px] h-[337px] lg:h-[667px] rounded-full bg-black supports-[backdrop-filter]:blur-[73px] "
       />
+      */}
 
       {/* Drops Top Desk */}
       <div className="hidden lg:block absolute top-[-200px] right-[87px]">

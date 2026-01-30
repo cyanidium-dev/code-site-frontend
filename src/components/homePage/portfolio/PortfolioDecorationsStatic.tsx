@@ -51,9 +51,10 @@ export default function PortfolioDecorationsStatic() {
         />
       </div>
 
+      {/* Blur (disabled on iOS)
       <div className="hidden lg:block absolute top-[262px] right-[-101px] w-[1026px] h-[586px] rotate-[-148deg] rounded-full bg-black supports-[backdrop-filter]:blur-[72px] " />
-
       <div className="hidden lg:block absolute top-[322px] right-[-121px] w-[354px] h-[380px] rounded-full bg-main supports-[backdrop-filter]:blur-[281px] " />
+      */}
     </div>
   );
 }

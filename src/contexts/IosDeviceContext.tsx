@@ -21,9 +21,7 @@ type IosDeviceProviderProps = {
 };
 
 export function IosDeviceProvider({ children }: IosDeviceProviderProps) {
-  // NOTE: Для тестування, ми встановлюємо initial state в true
-  // TODO: Змінити на false після тестування
-  const [isIos, setIsIos] = useState(true);
+  const [isIos, setIsIos] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -37,9 +35,7 @@ export function IosDeviceProvider({ children }: IosDeviceProviderProps) {
       // iPadOS 13+ reports as Mac; check for touch support
       (platform === "MacIntel" && (window.navigator as any).maxTouchPoints > 1);
 
-    // NOTE: Не змінюємо state, а просто виводимо в консоль
-    console.log("isIOSDevice", isIOSDevice);
-    //setIsIos(isIOSDevice);
+    setIsIos(isIOSDevice);
   }, []);
 
   return (

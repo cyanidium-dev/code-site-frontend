@@ -28,8 +28,9 @@ export default function PartnersDecorations() {
 
   return (
     <div ref={sectionRef}>
-      {/* Швидкий шар - drops. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
+      {/* Швидкий шар - drops */}
       <motion.div
+        style={{ y: fastY }}
         className="absolute -z-10 top-[49px] right-[-40px]"
       >
         <motion.div
@@ -49,8 +50,9 @@ export default function PartnersDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - chain mobile. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Повільний шар - chain mobile */}
       <motion.div
+        style={{ y: slowY }}
         className="lg:hidden absolute -z-30 top-[77px] left-[calc(50%-205px)]"
       >
         <motion.div
@@ -70,8 +72,9 @@ export default function PartnersDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - chain desktop. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
+      {/* Повільний шар - chain desktop */}
       <motion.div
+        style={{ y: fastY }}
         className="hidden lg:block absolute -z-30 top-[26px] right-[-302px]"
       >
         <motion.div
@@ -104,8 +107,9 @@ export default function PartnersDecorations() {
         <motion.div className="w-[399px] lg:w-[800px] h-[286px] lg:h-[373px] rounded-full bg-black supports-[backdrop-filter]:blur-[60px] lg:supports-[backdrop-filter]:blur-[60px] will-change-transform" />
       </motion.div>
 
-      {/* Повільний шар - main blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Повільний шар - main blur */}
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"

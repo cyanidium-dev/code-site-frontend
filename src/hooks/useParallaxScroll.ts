@@ -1,42 +1,42 @@
+"use client";
+
 import { useRef, useMemo } from "react";
 import {
   useScroll,
   useTransform,
   useMotionValue,
   MotionValue,
-  useMotionValueEvent,
 } from "motion/react";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 // Тип для offset - використовуємо NonNullable для виключення undefined
 type UseScrollOptions = NonNullable<Parameters<typeof useScroll>[0]>;
 type ScrollOffset = UseScrollOptions["offset"];
 
 /**
- * Оптимізований хук для parallax анімацій на основі скролу
- * Використовує мемоізацію та оптимізації для продуктивності
- *
- * PARALLAX DISABLED: реалізація закоментована, повертає статичні значення
+ * Оптимізований хук для parallax анімацій на основі скролу.
+ * Parallax увімкнено тільки на не-iOS пристроях (на iOS повертає 0).
  */
 export function useParallaxScroll(
   offset: ScrollOffset = ["start end", "end start"]
 ) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { isIos } = useIosDevice();
 
-  // PARALLAX DISABLED — закоментовано, parallax не працює
-  // const { scrollYProgress } = useScroll({
-  //   target: sectionRef,
-  //   offset,
-  // });
-  const scrollYProgress = useMotionValue(0);
+  const { scrollYProgress: scrollYProgressReal } = useScroll({
+    target: sectionRef,
+    offset,
+  });
+  const scrollYProgressStatic = useMotionValue(0);
+
+  const scrollYProgress = isIos ? scrollYProgressStatic : scrollYProgressReal;
 
   return { sectionRef, scrollYProgress };
 }
 
 /**
- * Готовий хук для створення parallax значень з часто використовуваними варіантами
- * Створює трансформації один раз та перевикористовує їх
- *
- * PARALLAX DISABLED: реалізація закоментована, повертає статичні 0
+ * Готовий хук для створення parallax значень з часто використовуваними варіантами.
+ * На iOS повертає 0 (без руху); на інших пристроях — реальні parallax значення.
  */
 export function useParallaxVariants(
   scrollYProgress: MotionValue<number>,
@@ -47,6 +47,7 @@ export function useParallaxVariants(
     extraSlow?: [number, number];
   }
 ) {
+  const { isIos } = useIosDevice();
   const {
     fast = [150, -150],
     medium = [80, -80],
@@ -54,17 +55,16 @@ export function useParallaxVariants(
     extraSlow = [-50, 50],
   } = options || {};
 
-  // PARALLAX DISABLED — закоментовано, повертаємо useTransform(..., [0, 0]) щоб не було руху
-  // const fastY = useTransform(scrollYProgress, [0, 1], fast);
-  // const mediumY = useTransform(scrollYProgress, [0, 1], medium);
-  // const slowY = useTransform(scrollYProgress, [0, 1], slow);
-  // const extraSlowY = useTransform(scrollYProgress, [0, 1], extraSlow);
-  const fastY = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const mediumY = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const slowY = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const extraSlowY = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const zero: [number, number] = [0, 0];
+  const fastY = useTransform(scrollYProgress, [0, 1], isIos ? zero : fast);
+  const mediumY = useTransform(scrollYProgress, [0, 1], isIos ? zero : medium);
+  const slowY = useTransform(scrollYProgress, [0, 1], isIos ? zero : slow);
+  const extraSlowY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isIos ? zero : extraSlow
+  );
 
-  // Мемоізуємо об'єкт для запобігання перестворення
   return useMemo(
     () => ({
       fastY,

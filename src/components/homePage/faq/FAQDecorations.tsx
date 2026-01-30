@@ -28,8 +28,9 @@ export default function FAQDecorations() {
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
-      {/* Швидкий шар - qa. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
+      {/* Швидкий шар - qa */}
       <motion.div
+        style={{ y: fastY }}
         className="absolute top-[291px] lg:top-[116px] right-[-93px] lg:right-[-61px]"
       >
         <motion.div
@@ -49,8 +50,9 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - questions. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
+      {/* Швидкий шар - questions */}
       <motion.div
+        style={{ y: fastY }}
         className="absolute bottom-[-85px] lg:bottom-[85px] right-[-149px] lg:right-[-99px]"
       >
         <motion.div
@@ -70,8 +72,9 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - tag. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Повільний шар - tag */}
       <motion.div
+        style={{ y: slowY }}
         className="absolute top-[280px] lg:top-[143px] left-[-86px] lg:left-[17px]"
       >
         <motion.div
@@ -91,8 +94,9 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - dropsDesk (desktop). PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
+      {/* Швидкий шар - dropsDesk (desktop) */}
       <motion.div
+        style={{ y: fastY }}
         className="hidden lg:block absolute left-0 bottom-[-87px]"
       >
         <motion.div
@@ -112,8 +116,9 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - dropsMob (mobile). PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Швидкий шар - dropsMob (mobile) */}
       <motion.div
+        style={{ y: slowY }}
         className="lg:hidden absolute bottom-[-15px] left-[-10px]"
       >
         <motion.div
@@ -133,8 +138,9 @@ export default function FAQDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - dropsBottom. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Повільний шар - dropsBottom */}
       <motion.div
+        style={{ y: slowY }}
         className="hidden lg:block absolute bottom-[-267px] right-[-67px]"
       >
         <motion.div
@@ -153,8 +159,9 @@ export default function FAQDecorations() {
           />
         </motion.div>
       </motion.div>
-      {/* Повільний шар - blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
+      {/* Повільний шар - blur */}
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -166,8 +173,8 @@ export default function FAQDecorations() {
           className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] 2xl:opacity-50 rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] will-change-transform"
         />
       </motion.div>
-      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"

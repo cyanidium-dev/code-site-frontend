@@ -29,8 +29,11 @@ export default function WhyUsDecorations() {
 
   return (
     <div ref={sectionRef}>
-      {/* Швидкий шар - drops mobile. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div className="lg:hidden absolute top-[-177px] lg:top-[-115px] left-[-52px] lg:left-[-12px] z-10 pointer-events-none">
+      {/* Швидкий шар - drops mobile */}
+      <motion.div
+        style={{ y: fastY }}
+        className="lg:hidden absolute top-[-177px] lg:top-[-115px] left-[-52px] lg:left-[-12px] z-10 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -48,8 +51,11 @@ export default function WhyUsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - drops desktop. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div className="hidden lg:block absolute top-[118px] left-[-86px] z-10 pointer-events-none">
+      {/* Швидкий шар - drops desktop */}
+      <motion.div
+        style={{ y: fastY }}
+        className="hidden lg:block absolute top-[118px] left-[-86px] z-10 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -66,8 +72,11 @@ export default function WhyUsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Швидкий шар - tag small. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div className="absolute top-[-45px] lg:top-[246px] right-[-16px] lg:right-[calc(50%-566px)] z-10 pointer-events-none">
+      {/* Швидкий шар - tag small */}
+      <motion.div
+        style={{ y: fastY }}
+        className="absolute top-[-45px] lg:top-[246px] right-[-16px] lg:right-[calc(50%-566px)] z-10 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -86,8 +95,11 @@ export default function WhyUsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - tag large. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div className="absolute top-[82px] lg:top-[71px] right-[89px] lg:right-[calc(50%-78px)] -z-20 pointer-events-none">
+      {/* Повільний шар - tag large */}
+      <motion.div
+        style={{ y: slowY }}
+        className="absolute top-[82px] lg:top-[71px] right-[89px] lg:right-[calc(50%-78px)] -z-20 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -106,8 +118,11 @@ export default function WhyUsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - map. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div className="absolute -z-30 lg:-z-20 top-[-33px] lg:top-[82px] left-[calc(50%-206px)] lg:left-auto lg:right-[39px]">
+      {/* Повільний шар - map */}
+      <motion.div
+        style={{ y: slowY }}
+        className="absolute -z-30 lg:-z-20 top-[-33px] lg:top-[82px] left-[calc(50%-206px)] lg:left-auto lg:right-[39px]"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -119,8 +134,8 @@ export default function WhyUsDecorations() {
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - blur. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
+      {/* Повільний шар - blur */}
+      <motion.div style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"

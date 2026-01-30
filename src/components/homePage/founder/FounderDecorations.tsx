@@ -20,8 +20,11 @@ export default function FounderDecorations({
 
   return (
     <>
-      {/* Швидкий шар - drops. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div className="absolute top-[-33px] lg:top-[-115px] left-[-11px] lg:left-[-12px] z-10 pointer-events-none">
+      {/* Швидкий шар - drops */}
+      <motion.div
+        style={{ y: fastY }}
+        className="absolute top-[-33px] lg:top-[-115px] left-[-11px] lg:left-[-12px] z-10 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -39,8 +42,10 @@ export default function FounderDecorations({
         </motion.div>
       </motion.div>
 
-      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none">
+      <motion.div
+        style={{ y: slowY }}
+        className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none"
+      >
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -58,8 +63,8 @@ export default function FounderDecorations({
         </motion.div>
       </motion.div>
 
-      {/* Повільний шар - figure. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div
+      {/* Повільний шар - figure */}
+      <motion.div style={{ y: fastY }}
         className="absolute bottom-[-254px] lg:bottom-[-295px] right-[-254px] lg:right-[-506px] -z-30 pointer-events-none w-[463px] lg:w-[851px] 
         aspect-[851/781] overflow-visible"
       >
@@ -91,8 +96,7 @@ export default function FounderDecorations({
         <div className="absolute bottom-[-520px] lg:bottom-[-420px] left-[20px] lg:left-[-50px] w-[806px] h-[768px] rounded-full bg-black supports-[backdrop-filter]:blur-[80px] will-change-transform" />
       </motion.div>
 
-      {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
+      <motion.div style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"

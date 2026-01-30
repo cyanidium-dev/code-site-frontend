@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import * as motion from "motion/react-client";
-// PARALLAX DISABLED: import { useTransform } from "motion/react";
+import { useTransform } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import { useParallaxScroll } from "@/hooks/useParallaxScroll";
 import Drops from "./Drops";
@@ -67,19 +67,18 @@ export default function HeroSlideDecorations({
 
   const screenWidth = useScreenWidth();
 
-  // Оптимізований хук для parallax скролу
+  // Оптимізований хук для parallax скролу (на iOS повертає 0)
   const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
     "start end",
     "end start",
   ]);
 
-  // PARALLAX DISABLED — закоментовано, parallax не працює
-  // Параллакс ефекти для різних елементів (специфічні значення для Hero)
-  // const headY = useTransform(scrollYProgress, [0, 1], [20, -50]);
-  // const mainImageY = useTransform(scrollYProgress, [0, 1], [60, -100]);
-  // const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);
-  // const graphY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-  // const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
+  // Параллакс ефекти для різних елементів (на iOS = 0)
+  const headY = useTransform(scrollYProgress, [0, 1], [20, -50]);
+  const mainImageY = useTransform(scrollYProgress, [0, 1], [60, -100]);
+  const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);
+  const graphY = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const dropsY = useTransform(scrollYProgress, [0, 1], [-20, 120]);
 
   // Обчислюємо delay для анімацій
   const headDelay = 0;
@@ -117,10 +116,11 @@ export default function HeroSlideDecorations({
        supports-[backdrop-filter]:blur-[104px] will-change-transform"
       />
 
-      {/* Head image — PARALLAX DISABLED: style={{ y: headY }} закоментовано */}
+      {/* Head image */}
       <motion.div
         className="absolute -z-40 right-[calc(50%-260px)] lg:right-[-145px] bottom-[78px] md:bottom-[-22px] lg:bottom-[-248px]
        w-[417px] lg:w-[725px] h-auto aspect-[725/902] mix-blend-hard-light"
+        style={{ y: headY }}
         key={`head-${idx}`}
       >
         <motion.div
@@ -147,9 +147,10 @@ export default function HeroSlideDecorations({
         </motion.div>
       </motion.div>
 
-      {/* Logo — PARALLAX DISABLED: style={{ y: logoY }} закоментовано */}
+      {/* Logo */}
       <motion.div
         className="absolute -z-30 left-[-52px] lg:left-[-32px] bottom-[319px] md:bottom-[119px] lg:bottom-[180px]"
+        style={{ y: logoY }}
         key={`logo-${idx}`}
       >
         <motion.div
@@ -167,9 +168,10 @@ export default function HeroSlideDecorations({
         </motion.div>
       </motion.div>
 
-      {/* Main LCP image — PARALLAX DISABLED: style={{ y: mainImageY }} закоментовано */}
+      {/* Main LCP image */}
       <motion.div
         className="absolute -z-10 left-[calc(50%-232px)] lg:left-auto lg:right-[-134px] bottom-[155px] md:bottom-[55px] lg:bottom-[-39px] w-[586px] lg:w-[1032px] h-auto aspect-[2064/1548]"
+        style={{ y: mainImageY }}
         key={`mainImage-${idx}`}
       >
         <motion.div
@@ -203,9 +205,9 @@ export default function HeroSlideDecorations({
       />
 
       {screenWidth < 1024 ? (
-        /* PARALLAX DISABLED: style={{ y: graphY }} закоментовано */
         <motion.div
           className="lg:hidden absolute -z-10 bottom-[98px] md:bottom-[-2px] left-[calc(50%-180px)]"
+          style={{ y: graphY }}
           key={`graphMob-${idx}`}
         >
           <motion.div
@@ -223,9 +225,9 @@ export default function HeroSlideDecorations({
           </motion.div>
         </motion.div>
       ) : (
-        /* PARALLAX DISABLED: style={{ y: graphY }} закоментовано */
         <motion.div
           className="hidden lg:block absolute -z-10 bottom-[68px] left-[504px]"
+          style={{ y: graphY }}
           key={`graphDesk-${idx}`}
         >
           <motion.div
@@ -244,9 +246,9 @@ export default function HeroSlideDecorations({
         </motion.div>
       )}
 
-      {/* PARALLAX DISABLED: style={{ y: dropsY }} закоментовано */}
       <motion.div
         className="lg:hidden absolute z-10 bottom-[-77px] right-[13px]"
+        style={{ y: dropsY }}
         key={`drops-${idx}`}
       >
         <motion.div
@@ -264,9 +266,9 @@ export default function HeroSlideDecorations({
         </motion.div>
       </motion.div>
 
-      {/* PARALLAX DISABLED: style={{ y: dropsY }} закоментовано */}
       <motion.div
         className="absolute z-10 bottom-[460px] lg:bottom-[290px] right-[24px] lg:right-[calc(50%-25px)] lg:-rotate-[83deg]"
+        style={{ y: dropsY }}
         key={`dropsTwo-${idx}`}
       >
         <motion.div

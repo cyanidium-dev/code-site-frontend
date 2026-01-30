@@ -107,11 +107,16 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
     return () => window.removeEventListener("message", handleMessage);
   }, [contentType, videoUrl, isPlaying, videoDuration]);
 
+  const cardVariants = isIos
+    ? { hidden: { opacity: 1, y: 0 }, visible: { opacity: 1, y: 0 } }
+    : listItemVariants;
+
   return (
     <>
       <motion.div
-        viewport={{ once: true, amount: 0.2 }}
-        variants={listItemVariants}
+        initial={isIos ? "visible" : undefined}
+        viewport={isIos ? undefined : { once: true, amount: 0.2 }}
+        variants={cardVariants}
         className={`relative w-full h-full rounded-[8px] overflow-hidden 
           ${isIos ? "bg-black/50" : "bg-black/26 backdrop-blur-[5px]"}
           ${

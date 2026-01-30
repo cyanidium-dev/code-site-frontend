@@ -28,6 +28,23 @@ export default function CTAPhone() {
     }
   );
 
+  const fadeProps = isIos
+    ? {
+        initial: "visible" as const,
+        variants: {
+          hidden: { opacity: 1 },
+          visible: { opacity: 1 },
+          exit: { opacity: 1 },
+        },
+      }
+    : {
+        initial: "hidden" as const,
+        whileInView: "visible" as const,
+        exit: "exit" as const,
+        viewport: { once: true, amount: 0.1 },
+        variants: fadeInAnimation({ delay: 0.3, scale: 0.95 }),
+      };
+
   return (
     <div
       ref={sectionRef}
@@ -35,13 +52,7 @@ export default function CTAPhone() {
     >
       {/* Phone - середній parallax. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
       <motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/phone.webp"
             alt="phone"
@@ -55,13 +66,7 @@ export default function CTAPhone() {
 
       {/* Drops - повільний parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div className="hidden lg:block absolute -z-10 top-[-66px] left-[55px] w-[291px] h-[301px]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/drops.svg"
             alt="drops"
@@ -74,13 +79,7 @@ export default function CTAPhone() {
 
       {/* Code Site - дуже повільний parallax. PARALLAX DISABLED: style={{ y: extraSlowY }} закоментовано */}
       <motion.div className="absolute -z-20 left-[calc(50%-126px)] lg:left-[-114px] top-[-22px] lg:top-[204px] w-[613px] lg:w-[1300px] h-auto aspect-[2711/347]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/code-site.webp"
             alt="code-site.art"
@@ -94,13 +93,7 @@ export default function CTAPhone() {
 
       {/* Tag - швидкий parallax. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <motion.div className="absolute -z-10 top-[-27px] lg:top-0 right-[64px] lg:right-[23px] w-[180px] lg:w-[341px] h-auto aspect-[341/300]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/tag.svg"
             alt="tag"
@@ -113,13 +106,7 @@ export default function CTAPhone() {
 
       {/* Heart Pink - середній parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
       <motion.div className="lg:hidden absolute -z-20 top-[71px] left-[calc(50%-203px)] w-[390px] h-auto aspect-[781/755]">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/heart-pink.webp"
             alt="heart"

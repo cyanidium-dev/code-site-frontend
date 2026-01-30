@@ -35,9 +35,7 @@ export default function SiteTypesDecorations() {
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none">
       {/* Head One. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div
-        className="absolute -z-20 left-[-404px] md:left-[-443px] top-[-430px] md:top-[-325px] mix-blend-hard-light rotate-[30deg] md:rotate-none"
-      >
+      <motion.div className="absolute -z-20 left-[-404px] md:left-[-443px] top-[-430px] md:top-[-325px] mix-blend-hard-light rotate-[30deg] md:rotate-none">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -59,9 +57,7 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
-      <motion.div
-        className="hidden md:block absolute -z-10 top-[-213px] left-[143px]"
-      >
+      <motion.div className="hidden md:block absolute -z-10 top-[-213px] left-[143px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -80,9 +76,7 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
-        className="hidden md:block absolute -z-10 top-[233px] left-[-60px]"
-      >
+      <motion.div className="hidden md:block absolute -z-10 top-[233px] left-[-60px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -115,9 +109,7 @@ export default function SiteTypesDecorations() {
       </div>
 
       {/* Code Site Pink Gradient. PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
-      <motion.div
-        className="md:hidden absolute top-[-294px] right-[-174px]"
-      >
+      <motion.div className="md:hidden absolute top-[-294px] right-[-174px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -137,14 +129,10 @@ export default function SiteTypesDecorations() {
 
       {/* Laptop One. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
       <div className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
-        <motion.div
-          className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] will-change-transform"
-        />
+        <motion.div className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] will-change-transform" />
 
         {/* PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
-        <motion.div
-          className="absolute -z-20 top-[80px] md:top-[192px] left-[163px] md:left-[261px]"
-        >
+        <motion.div className="absolute -z-20 top-[80px] md:top-[192px] left-[163px] md:left-[261px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -164,9 +152,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: mediumY }} закоментовано */}
-        <motion.div
-          className="absolute -z-20 top-[-13px] md:top-[-105px] right-[187px] md:right-[366px]"
-        >
+        <motion.div className="absolute -z-20 top-[-13px] md:top-[-105px] right-[187px] md:right-[366px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -212,9 +198,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-        <motion.div
-          className="md:hidden absolute z-10 bottom-[52px] right-[188px]"
-        >
+        <motion.div className="md:hidden absolute z-10 bottom-[52px] right-[188px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -233,9 +217,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: extraSlowY }} закоментовано */}
-        <motion.div
-          className="md:hidden absolute -z-20 bottom-[-277px] right-[119px]"
-        >
+        <motion.div className="md:hidden absolute -z-20 bottom-[-277px] right-[119px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -254,9 +236,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-        <motion.div
-          className="hidden md:block absolute -z-30 top-[260px] left-[123px] mix-blend-color-burn"
-        >
+        <motion.div className="hidden md:block absolute -z-30 top-[260px] left-[123px] mix-blend-color-burn">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -299,9 +279,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: mediumY }} */}
-        <motion.div
-          className="absolute -z-10 top-[83px] md:top-[252px] left-[141px] md:left-auto md:right-[303px]"
-        >
+        <motion.div className="absolute -z-10 top-[83px] md:top-[252px] left-[141px] md:left-auto md:right-[303px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -328,9 +306,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="absolute z-10 top-[328px] left-[184px]"
-        >
+        <motion.div className="absolute z-10 top-[328px] left-[184px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -349,9 +325,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: mediumY }} */}
-        <motion.div
-          className="absolute md:z-[7] top-[158px] md:top-[261px] right-[186px] md:right-[400px]"
-        >
+        <motion.div className="absolute md:z-[7] top-[158px] md:top-[261px] right-[186px] md:right-[400px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -371,9 +345,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="absolute -z-30 top-[74px] md:top-[543px] right-[36px] md:right-[-201px] w-[553px] lg:w-[725px] h-auto aspect-[725/902] md:mix-blend-difference"
-        >
+        <motion.div className="absolute -z-30 top-[74px] md:top-[543px] right-[36px] md:right-[-201px] w-[553px] lg:w-[725px] h-auto aspect-[725/902] md:mix-blend-difference">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -394,9 +366,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} */}
-        <motion.div
-          className="hidden md:block absolute z-20 bottom-[158px] left-[401px]"
-        >
+        <motion.div className="hidden md:block absolute z-20 bottom-[158px] left-[401px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -415,9 +385,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="hidden md:block absolute z-30 bottom-[99px] left-[1453px] w-[342px] h-auto aspect-[342/326]"
-        >
+        <motion.div className="hidden md:block absolute z-30 bottom-[99px] left-[1453px] w-[342px] h-auto aspect-[342/326]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -436,9 +404,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} */}
-        <motion.div
-          className="hidden md:block absolute -z-20 bottom-[577px] right-[-350px] w-[342px] h-auto aspect-[342/326]"
-        >
+        <motion.div className="hidden md:block absolute -z-20 bottom-[577px] right-[-350px] w-[342px] h-auto aspect-[342/326]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -457,9 +423,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="hidden md:block absolute z-20 top-[679px] right-[333px]"
-        >
+        <motion.div className="hidden md:block absolute z-20 top-[679px] right-[333px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -478,9 +442,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="hidden md:block absolute -z-20 bottom-[135px] left-[1178px] md:w-[586px] h-auto aspect-[259/285]"
-        >
+        <motion.div className="hidden md:block absolute -z-20 bottom-[135px] left-[1178px] md:w-[586px] h-auto aspect-[259/285]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -531,9 +493,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: mediumY }} */}
-        <motion.div
-          className="absolute z-[7] md:z-[15] top-[-25px] md:top-[-55px] left-[-13px] md:left-[-29px]"
-        >
+        <motion.div className="absolute z-[7] md:z-[15] top-[-25px] md:top-[-55px] left-[-13px] md:left-[-29px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -553,9 +513,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="absolute z-[3] md:-z-30 top-[-76px] md:top-[237px] left-[48px] md:left-[120px]"
-        >
+        <motion.div className="absolute z-[3] md:-z-30 top-[-76px] md:top-[237px] left-[48px] md:left-[120px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -581,9 +539,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} */}
-        <motion.div
-          className="md:hidden absolute z-20 top-[-45px] left-[175px]"
-        >
+        <motion.div className="md:hidden absolute z-20 top-[-45px] left-[175px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -602,9 +558,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: fastY }} */}
-        <motion.div
-          className="md:hidden absolute z-20 right-[114px] bottom-[-68px]"
-        >
+        <motion.div className="md:hidden absolute z-20 right-[114px] bottom-[-68px]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -623,9 +577,7 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         {/* PARALLAX DISABLED: style={{ y: slowY }} */}
-        <motion.div
-          className="md:hidden absolute -z-20 bottom-[-337px] right-[90px]"
-        >
+        <motion.div className="md:hidden absolute -z-20 bottom-[-337px] right-[90px]">
           <motion.div
             initial="hidden"
             whileInView="visible"

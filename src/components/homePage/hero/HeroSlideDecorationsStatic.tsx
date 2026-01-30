@@ -60,8 +60,8 @@ export default function HeroSlideDecorationsStatic({
       />
       */}
 
-      <BottomEllipseMob color={bottomBlurColor} />
-      <BottomEllipseDesk color={bottomBlurColor} />
+      {/* <BottomEllipseMob color={bottomBlurColor} />
+      <BottomEllipseDesk color={bottomBlurColor} /> */}
 
       {/* Blur (disabled on iOS): colorMain circles
       <div
@@ -163,4 +163,3 @@ export default function HeroSlideDecorationsStatic({
     </div>
   );
 }
-

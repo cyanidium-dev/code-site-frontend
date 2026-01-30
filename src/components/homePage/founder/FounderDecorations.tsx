@@ -21,9 +21,7 @@ export default function FounderDecorations({
   return (
     <>
       {/* Швидкий шар - drops. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div
-        className="absolute top-[-33px] lg:top-[-115px] left-[-11px] lg:left-[-12px] z-10 pointer-events-none"
-      >
+      <motion.div className="absolute top-[-33px] lg:top-[-115px] left-[-11px] lg:left-[-12px] z-10 pointer-events-none">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -42,9 +40,7 @@ export default function FounderDecorations({
       </motion.div>
 
       {/* PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
-        className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none"
-      >
+      <motion.div className="hidden lg:block absolute top-[-99px] left-[-96px] -z-10 pointer-events-none">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -104,9 +100,7 @@ export default function FounderDecorations({
         variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         className="absolute -z-20 bottom-[-128px] lg:bottom-[-46px] right-[-391px] lg:right-[-748px]"
       >
-        <motion.div
-          className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"
-        ></motion.div>
+        <motion.div className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"></motion.div>
       </motion.div>
     </>
   );

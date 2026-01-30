@@ -26,9 +26,7 @@ export default function WhyUsImages() {
   return (
     <div ref={sectionRef}>
       {/* Швидкий шар - compact disk. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div
-        className="absolute z-20 bottom-[-35px] lg:bottom-[-115px] right-[-78px] lg:right-[-82px]"
-      >
+      <motion.div className="absolute z-20 bottom-[-35px] lg:bottom-[-115px] right-[-78px] lg:right-[-82px]">
         <motion.div
           initial="hidden"
           whileInView="visible"

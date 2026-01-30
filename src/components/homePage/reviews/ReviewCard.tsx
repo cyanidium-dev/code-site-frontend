@@ -12,6 +12,7 @@ import PauseIcon from "@/components/shared/icons/PauseIcon";
 import ExpandIcon from "@/components/shared/icons/ExpandIcon";
 import Modal from "@/components/shared/modals/Modal";
 import { getOptimizedImageUrl } from "@/utils/sanityImageUrl";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
@@ -29,6 +30,7 @@ interface ReviewCardProps {
 }
 
 export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
+  const { isIos } = useIosDevice();
   const t = useTranslations("homePage.reviews");
   const [isPlaying, setIsPlaying] = useState(false);
   const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
@@ -55,8 +57,8 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
         fetch(
           `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoUrl)}`
         )
-          .then((res) => res.json())
-          .then((data) => {
+          .then(res => res.json())
+          .then(data => {
             if (data.thumbnail_url) {
               setVimeoThumbnail(data.thumbnail_url);
             }
@@ -75,33 +77,34 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
 
     const postMessageToVimeo = (data: any) => {
       if (iframeRef.current && iframeRef.current.contentWindow) {
-        iframeRef.current.contentWindow.postMessage(JSON.stringify(data), '*');
+        iframeRef.current.contentWindow.postMessage(JSON.stringify(data), "*");
       }
     };
 
     const handleMessage = (event: MessageEvent) => {
-      if (!event.origin.includes('vimeo.com')) return;
+      if (!event.origin.includes("vimeo.com")) return;
 
-      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-      
-      if (data.event === 'ready') {
-        postMessageToVimeo({ method: 'getDuration' });
-        postMessageToVimeo({ method: 'addEventListener', value: 'timeupdate' });
-      } else if (data.event === 'timeupdate') {
+      const data =
+        typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+
+      if (data.event === "ready") {
+        postMessageToVimeo({ method: "getDuration" });
+        postMessageToVimeo({ method: "addEventListener", value: "timeupdate" });
+      } else if (data.event === "timeupdate") {
         const currentTime = data.data.seconds;
-        
+
         // Pause 0.3 seconds before end
         if (videoDuration && currentTime >= videoDuration - 0.3 && isPlaying) {
-          postMessageToVimeo({ method: 'pause' });
+          postMessageToVimeo({ method: "pause" });
           setIsPlaying(false);
         }
-      } else if (data.method === 'getDuration') {
+      } else if (data.method === "getDuration") {
         setVideoDuration(data.value);
       }
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, [contentType, videoUrl, isPlaying, videoDuration]);
 
   return (
@@ -109,7 +112,8 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
       <motion.div
         viewport={{ once: true, amount: 0.2 }}
         variants={listItemVariants}
-        className={`relative w-full h-full rounded-[8px] bg-black/26 backdrop-blur-[5px] overflow-hidden 
+        className={`relative w-full h-full rounded-[8px] overflow-hidden 
+          ${isIos ? "bg-black/50" : "bg-black/26 backdrop-blur-[5px]"}
           ${
             contentType === "video"
               ? "bg-[linear-gradient(180deg,rgba(2,4,24,0.82)_13.95%,rgba(1,2,12,0)_46.99%,#020418_92.56%)]"
@@ -144,12 +148,12 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
           >
             {isPlaying && (
               <div className="w-full h-full flex items-center justify-center">
-                <div 
+                <div
                   className="w-full h-full max-w-full max-h-full"
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
                   }}
                 >
                   <ReactPlayer
@@ -160,17 +164,21 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
                     controls={false}
                     width="100%"
                     height="100%"
-                    style={{ 
-                      maxWidth: "100%", 
-                      maxHeight: "100%"
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
                     }}
                     onReady={(player: any) => {
                       if (player) {
                         // Get iframe reference for postMessage communication
                         setTimeout(() => {
-                          const container = document.querySelector(`[data-review-video-id="${uniqueKey}"]`);
+                          const container = document.querySelector(
+                            `[data-review-video-id="${uniqueKey}"]`
+                          );
                           if (container) {
-                            const iframe = container.querySelector('iframe[src*="vimeo.com"]') as HTMLIFrameElement;
+                            const iframe = container.querySelector(
+                              'iframe[src*="vimeo.com"]'
+                            ) as HTMLIFrameElement;
                             if (iframe) {
                               iframeRef.current = iframe;
                             }
@@ -235,12 +243,8 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
               >
                 <Image
                   src={
-                    getOptimizedImageUrl(
-                      reviewImage as any,
-                      400,
-                      85,
-                      "auto"
-                    ) || reviewImage.asset.url
+                    getOptimizedImageUrl(reviewImage as any, 400, 85, "auto") ||
+                    reviewImage.asset.url
                   }
                   alt={reviewImage.alt || `Відгук від ${authorName}`}
                   fill
@@ -249,7 +253,7 @@ export default function ReviewCard({ review, uniqueKey }: ReviewCardProps) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="bg-black/50 rounded-full size-12 flex items-center justify-center backdrop-blur-sm lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out">
+                  <div className={`bg-black/50 rounded-full size-12 flex items-center justify-center ${!isIos ? "backdrop-blur-sm" : ""} lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out`}>
                     <ExpandIcon className="text-white" />
                   </div>
                 </div>

@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTAPhone() {
+  const { isIos } = useIosDevice();
   // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
@@ -52,9 +54,7 @@ export default function CTAPhone() {
       </motion.div>
 
       {/* Drops - повільний parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
-        className="hidden lg:block absolute -z-10 top-[-66px] left-[55px] w-[291px] h-[301px]"
-      >
+      <motion.div className="hidden lg:block absolute -z-10 top-[-66px] left-[55px] w-[291px] h-[301px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -73,9 +73,7 @@ export default function CTAPhone() {
       </motion.div>
 
       {/* Code Site - дуже повільний parallax. PARALLAX DISABLED: style={{ y: extraSlowY }} закоментовано */}
-      <motion.div
-        className="absolute -z-20 left-[calc(50%-126px)] lg:left-[-114px] top-[-22px] lg:top-[204px] w-[613px] lg:w-[1300px] h-auto aspect-[2711/347]"
-      >
+      <motion.div className="absolute -z-20 left-[calc(50%-126px)] lg:left-[-114px] top-[-22px] lg:top-[204px] w-[613px] lg:w-[1300px] h-auto aspect-[2711/347]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -95,9 +93,7 @@ export default function CTAPhone() {
       </motion.div>
 
       {/* Tag - швидкий parallax. PARALLAX DISABLED: style={{ y: fastY }} закоментовано */}
-      <motion.div
-        className="absolute -z-10 top-[-27px] lg:top-0 right-[64px] lg:right-[23px] w-[180px] lg:w-[341px] h-auto aspect-[341/300]"
-      >
+      <motion.div className="absolute -z-10 top-[-27px] lg:top-0 right-[64px] lg:right-[23px] w-[180px] lg:w-[341px] h-auto aspect-[341/300]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -116,9 +112,7 @@ export default function CTAPhone() {
       </motion.div>
 
       {/* Heart Pink - середній parallax. PARALLAX DISABLED: style={{ y: slowY }} закоментовано */}
-      <motion.div
-        className="lg:hidden absolute -z-20 top-[71px] left-[calc(50%-203px)] w-[390px] h-auto aspect-[781/755]"
-      >
+      <motion.div className="lg:hidden absolute -z-20 top-[71px] left-[calc(50%-203px)] w-[390px] h-auto aspect-[781/755]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -137,10 +131,9 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-  
-      <div 
-        className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] 
-        lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]"
+      <div
+        className={`absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] 
+        lg:h-[393px] rounded-full bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]" : ""}`}
       />
     </div>
   );

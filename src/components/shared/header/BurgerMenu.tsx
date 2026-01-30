@@ -1,9 +1,12 @@
+"use client";
+
 import { Dispatch, SetStateAction } from "react";
 import NavMenu from "./NavMenu";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../container/Container";
 import { fadeInAnimation, burgerMenuVariants } from "@/utils/animationVariants";
 import CodeSiteMarquee from "../marquee/CodeSiteMarquee";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface BurgerMenuMobTabProps {
   isHeaderMenuOpened: boolean;
@@ -14,6 +17,8 @@ export default function BurgerMenu({
   isHeaderMenuOpened,
   setIsHeaderMenuOpened,
 }: BurgerMenuMobTabProps) {
+  const { isIos } = useIosDevice();
+
   return (
     <AnimatePresence>
       {isHeaderMenuOpened && (
@@ -27,7 +32,9 @@ export default function BurgerMenu({
             isHeaderMenuOpened ? "no-doc-scroll" : "pointer-events-none"
           } md:hidden absolute z-50 top-0 right-0 w-[100vw] h-[100dvh] bg-black overflow-hidden`}
         >
-          <div className="absolute top-[144px] left-[-590px] w-[469px] h-[512px] rounded-full bg-main supports-[backdrop-filter]:blur-[164px] will-change-transform" />
+          <div
+            className={`absolute top-[144px] left-[-590px] w-[469px] h-[512px] rounded-full bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
+          />
           <motion.div
             initial="hidden"
             whileInView="visible"

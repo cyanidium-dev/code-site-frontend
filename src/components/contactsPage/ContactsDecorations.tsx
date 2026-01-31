@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function ContactsDecorations() {
+  const { isIos } = useIosDevice();
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -266,18 +268,18 @@ export default function ContactsDecorations() {
       </motion.div>
 
       <div
-        className="absolute -z-10 lg:z-[-40] top-[507px] lg:top-[346px] right-[calc(50%-408px)] lg:right-[calc(50%-94px)] w-[265px] lg:w-[345px] h-[241px] lg:h-[315px] rounded-full
-       bg-[#04DCF8] supports-[backdrop-filter]:blur-[92px] lg:supports-[backdrop-filter]:blur-[121px] will-change-transform"
+        className={`absolute -z-10 lg:z-[-40] top-[507px] lg:top-[346px] right-[calc(50%-408px)] lg:right-[calc(50%-94px)] w-[265px] lg:w-[345px] h-[241px] lg:h-[315px] rounded-full
+       bg-[#04DCF8] ${!isIos ? "supports-[backdrop-filter]:blur-[92px] lg:supports-[backdrop-filter]:blur-[121px] will-change-transform" : ""}`}
       />
 
       <div
-        className="absolute -z-10 top-[569px] lg:top-[474px] left-[-75%] w-[257%] lg:w-[200%] h-[549px] lg:h-[607px] rounded-full
-       bg-black supports-[backdrop-filter]:blur-[45px] lg:supports-[backdrop-filter]:blur-[65px] will-change-transform"
+        className={`absolute -z-10 top-[569px] lg:top-[474px] left-[-75%] w-[257%] lg:w-[200%] h-[549px] lg:h-[607px] rounded-full
+       bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[45px] lg:supports-[backdrop-filter]:blur-[65px] will-change-transform" : ""}`}
       />
 
       <div
-        className="hidden lg:block absolute -z-20 top-[543px] right-[calc(50%-964px)] w-[480px] h-[436px] rounded-full
-       bg-main supports-[backdrop-filter]:blur-[165px] will-change-transform"
+        className={`hidden lg:block absolute -z-20 top-[543px] right-[calc(50%-964px)] w-[480px] h-[436px] rounded-full
+       bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[165px] will-change-transform" : ""}`}
       />
     </div>
   );

@@ -1,3 +1,4 @@
+"use client";
 import StarIcon from "@/components/shared/icons/StarIcon";
 import MainButton from "@/components/shared/buttons/MainButton";
 //import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
@@ -6,6 +7,7 @@ import { AnimatePresence } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import type { Service } from "@/types/service";
 import ClientApplicationWrapper from "@/components/shared/clientApplication/ClientApplicationWrapper";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface ServiceCardProps {
   service: Service;
@@ -18,6 +20,7 @@ export default function ServiceCard({
   delay,
   designType,
 }: ServiceCardProps) {
+  const { isIos } = useIosDevice();
   const {
     title,
     subtitle,
@@ -39,7 +42,7 @@ export default function ServiceCard({
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeInAnimation({ delay: delay + 0.1, y: 30 })}
-      className="relative group rounded-[8px] overflow-hidden p-8 pb-7 backdrop-blur-[37.9px] bg-black/26 flex flex-col h-full"
+      className={`relative group rounded-[8px] overflow-hidden p-8 pb-7 flex flex-col h-full ${isIos ? "bg-black/50" : "backdrop-blur-[37.9px] bg-black/26"}`}
     >
       <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
       <div

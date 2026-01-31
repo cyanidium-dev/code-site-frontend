@@ -9,8 +9,10 @@ import {
 import AnimatedGraph from "@/components/homePage/whyUs/AnimatedGraph";
 import { useEffect, useMemo } from "react";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function ExtraInfoDecorations() {
+  const { isIos } = useIosDevice();
   const screenWidth = useScreenWidth();
   const graphScale = useMemo(() => {
     return (screenWidth + 175) / 936;
@@ -109,12 +111,12 @@ export default function ExtraInfoDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute -z-10 bottom-[-41px] md:bottom-[202px] left-[calc(50%+120px)] md:left-[calc(50%+462px)] w-[110%] md:w-[668px] h-[196px] md:h-[347px] rounded-full
-       bg-pink-bright/50 supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className={`absolute -z-10 bottom-[-41px] md:bottom-[202px] left-[calc(50%+120px)] md:left-[calc(50%+462px)] w-[110%] md:w-[668px] h-[196px] md:h-[347px] rounded-full
+       bg-pink-bright/50 ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute -z-10 md:-z-20 top-[0px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
-       bg-black supports-[backdrop-filter]:blur-[47.5px] will-change-transform"
+        className={`absolute -z-10 md:-z-20 top-[0px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
+       bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[47.5px] will-change-transform" : ""}`}
       />
     </div>
   );

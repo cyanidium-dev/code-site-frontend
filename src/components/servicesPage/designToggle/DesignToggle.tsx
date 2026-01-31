@@ -5,6 +5,7 @@ import { twMerge } from "tailwind-merge";
 import DesignHintPopup from "./DesignHintPopup";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface DesignToggleProps {
   className?: string;
@@ -17,6 +18,7 @@ export default function DesignToggle({
   designType: initialDesignType,
   onDesignChange,
 }: DesignToggleProps) {
+  const { isIos } = useIosDevice();
   const t = useTranslations("servicesPage.designToggle");
   const [activeButton, setActiveButton] = useState<"normal" | "wow">(
     initialDesignType
@@ -97,7 +99,7 @@ export default function DesignToggle({
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeInAnimation({ delay: 0.6, x: -30 })}
           ref={containerRef}
-          className="group relative flex items-center bg-black/26 rounded-full backdrop-blur-[10px] p-1"
+          className={`group relative flex items-center rounded-full p-1 ${isIos ? "bg-black/50" : "bg-black/26 backdrop-blur-[10px]"}`}
         >
           <div className="absolute z-10 inset-0 rounded-full shadow-[inset_0px_4px_12.6px_#FFFFFF40] pointer-events-none" />
           {/* Sliding pink background */}

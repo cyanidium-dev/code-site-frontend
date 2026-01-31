@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function PortfolioDecorations() {
+  const { isIos } = useIosDevice();
   const decorationDelay = 0;
 
   // Оптимізований хук для parallax скролу
@@ -70,8 +72,8 @@ export default function PortfolioDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute md:hidden -z-10 bottom-[-117px] right-[-125%] w-[130%] h-[420px] rounded-full
-    bg-main supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className={`absolute md:hidden -z-10 bottom-[-117px] right-[-125%] w-[130%] h-[420px] rounded-full
+    bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
       />
     </div>
   );

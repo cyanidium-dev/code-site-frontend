@@ -34,12 +34,16 @@ export default function SplashGate({
     };
   }, []);
 
+  const showSplashGate = showSplash === null || showSplash === true;
+
   return (
     <SplashContext.Provider value={{ isSplashVisible: showSplash ?? false }}>
-      {(showSplash === null || showSplash === true) && (
+      {showSplashGate && (
         <div className="fixed inset-0 no-doc-scroll z-[9998] bg-[#020418]" />
       )}
-      {showSplash === true && <LottieSplashScreen visible={true} />}
+      {showSplashGate && showSplash === true && (
+        <LottieSplashScreen visible={true} />
+      )}
       {children}
     </SplashContext.Provider>
   );

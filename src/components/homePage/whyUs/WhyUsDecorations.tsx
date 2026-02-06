@@ -7,8 +7,12 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import WhyUsDecorationsStatic from "./WhyUsDecorationsStatic";
 
 export default function WhyUsDecorations() {
+  const { isIos } = useIosDevice();
+  if (isIos) return <WhyUsDecorationsStatic />;
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -129,7 +133,7 @@ export default function WhyUsDecorations() {
       </motion.div>
 
       {/* Повільний шар - blur */}
-      <motion.div
+      <motion.div style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -137,10 +141,7 @@ export default function WhyUsDecorations() {
         variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         className="absolute -z-10 top-[-66px] left-[-51px] lg:top-[-290px] lg:left-auto lg:right-[43px]"
       >
-        <motion.div
-          style={{ y: slowY }}
-          className="w-[303px] lg:w-[777px] h-[238px] lg:h-[611px] rounded-full bg-black supports-[backdrop-filter]:blur-[53px] lg:supports-[backdrop-filter]:blur-[72px] will-change-transform"
-        />
+        <motion.div className="w-[303px] lg:w-[777px] h-[238px] lg:h-[611px] rounded-full bg-black supports-[backdrop-filter]:blur-[53px] lg:supports-[backdrop-filter]:blur-[72px] will-change-transform" />
       </motion.div>
     </div>
   );

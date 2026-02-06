@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTADecorations() {
+  const { isIos } = useIosDevice();
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -152,16 +154,16 @@ export default function CTADecorations() {
       </motion.div>
 
       <div
-        className="absolute -z-50 top-[456px] lg:top-auto lg:bottom-[461px] left-[calc(50%-356px)] lg:left-auto lg:right-[calc(50%-450px)] w-[246px] lg:w-[338px] h-[234px] lg:h-[303px] rounded-full
-       bg-purple-light supports-[backdrop-filter]:blur-[86px] will-change-transform"
+        className={`absolute -z-50 top-[456px] lg:top-auto lg:bottom-[461px] left-[calc(50%-356px)] lg:left-auto lg:right-[calc(50%-450px)] w-[246px] lg:w-[338px] h-[234px] lg:h-[303px] rounded-full
+       bg-purple-light ${!isIos ? "supports-[backdrop-filter]:blur-[86px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute -z-30 top-[177px] lg:top-auto lg:bottom-[142px] right-[calc(50%-693px)] lg:right-auto lg:left-[calc(50%-1285px)] w-[480px] h-[436px] rounded-full
-       bg-main supports-[backdrop-filter]:blur-[335px] will-change-transform"
+        className={`absolute -z-30 top-[177px] lg:top-auto lg:bottom-[142px] right-[calc(50%-693px)] lg:right-auto lg:left-[calc(50%-1285px)] w-[480px] h-[436px] rounded-full
+       bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[335px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute z-10 lg:-z-10 bottom-[-248px] lg:bottom-[-350px] left-[-25%] w-[150%] lg:w-[200%] h-[436px] lg:h-[699px] rounded-full
-       bg-black supports-[backdrop-filter]:blur-[45px] lg:supports-[backdrop-filter]:blur-[68px] will-change-transform"
+        className={`absolute z-10 lg:-z-10 bottom-[-248px] lg:bottom-[-350px] left-[-25%] w-[150%] lg:w-[200%] h-[436px] lg:h-[699px] rounded-full
+       bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[45px] lg:supports-[backdrop-filter]:blur-[68px] will-change-transform" : ""}`}
       />
     </div>
   );

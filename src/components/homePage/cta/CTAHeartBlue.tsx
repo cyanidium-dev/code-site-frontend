@@ -8,7 +8,6 @@ import {
 } from "@/hooks/useParallaxScroll";
 
 export default function CTAHeartBlue() {
-  // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
     "end start",

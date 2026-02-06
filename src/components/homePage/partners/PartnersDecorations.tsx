@@ -6,8 +6,13 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import PartnersDecorationsStatic from "./PartnersDecorationsStatic";
 
 export default function PartnersDecorations() {
+  const { isIos } = useIosDevice();
+  if (isIos) return <PartnersDecorationsStatic />;
+
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -103,6 +108,7 @@ export default function PartnersDecorations() {
 
       {/* Повільний шар - main blur */}
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -111,7 +117,6 @@ export default function PartnersDecorations() {
         className="hidden lg:block absolute -z-20 top-[-159px] left-[-425px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[354px] h-[380px] 2xl:opacity-50 rounded-full bg-main supports-[backdrop-filter]:blur-[281px] will-change-transform"
         />
       </motion.div>

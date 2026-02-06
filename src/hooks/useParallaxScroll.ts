@@ -1,36 +1,42 @@
+"use client";
+
 import { useRef, useMemo } from "react";
 import {
   useScroll,
   useTransform,
+  useMotionValue,
   MotionValue,
-  useMotionValueEvent,
 } from "motion/react";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 // Тип для offset - використовуємо NonNullable для виключення undefined
 type UseScrollOptions = NonNullable<Parameters<typeof useScroll>[0]>;
 type ScrollOffset = UseScrollOptions["offset"];
 
 /**
- * Оптимізований хук для parallax анімацій на основі скролу
- * Використовує мемоізацію та оптимізації для продуктивності
+ * Оптимізований хук для parallax анімацій на основі скролу.
+ * Parallax увімкнено тільки на не-iOS пристроях (на iOS повертає 0).
  */
 export function useParallaxScroll(
   offset: ScrollOffset = ["start end", "end start"]
 ) {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { isIos } = useIosDevice();
 
-  // Створюємо scrollYProgress один раз для секції
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: scrollYProgressReal } = useScroll({
     target: sectionRef,
     offset,
   });
+  const scrollYProgressStatic = useMotionValue(0);
+
+  const scrollYProgress = isIos ? scrollYProgressStatic : scrollYProgressReal;
 
   return { sectionRef, scrollYProgress };
 }
 
 /**
- * Готовий хук для створення parallax значень з часто використовуваними варіантами
- * Створює трансформації один раз та перевикористовує їх
+ * Готовий хук для створення parallax значень з часто використовуваними варіантами.
+ * На iOS повертає 0 (без руху); на інших пристроях — реальні parallax значення.
  */
 export function useParallaxVariants(
   scrollYProgress: MotionValue<number>,
@@ -41,6 +47,7 @@ export function useParallaxVariants(
     extraSlow?: [number, number];
   }
 ) {
+  const { isIos } = useIosDevice();
   const {
     fast = [150, -150],
     medium = [80, -80],
@@ -48,13 +55,16 @@ export function useParallaxVariants(
     extraSlow = [-50, 50],
   } = options || {};
 
-  // Створюємо трансформації один раз - useTransform сам оптимізований
-  const fastY = useTransform(scrollYProgress, [0, 1], fast);
-  const mediumY = useTransform(scrollYProgress, [0, 1], medium);
-  const slowY = useTransform(scrollYProgress, [0, 1], slow);
-  const extraSlowY = useTransform(scrollYProgress, [0, 1], extraSlow);
+  const zero: [number, number] = [0, 0];
+  const fastY = useTransform(scrollYProgress, [0, 1], isIos ? zero : fast);
+  const mediumY = useTransform(scrollYProgress, [0, 1], isIos ? zero : medium);
+  const slowY = useTransform(scrollYProgress, [0, 1], isIos ? zero : slow);
+  const extraSlowY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isIos ? zero : extraSlow
+  );
 
-  // Мемоізуємо об'єкт для запобігання перестворення
   return useMemo(
     () => ({
       fastY,

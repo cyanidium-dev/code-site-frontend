@@ -6,8 +6,13 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import FAQDecorationsStatic from "./FAQDecorationsStatic";
 
 export default function FAQDecorations() {
+  const { isIos } = useIosDevice();
+  if (isIos) return <FAQDecorationsStatic />;
+
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -155,6 +160,7 @@ export default function FAQDecorations() {
       </motion.div>
       {/* Повільний шар - blur */}
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -163,11 +169,11 @@ export default function FAQDecorations() {
         className="absolute -z-20 bottom-[-73px] lg:bottom-[109px] left-[-245px] lg:left-[-238px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] 2xl:opacity-50 rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] will-change-transform"
         />
       </motion.div>
       <motion.div
+        style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -176,7 +182,6 @@ export default function FAQDecorations() {
         className="hidden lg:block absolute -z-20 bottom-[226px] right-[-272px]"
       >
         <motion.div
-          style={{ y: slowY }}
           className="w-[363px] h-[363px] 2xl:opacity-50 rounded-full bg-[#9D5280] supports-[backdrop-filter]:blur-[163px] will-change-transform"
         />
       </motion.div>

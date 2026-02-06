@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function ServicesDecorations() {
+  const { isIos } = useIosDevice();
   const decorationDelay = 0;
 
   // Оптимізований хук для parallax скролу
@@ -120,24 +122,24 @@ export default function ServicesDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className="absolute -z-20 lg:-z-20 top-[100px] md:top-[-35px] right-[calc(50%+60px)] md:right-[calc(50%+573px)] w-[70%] md:w-[295px] h-[259px] md:h-[347px] rounded-full
-       bg-pink-bright/30 md:bg-pink-bright supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className={`absolute -z-20 lg:-z-20 top-[100px] md:top-[-35px] right-[calc(50%+60px)] md:right-[calc(50%+573px)] w-[70%] md:w-[295px] h-[259px] md:h-[347px] rounded-full
+       bg-pink-bright/30 md:bg-pink-bright ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute -z-10 top-[180px] md:top-[-689px] left-1/2 -translate-x-1/2 w-[180%] md:w-[100%] h-[408px] md:h-[532px] rounded-full
-       bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
+        className={`absolute -z-10 top-[180px] md:top-[-689px] left-1/2 -translate-x-1/2 w-[180%] md:w-[100%] h-[408px] md:h-[532px] rounded-full
+       bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[57.8px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute lg:hidden -z-10 lg:-z-10 top-[588px] left-[calc(50%+58px)] w-[70%] h-[259px] rounded-full
-       bg-pink-bright/50 supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className={`absolute lg:hidden -z-10 lg:-z-10 top-[588px] left-[calc(50%+58px)] w-[70%] h-[259px] rounded-full
+       bg-pink-bright/50 ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute lg:hidden -z-10 lg:-z-10 top-[1076px] right-[calc(50%+19px)] w-[82%] h-[347px] rounded-full
-       bg-blue/40 supports-[backdrop-filter]:blur-[164px] will-change-transform"
+        className={`absolute lg:hidden -z-10 lg:-z-10 top-[1076px] right-[calc(50%+19px)] w-[82%] h-[347px] rounded-full
+       bg-blue/40 ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
       />
       <div
-        className="absolute -z-20 lg:-z-10 bottom-[30px] right-[calc(50%-250px)] md:right-auto md:left-[calc(50%+394px)] w-[50%] md:w-[204px] h-[352px] md:h-[398px] rounded-full
-       bg-blue/70 supports-[backdrop-filter]:blur-[156px] will-change-transform rotate-[56.37deg] origin-center"
+        className={`absolute -z-20 lg:-z-10 bottom-[30px] right-[calc(50%-250px)] md:right-auto md:left-[calc(50%+394px)] w-[50%] md:w-[204px] h-[352px] md:h-[398px] rounded-full
+       bg-blue/70 ${!isIos ? "supports-[backdrop-filter]:blur-[156px] will-change-transform" : ""} rotate-[56.37deg] origin-center`}
       />
     </div>
   );

@@ -12,6 +12,8 @@ import GraphDesk from "./GraphDesk";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
 import BottomEllipseMob from "./BottomEllipseMob";
 import BottomEllipseDesk from "./BottomEllipseDesk";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import HeroSlideDecorationsStatic from "./HeroSlideDecorationsStatic";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -42,6 +44,18 @@ export default function HeroSlideDecorations({
   idx,
   mainImage,
 }: HeroSlideDecorationsProps) {
+  const { isIos } = useIosDevice();
+
+  if (isIos) {
+    return (
+      <HeroSlideDecorationsStatic
+        variant={variant}
+        idx={idx}
+        mainImage={mainImage}
+      />
+    );
+  }
+
   const {
     colorMain,
     colorSecondary,
@@ -53,13 +67,13 @@ export default function HeroSlideDecorations({
 
   const screenWidth = useScreenWidth();
 
-  // Оптимізований хук для parallax скролу
+  // Оптимізований хук для parallax скролу (на iOS повертає 0)
   const { sectionRef: containerRef, scrollYProgress } = useParallaxScroll([
     "start end",
     "end start",
   ]);
 
-  // Параллакс ефекти для різних елементів (специфічні значення для Hero)
+  // Параллакс ефекти для різних елементів (на iOS = 0)
   const headY = useTransform(scrollYProgress, [0, 1], [20, -50]);
   const mainImageY = useTransform(scrollYProgress, [0, 1], [60, -100]);
   const logoY = useTransform(scrollYProgress, [0, 1], [-130, 130]);

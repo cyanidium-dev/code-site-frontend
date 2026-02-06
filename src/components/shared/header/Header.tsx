@@ -14,8 +14,10 @@ import { useTranslations } from "next-intl";
 import ClientApplication from "../clientApplication/ClientApplication";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
 import { useScrollY } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function Header() {
+  const { isIos } = useIosDevice();
   const t = useTranslations("header");
   const [isHeaderMenuOpened, setIsHeaderMenuOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,12 +36,26 @@ export default function Header() {
   });
 
   return (
-    <header className="fixed top-0 left-0 z-50 py-6 xl:py-10 w-dvw">
+    <header
+      className="fixed top-0 left-0 z-50 py-6 xl:py-10 w-dvw"
+      style={
+        isIos
+          ? {
+              transform: "translateZ(0)",
+              WebkitBackfaceVisibility: "hidden" as const,
+              backfaceVisibility: "hidden",
+              touchAction: "manipulation",
+            }
+          : undefined
+      }
+    >
       <Container className="relative flex items-center justify-between">
         <div
           className={`absolute -top-3 md:-top-6 lg:-top-3 xl:-top-3.5 left-0 w-full h-16 xl:h-17 rounded-full z-[-20] transition duration-500 ease-in-out ${
             isScrolled
-              ? "bg-black/20 backdrop-blur-md shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
+              ? isIos
+                ? "bg-black/20 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
+                : "bg-black/20 backdrop-blur-md shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
               : "bg-transparent"
           }`}
         />

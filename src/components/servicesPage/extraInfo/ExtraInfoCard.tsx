@@ -1,8 +1,10 @@
+"use client";
 import StarIcon from "@/components/shared/icons/StarIcon";
 import { ExtraInfo } from "@/types/service";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
 import ExtraInfoCardDecorations from "./ExtraInfoCardDecorations";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface ExtraInfoCardProps {
   extraInfo: ExtraInfo;
@@ -15,6 +17,7 @@ export default function ExtraInfoCard({
   delay,
   variant,
 }: ExtraInfoCardProps) {
+  const { isIos } = useIosDevice();
   const { title, description, infoList } = extraInfo;
 
   if (!infoList || !infoList.items || !Array.isArray(infoList.items)) {
@@ -28,7 +31,7 @@ export default function ExtraInfoCard({
       exit="exit"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeInAnimation({ delay: delay + 0.1, y: 30 })}
-      className="relative overflow-hidden px-3 py-6 lg:py-8 lg:px-5 backdrop-blur-[37.9px] bg-black/26 rounded-[8px] flex flex-col h-full"
+      className={`relative overflow-hidden px-3 py-6 lg:py-8 lg:px-5 rounded-[8px] flex flex-col h-full ${isIos ? "bg-black/50" : "backdrop-blur-[37.9px] bg-black/26"}`}
     >
       {variant && <ExtraInfoCardDecorations variant={variant} />}
       <div className="mb-8 lg:mb-11 px-3 flex-1 flex flex-col">
@@ -46,7 +49,7 @@ export default function ExtraInfoCard({
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeInAnimation({ y: 20, delay: 0.2 })}
         data-inner-card
-        className="relative backdrop-blur-[37.9px] bg-black/26 rounded-[8px] px-5 py-6"
+        className={`relative rounded-[8px] px-5 py-6 ${isIos ? "bg-black/50" : "backdrop-blur-[37.9px] bg-black/26"}`}
       >
         <div className="absolute z-10 inset-0 rounded-[8px] shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />
         <h4 className="pb-3 border-b border-white/10 font-actay text-[12px] lg:text-[16px] leading-[125%] uppercase font-bold mb-3">

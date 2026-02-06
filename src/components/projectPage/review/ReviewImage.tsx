@@ -7,6 +7,7 @@ import { getOptimizedImageUrl } from "@/utils/sanityImageUrl";
 import ExpandIcon from "@/components/shared/icons/ExpandIcon";
 import { useState } from "react";
 import Modal from "@/components/shared/modals/Modal";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface ReviewImageProps {
   id: string;
@@ -21,6 +22,7 @@ export default function ReviewImage({
   reviewImage,
   className,
 }: ReviewImageProps) {
+  const { isIos } = useIosDevice();
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   return (
@@ -62,7 +64,7 @@ export default function ReviewImage({
             loading="lazy"
           />
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="bg-black/50 rounded-full size-12 flex items-center justify-center backdrop-blur-sm lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out">
+            <div className={`bg-black/50 rounded-full size-12 flex items-center justify-center ${!isIos ? "backdrop-blur-sm" : ""} lg:group-hover:translate-y-[-10px] lg:group-hover:scale-110 lg:group-hover:brightness-125 transition-all duration-300 ease-in-out`}>
               <ExpandIcon className="text-white" />
             </div>
           </div>

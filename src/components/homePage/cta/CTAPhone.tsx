@@ -6,8 +6,10 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTAPhone() {
+  const { isIos } = useIosDevice();
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -25,6 +27,23 @@ export default function CTAPhone() {
     }
   );
 
+  const fadeProps = isIos
+    ? {
+      initial: "visible" as const,
+      variants: {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+        exit: { opacity: 1 },
+      },
+    }
+    : {
+      initial: "hidden" as const,
+      whileInView: "visible" as const,
+      exit: "exit" as const,
+      viewport: { once: true, amount: 0.1 },
+      variants: fadeInAnimation({ delay: 0.3, scale: 0.95 }),
+    };
+
   return (
     <div
       ref={sectionRef}
@@ -32,13 +51,7 @@ export default function CTAPhone() {
     >
       {/* Phone - середній parallax */}
       <motion.div style={{ y: mediumY }}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/phone.webp"
             alt="phone"
@@ -55,13 +68,7 @@ export default function CTAPhone() {
         style={{ y: slowY }}
         className="hidden lg:block absolute -z-10 top-[-66px] left-[55px] w-[291px] h-[301px]"
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/drops.svg"
             alt="drops"
@@ -77,13 +84,7 @@ export default function CTAPhone() {
         style={{ y: extraSlowY }}
         className="absolute -z-20 left-[calc(50%-126px)] lg:left-[-114px] top-[-22px] lg:top-[204px] w-[613px] lg:w-[1300px] h-auto aspect-[2711/347]"
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/code-site.webp"
             alt="code-site.art"
@@ -100,13 +101,7 @@ export default function CTAPhone() {
         style={{ y: fastY }}
         className="absolute -z-10 top-[-27px] lg:top-0 right-[64px] lg:right-[23px] w-[180px] lg:w-[341px] h-auto aspect-[341/300]"
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/tag.svg"
             alt="tag"
@@ -122,13 +117,7 @@ export default function CTAPhone() {
         style={{ y: slowY }}
         className="lg:hidden absolute -z-20 top-[71px] left-[calc(50%-203px)] w-[390px] h-auto aspect-[781/755]"
       >
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
-        >
+        <motion.div {...fadeProps}>
           <Image
             src="/images/homePage/cta/heart-pink.webp"
             alt="heart"
@@ -140,10 +129,9 @@ export default function CTAPhone() {
         </motion.div>
       </motion.div>
 
-  
-      <div 
-        className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] 
-        lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]"
+      <div
+        className={`absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] 
+        lg:h-[393px] rounded-full bg-main ${!isIos ? "supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]" : ""}`}
       />
     </div>
   );

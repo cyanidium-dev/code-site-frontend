@@ -5,6 +5,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "./globals.css";
+import { IosDeviceProvider } from "@/contexts/IosDeviceContext";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import { getLocale } from "next-intl/server";
@@ -84,13 +85,15 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}
       >
         <NextIntlClientProvider>
-          <SplashGate>
-            <Header />
-            <main className="flex-1">
-              <PageTransitionEffect>{children}</PageTransitionEffect>
-            </main>
-            <Footer />
-          </SplashGate>
+          <IosDeviceProvider>
+            <SplashGate>
+              <Header />
+              <main className="flex-1">
+                <PageTransitionEffect>{children}</PageTransitionEffect>
+              </main>
+              <Footer />
+            </SplashGate>
+          </IosDeviceProvider>
         </NextIntlClientProvider>
       </body>
     </html>

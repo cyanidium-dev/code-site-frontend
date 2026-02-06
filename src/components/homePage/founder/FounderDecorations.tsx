@@ -3,6 +3,8 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 import { MotionValue } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import FounderDecorationsStatic from "./FounderDecorationsStatic";
 
 interface FounderDecorationsProps {
   fastY: MotionValue<number>;
@@ -13,6 +15,9 @@ export default function FounderDecorations({
   fastY,
   slowY,
 }: FounderDecorationsProps) {
+  const { isIos } = useIosDevice();
+  if (isIos) return <FounderDecorationsStatic />;
+
   return (
     <>
       {/* Швидкий шар - drops */}
@@ -59,8 +64,7 @@ export default function FounderDecorations({
       </motion.div>
 
       {/* Повільний шар - figure */}
-      <motion.div
-        style={{ y: fastY }}
+      <motion.div style={{ y: fastY }}
         className="absolute bottom-[-254px] lg:bottom-[-295px] right-[-254px] lg:right-[-506px] -z-30 pointer-events-none w-[463px] lg:w-[851px] 
         aspect-[851/781] overflow-visible"
       >
@@ -92,7 +96,7 @@ export default function FounderDecorations({
         <div className="absolute bottom-[-520px] lg:bottom-[-420px] left-[20px] lg:left-[-50px] w-[806px] h-[768px] rounded-full bg-black supports-[backdrop-filter]:blur-[80px] will-change-transform" />
       </motion.div>
 
-      <motion.div
+      <motion.div style={{ y: slowY }}
         initial="hidden"
         whileInView="visible"
         exit="exit"
@@ -100,10 +104,7 @@ export default function FounderDecorations({
         variants={fadeInAnimation({ delay: 0.3, scale: 0.95 })}
         className="absolute -z-20 bottom-[-128px] lg:bottom-[-46px] right-[-391px] lg:right-[-748px]"
       >
-        <motion.div
-          style={{ y: slowY }}
-          className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"
-        ></motion.div>
+        <motion.div className="w-[337px] lg:w-[618px] h-[301px] lg:h-[553px] 2xl:opacity-50 rounded-full bg-blue-bright supports-[backdrop-filter]:blur-[107px] lg:supports-[backdrop-filter]:blur-[197px] will-change-transform"></motion.div>
       </motion.div>
     </>
   );

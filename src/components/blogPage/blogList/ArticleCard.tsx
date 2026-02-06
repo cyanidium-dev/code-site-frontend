@@ -1,3 +1,4 @@
+"use client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import * as motion from "motion/react-client";
@@ -5,9 +6,9 @@ import { listItemVariants } from "@/utils/animationVariants";
 import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import { Link } from "@/i18n/navigation";
 import EstimatedReadingTime from "@/components/shared/estReadingTime/EstimatedReadingTime";
-
 import { Blog } from "@/types/blog";
 import { twMerge } from "tailwind-merge";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface ArticleCardProps {
   blog: Blog;
@@ -16,14 +17,14 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ blog, className }: ArticleCardProps) {
   const t = useTranslations("blogPage");
-
+  const { isIos } = useIosDevice();
   const { name, description, previewImage, slug } = blog;
 
   return (
     <motion.li
       viewport={{ once: true, amount: 0.2 }}
       variants={listItemVariants}
-      className={twMerge("sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] bg-black/26 backdrop-blur-[10px] overflow-hidden", className)}
+      className={twMerge("sm:w-[calc(50%-10px)] lg:w-[calc(33.33%-13.33px)] h-full rounded-[8px] overflow-hidden", isIos ? "bg-black/50" : "bg-black/26 backdrop-blur-[10px]", className)}
     >
       <Link href={`/blog/${slug}`}>
         <div className="absolute z-10 inset-0 shadow-[inset_0px_4px_12.6px_rgba(255,255,255,0.25)] pointer-events-none" />

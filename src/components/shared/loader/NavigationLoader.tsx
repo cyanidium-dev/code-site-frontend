@@ -4,10 +4,12 @@ import { NavigationContext } from "../pageTransitionEffect/PageTransitionEffect"
 import { SplashContext } from "../splashScreen/SplashGate";
 import PageLoader from "./PageLoader";
 import { AnimatePresence, motion } from "framer-motion";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function NavigationLoader() {
   const { isNavigating } = useContext(NavigationContext);
   const { isSplashVisible } = useContext(SplashContext);
+  const { isIos } = useIosDevice();
 
   // Don't show navigation loader while splash is visible
   const shouldShow = isNavigating && !isSplashVisible;
@@ -22,7 +24,7 @@ export default function NavigationLoader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[9998] bg-black/44 backdrop-blur-sm"
+            className={`fixed inset-0 z-[9998] bg-black/44 ${!isIos ? "backdrop-blur-sm" : ""}`}
             style={{
               willChange: "opacity",
               transform: "translateZ(0)",

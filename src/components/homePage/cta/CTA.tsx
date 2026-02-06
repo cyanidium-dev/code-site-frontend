@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/shared/container/Container";
 import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
@@ -6,9 +7,27 @@ import CTAPhone from "./CTAPhone";
 import CTAHeartBlue from "./CTAHeartBlue";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTA() {
   const t = useTranslations("homePage.cta");
+  const { isIos } = useIosDevice();
+
+  const subtitleVariants = isIos
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 }, exit: { opacity: 1 } }
+    : fadeInAnimation({
+        delay: 0.4,
+        scale: 0.85,
+        x: -20,
+        y: 20,
+      });
+
+  const clientAppVariants = isIos
+    ? {}
+    : fadeInAnimation({
+        delay: 0.8,
+        scale: 0.85,
+      });
 
   return (
     <section className="relative pt-[146px] lg:pt-[435px] pb-[127px] lg:pb-[243px]">
@@ -34,16 +53,11 @@ export default function CTA() {
 
         <CTAPhone />
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={isIos ? "visible" : "hidden"}
+          whileInView={isIos ? undefined : "visible"}
           exit="exit"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={fadeInAnimation({
-            delay: 0.4,
-            scale: 0.85,
-            x: -20,
-            y: 20,
-          })}
+          viewport={isIos ? undefined : { once: true, amount: 0.1 }}
+          variants={subtitleVariants}
           className="lg:max-w-[228px] lg:mt-[166px]"
         >
           <h3 className="max-w-[198px] ml-auto lg:ml-0 mb-12 lg:mb-9 font-actay text-[20px] font-bold leading-[108%] text-right lg:text-left">
@@ -58,10 +72,7 @@ export default function CTA() {
             buttonText={t("button")}
             variant="blue"
             buttonClassName="h-[58px] lg:w-[310px] xl:w-[418px] lg:mb-8 text-[13px] lg:text-[16px] font-bold leading-none"
-            variants={fadeInAnimation({
-              delay: 0.8,
-              scale: 0.85,
-            })}
+            variants={clientAppVariants}
           />
           <SectionTitle
             variant="pink"

@@ -16,9 +16,6 @@ export default function SiteTypesDecorationsStatic() {
           sizes="(max-width: 768px) 661px, 760px"
           className="w-[661px] md:w-[760px] h-auto"
         />
-        {/* Blur (disabled on iOS)
-        <div className="hidden lg:block rotate-[115deg] absolute z-10 top-[-81px] left-[-448px] w-[1038px] h-[595px] rounded-full bg-black supports-[backdrop-filter]:blur-[123px] " />
-        */}
       </div>
 
       {/* Drops left top desk */}
@@ -44,9 +41,6 @@ export default function SiteTypesDecorationsStatic() {
 
       {/* Texture */}
       <div className="xs:hidden absolute -z-40 left-[-34px] top-[768px] w-auto h-[1539px] aspect-[577/1539]">
-        {/* Blur (disabled on iOS)
-        <div className="absolute z-10 top-[-240px] left-[62px] w-[512px] h-[339px] rounded-full bg-black supports-[backdrop-filter]:blur-[67px] " />
-        */}
         <Image
           src="/images/homePage/siteTypes/texture.webp"
           alt="texture"
@@ -69,9 +63,6 @@ export default function SiteTypesDecorationsStatic() {
 
       {/* Laptop One block */}
       <div className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
-        {/* Blur (disabled on iOS)
-        <div className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] " />
-        */}
 
         <div className="absolute -z-20 top-[80px] md:top-[192px] left-[163px] md:left-[261px]">
           <Image
@@ -140,10 +131,6 @@ export default function SiteTypesDecorationsStatic() {
           />
         </div>
 
-        {/* Blur (disabled on iOS)
-        <div className="hidden md:block absolute top-[518px] left-[-221px] w-[2040px] h-[564px] rounded-full bg-black supports-[backdrop-filter]:blur-[87px] " />
-        <div className="hidden md:block absolute -z-10 top-[780px] right-[55px] w-[684px] h-[722px] rounded-full bg-black supports-[backdrop-filter]:blur-[127px] " />
-        */}
       </div>
 
       {/* Laptop Two */}
@@ -259,16 +246,6 @@ export default function SiteTypesDecorationsStatic() {
           />
         </div>
 
-        {/* Blur (disabled on iOS)
-        <div
-          className="absolute md:z-[7] md:rotate-[-15deg] bottom-[-103px] md:bottom-[-135px] left-[-157px] md:left-[-442px] w-[1025px] md:w-[1838px] h-[381px] md:h-[595px]
-         rounded-full bg-black supports-[backdrop-filter]:blur-[105px] md:supports-[backdrop-filter]:blur-[41px] "
-        />
-        <div
-          className="hidden md:block absolute -z-10 top-[780px] right-[55px] w-[684px] h-[722px]
-         rounded-full bg-black supports-[backdrop-filter]:blur-[127px]  "
-        />
-        */}
       </div>
 
       {/* Laptop Three */}
@@ -342,19 +319,7 @@ export default function SiteTypesDecorationsStatic() {
           />
         </div>
 
-        {/* Blur (disabled on iOS)
-        <div className="absolute z-[5] md:-z-20 top-[59px] md:top-[406px] left-[-103px] md:left-[-72px] w-[357px] md:w-[448px] h-[360px] md:h-[451px] rounded-full bg-[#089AFA] 
-        supports-[backdrop-filter]:blur-[105px] md:supports-[backdrop-filter]:blur-[131px] " />
-        <div
-          className="absolute md:z-20 rotate-[-8.44deg] md:rotate-0 bottom-[-125px] md:bottom-[-198px] left-[-96px] md:left-[-557px] w-[829px] md:w-[1964px] h-[330px] md:h-[636px] rounded-full bg-black 
-        supports-[backdrop-filter]:blur-[55px] md:supports-[backdrop-filter]:blur-[41px] "
-        />
-        */}
       </div>
-
-      {/* Blur (disabled on iOS)
-      <div className="lg:hidden absolute z-20 bottom-[-178px] left-[calc(50%-420px)] w-[233%] h-[278px] rounded-full bg-black supports-[backdrop-filter]:blur-[24.89px] " />
-      */}
     </div>
   );
 }

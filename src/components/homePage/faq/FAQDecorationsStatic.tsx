@@ -66,18 +66,6 @@ export default function FAQDecorationsStatic() {
           height="389"
         />
       </div>
-
-      {/* Blue blur (disabled on iOS)
-      <div className="absolute -z-20 bottom-[-73px] lg:bottom-[109px] left-[-245px] lg:left-[-238px]">
-        <div className="w-[271px] lg:w-[448px] h-[273px] lg:h-[451px] 2xl:opacity-50 rounded-full bg-[#0C96FA] supports-[backdrop-filter]:blur-[195px] lg:supports-[backdrop-filter]:blur-[323px] " />
-      </div>
-      */}
-
-      {/* Pink blur (disabled on iOS)
-      <div className="hidden lg:block absolute -z-20 bottom-[226px] right-[-272px]">
-        <div className="w-[363px] h-[363px] 2xl:opacity-50 rounded-full bg-[#9D5280] supports-[backdrop-filter]:blur-[163px] " />
-      </div>
-      */}
     </div>
   );
 }

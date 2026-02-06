@@ -10,7 +10,6 @@ import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function WhyUsImages() {
   const { isIos } = useIosDevice();
-  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",

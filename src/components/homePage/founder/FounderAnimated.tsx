@@ -10,7 +10,6 @@ interface FounderAnimatedProps {
 }
 
 export default function FounderAnimated({ children }: FounderAnimatedProps) {
-  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",

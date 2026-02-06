@@ -13,8 +13,6 @@ import WhyUsDecorationsStatic from "./WhyUsDecorationsStatic";
 export default function WhyUsDecorations() {
   const { isIos } = useIosDevice();
   if (isIos) return <WhyUsDecorationsStatic />;
-
-  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",

@@ -10,7 +10,6 @@ import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTAPhone() {
   const { isIos } = useIosDevice();
-  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -30,20 +29,20 @@ export default function CTAPhone() {
 
   const fadeProps = isIos
     ? {
-        initial: "visible" as const,
-        variants: {
-          hidden: { opacity: 1 },
-          visible: { opacity: 1 },
-          exit: { opacity: 1 },
-        },
-      }
+      initial: "visible" as const,
+      variants: {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+        exit: { opacity: 1 },
+      },
+    }
     : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        exit: "exit" as const,
-        viewport: { once: true, amount: 0.1 },
-        variants: fadeInAnimation({ delay: 0.3, scale: 0.95 }),
-      };
+      initial: "hidden" as const,
+      whileInView: "visible" as const,
+      exit: "exit" as const,
+      viewport: { once: true, amount: 0.1 },
+      variants: fadeInAnimation({ delay: 0.3, scale: 0.95 }),
+    };
 
   return (
     <div

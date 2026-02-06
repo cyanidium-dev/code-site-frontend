@@ -56,11 +56,6 @@ export default function WhyUsDecorationsStatic() {
         <AnimatedMapWithDots className="w-[377px] lg:w-[604px] h-auto" />
       </div>
 
-      {/* Blur (disabled on iOS)
-      <div className="absolute -z-10 top-[-66px] left-[-51px] lg:top-[-290px] lg:left-auto lg:right-[43px]">
-        <div className="w-[303px] lg:w-[777px] h-[238px] lg:h-[611px] rounded-full bg-black supports-[backdrop-filter]:blur-[53px] lg:supports-[backdrop-filter]:blur-[72px] " />
-      </div>
-      */}
     </div>
   );
 }

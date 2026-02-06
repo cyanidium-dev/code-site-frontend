@@ -13,7 +13,6 @@ export default function FAQDecorations() {
   const { isIos } = useIosDevice();
   if (isIos) return <FAQDecorationsStatic />;
 
-  // PARALLAX DISABLED — використання закоментовано, паралакс не працює
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",

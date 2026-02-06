@@ -1,7 +1,6 @@
 "use client";
 import StarIcon from "@/components/shared/icons/StarIcon";
 import MainButton from "@/components/shared/buttons/MainButton";
-//import SecondaryButton from "@/components/shared/buttons/SecondaryButton";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
 import { fadeInAnimation } from "@/utils/animationVariants";
@@ -28,7 +27,6 @@ export default function ServiceCard({
     price,
     description,
     pros,
-    //seeMore,
     wantIt,
     seeMoreLink,
     wantItLink,
@@ -95,12 +93,6 @@ export default function ServiceCard({
         </ul>
       </div>
       <div className="mt-auto">
-        {/* <SecondaryButton
-          variant="white"
-          className="mb-2 h-12 text-[12.8103px] leading-[123%] uppercase font-bold"
-        >
-          {seeMore}
-        </SecondaryButton> */}
         <ClientApplicationWrapper source={`service-card-${title}`}>
           <MainButton
             variant="pink"

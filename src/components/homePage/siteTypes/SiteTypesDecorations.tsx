@@ -137,9 +137,11 @@ export default function SiteTypesDecorations() {
       </motion.div>
 
       {/* Laptop One.  */}
-      <motion.div style={{ y: fastY }} className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
-        <motion.div className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] will-change-transform" />
-
+      <div className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
+        <motion.div
+          style={{ y: fastY }}
+          className="absolute -z-30 top-[111px] left-[238px] w-[209px] h-[224px] rounded-full bg-main supports-[backdrop-filter]:blur-[83px] will-change-transform"
+        />
         <motion.div
           style={{ y: mediumY }}
           className="absolute -z-20 top-[80px] md:top-[192px] left-[163px] md:left-[261px]"
@@ -190,10 +192,7 @@ export default function SiteTypesDecorations() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          style={{ y: mediumY }}
-          className="relative -z-10"
-        >
+        <motion.div style={{ y: mediumY }} className="relative -z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -276,11 +275,11 @@ export default function SiteTypesDecorations() {
         </motion.div>
 
         <div className="hidden md:block absolute top-[518px] left-[-221px] w-[2040px] h-[564px] rounded-full bg-black supports-[backdrop-filter]:blur-[87px] will-change-transform" />
-      </motion.div>
+      </div>
 
       {/* Laptop Two.  */}
-      <motion.div style={{ y: mediumY }} className="absolute top-[1029px] md:top-[600px] left-[calc(50%-366px)] md:left-[calc(50%-1135px)] w-[743px] md:w-[1598px] h-auto aspect-[3196/2709]">
-        <motion.div className="relative md:z-[5]">
+      <div className="absolute top-[1029px] md:top-[600px] left-[calc(50%-366px)] md:left-[calc(50%-1135px)] w-[743px] md:w-[1598px] h-auto aspect-[3196/2709]">
+        <motion.div style={{ y: mediumY }} className="relative md:z-[5]">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -508,11 +507,11 @@ export default function SiteTypesDecorations() {
           className="hidden md:block absolute -z-10 top-[780px] right-[55px] w-[684px] h-[722px]
          rounded-full bg-black supports-[backdrop-filter]:blur-[127px]  will-change-transform"
         />
-      </motion.div>
+      </div>
 
       {/* Laptop Three.  */}
-      <motion.div style={{ y: slowY }} className="absolute top-[2190px] md:top-[1662px] left-[-93px] md:left-[216px] w-[620px] md:w-[1377px] h-auto aspect-[2755/2066]">
-        <motion.div className="relative z-10 md:z-20">
+      <div className="absolute top-[2190px] md:top-[1662px] left-[-93px] md:left-[216px] w-[620px] md:w-[1377px] h-auto aspect-[2755/2066]">
+        <motion.div style={{ y: mediumY }} className="relative z-10 md:z-20">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -653,9 +652,9 @@ export default function SiteTypesDecorations() {
           className="absolute md:z-20 rotate-[-8.44deg] md:rotate-0 bottom-[-125px] md:bottom-[-198px] left-[-96px] md:left-[-557px] w-[829px] md:w-[1964px] h-[330px] md:h-[636px] rounded-full bg-black 
         supports-[backdrop-filter]:blur-[55px] md:supports-[backdrop-filter]:blur-[41px] will-change-transform"
         />
-      </motion.div>
+      </div>
 
       <div className="lg:hidden absolute z-20 bottom-[-178px] left-[calc(50%-420px)] w-[233%] h-[278px] rounded-full bg-black supports-[backdrop-filter]:blur-[24.89px] will-change-transform" />
-    </div >
+    </div>
   );
 }

@@ -81,6 +81,15 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        {/* Preconnect to Vimeo for faster video player and thumbnails */}
+        <link rel="preconnect" href="https://vimeo.com" />
+        <link rel="preconnect" href="https://player.vimeo.com" />
+        <link rel="preconnect" href="https://i.vimeocdn.com" />
+        <link rel="preconnect" href="https://f.vimeocdn.com" />
+        {/* Preconnect to Sanity CDN for faster images */}
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+      </head>
       <body
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}
       >

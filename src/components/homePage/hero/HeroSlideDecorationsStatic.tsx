@@ -52,6 +52,40 @@ export default function HeroSlideDecorationsStatic({
 
   return (
     <div className="absolute inset-0 pointer-events-none">
+      {/* Gradient ovals (iOS: replace blurs) - same order as HeroSlideDecorations */}
+
+      {/* 1. Top black blur → black gradient (no opacity) */}
+      <div
+        className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
+
+      {/* 2. colorMain right */}
+      <div
+        className="absolute z-10 top-[124px] right-[-454px] w-[443px] h-[440px] rounded-full opacity-60"
+        style={{
+          background: `radial-gradient(ellipse at center, ${colorMain} 0%, transparent 70%)`,
+        }}
+        aria-hidden
+      />
+
+      {/* 3. colorMain left (lg only) */}
+      <div
+        className="hidden lg:block absolute z-10 top-[4px] lg:top-[-27px] left-[14px] lg:left-[71px] w-[289px] lg:w-[443px] h-[287px] lg:h-[440px] rounded-full opacity-60"
+        style={{
+          background: `radial-gradient(ellipse at center, ${colorMain} 0%, transparent 70%)`,
+        }}
+        aria-hidden
+      />
+
+      {/* 4. colorSecondary left top */}
+      <div
+        className="absolute -z-20 left-[-312px] lg:left-[-273px] top-[-420px] lg:top-[-533px] w-[469px] h-[512px] rounded-full opacity-60"
+        style={{
+          background: `radial-gradient(ellipse at center, ${colorSecondary} 0%, transparent 70%)`,
+        }}
+        aria-hidden
+      />
 
       {/* Head image */}
       <div
@@ -95,6 +129,15 @@ export default function HeroSlideDecorationsStatic({
           fetchPriority={idx === 0 ? "high" : "auto"}
         />
       </div>
+
+      {/* 5. colorSecondary bottom right */}
+      <div
+        className="absolute -z-20 bottom-[185px] md:bottom-[85px] lg:bottom-[213px] right-[calc(50%-176px)] lg:right-[calc(50%-418px)] w-[310px] lg:w-[443px] h-[307px] lg:h-[440px] rounded-full opacity-60"
+        style={{
+          background: `radial-gradient(ellipse at center, ${colorSecondary} 0%, transparent 70%)`,
+        }}
+        aria-hidden
+      />
 
       {screenWidth < 1024 ? (
         <div

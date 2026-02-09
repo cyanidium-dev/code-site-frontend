@@ -53,9 +53,9 @@ export default function FounderDecorationsStatic() {
         />
       </div>
 
-      {/* Gradient oval (iOS: match blue blur) - single div + opacity */}
+      {/* Gradient oval (iOS: match blue blur) - same position as FounderDecorations */}
       <div
-        className="absolute -z-20 right-[-2px] lg:right-[28px] bottom-[-222px] lg:bottom-[-599px] w-[448px] lg:w-[822px] h-[400px] lg:h-[736px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-blue-bright)_0%,transparent_70%)]"
+        className="absolute -z-20 bottom-[-128px] lg:bottom-[-46px] right-[-391px] lg:right-[-748px] w-[388px] lg:w-[712px] h-[346px] lg:h-[637px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-blue-bright)_0%,transparent_70%)]"
         aria-hidden
       />
     </>

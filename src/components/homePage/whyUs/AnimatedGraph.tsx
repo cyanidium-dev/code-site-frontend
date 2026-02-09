@@ -3,14 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import * as motion from "motion/react-client";
 import Graph from "./Graph";
 import { twMerge } from "tailwind-merge";
-import { useIosDevice } from "@/contexts/IosDeviceContext";
-
 interface AnimatedGraphProps {
   className?: string;
 }
 
 export default function AnimatedGraph({ className = "" }: AnimatedGraphProps) {
-  const { isIos } = useIosDevice();
   const svgRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -35,12 +32,6 @@ export default function AnimatedGraph({ className = "" }: AnimatedGraphProps) {
     fillPath.style.strokeDasharray = `${pathLength}`;
     fillPath.style.strokeDashoffset = `${pathLength}`;
 
-    if (isIos) {
-      fillPath.style.strokeDashoffset = "0";
-      strokePath.style.strokeDashoffset = "0";
-      return;
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -60,28 +51,20 @@ export default function AnimatedGraph({ className = "" }: AnimatedGraphProps) {
 
     observer.observe(svgRef.current);
     return () => observer.disconnect();
-  }, [isVisible, isIos]);
+  }, [isVisible]);
 
-  const motionProps = isIos
-    ? {
-        initial: "visible" as const,
-        variants: {
-          hidden: { opacity: 1 },
-          visible: { opacity: 1 },
-        },
-      }
-    : {
-        initial: "hidden" as const,
-        whileInView: "visible" as const,
-        viewport: { once: true, amount: 0.3 },
-        variants: {
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: { duration: 0.3 },
-          },
-        },
-      };
+  const motionProps = {
+    initial: "hidden" as const,
+    whileInView: "visible" as const,
+    viewport: { once: true, amount: 0.3 },
+    variants: {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: { duration: 0.3 },
+      },
+    },
+  };
 
   return (
     <motion.div

@@ -270,7 +270,7 @@ export default function SiteTypesDecorationsStatic() {
 
         {/* Gradient ovals (iOS: match Laptop Two blurs) - single divs, no opacity */}
         <div
-          className="absolute md:z-[7] md:rotate-[-15deg] left-[-326px] bottom-[40px] md:left-[-746px] md:bottom-[36px] w-[1363px] md:w-[2445px] h-[507px] md:h-[792px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          className="absolute md:z-[7] md:rotate-[-15deg] left-[-326px] bottom-[40px] md:left-[-746px] md:bottom-[36px] w-[1363px] md:w-[2445px] h-[507px] md:h-[792px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-black)_0%,transparent_70%)]"
           aria-hidden
         />
         <div

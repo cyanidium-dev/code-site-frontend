@@ -38,6 +38,16 @@ export default function PartnersDecorationsStatic() {
           className="hidden lg:block"
         />
       </div>
+
+      {/* Gradient ovals (iOS: single div like original) - black: no opacity; main: opacity */}
+      <div
+        className="absolute -z-20 left-[calc(50%-266px)] lg:left-[34px] top-[-53px] lg:top-[-138px] w-[531px] lg:w-[1064px] h-[381px] lg:h-[496px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
+      <div
+        className="hidden lg:block absolute -z-20 left-[-484px] top-[-222px] w-[471px] h-[506px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-main)_0%,transparent_70%)]"
+        aria-hidden
+      />
     </div>
   );
 }

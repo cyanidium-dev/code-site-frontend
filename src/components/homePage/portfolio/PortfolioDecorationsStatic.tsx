@@ -50,6 +50,12 @@ export default function PortfolioDecorationsStatic() {
           className="w-[496px] h-auto"
         />
       </div>
+
+      {/* Gradient oval (iOS: match main blur) - single div + opacity */}
+      <div
+        className="hidden lg:block absolute -z-20 right-[-292px] top-[259px] w-[471px] h-[506px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-main)_0%,transparent_70%)]"
+        aria-hidden
+      />
     </div>
   );
 }

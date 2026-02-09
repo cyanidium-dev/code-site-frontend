@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Map from "./Map";
-import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 interface AnimatedMapWithDotsProps {
   className?: string;
@@ -10,11 +9,10 @@ interface AnimatedMapWithDotsProps {
 export default function AnimatedMapWithDots({
   className,
 }: AnimatedMapWithDotsProps) {
-  const { isIos } = useIosDevice();
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isIos || !mapRef.current) return;
+    if (!mapRef.current) return;
 
     // Знаходимо всі path елементи з fill="#154C9E" (точки на карті)
     const svg = mapRef.current.querySelector("svg");
@@ -257,7 +255,7 @@ export default function AnimatedMapWithDots({
 
       return () => clearInterval(interval);
     };
-  }, [isIos]);
+  }, []);
 
   return (
     <div ref={mapRef} className="w-fit h-fit">

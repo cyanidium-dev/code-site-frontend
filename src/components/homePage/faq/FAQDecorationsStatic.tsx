@@ -66,6 +66,16 @@ export default function FAQDecorationsStatic() {
           height="389"
         />
       </div>
+
+      {/* Gradient ovals (iOS: single div like original, color→transparent + opacity) */}
+      <div
+        className="absolute -z-20 left-[-290px] lg:left-[-312px] bottom-[28px] lg:bottom-[34px] w-[360px] lg:w-[596px] h-[363px] lg:h-[600px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,#0C96FA_0%,transparent_70%)]"
+        aria-hidden
+      />
+      <div
+        className="hidden lg:block absolute -z-20 right-[-151px] bottom-[166px] w-[483px] h-[483px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,#9D5280_0%,transparent_70%)]"
+        aria-hidden
+      />
     </div>
   );
 }

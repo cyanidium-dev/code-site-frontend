@@ -83,6 +83,7 @@ export default function HeroSlideDecorationsStatic({
         }}
         aria-hidden
       />
+      
       {/* 3. colorMain left (lg only) */}
       <div
         className="hidden lg:block absolute z-10 top-[4px] lg:top-[-27px] left-[14px] lg:left-[71px] w-[289px] lg:w-[443px] h-[287px] lg:h-[440px] rounded-full opacity-60"

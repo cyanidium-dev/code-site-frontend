@@ -7,8 +7,6 @@ import GraphMob from "./GraphMob";
 import DropsTwo from "./DropsTwo";
 import CodeSIteArt from "./CodeSIteArt";
 import GraphDesk from "./GraphDesk";
-import BottomEllipseMob from "./BottomEllipseMob";
-import BottomEllipseDesk from "./BottomEllipseDesk";
 
 interface HeroSlideDecorationsProps {
   variant: {
@@ -57,6 +55,23 @@ export default function HeroSlideDecorationsStatic({
       {/* 1. Top black blur → black gradient (no opacity) */}
       <div
         className="absolute top-[-411px] lg:top-[-683px] left-[calc(50%-550px)] lg:left-[calc(50%-1055px)] w-[1018px] lg:w-[2111px] h-[380px] lg:h-[643px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
+
+      {/* Bottom ellipse (iOS: gradient instead of SVG blur) - mob */}
+      <div
+        className="md:hidden absolute z-10 bottom-0 translate-y-40 sm:translate-y-[197px] left-[calc(50%-550px)] sm:left-[calc(50%-850px)] w-[1166px] sm:w-[1700px] h-[528px] sm:h-[600px] rounded-full"
+        style={{
+          background: `radial-gradient(ellipse at center, ${bottomBlurColor} 30%, transparent 100%)`,
+        }}
+        aria-hidden
+      />
+      {/* Bottom ellipse (iOS: gradient instead of SVG blur) - desk */}
+      <div
+        className="hidden md:block absolute z-10 bottom-0 md:translate-y-[458px] md:left-[calc(50%-930px)] w-[2127px] h-[836px] rounded-full"
+        style={{
+          background: `radial-gradient(ellipse at center, ${bottomBlurColor} 30%, transparent 100%)`,
+        }}
         aria-hidden
       />
 

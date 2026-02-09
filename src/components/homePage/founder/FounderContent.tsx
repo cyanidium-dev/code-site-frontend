@@ -32,10 +32,19 @@ export default function FounderContent({
   const [playerKey, setPlayerKey] = useState(0);
   const [showEnded, setShowEnded] = useState(false);
   const [isRemounting, setIsRemounting] = useState(false);
+  const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
+
+  // Upgrade Vimeo thumbnail to higher resolution (similar logic as review video)
+  const getHighQualityThumbnail = (thumbnailUrl: string) => {
+    // Vimeo thumbnails usually contain a "d_{width}x{height}" segment – bump it up
+    return thumbnailUrl.replace(/d_\d+x\d+/, "d_1280x720");
+  };
   const playerRef = useRef<any>(null);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
-  const videoUrl = FOUNDER_VIDEO_URLS[locale] || (locale === "ru" ? FOUNDER_VIDEO_URLS["uk"] : "");
+  const videoUrl =
+    FOUNDER_VIDEO_URLS[locale] ||
+    (locale === "ru" ? FOUNDER_VIDEO_URLS["uk"] : "");
 
   // Reset playing state when locale/video changes
   useEffect(() => {
@@ -45,65 +54,94 @@ export default function FounderContent({
     setPlayerKey(prev => prev + 1);
     setShowEnded(false);
     setIsRemounting(false);
+    setVimeoThumbnail(null);
+  }, [videoUrl]);
+
+  // Fetch Vimeo thumbnail via oEmbed (visual overlay; player still loads underneath)
+  useEffect(() => {
+    if (!videoUrl) return;
+
+    fetch(
+      `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoUrl)}`
+    )
+      .then(res => res.json())
+      .then(data => {
+        if (data.thumbnail_url) {
+          const raw = data.thumbnail_url as string;
+          const upgraded = getHighQualityThumbnail(raw);
+          setVimeoThumbnail(upgraded);
+        }
+      })
+      .catch(() => {
+        // If thumbnail fails, we just keep showing the player as-is
+      });
   }, [videoUrl]);
 
   // Setup Vimeo postMessage communication
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (!event.origin.includes('vimeo.com')) return;
+      if (!event.origin.includes("vimeo.com")) return;
 
-      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
-      
-      if (data.event === 'ready') {
-        postMessageToVimeo({ method: 'getDuration' });
-        postMessageToVimeo({ method: 'addEventListener', value: 'timeupdate' });
-      } else if (data.event === 'timeupdate') {
+      const data =
+        typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+
+      if (data.event === "ready") {
+        postMessageToVimeo({ method: "getDuration" });
+        postMessageToVimeo({ method: "addEventListener", value: "timeupdate" });
+      } else if (data.event === "timeupdate") {
         const currentTime = data.data.seconds;
-        
+
         // Pause and show restart button 0.3 seconds before end
         if (videoDuration && currentTime >= videoDuration - 0.3 && !showEnded) {
-          postMessageToVimeo({ method: 'pause' });
+          postMessageToVimeo({ method: "pause" });
           setIsPlaying(false);
           setShowEnded(true);
         }
-      } else if (data.method === 'getDuration') {
+      } else if (data.method === "getDuration") {
         setVideoDuration(data.value);
       }
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, [videoDuration, showEnded]);
 
   const postMessageToVimeo = (data: any) => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
-      iframeRef.current.contentWindow.postMessage(JSON.stringify(data), '*');
+      iframeRef.current.contentWindow.postMessage(JSON.stringify(data), "*");
     }
   };
 
   const handleReady = (player: any) => {
     if (player) {
       const internalPlayer = player.getInternalPlayer();
-      
-      if (internalPlayer && internalPlayer.videoWidth && internalPlayer.videoHeight) {
-        const ratio = (internalPlayer.videoHeight / internalPlayer.videoWidth) * 100;
+
+      if (
+        internalPlayer &&
+        internalPlayer.videoWidth &&
+        internalPlayer.videoHeight
+      ) {
+        const ratio =
+          (internalPlayer.videoHeight / internalPlayer.videoWidth) * 100;
         setAspectRatio(ratio);
       }
 
       setTimeout(() => {
-        const iframe = document.querySelector('iframe[src*="vimeo.com"]') as HTMLIFrameElement;
+        const iframe = document.querySelector(
+          'iframe[src*="vimeo.com"]'
+        ) as HTMLIFrameElement;
         if (iframe) {
           iframeRef.current = iframe;
         }
       }, 500);
-      
+
       // Reset remounting state when player is ready
       setIsRemounting(false);
     }
   };
 
   const handleEnded = () => {
-    postMessageToVimeo({ method: 'pause' });
+    postMessageToVimeo({ method: "pause" });
     setIsPlaying(false);
     setShowEnded(true);
   };
@@ -112,13 +150,13 @@ export default function FounderContent({
     setIsRemounting(true);
     setShowEnded(false);
     setIsPlaying(false);
-    
+
     // Small delay to show loading state, then remount
     setTimeout(() => {
       setPlayerKey(prev => prev + 1);
       setAspectRatio(null);
       setVideoDuration(null);
-      
+
       // Safety timeout: reset remounting state after 5 seconds if onReady doesn't fire
       setTimeout(() => {
         setIsRemounting(false);
@@ -142,46 +180,57 @@ export default function FounderContent({
             className="relative rounded-[8px] w-full group"
             aria-label="Founder video"
           >
-            <div className="relative w-full rounded-[8px] overflow-hidden">
-              <div 
-                className="rounded-[8px] overflow-hidden"
-                style={{ 
-                  position: 'relative', 
-                  width: '100%', 
-                  height: 0, 
-                  paddingBottom: aspectRatio ? `${aspectRatio}%` : '56.25%' 
-                }}
-              >
-                <div className="absolute inset-0 rounded-[8px] overflow-hidden [&>div]:rounded-[8px] [&>div>iframe]:rounded-[8px] [&>div>video]:rounded-[8px]">
-                  <ReactPlayer
-                    ref={playerRef}
-                    key={`founder-player-${videoUrl}-${locale}-${playerKey}`}
-                    src={videoUrl}
-                    playing={isPlaying}
-                    controls={false}
-                    width="100%"
-                    height="100%"
-                    style={{ position: 'absolute', top: 0, left: 0 }}
-                    onReady={handleReady}
-                    onEnded={handleEnded}
-                    config={{
-                      vimeo: {
-                        playerOptions: {
-                          title: false,
-                          byline: false,
-                          portrait: false,
-                          autopause: false,
+              <div className="relative w-full rounded-[8px] overflow-hidden">
+                <div
+                  className="rounded-[8px] overflow-hidden"
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    height: 0,
+                    paddingBottom: aspectRatio ? `${aspectRatio}%` : "56.25%",
+                  }}
+                >
+                  <div className="absolute inset-0 rounded-[8px] overflow-hidden [&>div]:rounded-[8px] [&>div>iframe]:rounded-[8px] [&>div>video]:rounded-[8px]">
+                    <ReactPlayer
+                      ref={playerRef}
+                      key={`founder-player-${videoUrl}-${locale}-${playerKey}`}
+                      src={videoUrl}
+                      playing={isPlaying}
+                      controls={false}
+                      width="100%"
+                      height="100%"
+                      style={{ position: "absolute", top: 0, left: 0 }}
+                      onReady={handleReady}
+                      onEnded={handleEnded}
+                      config={{
+                        vimeo: {
+                          playerOptions: {
+                            title: false,
+                            byline: false,
+                            portrait: false,
+                            autopause: false,
+                          },
                         },
-                      },
-                    }}
-                  />
-                </div>
-                {isRemounting && (
-                  <div className="absolute inset-0 rounded-[8px] bg-black flex items-center justify-center z-20">
-                    <Spinner size={48} />
+                      }}
+                    />
                   </div>
-                )}
-              </div>
+                  {/* Thumbnail overlay: hides broken Vimeo preview but keeps player loading underneath */}
+                  {vimeoThumbnail && !isPlaying && !isRemounting && (
+                    <Image
+                      src={vimeoThumbnail}
+                      alt="Founder video thumbnail"
+                      fill
+                      className="absolute inset-0 object-cover rounded-[8px]"
+                      sizes="(max-width: 1024px) 600px, 800px"
+                      loading="lazy"
+                    />
+                  )}
+                  {isRemounting && (
+                    <div className="absolute inset-0 rounded-[8px] bg-black flex items-center justify-center z-20">
+                      <Spinner size={48} />
+                    </div>
+                  )}
+                </div>
               {showEnded && !isRemounting && (
                 <button
                   onClick={handleRestart}

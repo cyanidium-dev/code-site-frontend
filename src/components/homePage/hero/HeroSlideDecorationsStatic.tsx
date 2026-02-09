@@ -66,6 +66,7 @@ export default function HeroSlideDecorationsStatic({
         }}
         aria-hidden
       />
+      
       {/* Bottom ellipse (iOS: gradient instead of SVG blur) - desk */}
       <div
         className="hidden md:block absolute z-10 bottom-0 md:translate-y-[458px] md:left-[calc(50%-930px)] w-[2127px] h-[836px] rounded-full"

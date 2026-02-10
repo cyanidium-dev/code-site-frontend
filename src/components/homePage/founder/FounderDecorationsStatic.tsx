@@ -46,7 +46,18 @@ export default function FounderDecorationsStatic() {
             className="object-cover w-full h-full object-top-left  mix-blend-color-dodge"
           />
         </div>
+        {/* Gradient oval (iOS: match black blur) - single div, no opacity */}
+        <div
+          className="absolute left-[-113px] lg:left-[-183px] bottom-[-375px] lg:bottom-[-475px] w-[1072px] lg:w-[1072px] h-[1022px] lg:h-[1022px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          aria-hidden
+        />
       </div>
+
+      {/* Gradient oval (iOS: match blue blur) - same position as FounderDecorations */}
+      <div
+        className="absolute -z-20 bottom-[-128px] lg:bottom-[-46px] right-[-391px] lg:right-[-748px] w-[388px] lg:w-[712px] h-[346px] lg:h-[637px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-blue-bright)_0%,transparent_70%)]"
+        aria-hidden
+      />
     </>
   );
 }

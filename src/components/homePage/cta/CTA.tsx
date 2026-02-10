@@ -7,27 +7,21 @@ import CTAPhone from "./CTAPhone";
 import CTAHeartBlue from "./CTAHeartBlue";
 import * as motion from "motion/react-client";
 import { fadeInAnimation } from "@/utils/animationVariants";
-import { useIosDevice } from "@/contexts/IosDeviceContext";
 
 export default function CTA() {
   const t = useTranslations("homePage.cta");
-  const { isIos } = useIosDevice();
 
-  const subtitleVariants = isIos
-    ? { hidden: { opacity: 1 }, visible: { opacity: 1 }, exit: { opacity: 1 } }
-    : fadeInAnimation({
-        delay: 0.4,
-        scale: 0.85,
-        x: -20,
-        y: 20,
-      });
+  const subtitleVariants = fadeInAnimation({
+    delay: 0.4,
+    scale: 0.85,
+    x: -20,
+    y: 20,
+  });
 
-  const clientAppVariants = isIos
-    ? {}
-    : fadeInAnimation({
-        delay: 0.8,
-        scale: 0.85,
-      });
+  const clientAppVariants = fadeInAnimation({
+    delay: 0.8,
+    scale: 0.85,
+  });
 
   return (
     <section className="relative pt-[146px] lg:pt-[435px] pb-[127px] lg:pb-[243px]">
@@ -41,7 +35,7 @@ export default function CTA() {
         }}
       />
       <div className="absolute -z-30 top-[-84px] left-[calc(-22.7%)] lg:left-[-3.6%] w-[233%] lg:w-[122%] h-[191px] lg:h-[479px] rounded-full bg-black supports-[backdrop-filter]:blur-[25px]" />
-      <div className="absolute -z-30 bottom-[-180px] lg:bottom-[-106px] left-[calc(-21.4%)] lg:left-[-12.3%] w-[146%] lg:w-[132.5%] h-[337px] lg:h-[334px] rounded-t-full bg-black supports-[backdrop-filter]:blur-[73px]" />
+      <div className="absolute -z-30 bottom-[-120px] left-[calc(-21.4%)] lg:left-[-12.3%] w-[146%] lg:w-[132.5%] h-[337px] lg:h-[334px] rounded-t-full bg-black supports-[backdrop-filter]:blur-[73px]" />
       <Container className="relative lg:flex justify-between">
         <CTAHeartBlue />
         <SectionTitle
@@ -53,10 +47,10 @@ export default function CTA() {
 
         <CTAPhone />
         <motion.div
-          initial={isIos ? "visible" : "hidden"}
-          whileInView={isIos ? undefined : "visible"}
+          initial="hidden"
+          whileInView="visible"
           exit="exit"
-          viewport={isIos ? undefined : { once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={subtitleVariants}
           className="lg:max-w-[228px] lg:mt-[166px]"
         >

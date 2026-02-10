@@ -28,6 +28,17 @@ export default function ReviewsDecorationsStatic() {
         />
       </div>
 
+      {/* Gradient oval (iOS: match blue blur left) - single div like original */}
+      <div
+        className="absolute -z-40 left-[-481px] top-[30px] w-[596px] h-[600px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,#0C96FA_0%,transparent_70%)]"
+        aria-hidden
+      />
+      {/* Gradient oval (iOS: match blue blur right lg) - single div like original */}
+      <div
+        className="hidden lg:block absolute -z-10 right-[-195px] top-[-33px] w-[596px] h-[600px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,#0C96FA_0%,transparent_70%)]"
+        aria-hidden
+      />
+
       {/* Drops */}
       <div className="absolute -z-10 top-[275px] left-[-53px]">
         <Image
@@ -58,6 +69,12 @@ export default function ReviewsDecorationsStatic() {
           height="336"
         />
       </div>
+
+      {/* Gradient oval (iOS: match black blur bottom) - single div like original */}
+      <div
+        className="absolute -z-10 lg:z-20 left-[-169px] sm:left-[14px] lg:left-[-532px] top-[550px] sm:top-[320px] lg:top-auto lg:bottom-[-191px] w-[697px] lg:w-[2344px] h-[449px] lg:h-[887px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
 
       {/* Drops Top Desk */}
       <div className="hidden lg:block absolute top-[-200px] right-[87px]">

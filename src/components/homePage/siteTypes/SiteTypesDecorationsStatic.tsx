@@ -18,6 +18,12 @@ export default function SiteTypesDecorationsStatic() {
         />
       </div>
 
+      {/* Gradient oval (iOS: match rotated black blur lg) - single div, no opacity */}
+      <div
+        className="hidden lg:block rotate-[115deg] absolute z-10 top-[-179px] left-[-619px] w-[1380px] h-[791px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
+
       {/* Drops left top desk */}
       <div className="hidden md:block absolute -z-10 top-[-213px] left-[143px]">
         <Image
@@ -41,6 +47,10 @@ export default function SiteTypesDecorationsStatic() {
 
       {/* Texture */}
       <div className="xs:hidden absolute -z-40 left-[-34px] top-[768px] w-auto h-[1539px] aspect-[577/1539]">
+        <div
+          className="absolute z-10 left-[-22px] top-[-296px] w-[681px] h-[451px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          aria-hidden
+        />
         <Image
           src="/images/homePage/siteTypes/texture.webp"
           alt="texture"
@@ -63,6 +73,12 @@ export default function SiteTypesDecorationsStatic() {
 
       {/* Laptop One block */}
       <div className="absolute top-[139px] md:top-0 left-[calc(50%-316px)] md:left-[219px] w-[688px] md:w-[1377px] h-auto aspect-[1037/1033]">
+
+        {/* Gradient oval (iOS: match main blur) - single div + opacity */}
+        <div
+          className="absolute -z-30 left-[204px] top-[74px] w-[278px] h-[298px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-main)_0%,transparent_70%)]"
+          aria-hidden
+        />
 
         <div className="absolute -z-20 top-[80px] md:top-[192px] left-[163px] md:left-[261px]">
           <Image
@@ -130,6 +146,12 @@ export default function SiteTypesDecorationsStatic() {
             height="623"
           />
         </div>
+
+        {/* Gradient oval (iOS: match black blur md) - single div, no opacity */}
+        <div
+          className="hidden md:block absolute left-[-558px] top-[425px] w-[2713px] h-[750px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          aria-hidden
+        />
 
       </div>
 
@@ -246,6 +268,16 @@ export default function SiteTypesDecorationsStatic() {
           />
         </div>
 
+        {/* Gradient ovals (iOS: match Laptop Two blurs) - single divs, no opacity */}
+        <div
+          className="absolute md:z-[7] md:rotate-[-15deg] left-[-326px] bottom-[40px] md:left-[-746px] md:bottom-[36px] w-[1363px] md:w-[2445px] h-[507px] md:h-[792px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,var(--color-black)_0%,transparent_70%)]"
+          aria-hidden
+        />
+        <div
+          className="hidden md:block absolute -z-10 right-[-58px] top-[661px] w-[910px] h-[960px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          aria-hidden
+        />
+
       </div>
 
       {/* Laptop Three */}
@@ -319,7 +351,23 @@ export default function SiteTypesDecorationsStatic() {
           />
         </div>
 
+        {/* Gradient ovals (iOS: match Laptop Three blurs) - blue: opacity; black: no opacity */}
+        <div
+          className="absolute z-[5] md:-z-20 left-[-162px] top-0 md:left-[-146px] md:top-[332px] w-[475px] md:w-[596px] h-[479px] md:h-[600px] rounded-full opacity-60 bg-[radial-gradient(ellipse_at_center,#089AFA_0%,transparent_70%)]"
+          aria-hidden
+        />
+        <div
+          className="absolute md:z-20 rotate-[-8.44deg] md:rotate-0 left-[-233px] bottom-[-260px] md:left-[-882px] md:bottom-[-93px] w-[1103px] md:w-[2614px] h-[439px] md:h-[846px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+          aria-hidden
+        />
+
       </div>
+
+      {/* Gradient oval (iOS: match bottom black blur mobile) - same position as original: bottom-[-178px] */}
+      <div
+        className="lg:hidden absolute z-20 bottom-[-178px] left-[calc(50%-420px)] w-[233%] h-[370px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
     </div>
   );
 }

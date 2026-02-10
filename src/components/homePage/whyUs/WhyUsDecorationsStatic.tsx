@@ -56,6 +56,11 @@ export default function WhyUsDecorationsStatic() {
         <AnimatedMapWithDots className="w-[377px] lg:w-[604px] h-auto" />
       </div>
 
+      {/* Gradient oval (iOS: match black blur) - single div, no opacity */}
+      <div
+        className="absolute -z-10 left-[-101px] top-[-105px] lg:left-auto lg:right-[-86px] lg:top-[-392px] w-[403px] lg:w-[1034px] h-[317px] lg:h-[814px] rounded-full bg-[radial-gradient(ellipse_at_center,var(--color-black)_10%,transparent_100%)]"
+        aria-hidden
+      />
     </div>
   );
 }

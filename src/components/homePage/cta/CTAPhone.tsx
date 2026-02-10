@@ -7,6 +7,7 @@ import {
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
 import { useIosDevice } from "@/contexts/IosDeviceContext";
+import CTAPhoneStatic from "./CTAPhoneStatic";
 
 export default function CTAPhone() {
   const { isIos } = useIosDevice();
@@ -44,11 +45,15 @@ export default function CTAPhone() {
       variants: fadeInAnimation({ delay: 0.3, scale: 0.95 }),
     };
 
+  if (isIos) {
+    return <CTAPhoneStatic ref={sectionRef} />;
+  }
+
+  const containerClass =
+    "absolute left-[calc(50%-233px)] lg:left-[calc(50%-395px)] xl:left-[calc(50%-465px)] top-[203px] lg:top-[-200px] xl:top-[-250px] w-[467px] lg:w-[671px] xl:w-[721px] aspect-[721/820]";
+
   return (
-    <div
-      ref={sectionRef}
-      className="absolute left-[calc(50%-233px)] lg:left-[calc(50%-395px)] xl:left-[calc(50%-465px)] top-[203px] lg:top-[-200px] xl:top-[-250px] w-[467px] lg:w-[671px] xl:w-[721px] aspect-[721/820]"
-    >
+    <div ref={sectionRef} className={containerClass}>
       {/* Phone - середній parallax */}
       <motion.div style={{ y: mediumY }}>
         <motion.div {...fadeProps}>
@@ -130,17 +135,9 @@ export default function CTAPhone() {
       </motion.div>
 
       {/* Blur oval (blur overflows element bounds); non‑iOS only */}
-      {!isIos && (
-        <div
-          className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]"
-        />
-      )}
-      {/* Gradient oval (sized to match visual blur spread); iOS only */}
-      {isIos && (
-        <div
-          className="absolute -z-40 top-[77px] lg:top-[201px] left-[calc(50%-150px)] lg:left-[225px] w-[330px] lg:w-[440px] h-[418px] lg:h-[550px] rounded-full bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--color-main)_50%,transparent)_0%,transparent_70%)]"
-        />
-      )}
+      <div
+        className="absolute -z-40 top-[131px] lg:top-[255px] left-[calc(50%-100px)] lg:left-[284px] w-[196px] lg:w-[282px] h-[273px] lg:h-[393px] rounded-full bg-main supports-[backdrop-filter]:blur-[106px] lg:supports-[backdrop-filter]:blur-[114px]"
+      />
     </div>
   );
 }

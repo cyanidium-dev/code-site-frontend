@@ -132,36 +132,11 @@ export default function ReviewDecorations({
             style={{
               top: isMobile ? `${topOffset + 85 - textOffset * 2}px` : "216px",
             }}
-            className={`absolute -z-10 left-[calc(50%-599px/2+6.5px)] md:left-[calc(50%-808px/2+189px)] w-[598.99px] h-[335.08px] md:w-[808px] md:h-[452px] rounded-full ${
-              !isIos
-                ? "bg-black supports-[backdrop-filter]:blur-[66.2px] will-change-transform"
-                : ""
-            }`}
-            style={{
-              top: isMobile ? `${topOffset + 85 - textOffset * 2}px` : "216px",
-              ...(isIos
-                ? {
-                    background:
-                      "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
-                  }
-                : {}),
-            }}
+            className="absolute -z-10 left-[calc(50%-599px/2+6.5px)] md:left-[calc(50%-808px/2+189px)] w-[598.99px] h-[335.08px] md:w-[808px] md:h-[452px] rounded-full bg-black supports-[backdrop-filter]:blur-[66.2px] will-change-transform"
           />
           <div
             key="decoration-circle-right"
-            className={`hidden md:block absolute -z-10 top-[500px] right-[-169px] w-[469px] h-[420px] rounded-full ${
-              !isIos
-                ? "bg-black supports-[backdrop-filter]:blur-[89.25px] will-change-transform"
-                : ""
-            }`}
-            style={
-              isIos
-                ? {
-                    background:
-                      "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
-                  }
-                : undefined
-            }
+            className="hidden md:block absolute -z-10 top-[500px] right-[-169px] w-[469px] h-[420px] rounded-full bg-black supports-[backdrop-filter]:blur-[89.25px] will-change-transform"
           />
         </>
       )}

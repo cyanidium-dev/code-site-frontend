@@ -69,7 +69,7 @@ export default function ServicesDecorationsStatic() {
         className="absolute -z-10 top-[180px] md:top-[-689px] left-1/2 -translate-x-1/2 w-[180%] md:w-[100%] h-[408px] md:h-[532px] rounded-full opacity-60"
         style={{
           background:
-            "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
+            "radial-gradient(ellipse at center, var(--color-black) 30%, transparent 70%)",
         }}
         aria-hidden
       />

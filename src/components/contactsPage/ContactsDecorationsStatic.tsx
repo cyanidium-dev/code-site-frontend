@@ -143,7 +143,7 @@ export default function ContactsDecorationsStatic() {
       />
 
       <div
-        className="absolute -z-10 top-[469px] lg:top-[474px] left-[-75%] w-[257%] lg:w-[200%] h-[649px] lg:h-[607px] rounded-full"
+        className="absolute -z-10 top-[449px] lg:top-[474px] left-1/2 -translate-x-1/2 w-[357%] lg:w-[200%] h-[649px] lg:h-[607px] rounded-full"
         style={{
           background:
             "radial-gradient(ellipse at center, var(--color-black) 30%, transparent 70%)",

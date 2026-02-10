@@ -6,10 +6,18 @@ import {
   useParallaxScroll,
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
+import { useIosDevice } from "@/contexts/IosDeviceContext";
+import HeroDecorationsStatic from "./HeroDecorationsStatic";
 
 export default function HeroDecorations() {
+  const { isIos } = useIosDevice();
   const girlDelay = 0;
   const dropsDelay = 0;
+
+  // On iOS use static decorations without parallax/blur, like home hero.
+  if (isIos) {
+    return <HeroDecorationsStatic />;
+  }
 
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([

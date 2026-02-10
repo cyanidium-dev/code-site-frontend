@@ -7,10 +7,16 @@ import {
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
 import { useIosDevice } from "@/contexts/IosDeviceContext";
+import HeroDecorationsStatic from "./HeroDecorationsStatic";
 
 export default function HeroDecorations() {
   const { isIos } = useIosDevice();
   const decorationDelay = 0;
+
+  // On iOS use static decorations without parallax/blur.
+  if (isIos) {
+    return <HeroDecorationsStatic />;
+  }
 
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
@@ -105,8 +111,7 @@ export default function HeroDecorations() {
         </motion.div>
       </motion.div>
       <div
-        className={`absolute -z-10 bottom-[-743px] md:bottom-auto md:top-[263px] left-[calc(50%-1073px/2+54.5px)] md:left-[calc(50%-300px)] w-[298%] md:w-[1073px] h-[709px] rounded-full
-            bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[57.8px] will-change-transform" : ""}`}
+        className="absolute -z-10 bottom-[-743px] md:bottom-auto md:top-[263px] left-[calc(50%-1073px/2+54.5px)] md:left-[calc(50%-300px)] w-[298%] md:w-[1073px] h-[709px] rounded-full bg-black supports-[backdrop-filter]:blur-[57.8px] will-change-transform"
       />
     </div>
   );

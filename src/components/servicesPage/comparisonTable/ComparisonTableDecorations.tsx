@@ -72,7 +72,15 @@ export default function ServicesDecorations() {
       </motion.div>
       <div
         className={`absolute -z-20 lg:-z-20 top-[138px] right-[calc(100%-44px)] w-[295px] h-[347px] rounded-full
-       bg-blue/40 ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
+       ${!isIos ? "bg-blue/40 supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
+        style={
+          isIos
+            ? {
+                background:
+                  "radial-gradient(ellipse at center, var(--color-blue) 0%, transparent 70%)",
+              }
+            : undefined
+        }
       />
     </div>
   );

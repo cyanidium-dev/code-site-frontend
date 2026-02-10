@@ -10,6 +10,7 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 import Image from "next/image";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
 import { useIosDevice } from "@/contexts/IosDeviceContext";
+import ReviewDecorationsStatic from "./ReviewDecorationsStatic";
 
 interface ReviewDecorationsProps {
   authorNameRef: RefObject<HTMLHeadingElement | null>;
@@ -21,6 +22,14 @@ export default function ReviewDecorations({
   isTextReview,
 }: ReviewDecorationsProps) {
   const { isIos } = useIosDevice();
+  if (isIos) {
+    return (
+      <ReviewDecorationsStatic
+        authorNameRef={authorNameRef}
+        isTextReview={isTextReview}
+      />
+    );
+  }
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -123,11 +132,36 @@ export default function ReviewDecorations({
             style={{
               top: isMobile ? `${topOffset + 85 - textOffset * 2}px` : "216px",
             }}
-            className={`absolute -z-10 left-[calc(50%-599px/2+6.5px)] md:left-[calc(50%-808px/2+189px)] w-[598.99px] h-[335.08px] md:w-[808px] md:h-[452px] rounded-full bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[66.2px] will-change-transform" : ""}`}
+            className={`absolute -z-10 left-[calc(50%-599px/2+6.5px)] md:left-[calc(50%-808px/2+189px)] w-[598.99px] h-[335.08px] md:w-[808px] md:h-[452px] rounded-full ${
+              !isIos
+                ? "bg-black supports-[backdrop-filter]:blur-[66.2px] will-change-transform"
+                : ""
+            }`}
+            style={{
+              top: isMobile ? `${topOffset + 85 - textOffset * 2}px` : "216px",
+              ...(isIos
+                ? {
+                    background:
+                      "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
+                  }
+                : {}),
+            }}
           />
           <div
             key="decoration-circle-right"
-            className={`hidden md:block absolute -z-10 top-[500px] right-[-169px] w-[469px] h-[420px] rounded-full bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[89.25px] will-change-transform" : ""}`}
+            className={`hidden md:block absolute -z-10 top-[500px] right-[-169px] w-[469px] h-[420px] rounded-full ${
+              !isIos
+                ? "bg-black supports-[backdrop-filter]:blur-[89.25px] will-change-transform"
+                : ""
+            }`}
+            style={
+              isIos
+                ? {
+                    background:
+                      "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
+                  }
+                : undefined
+            }
           />
         </>
       )}

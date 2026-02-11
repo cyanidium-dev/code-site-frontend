@@ -8,7 +8,7 @@ export default async function LegalPage() {
   return (
     <section className="py-20">
       <Container>
-        <PageTitle className="mb-10">{t("title")}</PageTitle>
+        <PageTitle className="mb-10 text-[24px]">{t("title")}</PageTitle>
         <div className="flex flex-col gap-4 text-[16px] font-light leading-[150%]">
           <p>
             <strong>{t("fopName")}</strong>

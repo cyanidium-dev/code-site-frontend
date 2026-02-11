@@ -110,14 +110,41 @@ export default function ExtraInfoDecorations() {
           />
         </motion.div>
       </motion.div>
-      <div
-        className={`absolute -z-10 bottom-[-41px] md:bottom-[202px] left-[calc(50%+120px)] md:left-[calc(50%+462px)] w-[110%] md:w-[668px] h-[196px] md:h-[347px] rounded-full
-       bg-pink-bright/50 ${!isIos ? "supports-[backdrop-filter]:blur-[164px] will-change-transform" : ""}`}
-      />
-      <div
-        className={`absolute -z-10 md:-z-20 top-[0px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
-       bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[47.5px] will-change-transform" : ""}`}
-      />
+      {/* Base blur ovals (non‑iOS) */}
+      {!isIos && (
+        <>
+          <div
+            className={`absolute -z-10 bottom-[-41px] md:bottom-[202px] left-[calc(50%+120px)] md:left-[calc(50%+462px)] w-[110%] md:w-[668px] h-[196px] md:h-[347px] rounded-full
+       ${"bg-pink-bright/50 supports-[backdrop-filter]:blur-[164px] will-change-transform"}`}
+          />
+          <div
+            className={`absolute -z-10 md:-z-20 top-[0px] left-1/2 -translate-x-1/2 w-[400%] md:w-[190%] h-[210px] md:h-[235px] rounded-full
+       ${"bg-black supports-[backdrop-filter]:blur-[47.5px] will-change-transform"}`}
+          />
+        </>
+      )}
+
+      {/* Extra radial-gradient ovals for iOS (larger & more opaque) */}
+      {isIos && (
+        <>
+          <div
+            className="absolute -z-10 bottom-[-110px] md:bottom-[140px] left-[calc(50%+60px)] md:left-[calc(50%+400px)] w-[225%] md:w-[1400px] h-[415px] md:h-[730px] rounded-full opacity-80"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, var(--color-pink-bright) 0%, transparent 70%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="absolute -z-20 top-[-20px] left-1/2 -translate-x-1/2 w-[500%] md:w-[240%] h-[280px] md:h-[320px] rounded-full opacity-90"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, var(--color-black) 10%, transparent 100%)",
+            }}
+            aria-hidden
+          />
+        </>
+      )}
     </div>
   );
 }

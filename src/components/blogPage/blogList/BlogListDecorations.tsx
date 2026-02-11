@@ -7,9 +7,15 @@ import {
   useParallaxVariants,
 } from "@/hooks/useParallaxScroll";
 import { useIosDevice } from "@/contexts/IosDeviceContext";
+import BlogListDecorationsStatic from "./BlogListDecorationsStatic";
 
 export default function BlogListDecorations() {
   const { isIos } = useIosDevice();
+
+  // On iOS use static decorations without parallax/blur.
+  if (isIos) {
+    return <BlogListDecorationsStatic />;
+  }
   // Оптимізований хук для parallax скролу
   const { sectionRef, scrollYProgress } = useParallaxScroll([
     "start end",
@@ -94,16 +100,16 @@ export default function BlogListDecorations() {
 
       <motion.div
         style={{ y: slowY }}
-        className={`absolute bottom-[-200px] lg:bottom-[30px] right-[calc(50%-450px)] lg:right-auto lg:left-[calc(50%-486px)] w-[445px] h-[405px] rounded-full bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[55px] will-change-transform" : ""}`}
+        className="absolute bottom-[-200px] lg:bottom-[30px] right-[calc(50%-450px)] lg:right-auto lg:left-[calc(50%-486px)] w-[445px] h-[405px] rounded-full bg-black supports-[backdrop-filter]:blur-[55px] will-change-transform"
       />
-      <div className={`lg:hidden absolute bottom-[702px] left-[calc(50%-712px)] lg:left-[calc(50%-243px)] w-[469px] h-[420px] rounded-full bg-pink ${!isIos ? "supports-[backdrop-filter]:blur-[328px] will-change-transform" : ""}`} />
+      <div className="lg:hidden absolute bottom-[702px] left-[calc(50%-712px)] w-[469px] h-[420px] rounded-full bg-pink supports-[backdrop-filter]:blur-[328px] will-change-transform" />
       <motion.div
         style={{ y: slowY }}
-        className={`hidden lg:block absolute bottom-[297px] right-[calc(50%-130px)] w-[445px] h-[405px] rounded-full bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[65px] will-change-transform" : ""}`}
+        className="hidden lg:block absolute bottom-[297px] right-[calc(50%-130px)] w-[445px] h-[405px] rounded-full bg-black supports-[backdrop-filter]:blur-[65px] will-change-transform"
       />
       <motion.div
         style={{ y: slowY }}
-        className={`hidden lg:block absolute bottom-[261px] right-[calc(50%-800px)] w-[445px] h-[405px] rounded-full bg-black ${!isIos ? "supports-[backdrop-filter]:blur-[65px] will-change-transform" : ""}`}
+        className="hidden lg:block absolute bottom-[261px] right-[calc(50%-800px)] w-[445px] h-[405px] rounded-full bg-black supports-[backdrop-filter]:blur-[65px] will-change-transform"
       />
     </div>
   );

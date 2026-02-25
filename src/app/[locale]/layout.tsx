@@ -1,6 +1,7 @@
 import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -11,6 +12,8 @@ import Footer from "@/components/shared/footer/Footer";
 import { getLocale } from "next-intl/server";
 import SplashGate from "@/components/shared/splashScreen/SplashGate";
 import PageTransitionEffect from "@/components/shared/pageTransitionEffect/PageTransitionEffect";
+
+const GTM_ID = "GTM-TRCVT2FH";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -93,6 +96,26 @@ export default async function RootLayout({
       <body
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}
       >
+        {/* Google Tag Manager */}
+        <Script id="gtm" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+        {/* End Google Tag Manager */}
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <NextIntlClientProvider>
           <IosDeviceProvider>
             <SplashGate>

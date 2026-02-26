@@ -3,6 +3,13 @@ import { getTranslations } from "next-intl/server";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
+/** Build absolute self-referencing canonical URL for the current page (locale-aware). */
+export function getCanonicalUrl(pathname: string): string {
+  const base = (SITE_URL || "https://www.code-site.art").replace(/\/$/, "");
+  const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return `${base}${path}`;
+}
+
 export async function getDefaultMetadata(locale: string): Promise<Metadata> {
   const t = await getTranslations("metadata");
 

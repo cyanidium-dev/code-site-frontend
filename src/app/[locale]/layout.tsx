@@ -1,4 +1,4 @@
-import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
+import { getDefaultMetadata, getCanonicalUrl } from "@/utils/getDefaultMetadata";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -9,6 +9,7 @@ import { IosDeviceProvider } from "@/contexts/IosDeviceContext";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
 import { getLocale } from "next-intl/server";
+import { headers } from "next/headers";
 import SplashGate from "@/components/shared/splashScreen/SplashGate";
 import PageTransitionEffect from "@/components/shared/pageTransitionEffect/PageTransitionEffect";
 
@@ -63,7 +64,17 @@ const parkia = localFont({
 
 export async function generateMetadata() {
   const locale = await getLocale();
-  return await getDefaultMetadata(locale);
+  const metadata = await getDefaultMetadata(locale);
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? `/${locale}`;
+  const canonicalUrl = getCanonicalUrl(pathname);
+
+  return {
+    ...metadata,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
 }
 
 export default async function RootLayout({

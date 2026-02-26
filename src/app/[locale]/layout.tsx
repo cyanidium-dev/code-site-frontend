@@ -1,4 +1,4 @@
-import { getDefaultMetadata, getCanonicalUrl } from "@/utils/getDefaultMetadata";
+import { getDefaultMetadata, getCanonicalUrl, getAlternateLanguages } from "@/utils/getDefaultMetadata";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -68,11 +68,13 @@ export async function generateMetadata() {
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") ?? `/${locale}`;
   const canonicalUrl = getCanonicalUrl(pathname);
+  const languages = getAlternateLanguages(pathname);
 
   return {
     ...metadata,
     alternates: {
       canonical: canonicalUrl,
+      languages,
     },
   };
 }

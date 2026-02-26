@@ -78,7 +78,11 @@ export default function CustomizedInput({
               : "border-black"
         }`}
       />
-      {isLoading && <LoaderIcon />}
+      {isLoading ? (
+        <span className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2">
+          <LoaderIcon />
+        </span>
+      ) : null}
       {variant === "gradient" ? (
         <>
           <div

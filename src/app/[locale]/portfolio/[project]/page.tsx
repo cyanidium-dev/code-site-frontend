@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { singleProjectQuery } from "@/lib/queries";
+import type { Project } from "@/types/project";
 import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/projectPage/hero/Hero";
 import Content from "@/components/projectPage/content/Content";
 import CTA from "@/components/projectPage/cta/CTA";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
 import { getDefaultMetadata, getCanonicalUrl, getAlternateLanguages, buildPagePathname } from "@/utils/getDefaultMetadata";
 
 interface ProjectPageProps {
@@ -42,8 +44,8 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary_large_image" as const,
-        title: defaultMetadata.title,
-        description: defaultMetadata.description,
+        title: defaultMetadata.title ?? undefined,
+        description: defaultMetadata.description ?? undefined,
       },
     };
   }
@@ -82,8 +84,8 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       url: canonicalUrl,
-      title,
-      description: desc,
+      title: title ?? undefined,
+      description: desc ?? undefined,
       images: [
         {
           url: mainImageDesktop?.url || "/opengraph-image.jpg",
@@ -97,8 +99,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description: desc,
+      title: title ?? undefined,
+      description: desc ?? undefined,
     },
   };
 }

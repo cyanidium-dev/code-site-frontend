@@ -57,4 +57,6 @@ export interface Blog {
   schemaOrg?: string | null;
   order?: number | null;
   createdAt?: string | null;
+  updatedAt?: string | null;
+  author?: string | null;
 }

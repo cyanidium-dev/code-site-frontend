@@ -214,6 +214,7 @@ export const singlePostQuery = `
     "name": name[$lang],
     "description": description[$lang],
     "slug": slug.current,
+    "author": author,
     "previewImage": {
       "url": previewImage.asset->url,
       "alt": previewImage.asset->altText
@@ -234,7 +235,8 @@ export const singlePostQuery = `
     },
     "schemaOrg": schemaOrg.asset->url,
     "order": order,
-    "createdAt": _createdAt
+    "createdAt": _createdAt,
+    "updatedAt": _updatedAt
   }
 `;
 

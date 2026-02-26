@@ -8,8 +8,9 @@ import Hero from "@/components/articlePage/hero/Hero";
 import FAQ from "@/components/articlePage/faq/FAQ";
 import Content from "@/components/articlePage/content/Content";
 import CTA from "@/components/articlePage/cta/CTA";
-import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
+import { getDefaultMetadata, getCanonicalUrl } from "@/utils/getDefaultMetadata";
 import { Blog } from "@/types/blog";
+import { routing } from "@/i18n/routing";
 import Script from "next/script";
 import Container from "@/components/shared/container/Container";
 import RecommendedPostsDesktop from "@/components/articlePage/recommendedPosts/RecommendedPostsDesktop";
@@ -75,14 +76,43 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!currentArticle) return null;
 
-  const { schemaOrg } = currentArticle;
+  const { schemaOrg, name, description, mainImageDesktop, author, createdAt, updatedAt } = currentArticle;
 
-  let schemaData = null;
+  const pathname =
+    locale === routing.defaultLocale
+      ? `/blog/${article}`
+      : `/${locale}/blog/${article}`;
+  const articleUrl = getCanonicalUrl(pathname);
+
+  let schemaData: Record<string, unknown> | null = null;
 
   if (schemaOrg) {
-    const res = await fetch(schemaOrg);
-    schemaData = await res.json();
+    try {
+      const res = await fetch(schemaOrg);
+      schemaData = await res.json();
+    } catch {
+      schemaData = null;
+    }
   }
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: name,
+    description: description ?? undefined,
+    image: mainImageDesktop?.url ? [mainImageDesktop.url] : undefined,
+    url: articleUrl,
+    author: {
+      "@type": "Person",
+      name: author || "code-site.art",
+    },
+    ...(createdAt && { datePublished: createdAt }),
+    ...(updatedAt && { dateModified: updatedAt }),
+  };
+
+  const mergedSchema = schemaData
+    ? { ...schemaData, ...articleJsonLd }
+    : articleJsonLd;
 
   return (
     <>
@@ -107,15 +137,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </Suspense>
       <CTA />
 
-      {schemaData && (
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaData),
-          }}
-        />
-      )}
+      <Script
+        id="schema-org-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(mergedSchema),
+        }}
+      />
     </>
   );
 }

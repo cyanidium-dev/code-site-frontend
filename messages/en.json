@@ -50,6 +50,17 @@
       "description": "The page you requested was not found. Return to the Code Site Art homepage to discover our services and projects."
     }
   },
+  "breadcrumbs": {
+    "home": "Home",
+    "blog": "Blog",
+    "portfolio": "Portfolio",
+    "services": "Services",
+    "contacts": "Contacts",
+    "policy": "Privacy",
+    "publicContract": "Public Contract",
+    "offer": "Offer",
+    "legal": "Legal Data"
+  },
   "header": {
     "home": "Home",
     "portfolio": "Portfolio",

@@ -217,6 +217,9 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
         },
         datePublished: datePublished ?? undefined,
         dateModified: dateModified ?? undefined,
+        publisher: {
+          "@id": `${ORGANIZATION_SCHEMA["@id"]}`,
+        },
       };
     } else {
       mainEntity = {

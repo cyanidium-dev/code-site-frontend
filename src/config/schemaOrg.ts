@@ -8,6 +8,7 @@ const BASE_URL = (
 ).replace(/\/$/, "");
 
 export const ORGANIZATION_SCHEMA = {
+  "@id": `${BASE_URL}/#organization`,
   "@type": "Organization" as const,
   name: "Code-site.art",
   url: BASE_URL,

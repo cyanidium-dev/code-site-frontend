@@ -1,8 +1,12 @@
 import { getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 import Container from "@/components/shared/container/Container";
 import PageTitle from "@/components/shared/titles/PageTitle";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
+import { buildPagePathname } from "@/utils/getDefaultMetadata";
 
 export default async function OfferPage() {
+  const locale = (await getLocale()) ?? "en";
   const t = await getTranslations("offerPage");
 
   const content = t("content");
@@ -10,6 +14,7 @@ export default async function OfferPage() {
 
   return (
     <section className="py-20">
+      <JsonLd pathname={buildPagePathname(locale, "offer")} />
       <Container>
         <PageTitle className="mb-10">{t("title")}</PageTitle>
         <div className="flex flex-col gap-6 text-[16px] font-light leading-[150%]">

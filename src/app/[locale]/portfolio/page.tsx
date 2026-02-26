@@ -5,6 +5,8 @@ import { fetchSanityData } from "@/utils/fetchSanityData";
 import { Locale } from "next-intl";
 import { Suspense } from "react";
 import PortfolioList from "@/components/portfolioPage/projectsList/PortfolioList";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
+import { buildPagePathname } from "@/utils/getDefaultMetadata";
 
 interface PortfolioPageProps {
   params: Promise<{ locale: Locale }>;
@@ -19,6 +21,7 @@ export default async function PortfolioPage({ params }: PortfolioPageProps) {
 
   return (
     <>
+      <JsonLd pathname={buildPagePathname(locale, "portfolio")} />
       <Hero />
       <Suspense fallback={<Loader />}>
         <PortfolioList projectsList={projectsList} />

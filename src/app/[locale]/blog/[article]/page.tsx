@@ -8,13 +8,12 @@ import Hero from "@/components/articlePage/hero/Hero";
 import FAQ from "@/components/articlePage/faq/FAQ";
 import Content from "@/components/articlePage/content/Content";
 import CTA from "@/components/articlePage/cta/CTA";
-import { getDefaultMetadata, getCanonicalUrl } from "@/utils/getDefaultMetadata";
+import { getDefaultMetadata, getCanonicalUrl, buildPagePathname, getAlternateLanguages, BASE_URL } from "@/utils/getDefaultMetadata";
 import { Blog } from "@/types/blog";
-import { routing } from "@/i18n/routing";
-import Script from "next/script";
 import Container from "@/components/shared/container/Container";
 import RecommendedPostsDesktop from "@/components/articlePage/recommendedPosts/RecommendedPostsDesktop";
 import RecommendedPostsMobile from "@/components/articlePage/recommendedPosts/RecommendedPostsMobile";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
 
 interface ArticlePageProps {
   params: Promise<{ article: string; locale: Locale }>;
@@ -30,7 +29,8 @@ export async function generateMetadata({
     lang: locale,
   });
 
-  const { name, description, mainImageDesktop, seo } = currentPost;
+  const { name, description, mainImageDesktop, seo, createdAt, updatedAt } =
+    currentPost;
 
   // отримуємо рядок keywords із перекладу
   const keywordsString = seo?.keywords || "";
@@ -41,22 +41,46 @@ export async function generateMetadata({
     .map((kw: string) => kw.trim())
     .filter(Boolean);
 
+  const pathname = buildPagePathname(locale, "blog", article);
+  const canonicalUrl = getCanonicalUrl(pathname);
+  const languages = getAlternateLanguages(pathname);
+
+  const defaultMeta = await getDefaultMetadata(locale);
+
   return {
-    title: seo?.title || name || (await getDefaultMetadata(locale)).title,
+    title: seo?.title || name || defaultMeta.title,
     description:
       seo?.subtitle ||
       description ||
-      (await getDefaultMetadata(locale)).description,
+      defaultMeta.description,
     keywords: keywordsArray,
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: canonicalUrl,
+      languages,
+    },
     openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      title: seo?.title || name,
+      description: seo?.subtitle || description,
       images: [
         {
-          url: mainImageDesktop?.url || "/opengraph-image.jpg",
+          url: mainImageDesktop?.url || `${BASE_URL}/opengraph-image.jpg`,
           width: 1200,
           height: 630,
           alt: "Code-site.art",
         },
       ],
+      publishedTime: createdAt ?? undefined,
+      modifiedTime: updatedAt ?? undefined,
+      locale: locale === "uk" ? "uk_UA" : locale === "ru" ? "ru_RU" : "en_US",
+      siteName: "Code-site.art",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.title || name,
+      description: seo?.subtitle || description,
     },
   };
 }
@@ -76,46 +100,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!currentArticle) return null;
 
-  const { schemaOrg, name, description, mainImageDesktop, author, createdAt, updatedAt } = currentArticle;
-
-  const pathname =
-    locale === routing.defaultLocale
-      ? `/blog/${article}`
-      : `/${locale}/blog/${article}`;
-  const articleUrl = getCanonicalUrl(pathname);
-
-  let schemaData: Record<string, unknown> | null = null;
-
-  if (schemaOrg) {
-    try {
-      const res = await fetch(schemaOrg);
-      schemaData = await res.json();
-    } catch {
-      schemaData = null;
-    }
-  }
-
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: name,
-    description: description ?? undefined,
-    image: mainImageDesktop?.url ? [mainImageDesktop.url] : undefined,
-    url: articleUrl,
-    author: {
-      "@type": "Person",
-      name: author || "code-site.art",
-    },
-    ...(createdAt && { datePublished: createdAt }),
-    ...(updatedAt && { dateModified: updatedAt }),
-  };
-
-  const mergedSchema = schemaData
-    ? { ...schemaData, ...articleJsonLd }
-    : articleJsonLd;
-
   return (
     <>
+      <JsonLd pathname={buildPagePathname(locale, "blog", article)} />
       <Suspense fallback={<Loader />}>
         <Hero article={currentArticle} />
         <Container className="lg:flex lg:gap-8">
@@ -136,14 +123,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </Container>
       </Suspense>
       <CTA />
-
-      <Script
-        id="schema-org-article"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(mergedSchema),
-        }}
-      />
     </>
   );
 }

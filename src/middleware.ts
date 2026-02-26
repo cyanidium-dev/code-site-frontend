@@ -5,20 +5,22 @@ import { routing } from "./i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  const response = intlMiddleware(request);
+  // So layout and JsonLd get the real path for canonical, alternates, and breadcrumbs
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-pathname", request.nextUrl.pathname);
+
+  const modifiedRequest = new NextRequest(request.url, {
+    headers: requestHeaders,
+  });
+
+  const response = intlMiddleware(modifiedRequest);
 
   // If next-intl redirected (e.g. locale redirect), return as-is
   if (response.status === 307 || response.status === 308) {
     return response;
   }
 
-  // Forward pathname so layout can build self-referencing canonical URL
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-pathname", request.nextUrl.pathname);
-
-  return NextResponse.next({
-    request: { headers: requestHeaders },
-  });
+  return response;
 }
 
 export const config = {

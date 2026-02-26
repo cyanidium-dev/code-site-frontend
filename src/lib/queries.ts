@@ -172,6 +172,7 @@ export const singleProjectQuery = `
       "subtitle": seoSubtitle[$lang],
       "keywords": seoKeywords[$lang]
     },
+    "schemaOrg": schemaOrg.asset->url,
     "order": order,
     "createdAt": _createdAt,
     "updatedAt": _updatedAt

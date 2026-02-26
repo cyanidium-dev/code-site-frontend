@@ -4,22 +4,22 @@ import { routing } from "@/i18n/routing";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
-const BASE_URL = (SITE_URL || "https://www.code-site.art").replace(/\/$/, "");
+export const BASE_URL = (SITE_URL || "https://www.code-site.art").replace(/\/$/, "");
 
 /** Build absolute self-referencing canonical URL for the current page (locale-aware). */
 export function getCanonicalUrl(pathname: string): string {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  return `${BASE_URL}${path}`;
+  // With localePrefix "as-needed", default locale has no prefix in the canonical URL.
+  const pathForCanonical =
+    path === `/${routing.defaultLocale}` || path.startsWith(`/${routing.defaultLocale}/`)
+      ? path.slice(`/${routing.defaultLocale}`.length) || "/"
+      : path;
+  return `${BASE_URL}${pathForCanonical}`;
 }
 
-/**
- * Get path without locale prefix (for building alternate locale URLs).
- * With localePrefix "as-needed", default locale has no prefix in the path.
- */
-function getPathWithoutLocale(pathname: string): string {
+export function getPathWithoutLocale(pathname: string): string {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   for (const locale of routing.locales) {
-    if (locale === routing.defaultLocale) continue;
     const prefix = `/${locale}`;
     if (path === prefix || path.startsWith(prefix + "/")) {
       return path.slice(prefix.length) || "/";
@@ -29,11 +29,67 @@ function getPathWithoutLocale(pathname: string): string {
 }
 
 /**
+ * Build pathname for a page from locale and route segments (for per-page JsonLd).
+ * Uses localePrefix "as-needed": default locale has no prefix.
+ */
+export function buildPagePathname(locale: string, ...segments: string[]): string {
+  const pathWithoutLocale =
+    segments.length === 0 ? "/" : `/${segments.join("/")}`;
+  return locale === routing.defaultLocale
+    ? pathWithoutLocale
+    : `/${locale}${pathWithoutLocale}`;
+}
+export type PageTypeForMetadata =
+  | "home"
+  | "services"
+  | "portfolio"
+  | "blog"
+  | "contacts"
+  | "policy"
+  | "offer"
+  | "publicContract"
+  | "legal"
+  | "webpage";
+
+export const METADATA_PAGE_KEYS: Record<PageTypeForMetadata, string | undefined> = {
+  home: "home",
+  services: "services",
+  portfolio: "portfolio",
+  blog: "blog",
+  contacts: "contacts",
+  policy: "policy",
+  offer: "offer",
+  publicContract: "publicContract",
+  legal: "legal",
+  webpage: undefined,
+};
+
+export function getPageTypeFromPathname(pathname: string): PageTypeForMetadata {
+  const pathWithoutLocale = getPathWithoutLocale(pathname);
+  if (pathWithoutLocale === "/") return "home";
+  const segments = pathWithoutLocale.slice(1).split("/").filter(Boolean);
+  const first = segments[0];
+  if (first === "services") return "services";
+  if (first === "portfolio") return "portfolio";
+  if (first === "blog") return "blog";
+  if (first === "contacts") return "contacts";
+  if (first === "policy") return "policy";
+  if (first === "offer") return "offer";
+  if (first === "public-contract") return "publicContract";
+  if (first === "legal") return "legal";
+  return "webpage";
+}
+
+function getPathWithoutLocaleInternal(pathname: string): string {
+  return getPathWithoutLocale(pathname);
+}
+
+/**
  * Build absolute alternate URLs for each locale (hreflang).
  * Returns object suitable for metadata.alternates.languages.
  */
 export function getAlternateLanguages(pathname: string): Record<string, string> {
-  const pathWithoutLocale = getPathWithoutLocale(pathname);
+  const pathWithoutLocale = getPathWithoutLocaleInternal(pathname);
   const languages: Record<string, string> = {};
 
   for (const locale of routing.locales) {

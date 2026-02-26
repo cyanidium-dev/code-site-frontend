@@ -7,6 +7,8 @@ import { allProjectsQuery, allReviewsQuery } from "@/lib/queries";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Loader from "@/components/shared/loader/Loader";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
+import { buildPagePathname } from "@/utils/getDefaultMetadata";
 
 // Lazy load компоненти, які не критичні для LCP
 const Founder = dynamic(() => import("@/components/homePage/founder/Founder"), {
@@ -51,6 +53,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <>
+      <JsonLd pathname={buildPagePathname(locale)} />
       <Hero />
       <Founder />
       <WhyUs />

@@ -23,6 +23,9 @@ export const GET_DYNAMIC_PAGES_SLUGS = `{
   "posts": *[_type == "blog"] {
     "slug": slug.current,
     },
+  "projects": *[_type == "project"] {
+    "slug": slug.current,
+    },
 }`;
 
 async function getDynamicPages() {
@@ -31,7 +34,10 @@ async function getDynamicPages() {
   const articles = res?.posts || [];
   const articlesPages = articles.map((article) => `/blog/${article.slug}`);
 
-  return [...articlesPages];
+  const projects = res?.projects || [];
+  const projectPages = projects.map((project) => `/portfolio/${project.slug}`);
+
+  return [...articlesPages, ...projectPages];
 }
 
 const sitemapConfig = {

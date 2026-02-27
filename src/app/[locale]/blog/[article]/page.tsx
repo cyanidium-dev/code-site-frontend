@@ -29,8 +29,14 @@ export async function generateMetadata({
     lang: locale,
   });
 
-  const { name, description, mainImageDesktop, seo, createdAt, updatedAt } =
-    currentPost;
+  const {
+    name,
+    description,
+    mainImageDesktop,
+    seo,
+    datePublished,
+    updatedAt,
+  } = currentPost;
 
   // отримуємо рядок keywords із перекладу
   const keywordsString = seo?.keywords || "";
@@ -72,7 +78,7 @@ export async function generateMetadata({
           alt: "Code-site.art",
         },
       ],
-      publishedTime: createdAt ?? undefined,
+      publishedTime: datePublished ?? undefined,
       modifiedTime: updatedAt ?? undefined,
       locale: locale === "uk" ? "uk_UA" : locale === "ru" ? "ru_RU" : "en_US",
       siteName: "Code-site.art",

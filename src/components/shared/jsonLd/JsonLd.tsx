@@ -115,7 +115,7 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
         image = post.mainImageDesktop?.url;
         headline = post.name;
         articleAuthor = post.author || "code-site.art";
-        datePublished = post.createdAt ?? undefined;
+        datePublished = post.datePublished ?? undefined;
         dateModified = post.updatedAt ?? undefined;
         lastItemName = post.name;
         if (post.schemaOrg) {

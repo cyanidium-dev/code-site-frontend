@@ -204,8 +204,7 @@ export const allBlogsQuery = `
       "keywords": seoKeywords[$lang]
     },
     "schemaOrg": schemaOrg.asset->url,
-    "order": order,
-    "createdAt": _createdAt
+    "order": order
   }
 `;
 
@@ -236,7 +235,7 @@ export const singlePostQuery = `
     },
     "schemaOrg": schemaOrg.asset->url,
     "order": order,
-    "createdAt": _createdAt,
+    "datePublished": datePublished,
     "updatedAt": _updatedAt
   }
 `;
@@ -266,7 +265,6 @@ export const limitedBlogsQuery = `
       "keywords": seoKeywords[$lang]
     },
     "schemaOrg": schemaOrg.asset->url,
-    "order": order,
-    "createdAt": _createdAt
+    "order": order
   }
 `;

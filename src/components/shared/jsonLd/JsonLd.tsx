@@ -29,6 +29,36 @@ type PageType =
   | "legal"
   | "webpage";
 
+function sanitizeSchemaOrg(value: unknown, keyHint?: string): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeSchemaOrg(item, keyHint));
+  }
+  if (value && typeof value === "object") {
+    // Special handling for keywords: convert localized fields into a simple array of strings
+    if (keyHint === "keywords") {
+      const obj = value as Record<string, unknown>;
+      const collected: string[] = [];
+      for (const [key, v] of Object.entries(obj)) {
+        if (
+          typeof v === "string" &&
+          (key === "ru" || key === "uk" || key === "en")
+        ) {
+          collected.push(v);
+        }
+      }
+      return collected.length ? collected : undefined;
+    }
+
+    const entries = Object.entries(value).filter(
+      ([key]) => key !== "uk" && key !== "ru" && key !== "en"
+    );
+    return Object.fromEntries(
+      entries.map(([key, v]) => [key, sanitizeSchemaOrg(v, key)])
+    );
+  }
+  return value;
+}
+
 function getPathWithoutLocale(pathname: string): string {
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   for (const locale of routing.locales) {
@@ -232,7 +262,10 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
   }
 
   if (sanitySchema && typeof sanitySchema === "object") {
-    mainEntity = { ...sanitySchema, ...mainEntity };
+    const cleaned = sanitizeSchemaOrg(
+      sanitySchema
+    ) as Record<string, unknown>;
+    mainEntity = { ...cleaned, ...mainEntity };
   }
 
   graph.push({

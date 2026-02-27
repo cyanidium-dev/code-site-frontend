@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Locale } from "next-intl";
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { singleProjectQuery } from "@/lib/queries";
+import type { Project } from "@/types/project";
 import { Suspense } from "react";
 import Loader from "@/components/shared/loader/Loader";
 import Hero from "@/components/projectPage/hero/Hero";
 import Content from "@/components/projectPage/content/Content";
 import CTA from "@/components/projectPage/cta/CTA";
-import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
-import Script from "next/script";
-import { Project } from "@/types/project";
+import JsonLd from "@/components/shared/jsonLd/JsonLd";
+import { getDefaultMetadata, getCanonicalUrl, getAlternateLanguages, buildPagePathname } from "@/utils/getDefaultMetadata";
 
 interface ProjectPageProps {
   params: Promise<{ project: string; locale: Locale }>;
@@ -28,21 +28,24 @@ export async function generateMetadata({
     }
   );
 
-  // If project not found, return default metadata
+  // If project not found, return default metadata with canonical for current path
   if (!currentProject) {
     const defaultMetadata = await getDefaultMetadata(locale);
+    const pathname = buildPagePathname(locale, "portfolio", project);
+    const canonicalUrl = getCanonicalUrl(pathname);
+    const languages = getAlternateLanguages(pathname);
     return {
-      title: defaultMetadata.title,
-      description: defaultMetadata.description,
+      ...defaultMetadata,
+      alternates: { canonical: canonicalUrl, languages },
       openGraph: {
-        images: [
-          {
-            url: "/opengraph-image.jpg",
-            width: 1200,
-            height: 630,
-            alt: "Code-site.art",
-          },
-        ],
+        ...defaultMetadata.openGraph,
+        url: canonicalUrl,
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image" as const,
+        title: defaultMetadata.title ?? undefined,
+        description: defaultMetadata.description ?? undefined,
       },
     };
   }
@@ -58,14 +61,31 @@ export async function generateMetadata({
     .map((kw: string) => kw.trim())
     .filter(Boolean);
 
+  const pathname = buildPagePathname(locale, "portfolio", project);
+  const canonicalUrl = getCanonicalUrl(pathname);
+  const languages = getAlternateLanguages(pathname);
+  const defaultMeta = await getDefaultMetadata(locale);
+
+  const title = seo?.title || name || defaultMeta.title;
+  const desc =
+    seo?.subtitle ||
+    description ||
+    defaultMeta.description;
+
   return {
-    title: seo?.title || name || (await getDefaultMetadata(locale)).title,
-    description:
-      seo?.subtitle ||
-      description ||
-      (await getDefaultMetadata(locale)).description,
+    title,
+    description: desc,
     keywords: keywordsArray,
+    robots: { index: true, follow: true },
+    alternates: {
+      canonical: canonicalUrl,
+      languages,
+    },
     openGraph: {
+      type: "website",
+      url: canonicalUrl,
+      title: title ?? undefined,
+      description: desc ?? undefined,
       images: [
         {
           url: mainImageDesktop?.url || "/opengraph-image.jpg",
@@ -74,6 +94,13 @@ export async function generateMetadata({
           alt: "Code-site.art",
         },
       ],
+      locale: locale === "uk" ? "uk_UA" : locale === "ru" ? "ru_RU" : "en_US",
+      siteName: "Code-site.art",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: title ?? undefined,
+      description: desc ?? undefined,
     },
   };
 }
@@ -88,17 +115,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   if (!currentProject) return null;
 
-  const { schemaOrg } = currentProject;
-
-  let schemaData = null;
-
-  if (schemaOrg) {
-    const res = await fetch(schemaOrg);
-    schemaData = await res.json();
-  }
-
   return (
     <>
+      <JsonLd pathname={buildPagePathname(locale, "portfolio", project)} />
       <Suspense fallback={<Loader />}>
         <Hero
           name={currentProject.name}
@@ -109,16 +128,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Content project={currentProject} />
       </Suspense>
       <CTA />
-
-      {schemaData && (
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaData),
-          }}
-        />
-      )}
     </>
   );
 }

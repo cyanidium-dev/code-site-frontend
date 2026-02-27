@@ -48,7 +48,11 @@ export default function MainButton({
         className="absolute top-0 left-[-150%] w-[150%] h-full bg-gradient-to-r from-white/10 via-blue/70 to-white/10 opacity-50 
 skew-x-[-40deg] xl:group-enabled:group-hover:left-[120%] transition-all duration-[800ms] ease-in-out"
       />
-      <span className="relative inline-block w-full mt-1">
+      <span
+        className={`relative flex items-center justify-center gap-2 min-h-[1em] ${
+          isLoading ? "pointer-events-none" : ""
+        }`}
+      >
         {children}
         {isLoading ? <LoaderIcon /> : null}
       </span>

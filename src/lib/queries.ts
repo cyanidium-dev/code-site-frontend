@@ -172,6 +172,7 @@ export const singleProjectQuery = `
       "subtitle": seoSubtitle[$lang],
       "keywords": seoKeywords[$lang]
     },
+    "schemaOrg": schemaOrg.asset->url,
     "order": order,
     "createdAt": _createdAt,
     "updatedAt": _updatedAt
@@ -203,8 +204,7 @@ export const allBlogsQuery = `
       "keywords": seoKeywords[$lang]
     },
     "schemaOrg": schemaOrg.asset->url,
-    "order": order,
-    "createdAt": _createdAt
+    "order": order
   }
 `;
 
@@ -214,6 +214,7 @@ export const singlePostQuery = `
     "name": name[$lang],
     "description": description[$lang],
     "slug": slug.current,
+    "author": author,
     "previewImage": {
       "url": previewImage.asset->url,
       "alt": previewImage.asset->altText
@@ -234,7 +235,8 @@ export const singlePostQuery = `
     },
     "schemaOrg": schemaOrg.asset->url,
     "order": order,
-    "createdAt": _createdAt
+    "datePublished": datePublished,
+    "updatedAt": _updatedAt
   }
 `;
 
@@ -263,7 +265,6 @@ export const limitedBlogsQuery = `
       "keywords": seoKeywords[$lang]
     },
     "schemaOrg": schemaOrg.asset->url,
-    "order": order,
-    "createdAt": _createdAt
+    "order": order
   }
 `;

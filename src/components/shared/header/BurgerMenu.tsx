@@ -7,6 +7,8 @@ import Container from "../container/Container";
 import { fadeInAnimation, burgerMenuVariants } from "@/utils/animationVariants";
 import CodeSiteMarquee from "../marquee/CodeSiteMarquee";
 import { useIosDevice } from "@/contexts/IosDeviceContext";
+import ClientApplication from "../clientApplication/ClientApplication";
+import { useTranslations } from "next-intl";
 
 interface BurgerMenuMobTabProps {
   isHeaderMenuOpened: boolean;
@@ -18,6 +20,7 @@ export default function BurgerMenu({
   setIsHeaderMenuOpened,
 }: BurgerMenuMobTabProps) {
   const { isIos } = useIosDevice();
+  const t = useTranslations("header");
 
   return (
     <AnimatePresence>
@@ -62,6 +65,20 @@ export default function BurgerMenu({
                 variants={fadeInAnimation({ delay: 0.3, x: 30 })}
               >
                 <NavMenu setIsHeaderMenuOpened={setIsHeaderMenuOpened} />
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                exit="exit"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={fadeInAnimation({ delay: 0.4, x: 30 })}
+                className="mt-[72px]"
+              >
+                <ClientApplication
+                  buttonText={t("discuss")}
+                  variant="white"
+                  buttonClassName="w-full md:max-w-[210px] h-[39px]"
+                />
               </motion.div>
             </Container>
             <motion.div

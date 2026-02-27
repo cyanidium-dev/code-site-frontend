@@ -1,4 +1,4 @@
-import { getDefaultMetadata } from "@/utils/getDefaultMetadata";
+import { getDefaultMetadata, getCanonicalUrl, getAlternateLanguages, getPageTypeFromPathname, METADATA_PAGE_KEYS, BASE_URL } from "@/utils/getDefaultMetadata";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
@@ -9,7 +9,8 @@ import "./globals.css";
 import { IosDeviceProvider } from "@/contexts/IosDeviceContext";
 import Header from "@/components/shared/header/Header";
 import Footer from "@/components/shared/footer/Footer";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { headers } from "next/headers";
 import SplashGate from "@/components/shared/splashScreen/SplashGate";
 import PageTransitionEffect from "@/components/shared/pageTransitionEffect/PageTransitionEffect";
 
@@ -66,7 +67,56 @@ const parkia = localFont({
 
 export async function generateMetadata() {
   const locale = await getLocale();
-  return await getDefaultMetadata(locale);
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? `/${locale}`;
+  const canonicalUrl = getCanonicalUrl(pathname);
+  const languages = getAlternateLanguages(pathname);
+
+  const baseMetadata = await getDefaultMetadata(locale);
+  const pageType = getPageTypeFromPathname(pathname);
+  const pageKey = METADATA_PAGE_KEYS[pageType];
+
+  let title = baseMetadata.title as string | undefined;
+  let description = baseMetadata.description as string | undefined;
+  let openGraph = baseMetadata.openGraph as Record<string, unknown> | undefined;
+
+  if (pageKey) {
+    try {
+      const t = await getTranslations("metadataPages");
+      const pageTitle = t(`${pageKey}.title`);
+      const pageDescription = t(`${pageKey}.description`);
+      if (pageTitle) title = pageTitle;
+      if (pageDescription) description = pageDescription;
+    } catch {
+      // use base metadata
+    }
+  }
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    ...baseMetadata,
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+      languages,
+    },
+    openGraph: {
+      ...openGraph,
+      url: canonicalUrl,
+      ...(title && { title }),
+      ...(description && { description }),
+    },
+    twitter:
+      title || description
+        ? {
+            card: "summary_large_image" as const,
+            ...(baseMetadata.twitter as Record<string, unknown> | undefined),
+            ...(title && { title }),
+            ...(description && { description }),
+          }
+        : baseMetadata.twitter,
+  };
 }
 
 export default async function RootLayout({
@@ -85,6 +135,8 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Preconnect to Vimeo for faster video player and thumbnails */}
         <link rel="preconnect" href="https://vimeo.com" />
         <link rel="preconnect" href="https://player.vimeo.com" />

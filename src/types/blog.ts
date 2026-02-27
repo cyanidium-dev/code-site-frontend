@@ -56,5 +56,7 @@ export interface Blog {
   } | null;
   schemaOrg?: string | null;
   order?: number | null;
-  createdAt?: string | null;
+  datePublished?: string | null;
+  updatedAt?: string | null;
+  author?: string | null;
 }

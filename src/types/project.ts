@@ -87,6 +87,7 @@ export interface Project {
     subtitle?: string;
     keywords?: string;
   };
+  schemaOrg?: string | null;
   order: number;
   createdAt: string;
 }

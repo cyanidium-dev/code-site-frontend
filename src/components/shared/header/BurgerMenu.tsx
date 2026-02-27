@@ -72,7 +72,7 @@ export default function BurgerMenu({
                 exit="exit"
                 viewport={{ once: true, amount: 0.1 }}
                 variants={fadeInAnimation({ delay: 0.4, x: 30 })}
-                className="mt-8"
+                className="mt-[72px]"
               >
                 <ClientApplication
                   buttonText={t("discuss")}

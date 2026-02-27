@@ -49,6 +49,14 @@ function sanitizeSchemaOrg(value: unknown, keyHint?: string): unknown {
       return collected.length ? collected : undefined;
     }
 
+    // Normalize unsupported @type values
+    if (
+      "@type" in (value as Record<string, unknown>) &&
+      (value as Record<string, unknown>)["@type"] === "CaseStudy"
+    ) {
+      (value as Record<string, unknown>)["@type"] = "Project";
+    }
+
     const entries = Object.entries(value).filter(
       ([key]) => key !== "uk" && key !== "ru" && key !== "en"
     );
@@ -225,7 +233,7 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
     };
   } else if (pageType === "portfolio" || pageType === "portfolioItem") {
     mainEntity = {
-      "@type": pageType === "portfolioItem" ? "CaseStudy" : "CollectionPage",
+      "@type": pageType === "portfolioItem" ? "Project" : "CollectionPage",
       "@id": url,
       name: headline || title,
       description: description || undefined,

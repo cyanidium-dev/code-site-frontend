@@ -6,13 +6,17 @@ import animationData from "./lottieLogoAnimation.json";
 
 interface LottieSplashScreenProps {
   visible: boolean;
+  onComplete?: () => void;
+  onExitComplete?: () => void;
 }
 
 export default function LottieSplashScreen({
   visible,
+  onComplete,
+  onExitComplete,
 }: LottieSplashScreenProps) {
   return (
-    <AnimatePresence initial={false}>
+    <AnimatePresence initial={false} onExitComplete={onExitComplete}>
       {visible && (
         <motion.div
           key="splash-screen"
@@ -26,6 +30,7 @@ export default function LottieSplashScreen({
             animationData={animationData}
             loop={false}
             autoplay
+            onComplete={onComplete}
             style={{
               width: 300,
               height: 300,

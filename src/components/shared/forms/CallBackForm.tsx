@@ -51,10 +51,14 @@ export default function CallBackForm({
     formikHelpers: FormikHelpers<ValuesCallBackFormType>
   ) => {
     const { resetForm } = formikHelpers;
+    const normalizedPhone = values.phone
+      .replace(/\D/g, "")
+      .replace(/^0+/, "");
+    const formattedPhone = normalizedPhone ? `+${normalizedPhone}` : "";
     let data =
       `<b>Форма "Залиш свої контакти"</b>\n` +
       `<b>Ім'я:</b> ${values.name.trim()}\n` +
-      `<b>Email:</b> ${values.phone.trim()}\n`;
+      `<b>Телефон:</b> ${formattedPhone}\n`;
     if (source) {
       const translatedSource = translateFormSource(source);
       data += `<b>Джерело:</b> ${translatedSource}\n`;

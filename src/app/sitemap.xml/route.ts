@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { client } from "@/lib/sanityClient";
+import { routing } from "@/i18n/routing";
 
 type BlogPost = {
   slug: string;
@@ -47,7 +48,8 @@ type SitemapUrl = {
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
-const LOCALES = ["uk", "en", "ru"] as const;
+const LOCALES = routing.locales;
+const DEFAULT_LOCALE = routing.defaultLocale;
 
 async function getDynamicPages(): Promise<SitemapUrl[]> {
   const res = await fetchSanityDataServer<SanitySitemapData>(
@@ -94,30 +96,17 @@ function generateSitemapXml(urls: SitemapUrl[]): string {
       const normalizedLoc = url.loc.startsWith("/") ? url.loc : `/${url.loc}`;
       const fullUrl = `${baseUrl}${normalizedLoc}`;
 
-       const alternateLinks = LOCALES.map((locale) => {
-         const localePath =
-           locale === "uk"
-             ? normalizedLoc
-             : `/${locale}${normalizedLoc === "/" ? "" : normalizedLoc}`;
-         const localeUrl = `${baseUrl}${localePath}`;
-
-         return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(
-           localeUrl
-         )}" />`;
-       }).join("\n");
-
       return `  <url>
     <loc>${escapeXml(fullUrl)}</loc>
     <lastmod>${formatDate(url.lastmod)}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
-${alternateLinks}
   </url>`;
     })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urlEntries}
 </urlset>`;
 }
@@ -186,7 +175,31 @@ export async function GET() {
     const dynamicPages = await getDynamicPages();
     const allUrls = [...staticPages, ...dynamicPages];
 
-    const xml = generateSitemapXml(allUrls);
+    const localizedUrls: SitemapUrl[] = [];
+
+    const orderedLocales = [
+      DEFAULT_LOCALE,
+      ...LOCALES.filter((locale) => locale !== DEFAULT_LOCALE),
+    ];
+
+    for (const url of allUrls) {
+      for (const locale of orderedLocales) {
+        const isDefault = locale === DEFAULT_LOCALE;
+
+        const localizedPath = isDefault
+          ? url.loc
+          : url.loc === "/"
+          ? `/${locale}`
+          : `/${locale}${url.loc}`;
+
+        localizedUrls.push({
+          ...url,
+          loc: localizedPath,
+        });
+      }
+    }
+
+    const xml = generateSitemapXml(localizedUrls);
 
     return new NextResponse(xml, {
       status: 200,

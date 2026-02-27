@@ -47,6 +47,7 @@ type SitemapUrl = {
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
+const LOCALES = ["uk", "en", "ru"] as const;
 
 async function getDynamicPages(): Promise<SitemapUrl[]> {
   const res = await fetchSanityDataServer<SanitySitemapData>(
@@ -93,17 +94,30 @@ function generateSitemapXml(urls: SitemapUrl[]): string {
       const normalizedLoc = url.loc.startsWith("/") ? url.loc : `/${url.loc}`;
       const fullUrl = `${baseUrl}${normalizedLoc}`;
 
+       const alternateLinks = LOCALES.map((locale) => {
+         const localePath =
+           locale === "uk"
+             ? normalizedLoc
+             : `/${locale}${normalizedLoc === "/" ? "" : normalizedLoc}`;
+         const localeUrl = `${baseUrl}${localePath}`;
+
+         return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${escapeXml(
+           localeUrl
+         )}" />`;
+       }).join("\n");
+
       return `  <url>
     <loc>${escapeXml(fullUrl)}</loc>
     <lastmod>${formatDate(url.lastmod)}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
+${alternateLinks}
   </url>`;
     })
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urlEntries}
 </urlset>`;
 }

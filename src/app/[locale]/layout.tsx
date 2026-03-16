@@ -12,6 +12,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 import SplashGate from "@/components/shared/splashScreen/SplashGate";
 import PageTransitionEffect from "@/components/shared/pageTransitionEffect/PageTransitionEffect";
+import { GLOBAL_SCHEMA } from "@/config/globalSchemaOrg";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -141,6 +142,10 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://f.vimeocdn.com" />
         {/* Preconnect to Sanity CDN for faster images */}
         <link rel="preconnect" href="https://cdn.sanity.io" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(GLOBAL_SCHEMA) }}
+        />
       </head>
       <body
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}

@@ -9,7 +9,7 @@ import {
 import { fetchSanityData } from "@/utils/fetchSanityData";
 import { singlePostQuery, singleProjectQuery } from "@/lib/queries";
 import { routing } from "@/i18n/routing";
-import { LOGO_IMAGE_OBJECT, ORGANIZATION_SCHEMA } from "@/config/schemaOrg";
+import { ORGANIZATION_SCHEMA } from "@/config/schemaOrg";
 
 const BASE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.code-site.art"
@@ -120,18 +120,6 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
 
   const url = getCanonicalUrl(pathname);
   const graph: Record<string, unknown>[] = [];
-
-  // —— Logo ImageObject (first) ——
-  graph.push({
-    "@context": "https://schema.org",
-    ...LOGO_IMAGE_OBJECT,
-  });
-
-  // —— Organization (always after logo) ——
-  graph.push({
-    "@context": "https://schema.org",
-    ...ORGANIZATION_SCHEMA,
-  });
 
   // —— Fetch page-specific data ——
   let title = "";

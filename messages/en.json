@@ -103,6 +103,39 @@
     "errorDescription": "But you can write to us on Telegram!",
     "sendMessage": "Send message"
   },
+  "generalFaq": {
+    "title": "Frequently Asked Questions",
+    "descriptionOne": "Didn't find an answer?",
+    "descriptionTwo": "Write to us on ",
+    "descriptionThree": " or email ",
+    "descriptionFour": "We are always in touch and will respond as quickly as possible.",
+    "questions": {
+      "questionOne": {
+        "title": "How much does website creation cost?",
+        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $1000. If your business needs a full corporate website with sections and internal pages — the price starts from $3000. For online stores and e-commerce solutions with cart, online payment and integrations — from $5000. We develop each project individually so that the website not only looks modern, but actually delivers results."
+      },
+      "questionTwo": {
+        "title": "How long does development take?",
+        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
+      },
+      "questionThree": {
+        "title": "Do you work under a contract and with prepayment?",
+        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
+      },
+      "questionFour": {
+        "title": "What is included in website development?",
+        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
+      },
+      "questionFive": {
+        "title": "Can I make changes to the website independently?",
+        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
+      },
+      "questionSix": {
+        "title": "Do you support websites after launch?",
+        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
+      }
+    }
+  },
   "homePage": {
     "hero": {
       "freeConsultation": "Free Consultation",
@@ -263,31 +296,7 @@
       "descriptionOne": "Didn't find an answer?",
       "descriptionTwo": "Write to us on ",
       "descriptionThree": " or email ",
-      "descriptionFour": "We are always in touch and will respond as quickly as possible.",
-      "questionOne": {
-        "title": "How much does website creation cost?",
-        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $1000. If your business needs a full corporate website with sections and internal pages — the price starts from $3000. For online stores and e-commerce solutions with cart, online payment and integrations — from $5000. We develop each project individually so that the website not only looks modern, but actually delivers results."
-      },
-      "questionTwo": {
-        "title": "How long does development take?",
-        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
-      },
-      "questionThree": {
-        "title": "Do you work under a contract and with prepayment?",
-        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
-      },
-      "questionFour": {
-        "title": "What is included in website development?",
-        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
-      },
-      "questionFive": {
-        "title": "Can I make changes to the website independently?",
-        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
-      },
-      "questionSix": {
-        "title": "Do you support websites after launch?",
-        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
-      }
+      "descriptionFour": "We are always in touch and will respond as quickly as possible."
     },
     "cta": {
       "title": "NON-STANDARD WEBSITES FOR BIG SALES",
@@ -475,7 +484,49 @@
           ]
         }
       }
-    ]
+    ],
+    "faq": {
+      "title": "FAQ about Services",
+      "description": "Answers to common questions about our service formats, processes and pricing.",
+      "questions": {
+        "questionOne": {
+          "title": "Can I order a website with a custom design?",
+          "answer": "Yes, we create unique designs on clean code tailored to your business goals, without templates."
+        },
+        "questionTwo": {
+          "title": "Do you optimize websites for search engines (SEO)?",
+          "answer": "Yes, all websites are developed with basic SEO in mind: speed, meta tags, page structure, and mobile responsiveness."
+        },
+        "questionThree": {
+          "title": "Do you create responsive design for mobile devices?",
+          "answer": "Yes, every website automatically adapts to smartphones and tablets for a convenient user experience."
+        },
+        "questionFour": {
+          "title": "Which technologies do you use to develop websites?",
+          "answer": "We work with clean HTML/CSS/JS and integrate PHP, Node.js, React, Next.js and other modern technologies depending on the project."
+        },
+        "questionFive": {
+          "title": "Is it possible to integrate an online store with payment systems?",
+          "answer": "Yes, we connect all popular payment systems including LiqPay, PayPal, Stripe, Privat24 and others."
+        },
+        "questionSix": {
+          "title": "Can new features be added after the website is launched?",
+          "answer": "Yes, the website is built in a modular way so you can add new sections, features or integrate third-party services in the future."
+        },
+        "questionSeven": {
+          "title": "Do you create multilingual websites?",
+          "answer": "Yes, we develop websites in Ukrainian, Russian and English, with SEO optimization for each language."
+        },
+        "questionEight": {
+          "title": "How is the website handed over to the client?",
+          "answer": "After development is complete, we transfer all files, access to hosting, the admin panel and documentation so you can manage the website yourself."
+        },
+        "questionNine": {
+          "title": "Can I order full ongoing website support?",
+          "answer": "Yes, we offer support packages that include content updates, technical support, SEO optimization and security monitoring."
+        }
+      }
+    }
   },
   "notFoundPage": {
     "title": "404",

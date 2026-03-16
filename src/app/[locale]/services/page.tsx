@@ -7,6 +7,7 @@ import ComparisonTable from "@/components/servicesPage/comparisonTable/Compariso
 import Hero from "@/components/servicesPage/hero/Hero";
 import JsonLd from "@/components/shared/jsonLd/JsonLd";
 import { buildPagePathname } from "@/utils/getDefaultMetadata";
+import ServicesFAQ from "@/components/servicesPage/faq/FAQ";
 
 export default async function ServicesPage() {
   const locale = (await getLocale()) ?? "en";
@@ -23,6 +24,7 @@ export default async function ServicesPage() {
         servicesList={servicesList}
       />
       <ExtraInfoList className="pb-[120px]" />
+      <ServicesFAQ />
     </>
   );
 }

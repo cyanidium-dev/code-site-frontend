@@ -10,24 +10,24 @@
   },
   "metadataPages": {
     "home": {
-      "title": "Code Site Art — Coded Websites, Web Design & SEO Agency",
-      "description": "Launch a selling website with lightning-fast Core Web Vitals, custom design and SEO architecture. We design, develop and optimise for conversions."
+      "title": "Order a turnkey website in Ukraine | Code-Site.Art",
+      "description": "We quickly and reliably create corporate websites, landing pages, online stores and CRM systems."
     },
     "services": {
-      "title": "Code Site Art Services — Custom Web Design, Development & SEO",
-      "description": "Strategy, UX/UI, Next.js development, integrations and SEO setup. Full-cycle production of coded websites that rank and convert."
+      "title": "Website development, CRM and SEO | Code-Site.Art",
+      "description": "We create corporate websites, online stores and landing pages. Support, SEO and CRM for your business."
     },
     "portfolio": {
-      "title": "Code Site Art Portfolio — Projects & Case Studies",
-      "description": "Explore recent projects, landing pages and corporate websites delivered by Code Site Art. Fast, SEO-friendly and focused on sales."
+      "title": "Examples of created websites and online stores | Code-Site.Art",
+      "description": "See real cases: corporate websites, landing pages and turnkey stores for businesses in Ukraine."
     },
     "blog": {
-      "title": "Code Site Art Blog — Web Development, Design & SEO Insights",
-      "description": "Practical articles about web development, UX/UI, SEO optimisation and conversion growth from the Code Site Art team."
+      "title": "How to order a website and grow your business | Code-Site.Art",
+      "description": "Practical articles on web development, UX/UI, SEO optimization and conversion growth from the Code Site Art team."
     },
     "contacts": {
-      "title": "Contact Code Site Art — Discuss Your Website Project",
-      "description": "Leave a request or write on Telegram to plan a project. We will help choose a format, budget and timeline for your new website."
+      "title": "Order a website or CRM | contact Code-Site.Art",
+      "description": "Write or call us to get a consultation and order a turnkey website, landing page or online store."
     },
     "legal": {
       "title": "Legal Information — FOP Alpatov Fedir Mykhailovych | Code Site Art",
@@ -35,11 +35,11 @@
     },
     "offer": {
       "title": "Public Offer — Code Site Art Web Development Services",
-      "description": "Terms of the public offer for web design and development services by Code Site Art. Responsibilities, payment and guarantees."
+      "description": "Terms of the public offer for web design and development services from Code Site Art. Obligations, payment and guarantees."
     },
     "publicContract": {
-      "title": "Public Contract — Code Site Art Web Development",
-      "description": "Public contract for providing coded website development services, payment terms and guarantees for clients of Code Site Art."
+      "title": "Public Contract — Code Site Art Website Development",
+      "description": "Public contract for providing coded website development services, payment terms and guarantees for Code Site Art clients."
     },
     "policy": {
       "title": "Privacy Policy — Code Site Art",
@@ -47,7 +47,7 @@
     },
     "notFound": {
       "title": "Page Not Found — Code Site Art",
-      "description": "The page you requested was not found. Return to the Code Site Art homepage to discover our services and projects."
+      "description": "The requested page was not found. Return to the Code Site Art homepage to explore services and projects."
     }
   },
   "breadcrumbs": {

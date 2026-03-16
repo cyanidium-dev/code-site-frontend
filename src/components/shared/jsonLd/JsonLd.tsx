@@ -287,7 +287,7 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
   const faqPages = ["home", "blogArticle"];
   if (faqPages.includes(pageType)) {
     try {
-      const tFaq = await getTranslations("homePage.faq");
+      const tFaq = await getTranslations("generalFaq.questions");
       const questions = ["One", "Two", "Three", "Four", "Five", "Six"] as const;
       const faqEntries = questions.map((q) => ({
         "@type": "Question" as const,

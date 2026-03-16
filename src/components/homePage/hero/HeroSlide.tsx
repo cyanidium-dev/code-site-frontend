@@ -9,7 +9,6 @@ import HeroSlideDecorations from "./HeroSlideDecorations";
 import CodeSiteMarquee from "@/components/shared/marquee/CodeSiteMarquee";
 import ClientApplication from "@/components/shared/clientApplication/ClientApplication";
 
-
 interface HeroSlideProps {
   slide: {
     variant: {
@@ -112,7 +111,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             {title}
           </motion.h1>
         ) : (
-          <motion.h2
+          <motion.h1
             key={`title-${idx}`}
             initial="hidden"
             whileInView="visible"
@@ -123,7 +122,7 @@ export default function HeroSlide({ slide, idx, isActive }: HeroSlideProps) {
             style={{ color: textColor }}
           >
             {title}
-          </motion.h2>
+          </motion.h1>
         )}
         <motion.p
           key={`description-${idx}`}

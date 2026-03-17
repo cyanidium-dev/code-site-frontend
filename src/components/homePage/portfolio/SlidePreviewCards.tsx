@@ -126,8 +126,8 @@ export default function SlidePreviewCards({
     onSlideClick(cardIndex);
   };
 
-  const isDesktop = width >= 1024;
-  const outerStyle: React.CSSProperties | undefined = isDesktop
+  const isTabletUp = width >= 786;
+  const outerStyle: React.CSSProperties | undefined = isTabletUp
     ? {
         left: `${containerOffset}px`,
         right: "auto",
@@ -138,7 +138,7 @@ export default function SlidePreviewCards({
   return (
     <div
       className={twMerge(
-        "absolute bottom-0 md:bottom-16 lg:bottom-0 left-0 right-0 z-[30]",
+        "absolute bottom-0 left-0 right-0 z-[30]",
         className
       )}
       style={outerStyle}
@@ -147,7 +147,7 @@ export default function SlidePreviewCards({
         ref={scrollerRef}
         className={twMerge(
           "flex items-stretch overflow-x-auto scrollbar-hide select-none touch-pan-x cursor-grab active:cursor-grabbing",
-          isDesktop ? "gap-[14px]" : "gap-[14px] w-full px-6 md:px-12"
+          isTabletUp ? "gap-[14px]" : "gap-[14px] w-full px-6 md:px-12"
         )}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

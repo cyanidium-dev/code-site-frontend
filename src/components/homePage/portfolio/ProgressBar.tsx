@@ -17,16 +17,16 @@ export default function ProgressBar({
   onSlideClick,
   className,
 }: ProgressBarProps) {
-  const progressWidth = width >= 1280 ? 465 : 385;
+  const progressWidth = width >= 1280 ? 465 : width >= 1024 ? 385 : 260;
 
   return (
     <div
       className={twMerge(
-        "hidden lg:flex ml-5 z-[30] w-[385px] xl:w-[465px] h-[50px] items-center",
+        "hidden md:flex ml-5 z-[30] w-[260px] lg:w-[385px] xl:w-[465px] h-[50px] items-center",
         className
       )}
     >
-      <div className="w-[385px] xl:w-[465px] h-[1px] bg-white/20 relative cursor-pointer group">
+      <div className="w-[260px] lg:w-[385px] xl:w-[465px] h-[1px] bg-white/20 relative cursor-pointer group">
         <motion.div
           className="h-[1px] bg-white"
           initial={{ width: 0 }}

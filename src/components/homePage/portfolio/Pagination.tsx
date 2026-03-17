@@ -29,13 +29,13 @@ export default function Pagination({
   const { isIos } = useIosDevice();
   const wc = isIos ? "" : willChangeClass;
 
-  // Hide controls on mobile (requested behavior)
-  if (width < 1024) return null;
+  // Hide controls on mobile; show from tablet up
+  if (width < 786) return null;
 
   return (
     <motion.div
       className={twMerge(
-        "absolute left-6 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-[84px] lg:bottom-0 z-[30] flex items-center",
+        "absolute left-6 sm:left-[calc((100%-640px+48px)/2)] md:left-[calc((100%-768px+48px)/2)] lg:left-[calc((100%-1024px+160px)/2)] xl:left-[calc((100%-1280px+240px)/2)] bottom-0 z-[30] flex items-center",
         className
       )}
       initial={{ y: 200, opacity: 0 }}

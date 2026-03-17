@@ -15,7 +15,6 @@ interface PortfolioSliderProps {
 export default function PortfolioSlider({
   projectsList,
 }: PortfolioSliderProps) {
-  const [order, setOrder] = useState<number[]>([]);
   const [detailsEven, setDetailsEven] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -62,13 +61,6 @@ export default function PortfolioSlider({
 
   const { offsetTop, containerOffset } = getPositions();
 
-  useEffect(() => {
-    if (projectsList && projectsList.length > 0) {
-      // формуємо масив [0, 1, 2, ..., n-1]
-      setOrder(projectsList.map((_, i) => i));
-    }
-  }, [projectsList]);
-
   // Initialize component
   useEffect(() => {
     setIsInitialized(true);
@@ -76,23 +68,12 @@ export default function PortfolioSlider({
 
   // Step to next slide
   const step = () => {
-    setOrder((prev) => {
-      const newOrder = [...prev];
-      newOrder.push(newOrder.shift()!);
-      return newOrder;
-    });
     setDetailsEven((prev) => !prev);
     setCurrentSlide((prev) => (prev + 1) % projectsList.length);
   };
 
   // Step to previous slide
   const stepBack = () => {
-    setOrder((prev) => {
-      const newOrder = [...prev];
-      // Переміщуємо останній елемент на початок масиву
-      newOrder.unshift(newOrder.pop()!);
-      return newOrder;
-    });
     setDetailsEven((prev) => !prev);
     setCurrentSlide(
       (prev) => (prev - 1 + projectsList.length) % projectsList.length
@@ -101,28 +82,10 @@ export default function PortfolioSlider({
 
   // Manual navigation
   const goToSlide = (index: number) => {
-    const currentIndex = order[0];
-    const steps =
-      (index - currentIndex + projectsList.length) % projectsList.length;
-    const isBackward = steps > projectsList.length / 2;
-
-    setIsMovingBackward(isBackward);
-
-    // Просто встановлюємо новий порядок без анімації
-    setOrder((prev) => {
-      const newOrder = [...prev];
-      // Знаходимо індекс цільового слайда в поточному порядку
-      const targetIndex = newOrder.indexOf(index);
-      // Переміщуємо цільовий слайд на початок
-      const targetSlide = newOrder.splice(targetIndex, 1)[0];
-      newOrder.unshift(targetSlide);
-      return newOrder;
-    });
-
+    setIsMovingBackward(index < currentSlide);
     setDetailsEven((prev) => !prev);
     setCurrentSlide(index);
-
-    setIsMovingBackward(false);
+    setTimeout(() => setIsMovingBackward(false), 300);
   };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -238,8 +201,10 @@ export default function PortfolioSlider({
     return null;
   }
 
-  const [active, ...rest] = order;
-  const activeData = projectsList[active];
+  const activeData = projectsList[currentSlide];
+  const rest = projectsList
+    .map((_, i) => i)
+    .filter((i) => i !== currentSlide);
 
   return (
     <div className="relative h-[631px] lg:h-[687px] overflow-hidden pb-[154px] lg:pb-[74px]">
@@ -287,7 +252,7 @@ export default function PortfolioSlider({
       {/* Pagination */}
       <Pagination
         projectsCount={projectsList.length}
-        activeIndex={active}
+        activeIndex={currentSlide}
         width={width}
         onPrevious={() => {
           setIsMovingBackward(true);

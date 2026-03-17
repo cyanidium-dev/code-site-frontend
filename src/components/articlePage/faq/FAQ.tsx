@@ -3,8 +3,8 @@ import SectionTitle from "@/components/shared/titles/SectionTitle";
 import { useTranslations } from "next-intl";
 
 export default function FAQ() {
-  const t = useTranslations("generalFaq");
-  const tQuestions = useTranslations("generalFaq.questions");
+  const t = useTranslations("servicesPage.faq");
+  const tQuestions = useTranslations("servicesPage.faq.questions");
 
   const faqItems = [
     {
@@ -30,6 +30,18 @@ export default function FAQ() {
     {
       title: tQuestions("questionSix.title"),
       answer: tQuestions("questionSix.answer"),
+    },
+    {
+      title: tQuestions("questionSeven.title"),
+      answer: tQuestions("questionSeven.answer"),
+    },
+    {
+      title: tQuestions("questionEight.title"),
+      answer: tQuestions("questionEight.answer"),
+    },
+    {
+      title: tQuestions("questionNine.title"),
+      answer: tQuestions("questionNine.answer"),
     },
   ];
 

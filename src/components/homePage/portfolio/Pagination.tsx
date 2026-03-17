@@ -28,6 +28,10 @@ export default function Pagination({
 }: PaginationProps) {
   const { isIos } = useIosDevice();
   const wc = isIos ? "" : willChangeClass;
+
+  // Hide controls on mobile (requested behavior)
+  if (width < 1024) return null;
+
   return (
     <motion.div
       className={twMerge(

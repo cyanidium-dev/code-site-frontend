@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Project } from "@/types/project";
 import MainCard from "./MainCard";
 import MainCardTexts from "./MainCardTexts";
 import SlidePreviewCards from "./SlidePreviewCards";
 import Pagination from "./Pagination";
 import { useScreenWidth } from "@/hooks/useScreenWidth";
+import { Link } from "@/i18n/navigation";
 
 interface PortfolioSliderProps {
   projectsList: Project[];
@@ -21,6 +22,13 @@ export default function PortfolioSlider({
   const [isMovingBackward, setIsMovingBackward] = useState(false);
 
   const width = useScreenWidth();
+
+  const dragStartXRef = useRef<number | null>(null);
+  const dragDeltaXRef = useRef(0);
+  const hasDraggedRef = useRef(false);
+  const suppressNextClickRef = useRef(false);
+
+  const DRAG_THRESHOLD = 40;
 
   // Animation constants
   const cardWidth = width > 786 ? 286 : 150;
@@ -117,6 +125,115 @@ export default function PortfolioSlider({
     setIsMovingBackward(false);
   };
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+    dragStartXRef.current = event.clientX;
+    dragDeltaXRef.current = 0;
+    hasDraggedRef.current = false;
+    suppressNextClickRef.current = false;
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return;
+    const deltaX = event.clientX - dragStartXRef.current;
+    dragDeltaXRef.current = deltaX;
+
+    if (!hasDraggedRef.current && Math.abs(deltaX) > DRAG_THRESHOLD) {
+      hasDraggedRef.current = true;
+      // Prevent text selection / accidental link interactions during drag
+      event.preventDefault();
+      (window as any).__portfolioSlideDragging = true;
+    }
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!hasDraggedRef.current) {
+      dragStartXRef.current = null;
+      dragDeltaXRef.current = 0;
+      return;
+    }
+
+    const deltaX = dragDeltaXRef.current;
+
+    if (Math.abs(deltaX) > DRAG_THRESHOLD) {
+      suppressNextClickRef.current = true;
+      if (deltaX > 0) {
+        setIsMovingBackward(true);
+        stepBack();
+        setTimeout(() => {
+          setIsMovingBackward(false);
+        }, 300);
+      } else {
+        setIsMovingBackward(false);
+        step();
+      }
+    }
+
+    dragStartXRef.current = null;
+  };
+
+  const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    dragStartXRef.current = event.clientX;
+    dragDeltaXRef.current = 0;
+    hasDraggedRef.current = false;
+    suppressNextClickRef.current = false;
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return;
+    const deltaX = event.clientX - dragStartXRef.current;
+    dragDeltaXRef.current = deltaX;
+
+    if (!hasDraggedRef.current && Math.abs(deltaX) > DRAG_THRESHOLD) {
+      hasDraggedRef.current = true;
+      event.preventDefault();
+      (window as any).__portfolioSlideDragging = true;
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (!hasDraggedRef.current) {
+      dragStartXRef.current = null;
+      dragDeltaXRef.current = 0;
+      return;
+    }
+
+    const deltaX = dragDeltaXRef.current;
+
+    if (Math.abs(deltaX) > DRAG_THRESHOLD) {
+      suppressNextClickRef.current = true;
+      if (deltaX > 0) {
+        setIsMovingBackward(true);
+        stepBack();
+        setTimeout(() => {
+          setIsMovingBackward(false);
+        }, 300);
+      } else {
+        setIsMovingBackward(false);
+        step();
+      }
+    }
+
+    dragStartXRef.current = null;
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (suppressNextClickRef.current) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    hasDraggedRef.current = false;
+    dragStartXRef.current = null;
+    dragDeltaXRef.current = 0;
+    suppressNextClickRef.current = false;
+    (window as any).__portfolioSlideDragging = false;
+  };
+
   if (!isInitialized) {
     return null;
   }
@@ -126,19 +243,34 @@ export default function PortfolioSlider({
 
   return (
     <div className="relative h-[631px] lg:h-[687px] overflow-hidden pb-[154px] lg:pb-[74px]">
-      {/* Main card */}
-      <MainCard
-        project={activeData}
-        containerOffset={containerOffset}
-        offsetTop={offsetTop}
-        cardWidth={cardWidth}
-        cardHeight={cardHeight}
-        width={width}
-        isPriority={currentSlide === 0}
-      />
+      <Link
+        href={`/portfolio/${activeData.slug}`}
+        aria-label={activeData.portfolioTitle}
+        onClick={handleClick}
+      >
+        <div
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+        >
+          {/* Main card */}
+          <MainCard
+            project={activeData}
+            containerOffset={containerOffset}
+            offsetTop={offsetTop}
+            cardWidth={cardWidth}
+            cardHeight={cardHeight}
+            width={width}
+            isPriority={currentSlide === 0}
+          />
 
-      {/* Main card texts */}
-      <MainCardTexts project={activeData} detailsEven={detailsEven} />
+          {/* Main card texts */}
+          <MainCardTexts project={activeData} detailsEven={detailsEven} />
+        </div>
+      </Link>
 
       {/* Slide preview cards */}
       <SlidePreviewCards

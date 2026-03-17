@@ -26,6 +26,12 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
 
       if (!link) return;
 
+      // Skip page transition effect when a portfolio slide drag just occurred
+      if ((window as any).__portfolioSlideDragging) {
+        (window as any).__portfolioSlideDragging = false;
+        return;
+      }
+
       const href =
         link.getAttribute("href") ||
         link.getAttribute("data-href") ||

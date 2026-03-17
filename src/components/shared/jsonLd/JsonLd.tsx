@@ -121,12 +121,6 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
   const url = getCanonicalUrl(pathname);
   const graph: Record<string, unknown>[] = [];
 
-  // —— Organization (always first) ——
-  graph.push({
-    "@context": "https://schema.org",
-    ...ORGANIZATION_SCHEMA,
-  });
-
   // —— Fetch page-specific data ——
   let title = "";
   let description = "";
@@ -293,7 +287,7 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
   const faqPages = ["home", "blogArticle"];
   if (faqPages.includes(pageType)) {
     try {
-      const tFaq = await getTranslations("homePage.faq");
+      const tFaq = await getTranslations("generalFaq.questions");
       const questions = ["One", "Two", "Three", "Four", "Five", "Six"] as const;
       const faqEntries = questions.map((q) => ({
         "@type": "Question" as const,

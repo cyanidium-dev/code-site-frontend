@@ -10,24 +10,24 @@
   },
   "metadataPages": {
     "home": {
-      "title": "Code Site Art — Coded Websites, Web Design & SEO Agency",
-      "description": "Launch a selling website with lightning-fast Core Web Vitals, custom design and SEO architecture. We design, develop and optimise for conversions."
+      "title": "Order a turnkey website in Ukraine | Code-Site.Art",
+      "description": "We quickly and reliably create corporate websites, landing pages, online stores and CRM systems."
     },
     "services": {
-      "title": "Code Site Art Services — Custom Web Design, Development & SEO",
-      "description": "Strategy, UX/UI, Next.js development, integrations and SEO setup. Full-cycle production of coded websites that rank and convert."
+      "title": "Website development, CRM and SEO | Code-Site.Art",
+      "description": "We create corporate websites, online stores and landing pages. Support, SEO and CRM for your business."
     },
     "portfolio": {
-      "title": "Code Site Art Portfolio — Projects & Case Studies",
-      "description": "Explore recent projects, landing pages and corporate websites delivered by Code Site Art. Fast, SEO-friendly and focused on sales."
+      "title": "Examples of created websites and online stores | Code-Site.Art",
+      "description": "See real cases: corporate websites, landing pages and turnkey stores for businesses in Ukraine."
     },
     "blog": {
-      "title": "Code Site Art Blog — Web Development, Design & SEO Insights",
-      "description": "Practical articles about web development, UX/UI, SEO optimisation and conversion growth from the Code Site Art team."
+      "title": "How to order a website and grow your business | Code-Site.Art",
+      "description": "Practical articles on web development, UX/UI, SEO optimization and conversion growth from the Code Site Art team."
     },
     "contacts": {
-      "title": "Contact Code Site Art — Discuss Your Website Project",
-      "description": "Leave a request or write on Telegram to plan a project. We will help choose a format, budget and timeline for your new website."
+      "title": "Order a website or CRM | contact Code-Site.Art",
+      "description": "Write or call us to get a consultation and order a turnkey website, landing page or online store."
     },
     "legal": {
       "title": "Legal Information — FOP Alpatov Fedir Mykhailovych | Code Site Art",
@@ -35,11 +35,11 @@
     },
     "offer": {
       "title": "Public Offer — Code Site Art Web Development Services",
-      "description": "Terms of the public offer for web design and development services by Code Site Art. Responsibilities, payment and guarantees."
+      "description": "Terms of the public offer for web design and development services from Code Site Art. Obligations, payment and guarantees."
     },
     "publicContract": {
-      "title": "Public Contract — Code Site Art Web Development",
-      "description": "Public contract for providing coded website development services, payment terms and guarantees for clients of Code Site Art."
+      "title": "Public Contract — Code Site Art Website Development",
+      "description": "Public contract for providing coded website development services, payment terms and guarantees for Code Site Art clients."
     },
     "policy": {
       "title": "Privacy Policy — Code Site Art",
@@ -47,7 +47,7 @@
     },
     "notFound": {
       "title": "Page Not Found — Code Site Art",
-      "description": "The page you requested was not found. Return to the Code Site Art homepage to discover our services and projects."
+      "description": "The requested page was not found. Return to the Code Site Art homepage to explore services and projects."
     }
   },
   "breadcrumbs": {
@@ -102,6 +102,39 @@
     "successDescription": "You can write to us on Telegram!",
     "errorDescription": "But you can write to us on Telegram!",
     "sendMessage": "Send message"
+  },
+  "generalFaq": {
+    "title": "Frequently Asked Questions",
+    "descriptionOne": "Didn't find an answer?",
+    "descriptionTwo": "Write to us on ",
+    "descriptionThree": " or email ",
+    "descriptionFour": "We are always in touch and will respond as quickly as possible.",
+    "questions": {
+      "questionOne": {
+        "title": "How much does website creation cost?",
+        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $1000. If your business needs a full corporate website with sections and internal pages — the price starts from $3000. For online stores and e-commerce solutions with cart, online payment and integrations — from $5000. We develop each project individually so that the website not only looks modern, but actually delivers results."
+      },
+      "questionTwo": {
+        "title": "How long does development take?",
+        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
+      },
+      "questionThree": {
+        "title": "Do you work under a contract and with prepayment?",
+        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
+      },
+      "questionFour": {
+        "title": "What is included in website development?",
+        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
+      },
+      "questionFive": {
+        "title": "Can I make changes to the website independently?",
+        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
+      },
+      "questionSix": {
+        "title": "Do you support websites after launch?",
+        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
+      }
+    }
   },
   "homePage": {
     "hero": {
@@ -263,31 +296,7 @@
       "descriptionOne": "Didn't find an answer?",
       "descriptionTwo": "Write to us on ",
       "descriptionThree": " or email ",
-      "descriptionFour": "We are always in touch and will respond as quickly as possible.",
-      "questionOne": {
-        "title": "How much does website creation cost?",
-        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $1000. If your business needs a full corporate website with sections and internal pages — the price starts from $3000. For online stores and e-commerce solutions with cart, online payment and integrations — from $5000. We develop each project individually so that the website not only looks modern, but actually delivers results."
-      },
-      "questionTwo": {
-        "title": "How long does development take?",
-        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
-      },
-      "questionThree": {
-        "title": "Do you work under a contract and with prepayment?",
-        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
-      },
-      "questionFour": {
-        "title": "What is included in website development?",
-        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
-      },
-      "questionFive": {
-        "title": "Can I make changes to the website independently?",
-        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
-      },
-      "questionSix": {
-        "title": "Do you support websites after launch?",
-        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
-      }
+      "descriptionFour": "We are always in touch and will respond as quickly as possible."
     },
     "cta": {
       "title": "NON-STANDARD WEBSITES FOR BIG SALES",
@@ -475,7 +484,49 @@
           ]
         }
       }
-    ]
+    ],
+    "faq": {
+      "title": "FAQ about Services",
+      "description": "Answers to common questions about our service formats, processes and pricing.",
+      "questions": {
+        "questionOne": {
+          "title": "Can I order a website with a custom design?",
+          "answer": "Yes, we create unique designs on clean code tailored to your business goals, without templates."
+        },
+        "questionTwo": {
+          "title": "Do you optimize websites for search engines (SEO)?",
+          "answer": "Yes, all websites are developed with basic SEO in mind: speed, meta tags, page structure, and mobile responsiveness."
+        },
+        "questionThree": {
+          "title": "Do you create responsive design for mobile devices?",
+          "answer": "Yes, every website automatically adapts to smartphones and tablets for a convenient user experience."
+        },
+        "questionFour": {
+          "title": "Which technologies do you use to develop websites?",
+          "answer": "We work with clean HTML/CSS/JS and integrate PHP, Node.js, React, Next.js and other modern technologies depending on the project."
+        },
+        "questionFive": {
+          "title": "Is it possible to integrate an online store with payment systems?",
+          "answer": "Yes, we connect all popular payment systems including LiqPay, PayPal, Stripe, Privat24 and others."
+        },
+        "questionSix": {
+          "title": "Can new features be added after the website is launched?",
+          "answer": "Yes, the website is built in a modular way so you can add new sections, features or integrate third-party services in the future."
+        },
+        "questionSeven": {
+          "title": "Do you create multilingual websites?",
+          "answer": "Yes, we develop websites in Ukrainian, Russian and English, with SEO optimization for each language."
+        },
+        "questionEight": {
+          "title": "How is the website handed over to the client?",
+          "answer": "After development is complete, we transfer all files, access to hosting, the admin panel and documentation so you can manage the website yourself."
+        },
+        "questionNine": {
+          "title": "Can I order full ongoing website support?",
+          "answer": "Yes, we offer support packages that include content updates, technical support, SEO optimization and security monitoring."
+        }
+      }
+    }
   },
   "notFoundPage": {
     "title": "404",

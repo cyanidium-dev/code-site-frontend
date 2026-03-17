@@ -9,6 +9,34 @@ import { fadeInAnimation } from "@/utils/animationVariants";
 
 export default function FAQ() {
   const t = useTranslations("homePage.faq");
+  const tGeneralFaq = useTranslations("generalFaq.questions");
+
+  const faqItems = [
+    {
+      title: tGeneralFaq("questionOne.title"),
+      answer: tGeneralFaq("questionOne.answer"),
+    },
+    {
+      title: tGeneralFaq("questionTwo.title"),
+      answer: tGeneralFaq("questionTwo.answer"),
+    },
+    {
+      title: tGeneralFaq("questionThree.title"),
+      answer: tGeneralFaq("questionThree.answer"),
+    },
+    {
+      title: tGeneralFaq("questionFour.title"),
+      answer: tGeneralFaq("questionFour.answer"),
+    },
+    {
+      title: tGeneralFaq("questionFive.title"),
+      answer: tGeneralFaq("questionFive.answer"),
+    },
+    {
+      title: tGeneralFaq("questionSix.title"),
+      answer: tGeneralFaq("questionSix.answer"),
+    },
+  ];
 
   return (
     <section className="pt-[118px] lg:pt-[155px]">
@@ -59,7 +87,7 @@ export default function FAQ() {
             <p> {t("descriptionFour")}</p>
           </motion.div>
         </div>
-        <FaqList />
+        <FaqList items={faqItems} />
       </Container>
     </section>
   );

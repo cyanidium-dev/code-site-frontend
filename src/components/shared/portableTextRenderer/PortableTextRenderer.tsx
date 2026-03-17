@@ -12,6 +12,28 @@ import Link from "next/link";
 import MainButton from "../buttons/MainButton";
 import SecondaryButton from "../buttons/SecondaryButton";
 
+function parseSanityImageRef(ref: string | undefined | null): {
+  id?: string;
+  width?: number;
+  height?: number;
+  format?: string;
+} {
+  if (!ref) return {};
+  // Sanity image ref format: image-<id>-<width>x<height>-<format>
+  const parts = ref.split("-");
+  if (parts.length < 4) return {};
+  const [, id, dimensions, format] = parts;
+  const [wStr, hStr] = (dimensions || "").split("x");
+  const width = Number(wStr);
+  const height = Number(hStr);
+  return {
+    id,
+    width: Number.isFinite(width) ? width : undefined,
+    height: Number.isFinite(height) ? height : undefined,
+    format,
+  };
+}
+
 const components: Partial<PortableTextReactComponents> = {
   block: {
    normal: (props) => {
@@ -142,9 +164,16 @@ const components: Partial<PortableTextReactComponents> = {
 
       // якщо лише _ref — будуємо шлях вручну
       if (!imageUrl && ref) {
-        const [, id, dimensions, format] = ref.split("-");
-        imageUrl = `https://cdn.sanity.io/images/vh20xg14/production/${id}-${dimensions}.${format}`;
+        const { id, width, height, format } = parseSanityImageRef(ref);
+        if (id && width && height && format) {
+          imageUrl = `https://cdn.sanity.io/images/vh20xg14/production/${id}-${width}x${height}.${format}`;
+        }
       }
+
+      if (!imageUrl) return null;
+
+      const { width, height } = parseSanityImageRef(ref);
+      const hasDimensions = Boolean(width && height);
 
       return (
         <motion.div
@@ -153,15 +182,28 @@ const components: Partial<PortableTextReactComponents> = {
           exit="exit"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInAnimation({ y: 20 })}
-          className="relative flex justify-center h-[368px] rounded-[8px]"
+          className="relative flex justify-center w-full my-2 rounded-[8px] overflow-hidden"
         >
-          <Image
-            src={imageUrl}
-            alt={value?.alt || ""}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            className="object-cover rounded-[8px]"
-          />
+          {hasDimensions ? (
+            <Image
+              src={imageUrl}
+              alt={value?.alt || ""}
+              width={width!}
+              height={height!}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              className="w-full h-auto object-contain rounded-[8px]"
+            />
+          ) : (
+            <div className="relative w-full aspect-[16/9]">
+              <Image
+                src={imageUrl}
+                alt={value?.alt || ""}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                className="object-contain rounded-[8px]"
+              />
+            </div>
+          )}
         </motion.div>
       );
     },

@@ -5,14 +5,39 @@ import { Blog } from "@/types/blog";
 
 interface EstimatedReadingTimeProps {
   post: Blog;
+  /** Компактный вид для карточек списка (мета под превью). */
+  compact?: boolean;
 }
 
 export default function EstimatedReadingTime({
   post,
+  compact = false,
 }: EstimatedReadingTimeProps) {
   const t = useTranslations("blogPage");
 
   const readingTime = calculateReadingTime(post);
+
+  if (compact) {
+    return (
+      <div className="flex min-w-0 items-center gap-2 text-white/60">
+        <Image
+          src="/images/blogPage/blogList/clock.svg"
+          alt=""
+          width={16}
+          height={16}
+          className="shrink-0 opacity-85"
+          aria-hidden
+        />
+        <span className="text-[13px] font-light leading-[140%] tracking-[0.02em]">
+          {readingTime}
+          &nbsp;
+          {t.rich("minutes", {
+            count: readingTime,
+          })}
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="relative shrink-0 w-fit min-w-[148px] h-[39px] p-[1px] rounded-full bg-pink-ultra-light">

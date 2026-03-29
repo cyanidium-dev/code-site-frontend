@@ -7,7 +7,10 @@ import {
   type BreadcrumbItem,
 } from "@/utils/getBreadcrumbItems";
 import { fetchSanityData } from "@/utils/fetchSanityData";
-import { singlePostQuery, singleProjectQuery } from "@/lib/queries";
+import { blogPostBySlugQuery, singleProjectQuery } from "@/lib/queries";
+import { resolveBlogLocaleContent } from "@/lib/blog/resolveBlogLocaleContent";
+import type { BlogPostDocument } from "@/types/blogPost";
+import type { BlogLocaleCode } from "@/types/blogPost";
 import { routing } from "@/i18n/routing";
 import { ORGANIZATION_SCHEMA } from "@/config/schemaOrg";
 
@@ -137,27 +140,35 @@ export default async function JsonLd({ pathname: pathnameProp }: JsonLdProps) {
 
   if (pageType === "blogArticle" && segments[1]) {
     try {
-      const post = await fetchSanityData(singlePostQuery, {
+      const post = await fetchSanityData(blogPostBySlugQuery, {
         slug: segments[1],
-        lang: locale,
       });
       if (post) {
-        title = post.seo?.title || post.name || "";
-        description = post.seo?.subtitle || post.description || "";
-        image = post.mainImageDesktop?.url;
-        headline = post.name;
-        articleAuthor = post.author || "code-site.art";
-        datePublished = post.datePublished ?? undefined;
-        dateModified = post.updatedAt ?? undefined;
-        lastItemName = post.name;
-        if (post.schemaOrg) {
-          try {
-            const res = await fetch(post.schemaOrg);
-            sanitySchema = await res.json();
-          } catch {
-            // ignore
-          }
-        }
+        const loc = (
+          locale === "ru" || locale === "uk" || locale === "en"
+            ? locale
+            : "ru"
+        ) as BlogLocaleCode;
+        const resolved = resolveBlogLocaleContent(
+          post as BlogPostDocument,
+          loc
+        );
+        title =
+          resolved.seo.metaTitle?.trim() ||
+          resolved.title ||
+          "";
+        description =
+          resolved.seo.metaDescription?.trim() ||
+          resolved.excerpt ||
+          "";
+        image = (post as BlogPostDocument).coverImage?.asset?.url;
+        headline = resolved.title ?? undefined;
+        articleAuthor =
+          (post as BlogPostDocument).author || "code-site.art";
+        datePublished =
+          (post as BlogPostDocument).publishedAt ?? undefined;
+        dateModified = (post as BlogPostDocument)._updatedAt ?? undefined;
+        lastItemName = resolved.title ?? null;
       }
     } catch {
       // fallback below

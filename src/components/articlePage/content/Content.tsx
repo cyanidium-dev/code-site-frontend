@@ -1,4 +1,4 @@
-import PortableTextRenderer from "@/components/shared/portableTextRenderer/PortableTextRenderer";
+import BlogPortableTextRenderer from "@/components/blog/PortableTextRenderer";
 import { Blog } from "@/types/blog";
 
 interface ContentProps {
@@ -11,8 +11,8 @@ export default function Content({ article }: ContentProps) {
   if (!content) return null;
 
   return (
-    <section className="flex flex-col gap-15 py-20">
-      <PortableTextRenderer value={content} />
+    <section className="flex flex-col py-12 lg:py-14">
+      <BlogPortableTextRenderer value={content} />
     </section>
   );
 }

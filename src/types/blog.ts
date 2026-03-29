@@ -1,5 +1,6 @@
 // types/blog.ts
 import type { PortableTextBlock } from "sanity";
+import type { BlogPostBodyBlock } from "@/types/blogPost";
 
 // Тип для посилання (annotation link)
 export interface PortableTextLink {
@@ -34,29 +35,23 @@ export interface PortableTextImage {
 }
 
 // Об’єднаний тип одного елемента контенту (текст або зображення)
-export type BlogContentBlock = PortableTextCustomBlock | PortableTextImage;
+export type BlogContentBlock =
+  | PortableTextCustomBlock
+  | PortableTextImage
+  | BlogPostBodyBlock;
 
-// Контент певною мовою (content[$lang])
+// Контент певною мовою (Portable Text + custom blocks)
 export type BlogContent = BlogContentBlock[];
 
-// Основний тип статті блогу
+/** Список статей / картка — локалізовані поля зводяться в `mapBlogPostToListItem`. */
 export interface Blog {
   id: string;
   name: string;
   description: string;
   slug: string;
   previewImage?: { url: string; alt?: string | null } | null;
+  /** Hero фон (стаття): з `coverImage`, однаковий URL для mobile/desktop якщо одне зображення */
   mainImageMobile?: { url: string; alt?: string | null } | null;
   mainImageDesktop?: { url: string; alt?: string | null } | null;
   content?: BlogContent;
-  seo?: {
-    title?: string | null;
-    subtitle?: string | null;
-    keywords?: string | null;
-  } | null;
-  schemaOrg?: string | null;
-  order?: number | null;
-  datePublished?: string | null;
-  updatedAt?: string | null;
-  author?: string | null;
 }

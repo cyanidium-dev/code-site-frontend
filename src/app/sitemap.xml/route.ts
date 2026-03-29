@@ -18,7 +18,7 @@ type SanitySitemapData = {
 };
 
 const GET_DYNAMIC_PAGES_SLUGS = `{
-  "blogs": *[_type == "blog"]{
+  "blogs": *[_type == "blogPost"]{
     "slug": slug.current,
     _updatedAt
   },

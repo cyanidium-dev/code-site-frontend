@@ -179,92 +179,80 @@ export const singleProjectQuery = `
   }
 `;
 
-export const allBlogsQuery = `
-  *[_type == "blog"] | order(order asc, _createdAt desc) {
-    "id": _id,
-    "name": name[$lang],
-    "description": description[$lang],
-    "slug": slug.current,
-    "previewImage": {
-      "url": previewImage.asset->url,
-      "alt": previewImage.asset->altText
-    },
-    "mainImageMobile": {
-      "url": mainImageMobile.asset->url,
-      "alt": mainImageMobile.asset->altText
-    },
-    "mainImageDesktop": {
-      "url": mainImageDesktop.asset->url,
-      "alt": mainImageDesktop.asset->altText
-    },
-    "content": content[$lang],
-    "seo": {
-      "title": seoTitle[$lang],
-      "subtitle": seoSubtitle[$lang],
-      "keywords": seoKeywords[$lang]
-    },
-    "schemaOrg": schemaOrg.asset->url,
-    "order": order
+/**
+ * Локали blogPost — как в docs/sanity-frontend-guide.md и `blogPostLocaleContent`.
+ * Не дублировать `body[]{ ... }` для ru+uk+en в одном запросе: ответ ломается
+ * (null title, body не массив). Тело — сырое поле `body`.
+ */
+const blogPostLocaleProjection = `
+  title,
+  excerpt,
+  body,
+  seo {
+    metaTitle,
+    metaDescription,
+    ogTitle,
+    ogDescription
   }
 `;
 
-export const singlePostQuery = `
-  *[_type == "blog" && slug.current == $slug][0] {
+export const allBlogsQuery = `
+  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc) {
     "id": _id,
-    "name": name[$lang],
-    "description": description[$lang],
     "slug": slug.current,
-    "author": author,
     "previewImage": {
-      "url": previewImage.asset->url,
-      "alt": previewImage.asset->altText
+      "url": coverImage.asset->url,
+      "alt": coalesce(coverImage.alt, coverImage.asset->altText, "")
     },
-    "mainImageMobile": {
-      "url": mainImageMobile.asset->url,
-      "alt": mainImageMobile.asset->altText
-    },
-    "mainImageDesktop": {
-      "url": mainImageDesktop.asset->url,
-      "alt": mainImageDesktop.asset->altText
-    },
-    "content": content[$lang],
-    "seo": {
-      "title": seoTitle[$lang],
-      "subtitle": seoSubtitle[$lang],
-      "keywords": seoKeywords[$lang]
-    },
-    "schemaOrg": schemaOrg.asset->url,
-    "order": order,
-    "datePublished": datePublished,
-    "updatedAt": _updatedAt
+    "publishedAt": publishedAt,
+    "ru": { ${blogPostLocaleProjection} },
+    "uk": { ${blogPostLocaleProjection} },
+    "en": { ${blogPostLocaleProjection} }
   }
 `;
+
+/**
+ * Один пост: полные объекты локалей как в Sanity (без сужающей проекции полей).
+ * Разворачиваем только coverImage.asset → url (иначе только _ref, Next/Image не отрисует).
+ */
+export const blogPostBySlugQuery = `
+  *[_type == "blogPost" && slug.current == $slug][0]{
+    _id,
+    _type,
+    _updatedAt,
+    slug,
+    coverImage {
+      ...,
+      asset->{
+        _id,
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    publishedAt,
+    author,
+    ru,
+    uk,
+    en
+  }
+`;
+
+/** @deprecated Use blogPostBySlugQuery — kept for legacy imports during migration */
+export const singlePostQuery = blogPostBySlugQuery;
 
 export const limitedBlogsQuery = `
-  *[_type == "blog"] | order(order asc, _createdAt desc)[0...$limit] {
+  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc)[0...$limit] {
     "id": _id,
-    "name": name[$lang],
-    "description": description[$lang],
     "slug": slug.current,
     "previewImage": {
-      "url": previewImage.asset->url,
-      "alt": previewImage.asset->altText
+      "url": coverImage.asset->url,
+      "alt": coalesce(coverImage.alt, coverImage.asset->altText, "")
     },
-    "mainImageMobile": {
-      "url": mainImageMobile.asset->url,
-      "alt": mainImageMobile.asset->altText
-    },
-    "mainImageDesktop": {
-      "url": mainImageDesktop.asset->url,
-      "alt": mainImageDesktop.asset->altText
-    },
-    "content": content[$lang],
-    "seo": {
-      "title": seoTitle[$lang],
-      "subtitle": seoSubtitle[$lang],
-      "keywords": seoKeywords[$lang]
-    },
-    "schemaOrg": schemaOrg.asset->url,
-    "order": order
+    "publishedAt": publishedAt,
+    "ru": { ${blogPostLocaleProjection} },
+    "uk": { ${blogPostLocaleProjection} },
+    "en": { ${blogPostLocaleProjection} }
   }
 `;

@@ -181,13 +181,15 @@ export const singleProjectQuery = `
 
 /**
  * Локали blogPost — как в docs/sanity-frontend-guide.md и `blogPostLocaleContent`.
- * Не дублировать `body[]{ ... }` для ru+uk+en в одном запросе: ответ ломается
- * (null title, body не массив). Тело — сырое поле `body`.
+ *
+ * ВАЖНО (GROQ): проекция вида `"ru": { title, excerpt }` читает поля с **корня** документа,
+ * а не из вложенного `ru`. Нужно явно: `"ru": ru { title, excerpt }`.
+ *
+ * Для списка статей не запрашиваем `body` — карточкам достаточно title/excerpt; меньше payload.
  */
-const blogPostLocaleProjection = `
+const blogPostListLocaleProjection = `
   title,
   excerpt,
-  body,
   seo {
     metaTitle,
     metaDescription,
@@ -205,9 +207,9 @@ export const allBlogsQuery = `
       "alt": coalesce(coverImage.alt, coverImage.asset->altText, "")
     },
     "publishedAt": publishedAt,
-    "ru": { ${blogPostLocaleProjection} },
-    "uk": { ${blogPostLocaleProjection} },
-    "en": { ${blogPostLocaleProjection} }
+    "ru": ru { ${blogPostListLocaleProjection} },
+    "uk": uk { ${blogPostListLocaleProjection} },
+    "en": en { ${blogPostListLocaleProjection} }
   }
 `;
 
@@ -251,8 +253,8 @@ export const limitedBlogsQuery = `
       "alt": coalesce(coverImage.alt, coverImage.asset->altText, "")
     },
     "publishedAt": publishedAt,
-    "ru": { ${blogPostLocaleProjection} },
-    "uk": { ${blogPostLocaleProjection} },
-    "en": { ${blogPostLocaleProjection} }
+    "ru": ru { ${blogPostListLocaleProjection} },
+    "uk": uk { ${blogPostListLocaleProjection} },
+    "en": en { ${blogPostListLocaleProjection} }
   }
 `;

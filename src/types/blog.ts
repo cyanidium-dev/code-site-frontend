@@ -49,6 +49,10 @@ export interface Blog {
   name: string;
   description: string;
   slug: string;
+  /** Дата публікації (ISO), з `blogPost.publishedAt` — для хіро статті */
+  publishedAt?: string | null;
+  /** Автор рядком з Sanity — для хіро статті */
+  author?: string | null;
   previewImage?: { url: string; alt?: string | null } | null;
   /** Hero фон (стаття): з `coverImage`, однаковий URL для mobile/desktop якщо одне зображення */
   mainImageMobile?: { url: string; alt?: string | null } | null;

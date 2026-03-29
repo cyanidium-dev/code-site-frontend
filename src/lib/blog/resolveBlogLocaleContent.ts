@@ -6,13 +6,37 @@ import type {
   ResolvedBlogLocale,
 } from "@/types/blogPost";
 
-function hasTitleAndBody(block: BlogPostLocaleFields | null | undefined): boolean {
+/**
+ * Достаточно данных для отображения локали: заголовок + (тело статьи или лид).
+ * Списки без `body` в GROQ опираются на `excerpt`; страница статьи передаёт полный `body`.
+ */
+function hasUsableLocaleContent(
+  block: BlogPostLocaleFields | null | undefined
+): boolean {
   if (!block) return false;
   const titleOk =
     typeof block.title === "string" && block.title.trim().length > 0;
+  if (!titleOk) return false;
   const body = block.body;
   const bodyOk = Array.isArray(body) && body.length > 0;
-  return titleOk && bodyOk;
+  const excerptOk =
+    typeof block.excerpt === "string" && block.excerpt.trim().length > 0;
+  return bodyOk || excerptOk;
+}
+
+function localePriority(locale: BlogLocaleCode): BlogLocaleCode[] {
+  if (locale === "en") return ["en", "ru", "uk"];
+  if (locale === "uk") return ["uk", "ru", "en"];
+  return ["ru", "uk", "en"];
+}
+
+function pickLocaleBlock(
+  post: BlogPostDocument,
+  code: BlogLocaleCode
+): BlogPostLocaleFields | undefined {
+  if (code === "ru") return post.ru ?? undefined;
+  if (code === "uk") return post.uk ?? undefined;
+  return post.en ?? undefined;
 }
 
 function emptySeo(): BlogPostSeo {
@@ -53,25 +77,41 @@ export function resolveBlogLocaleContent(
     seo: {},
   };
 
-  if (locale === "en" && hasTitleAndBody(en)) {
+  if (locale === "en" && hasUsableLocaleContent(en)) {
     sourceLocale = "en";
     selected = en!;
-  } else if (locale === "uk" && hasTitleAndBody(uk)) {
+  } else if (locale === "uk" && hasUsableLocaleContent(uk)) {
     sourceLocale = "uk";
     selected = uk!;
-  } else if (hasTitleAndBody(ru)) {
+  } else if (hasUsableLocaleContent(ru)) {
     sourceLocale = "ru";
     selected = ru!;
   } else {
-    /** Last resort: any locale that has at least a title */
-    const firstWithTitle = [en, uk, ru].find(
-      (b) => b && typeof b.title === "string" && b.title.trim().length > 0
-    );
-    if (firstWithTitle) {
-      selected = firstWithTitle;
-      if (firstWithTitle === en) sourceLocale = "en";
-      else if (firstWithTitle === uk) sourceLocale = "uk";
-      else sourceLocale = "ru";
+    const order = localePriority(locale);
+    let picked: BlogPostLocaleFields | undefined;
+    let pickedCode: BlogLocaleCode = "ru";
+
+    for (const code of order) {
+      const b = pickLocaleBlock(post, code);
+      if (b && hasUsableLocaleContent(b)) {
+        picked = b;
+        pickedCode = code;
+        break;
+      }
+    }
+    if (!picked) {
+      for (const code of order) {
+        const b = pickLocaleBlock(post, code);
+        if (b && typeof b.title === "string" && b.title.trim().length > 0) {
+          picked = b;
+          pickedCode = code;
+          break;
+        }
+      }
+    }
+    if (picked) {
+      selected = picked;
+      sourceLocale = pickedCode;
     }
   }
 

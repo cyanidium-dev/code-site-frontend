@@ -150,6 +150,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     name: resolved.title ?? "",
     description: resolved.excerpt ?? "",
     content: resolved.body ?? [],
+    publishedAt: doc.publishedAt ?? null,
+    author: doc.author ?? null,
     mainImageMobile: coverUrl
       ? { url: coverUrl, alt: coverAlt }
       : undefined,

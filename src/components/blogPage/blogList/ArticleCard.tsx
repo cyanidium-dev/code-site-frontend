@@ -54,7 +54,7 @@ export default function ArticleCard({ blog, className }: ArticleCardProps) {
               alt={previewImage.alt?.trim() || ""}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+              className="will-change-transform object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
             />
           ) : (
             <div

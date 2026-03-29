@@ -185,11 +185,12 @@ export const singleProjectQuery = `
  * ВАЖНО (GROQ): проекция вида `"ru": { title, excerpt }` читает поля с **корня** документа,
  * а не из вложенного `ru`. Нужно явно: `"ru": ru { title, excerpt }`.
  *
- * Для списка статей не запрашиваем `body` — карточкам достаточно title/excerpt; меньше payload.
+ * Для карточек нужен `body` — расчёт времени чтения по полному тексту статьи (см. `getReadingTime`).
  */
 const blogPostListLocaleProjection = `
   title,
   excerpt,
+  body,
   seo {
     metaTitle,
     metaDescription,

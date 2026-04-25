@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "slug": "repair-construction",
+    "title": "[ПЛЕЙСХОЛДЕР: SEO title]",
+    "description": "[ПЛЕЙСХОЛДЕР]",
+    "ogImage": "/images/og/uk/repair-construction.jpg",
+    "schemaType": "Service",
+    "industryIds": ["repair-construction"]
+  },
+  "hero": {
+    "eyebrow": "[ПЛЕЙСХОЛДЕР]",
+    "h1": "Сайт ремонтної компанії, який продає за $200/м² замість $80",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "facts": ["[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]"],
+    "ctaPrimary": { "text": "Отримати розбір", "url": "#lead-magnet" },
+    "ctaSecondary": { "text": "Дивитися кейси", "url": "#cases" }
+  },
+  "painPoints": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "items": [
+      { "number": "01", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" },
+      { "number": "02", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" },
+      { "number": "03", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" }
+    ],
+    "scrollLabel": "Що ми з цим робимо ↓"
+  },
+  "features": { "h2": "[ПЛЕЙСХОЛДЕР]", "subtitle": "[ПЛЕЙСХОЛДЕР]", "groups": [] },
+  "cases": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "caseIds": ["bornholm"],
+    "ctaText": "Усі кейси",
+    "ctaUrl": "/uk/portfolio?industry=repair-construction"
+  },
+  "integrations": { "h2": "[ПЛЕЙСХОЛДЕР]", "description": "[ПЛЕЙСХОЛДЕР]", "logos": [] },
+  "comparison": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "columns": ["Параметр", "Wix", "Кодовий сайт"],
+    "rows": [],
+    "highlightColumnIndex": 2,
+    "ctaPrimary": { "text": "Порівняння", "url": "/uk/vs/constructors" },
+    "ctaSecondary": { "text": "Чи можна на WordPress?", "url": "/uk/vs/wordpress" }
+  },
+  "pricing": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "tiers": [
+      {
+        "name": "Базовий",
+        "priceFrom": 4000,
+        "displayPrice": "від $4 000",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Хочу базовий"
+      },
+      {
+        "name": "Розширений",
+        "priceFrom": 7500,
+        "displayPrice": "від $7 500",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "highlighted": true,
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Хочу розширений"
+      },
+      {
+        "name": "Преміум",
+        "priceFrom": 14000,
+        "displayPrice": "від $14 000",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Обговорити"
+      }
+    ]
+  },
+  "faq": { "h2": "Часті питання", "items": [] },
+  "leadMagnet": {
+    "h2": "Отримайте безкоштовний розбір сайту вашої компанії",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "benefits": ["[ПЛЕЙСХОЛДЕР]"],
+    "promise": "Жодних зобов'язань.",
+    "formFields": {
+      "name": { "label": "Ім'я", "placeholder": "Як до вас звертатися" },
+      "email": { "label": "Email", "placeholder": "your@email.com" },
+      "websiteUrl": { "label": "Посилання на ваш сайт", "placeholder": "https://..." }
+    },
+    "ctaText": "Отримати розбір за 24 години",
+    "smallText": "Без спаму."
+  }
+}

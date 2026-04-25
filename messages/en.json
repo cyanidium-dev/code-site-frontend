@@ -1,45 +1,45 @@
 {
   "metadata": {
     "title": "Code Site Art",
-    "description": "Code Site Art is a web design and development agency that builds fast, SEO-ready websites with clean code, high-converting design and measurable business impact.",
-    "keywords": "coded websites, web development agency, Next.js development, SEO websites, conversion-focused web design, Ukraine web agency",
+    "description": "Code Site Art builds revenue systems for founders and operators — SaaS products, marketplaces, e-commerce engines and SEO platforms engineered to drive decisions, not describe services.",
+    "keywords": "custom software studio, SaaS development partner, marketplace builders, custom e-commerce systems, SEO platforms, B2B digital systems",
     "openGraph": {
       "title": "Code Site Art",
-      "description": "Order a selling website developed with clean code, UX/UI design and technical SEO — we launch high-speed projects that bring leads."
+      "description": "We build digital systems that generate demand and move customers toward a decision — owned code, owned data, measurable impact."
     }
   },
   "metadataPages": {
     "home": {
-      "title": "Order a turnkey website in Ukraine | Code-Site.Art",
-      "description": "We quickly and reliably create corporate websites, landing pages, online stores and CRM systems."
+      "title": "Digital systems that drive revenue | Code-Site.Art",
+      "description": "We build SaaS products, marketplaces, e-commerce engines and SEO platforms engineered to grow revenue."
     },
     "services": {
-      "title": "Website development, CRM and SEO | Code-Site.Art",
-      "description": "We create corporate websites, online stores and landing pages. Support, SEO and CRM for your business."
+      "title": "Custom SaaS, marketplaces and e-commerce | Code-Site.Art",
+      "description": "We build owned digital systems that convert — SaaS, marketplaces, e-commerce and SEO-driven platforms."
     },
     "portfolio": {
-      "title": "Examples of created websites and online stores | Code-Site.Art",
-      "description": "See real cases: corporate websites, landing pages and turnkey stores for businesses in Ukraine."
+      "title": "Systems we built for founders and operators | Code-Site.Art",
+      "description": "Review real builds: SaaS products, marketplaces and revenue-focused platforms shipped for operators."
     },
     "blog": {
-      "title": "How to order a website and grow your business | Code-Site.Art",
-      "description": "Practical articles on web development, UX/UI, SEO optimization and conversion growth from the Code Site Art team."
+      "title": "How operators build systems that grow revenue | Code-Site.Art",
+      "description": "Operator-focused writing on systems, conversion, ownership and growth from the Code Site Art team."
     },
     "contacts": {
-      "title": "Order a website or CRM | contact Code-Site.Art",
-      "description": "Write or call us to get a consultation and order a turnkey website, landing page or online store."
+      "title": "Start a project | contact Code-Site.Art",
+      "description": "Bring the problem. We return a written plan — decision flow, architecture, scope and price, signed."
     },
     "legal": {
       "title": "Legal Information — FOP Alpatov Fedir Mykhailovych | Code Site Art",
       "description": "Requisites of Code Site Art: FOP Alpatov Fedir Mykhailovych, IBAN UA283220010000026001350098841, TIN 3573202876, UNIVERSAL BANK."
     },
     "offer": {
-      "title": "Public Offer — Code Site Art Web Development Services",
-      "description": "Terms of the public offer for web design and development services from Code Site Art. Obligations, payment and guarantees."
+      "title": "Public Offer — Code Site Art System Engagements",
+      "description": "Terms of the public offer for digital system engagements with Code Site Art. Obligations, payment and guarantees."
     },
     "publicContract": {
-      "title": "Public Contract — Code Site Art Website Development",
-      "description": "Public contract for providing coded website development services, payment terms and guarantees for Code Site Art clients."
+      "title": "Public Contract — Code Site Art System Engagements",
+      "description": "Public contract for digital system engagements with Code Site Art — payment terms and guarantees for clients."
     },
     "policy": {
       "title": "Privacy Policy — Code Site Art",
@@ -47,7 +47,7 @@
     },
     "notFound": {
       "title": "Page Not Found — Code Site Art",
-      "description": "The requested page was not found. Return to the Code Site Art homepage to explore services and projects."
+      "description": "The requested page was not found. Return to the Code Site Art homepage to explore the systems we build."
     }
   },
   "breadcrumbs": {
@@ -70,7 +70,7 @@
     "discuss": "discuss project"
   },
   "footer": {
-    "description": "We work for your results and our satisfaction",
+    "description": "We build systems that produce revenue, not impressions",
     "home": "Home",
     "portfolio": "Portfolio",
     "blog": "Blog",
@@ -96,7 +96,7 @@
   },
   "modals": {
     "leaveContacts": "Leave your contacts",
-    "fillData": "Fill in your details and we will contact you soon!",
+    "fillData": "Share your details and we will reach out shortly!",
     "successTitle": "Thank you for leaving your details!",
     "errorTitle": "Unfortunately, something went wrong",
     "successDescription": "You can write to us on Telegram!",
@@ -111,28 +111,28 @@
     "descriptionFour": "We are always in touch and will respond as quickly as possible.",
     "questions": {
       "questionOne": {
-        "title": "How much does website creation cost?",
-        "answer": "The development cost depends on your business goals, structure complexity and required functionality. A single-page landing page is suitable for testing hypotheses or quick product presentation and will cost from $1000. If your business needs a full corporate website with sections and internal pages — the price starts from $3000. For online stores and e-commerce solutions with cart, online payment and integrations — from $5000. We develop each project individually so that the website not only looks modern, but actually delivers results."
+        "title": "How much does a system cost to build?",
+        "answer": "Pricing follows scope. A focused decision system for a single offer — validating a thesis or launching a product — starts at $1000. A structured multi-surface system for a company with services and case logic starts at $3000. A full commerce engine with catalog, payments and lifecycle flows starts at $5000. Every engagement is scoped against your business model and the decision flow we need to produce, so the system earns back what it costs."
       },
       "questionTwo": {
-        "title": "How long does development take?",
-        "answer": "Development time depends on project complexity. A single-page landing page usually takes 7-14 days. A multi-page corporate website — from 2 to 4 weeks. E-commerce solution with integrations — from 4 to 8 weeks. We always meet promised deadlines and inform about progress at each stage."
+        "title": "How long does a build take?",
+        "answer": "Timelines follow scope. A focused single-offer system usually ships in 7–14 days. A multi-surface company system lands in 2 to 4 weeks. A full commerce or marketplace engine with integrations runs 4 to 8 weeks. Every engagement has a fixed timeline in the signed contract and a weekly update on progress."
       },
       "questionThree": {
         "title": "Do you work under a contract and with prepayment?",
-        "answer": "Yes, we work under an official contract that fixes all cooperation terms, deadlines and cost. Prepayment usually amounts to 50% of the total project cost. The remainder is paid after work completion and project acceptance. Payment possible to FOP, cryptocurrency, Paypal — as convenient for you."
+        "answer": "Yes. Every engagement runs under a signed contract that fixes scope, timeline and price. Prepayment is 50% of the total engagement value. The balance is paid on delivery and acceptance. Payments accepted to FOP, cryptocurrency or Paypal — whichever fits your finance setup."
       },
       "questionFour": {
-        "title": "What is included in website development?",
-        "answer": "Development includes: analysis of your niche and competitors, website structure creation, design of all pages, layout and programming, integration of necessary services, SEO optimization, testing and launch. We also provide training materials for working with the website and a 1-year warranty."
+        "title": "What is included in an engagement?",
+        "answer": "Each engagement covers: market and competitor analysis, decision-flow and system architecture, design of every surface, build and integrations, analytics instrumentation, SEO foundation, QA and launch. You also get onboarding materials to operate the system and a 1-year product warranty."
       },
       "questionFive": {
-        "title": "Can I make changes to the website independently?",
-        "answer": "Yes, after launch we provide you with access to the content management system (if provided by the project) or train you to work with the website. You can also always contact us to make changes — we will help promptly without bureaucracy."
+        "title": "Can I run the system myself after launch?",
+        "answer": "Yes. After launch you get full access to the admin layer (where the project includes one) and onboarding for your team. You can also route changes through us and we ship them fast — no managers, no approval layers, no bureaucracy."
       },
       "questionSix": {
-        "title": "Do you support websites after launch?",
-        "answer": "Yes, we provide a 1-year product warranty and support all our projects after launch. This includes bug fixes, technical support, consultations and prompt changes upon your request."
+        "title": "Do you support systems after launch?",
+        "answer": "Yes. Every engagement includes a 1-year product warranty and ongoing support. That covers fixes, technical questions, advisory calls and prompt iteration on anything the data says should change."
       }
     }
   },
@@ -140,145 +140,145 @@
     "hero": {
       "freeConsultation": "Free Consultation",
       "slideOne": {
-        "title": "Coded Websites with Maximum Speed",
-        "description": "Clean code without unnecessary dependencies. Site loads in 0.5 seconds and ranks top positions in Google",
+        "title": "Systems Engineered for Speed",
+        "description": "Fast surfaces, clean data flows, zero platform drag. Pages load under a second and convert before users bounce",
         "button": "Free Consultation",
-        "subtitle": "Coded websites work 3 times faster than builders. Higher conversion and better search positions",
+        "subtitle": "Speed is a conversion lever. Every 100ms shaved off load time compounds into more qualified leads and orders",
         "list": {
           "listOne": { "value": "0.5s", "description": "Load Speed" },
-          "listTwo": { "value": "95+", "description": "PageSpeed Score" },
+          "listTwo": { "value": "95+", "description": "Performance Score" },
           "listThree": { "value": "100%", "description": "SEO-Ready" }
         }
       },
       "slideTwo": {
-        "title": "Web Design That Sells",
-        "description": "Unique design for your business. Every element works for conversion and increased sales",
+        "title": "Design That Drives Decisions",
+        "description": "Every surface is a decision point. We design each one to move the right user to the next action",
         "button": "Free Consultation",
-        "subtitle": "We analyze your target audience and create design that turns visitors into customers",
+        "subtitle": "We map how your buyers decide, then build the surfaces that turn their attention into revenue",
         "list": {
           "listOne": { "value": "3x", "description": "Conversion Growth" },
-          "listTwo": { "value": "50+", "description": "Successful Projects" },
-          "listThree": { "value": "99%", "description": "Satisfied Clients" }
+          "listTwo": { "value": "50+", "description": "Systems Shipped" },
+          "listThree": { "value": "99%", "description": "Operator Retention" }
         }
       },
       "slideThree": {
-        "title": "SEO Optimization from Day One",
-        "description": "Site is created with all SEO requirements in mind. Technical optimization, structured data and speed",
+        "title": "Search-Ready at Launch",
+        "description": "Every system ships with the structural foundation search rewards — architecture, data, speed and depth",
         "button": "Free Consultation",
-        "subtitle": "Your site is immediately ready for promotion. Technical foundation for top positions is already laid",
+        "subtitle": "Organic traffic is the only channel that compounds. We build the foundation that turns search into revenue",
         "list": {
           "listOne": { "value": "100%", "description": "SEO-Ready" },
           "listTwo": { "value": "90+", "description": "Core Web Vitals" },
-          "listThree": { "value": "5+", "description": "Years of Experience" }
+          "listThree": { "value": "5+", "description": "Years Operating" }
         }
       },
       "slideFour": {
-        "title": "Selling Websites for Your Business",
-        "description": "Structure and content that turn traffic into leads. Every page works for results",
+        "title": "Structures That Convert Traffic",
+        "description": "Decision flow, content and surfaces aligned to one outcome: turn traffic into qualified pipeline",
         "button": "Free Consultation",
-        "subtitle": "We analyze your niche, competitors and create selling structure that brings clients",
+        "subtitle": "We map your market, study the competition and build the structural edge that brings buyers",
         "list": {
           "listOne": { "value": "2x", "description": "Lead Growth" },
-          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listTwo": { "value": "50+", "description": "Systems Shipped" },
           "listThree": { "value": "7–14", "description": "days to launch" }
         }
       },
       "slideFive": {
-        "title": "Turnkey Website Development",
-        "description": "From idea to launch. Design, layout, programming, integrations and setup — all included",
+        "title": "End-to-End System Delivery",
+        "description": "From thesis to live system. Strategy, architecture, design, build, integrations — one engagement",
         "button": "Free Consultation",
-        "subtitle": "You get a ready website with all necessary functions. No hidden fees or additional costs",
+        "subtitle": "You get a production system with every surface working. Fixed scope, fixed price, no invoice surprises",
         "list": {
-          "listOne": { "value": "100%", "description": "Turnkey Ready" },
-          "listTwo": { "value": "50+", "description": "Successful Projects" },
+          "listOne": { "value": "100%", "description": "Production-Ready" },
+          "listTwo": { "value": "50+", "description": "Systems Shipped" },
           "listThree": { "value": "1 yr.", "description": "Warranty" }
         }
       },
       "slideSix": {
-        "title": "Website That Delivers Results",
-        "description": "Not just a beautiful site, but a tool for business growth. Every element works for your ROI",
+        "title": "A System Built for Revenue",
+        "description": "Not a brochure. A revenue engine where every surface, flow and decision point earns its ROI",
         "button": "Free Consultation",
-        "subtitle": "We track results and optimize the site for maximum efficiency and profitability",
+        "subtitle": "Analytics wired from day one. We tune the system monthly against real data, not gut feel",
         "list": {
           "listOne": { "value": "3x", "description": "ROI Growth" },
-          "listTwo": { "value": "50+", "description": "Successful Projects" },
-          "listThree": { "value": "99%", "description": "Satisfied Clients" }
+          "listTwo": { "value": "50+", "description": "Systems Shipped" },
+          "listThree": { "value": "99%", "description": "Operator Retention" }
         }
       },
       "slideSeven": {
-        "title": "Individual Approach to Each Project",
-        "description": "No templates. Every website is a unique solution for your business, goals and target audience",
+        "title": "No Templates. Only Real Systems.",
+        "description": "Every system is architected around your business model, your buyers and your outcomes",
         "button": "Free Consultation",
-        "subtitle": "We analyze your business, competitors and market. Create a solution that sets you apart from competitors",
+        "subtitle": "We map your market and competition, then build the structural advantage only you can own",
         "list": {
-          "listOne": { "value": "100%", "description": "Uniqueness" },
-          "listTwo": { "value": "50+", "description": "Successful Projects" },
-          "listThree": { "value": "5+", "description": "Years of Experience" }
+          "listOne": { "value": "100%", "description": "Custom Build" },
+          "listTwo": { "value": "50+", "description": "Systems Shipped" },
+          "listThree": { "value": "5+", "description": "Years Operating" }
         }
       },
       "slideEight": {
-        "title": "Warranty and Support After Launch",
-        "description": "1 year warranty and technical support. Bug fixes, updates and consultations included",
+        "title": "Support That Runs Past Launch",
+        "description": "12 months of warranty, iteration and advisory built into every engagement. Fixes, updates, support",
         "button": "Free Consultation",
-        "subtitle": "We don't abandon the project after launch. We support and develop your site for maximum results",
+        "subtitle": "Launch is day one, not the finish line. We stay on the system and tune it for compounding results",
         "list": {
           "listOne": { "value": "1 yr.", "description": "Warranty" },
           "listTwo": { "value": "24/7", "description": "Support" },
-          "listThree": { "value": "50+", "description": "Successful Projects" }
+          "listThree": { "value": "50+", "description": "Systems Shipped" }
         }
       }
     },
     "founder": {
-      "actualSolutions": "Relevant Solutions for Your Business",
-      "descriptionOne": "Clean code without platform dependencies — the website works fast and stable.",
-      "descriptionTwo": "Integrations with CRM, payment systems and any services.",
-      "descriptionThree": "Custom selling design — beautiful, modern and with emotion.",
-      "descriptionFour": "Proven approaches for different niches (from restaurants to crypto).",
-      "descriptionFive": "SEO structure and optimization \"out of the box\".",
+      "actualSolutions": "Systems Built for Your Business Model",
+      "descriptionOne": "Owned code, no platform dependencies — the system runs fast and stays yours forever.",
+      "descriptionTwo": "Integrations with your CRM, payment providers and the stack you already operate on.",
+      "descriptionThree": "Custom decision-focused design — sharp, distinctive and built to convert.",
+      "descriptionFour": "Patterns proven across verticals — from hospitality to SaaS to crypto.",
+      "descriptionFive": "Search architecture and measurement wired in from day one.",
       "getOffer": "Get Offer"
     },
     "whyUs": {
       "title": "Why Us?",
       "reasonOne": {
-        "title": "With us — simple, effective, without briefs and technical specifications",
-        "description": "We promise not to torture you with filling out giant briefs and creating technical specifications. After a 15-minute conference, we will find and present you with the best solution for your business and justify it."
+        "title": "With us — focused, direct, no endless briefs or paperwork",
+        "description": "No bloated briefs, no 40-page specification documents. One 30-minute strategy call gives us enough to return a written plan — decision flow, architecture, scope — and justify every choice in it."
       },
       "reasonTwo": {
-        "title": "fast and transparent",
-        "description": "We work under a contract, fix deadlines. We deliver results on promised deadlines. Payment possible to FOP, crypto, Paypal - as convenient!"
+        "title": "fixed and transparent",
+        "description": "Signed contract with fixed scope, timeline and price. Delivered on the promised date. Payments to FOP, crypto or Paypal — whatever fits your setup!"
       },
       "reasonThree": {
         "title": "Guarantee",
-        "description": "We don't deliver raw products. All our websites go through QA testing before launch. We provide a 1-year product warranty. We support existing projects and promptly make any changes without managers and bureaucracy."
+        "description": "Nothing ships half-built. Every system passes structured QA before launch. We back the product with a 1-year warranty and stay on it afterward — changes go directly to the engineers, not through managers or a ticketing queue."
       }
     },
     "siteTypes": {
-      "title": "Website Types",
+      "title": "System Types",
       "forWhom": "For Whom",
       "from": "from",
       "button": "What's Included?",
       "landing": {
-        "title": "Single Page Website",
-        "listOne": "selling one product or service",
-        "listTwo": "attracting investors",
-        "listThree": "startup launch",
-        "listFour": "promo conference, concert or webinar",
-        "listFive": "application website or portfolio"
+        "title": "Focused Decision System",
+        "listOne": "selling one offer or product",
+        "listTwo": "investor-facing launch",
+        "listThree": "startup validation",
+        "listFour": "promo for event, launch or release",
+        "listFive": "application or founder portfolio"
       },
       "multipage": {
-        "title": "Multi-page Website",
-        "listOne": "convenient product catalog with filters and search",
-        "listTwo": "sales growth — 24/7 access to your products for customers",
-        "listThree": "scalability — you can start with a small catalog and expand the range.",
-        "listFour": "increased customer trust"
+        "title": "Full Company System",
+        "listOne": "structured catalog with search and filter logic",
+        "listTwo": "continuous sales — buyers transact around the clock",
+        "listThree": "scalable architecture — start focused, expand without a rebuild.",
+        "listFour": "higher structural buyer trust"
       },
       "e-commerce": {
         "title": "E-commerce",
-        "listOne": "company with multiple services",
-        "listTwo": "personal brand or expert",
-        "listThree": "agency or studio",
-        "listFour": "business that wants to strengthen trust",
-        "listFive": "organization with ongoing projects and cases"
+        "listOne": "company with multiple service lines",
+        "listTwo": "personal brand or operator",
+        "listThree": "agency, studio or production",
+        "listFour": "brand building structural buyer trust",
+        "listFive": "team with active projects and case logic"
       }
     },
     "portfolio": {
@@ -287,10 +287,10 @@
     },
     "reviews": {
       "title": "Reviews",
-      "description": "What our best clients say about us",
+      "description": "What operators say after shipping with us",
       "seeProject": "View Project"
     },
-    "partners": { "title": "Who We Work With" },
+    "partners": { "title": "Operators We Build For" },
     "faq": {
       "title": "Frequently Asked Questions",
       "descriptionOne": "Didn't find an answer?",
@@ -299,31 +299,31 @@
       "descriptionFour": "We are always in touch and will respond as quickly as possible."
     },
     "cta": {
-      "title": "NON-STANDARD WEBSITES FOR BIG SALES",
-      "subtitle": "TRUSTED BY LEADERS AND BLOGGERS",
-      "description": "We create websites for companies and bloggers who value style and results. No templates — only non-standard solutions, clean code and design that sells",
+      "title": "SYSTEMS BUILT FOR SERIOUS REVENUE",
+      "subtitle": "CHOSEN BY FOUNDERS AND OPERATORS",
+      "description": "We build systems for companies that value outcomes over deliverables. No templates — only structural decision systems, owned code and design engineered to convert",
       "button": "Request a Proposal"
     }
   },
   "blogPage": {
     "title": "Our Blog",
-    "description": "Real cases, strategies and ideas from the world of development — all in one place.",
+    "description": "Case logic, system patterns and operator-level thinking — all in one place.",
     "readMore": "Read More",
     "minutes": "{count, plural, one {minute} other {minutes}}"
   },
   "articlePage": {
     "cta": {
-      "title": "Let's Discuss Your Website?",
+      "title": "Let's Map Your System?",
       "leaveApplication": "Leave Application"
     }
   },
   "contactsPage": {
     "title": "write to us",
-    "description": "Contact us – we'll make your website powerful and unique!"
+    "description": "Bring the problem — we return a sharp, structured, actionable plan."
   },
   "portfolioPage": {
     "title": "Our Portfolio",
-    "description": "View our portfolio with convenient sorting by project theme",
+    "description": "Browse the systems we built, sorted by category and business model",
     "seeProject": "View Project"
   },
   "projectPage": {
@@ -332,13 +332,13 @@
       "title": "Client Review"
     },
     "cta": {
-      "title": "Let's Discuss Your Website?",
+      "title": "Let's Map Your System?",
       "button": "Leave Application"
     }
   },
   "servicesPage": {
-    "title": "Simple and transparent website development prices",
-    "description": "Choose the format that best suits your business.",
+    "title": "Clear pricing for the systems we build",
+    "description": "Pick the format that matches your business model.",
     "designToggle": {
       "normal": "Standard design",
       "wow": "Wow design"
@@ -347,17 +347,17 @@
       "normal": {
         "title": "Standard design",
         "description": [
-          "This solution is for companies that need to quickly launch a website without complex visual effects.",
-          "The main goal is simplicity and cost savings while maintaining functionality.",
-          "Suitable for e-commerce stores and projects where simplicity, speed, and cost-effectiveness of development are important."
+          "For operators who need to ship a system quickly without a heavy visual production layer.",
+          "The target is structural clarity and capital efficiency without sacrificing function.",
+          "Right fit for commerce and projects where speed of launch and budget discipline matter most."
         ]
       },
       "wow": {
         "title": "Wow design",
         "description": [
-          "A creative solution focused on attracting attention and creating a wow effect.",
-          "The main goal is to stand out from competitors and generate interest from the audience.",
-          "Suitable for web studios, production companies, creative agencies, arbitrage teams, crypto and IT projects."
+          "A visual production layer engineered to cut through noise and win attention on arrival.",
+          "The target is structural distinctiveness — visible difference from everyone else in your market.",
+          "Right fit for studios, production teams, creative agencies, arbitrage teams, crypto and IT brands."
         ]
       },
       "lookMore": "Learn more about wow design"
@@ -365,19 +365,19 @@
     "servicesList": [
       {
         "title": "Landing page",
-        "subtitle": "(single-page website)",
+        "subtitle": "(focused decision system)",
         "priceText": "from",
         "price": { "normal": "1000$", "wow": "1300$" },
-        "description": "Suitable for startups, advertising campaigns, and niche testing. Great option for quick business launch.",
+        "description": "Right for startups, paid channels and thesis validation. Fastest path from an idea to a live revenue test.",
         "pros": [
-          "Responsive layout (PC, tablet, mobile)",
-          "SEO structure optimization",
-          "Speed optimization",
-          "Integration of contact forms and analytics",
+          "Adaptive layout across desktop, tablet and mobile",
+          "SEO structure and schema",
+          "Performance-tuned build",
+          "Lead forms and analytics instrumentation",
           "CRM integration (on request)"
         ],
         "seeMore": "See details",
-        "wantIt": "Want a landing page",
+        "wantIt": "Want a focused system",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": 1 },
@@ -390,20 +390,20 @@
         }
       },
       {
-        "title": "Corporate website",
-        "subtitle": "(multi-page website)",
+        "title": "Corporate system",
+        "subtitle": "(multi-surface system)",
         "priceText": "from",
         "price": { "normal": "3000$", "wow": "4000$" },
-        "description": "Suitable for companies that value presenting services, stories, and case studies. Helps build trust and find clients.",
+        "description": "For companies that present services, case logic and proof at scale — builds structural trust and produces pipeline.",
         "pros": [
-          "Up to 10 unique pages (Cases, Services, etc.)",
-          "Responsive design for all devices",
-          "Blog/news for promotion",
-          "Integration with maps and messengers",
-          "Admin panel for content editing"
+          "Up to 10 unique surfaces (Cases, Services, etc.)",
+          "Adaptive design across every device",
+          "Editorial engine for distribution",
+          "Maps and messenger integrations",
+          "Admin panel for content operations"
         ],
         "seeMore": "See details",
-        "wantIt": "Want a corporate website",
+        "wantIt": "Want a company system",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": "up to 10" },
@@ -417,19 +417,19 @@
       },
       {
         "title": "E-commerce",
-        "subtitle": "(e-commerce)",
+        "subtitle": "(commerce engine)",
         "priceText": "from",
         "price": { "normal": "5000$", "wow": "6500$" },
-        "description": "Suitable for businesses with products and online sales. Full functionality for convenient management and sales growth.",
+        "description": "For businesses running live commerce — end-to-end catalog, checkout and operator tooling built to scale revenue.",
         "pros": [
-          "Product catalog with categories",
-          "Search and filters",
-          "Shopping cart and checkout",
-          "Payment systems integration (cards, PayPal, crypto)",
+          "Catalog architecture with categories",
+          "Search and filter logic",
+          "Cart and checkout flow",
+          "Payment integrations (cards, PayPal, crypto)",
           "CRM/ERP integration"
         ],
         "seeMore": "See details",
-        "wantIt": "Want an e-commerce store",
+        "wantIt": "Want a commerce engine",
         "comparisonFeatures": {
           "0": { "value": true },
           "1": { "value": "up to 15" },
@@ -443,87 +443,87 @@
       }
     ],
     "comparisonTable": {
-      "title": "Service Comparison",
-      "description": "Service / Feature",
+      "title": "System Comparison",
+      "description": "System / Feature",
       "table": [
         "Custom design",
-        "Number of pages",
-        "Admin panel for editing",
-        "Unlimited adding of posts/products through admin",
+        "Number of surfaces",
+        "Admin panel for operations",
+        "Unlimited posts/products via admin",
         "SEO and loading speed",
         "Contact forms + Telegram bot integration",
-        "Sales functions (cart, payment, delivery)",
+        "Commerce functions (cart, payment, delivery)",
         "Support and warranty"
       ],
-      "buttonText": "Want a website"
+      "buttonText": "Want a system"
     },
     "extraInfo": [
       {
-        "title": "Integration of any functions into your website",
-        "description": "Your website is not limited to a standard set of features. We can add any tools that will be useful for your business:",
+        "title": "Extend the system with any business function",
+        "description": "The system isn't capped at a standard feature set. We extend it with any capability that moves revenue:",
         "infoList": {
           "title": "What can be added:",
           "items": [
-            "online payment and shopping cart even in a landing page;",
-            "blog or news section;",
-            "contact forms with integration to CRM or Telegram;",
-            "widgets, maps, chats, and other services."
+            "checkout and payments even inside a single-page system;",
+            "blog or editorial section;",
+            "lead forms wired to your CRM or Telegram;",
+            "widgets, maps, chat and any other service layer."
           ]
         }
       },
       {
-        "title": "Custom solutions for business needs",
-        "description": "We create digital products tailored to company tasks and business processes, allowing project development without limitations.",
+        "title": "Custom software for operating needs",
+        "description": "We build custom software aligned to your operating model and internal processes, removing ceilings on growth.",
         "infoList": {
           "title": "What we can develop:",
           "items": [
-            "CRM system tailored to company processes;",
-            "Telegram bot for automation;",
-            "internal panels and services for employees;",
-            "complex integrations with external systems."
+            "CRM built around your operating processes;",
+            "Telegram bot for workflow automation;",
+            "internal tools and panels for your team;",
+            "deep integrations with external systems."
           ]
         }
       }
     ],
     "faq": {
-      "title": "FAQ about Services",
-      "description": "Answers to common questions about our service formats, processes and pricing.",
+      "title": "FAQ about Engagements",
+      "description": "Answers to common questions about our engagement formats, process and pricing.",
       "questions": {
         "questionOne": {
-          "title": "Can I order a website with a custom design?",
-          "answer": "Yes, we create unique designs on clean code tailored to your business goals, without templates."
+          "title": "Can I get a system with fully custom design?",
+          "answer": "Yes. Every system gets a custom design mapped to your business model and decision flow — no templates."
         },
         "questionTwo": {
-          "title": "Do you optimize websites for search engines (SEO)?",
-          "answer": "Yes, all websites are developed with basic SEO in mind: speed, meta tags, page structure, and mobile responsiveness."
+          "title": "Do you build for search engines (SEO)?",
+          "answer": "Yes. Every system ships with the SEO foundation — speed, schema, architecture and mobile parity — wired in from day one."
         },
         "questionThree": {
-          "title": "Do you create responsive design for mobile devices?",
-          "answer": "Yes, every website automatically adapts to smartphones and tablets for a convenient user experience."
+          "title": "Do you design for mobile devices?",
+          "answer": "Yes. Every surface adapts to phones and tablets so the decision flow holds on any device your buyers use."
         },
         "questionFour": {
-          "title": "Which technologies do you use to develop websites?",
-          "answer": "We work with clean HTML/CSS/JS and integrate PHP, Node.js, React, Next.js and other modern technologies depending on the project."
+          "title": "What do you use to build the systems?",
+          "answer": "We pick the stack that fits your system — modern, owned, stable and proven at the scale you're targeting for the next 3–5 years."
         },
         "questionFive": {
-          "title": "Is it possible to integrate an online store with payment systems?",
-          "answer": "Yes, we connect all popular payment systems including LiqPay, PayPal, Stripe, Privat24 and others."
+          "title": "Can the commerce engine accept payments?",
+          "answer": "Yes. We integrate every major payment provider — LiqPay, PayPal, Stripe, Privat24 and any other your finance stack requires."
         },
         "questionSix": {
-          "title": "Can new features be added after the website is launched?",
-          "answer": "Yes, the website is built in a modular way so you can add new sections, features or integrate third-party services in the future."
+          "title": "Can new features be added after launch?",
+          "answer": "Yes. Every system is built modular — add new surfaces, features or third-party integrations any time after launch without a rebuild."
         },
         "questionSeven": {
-          "title": "Do you create multilingual websites?",
-          "answer": "Yes, we develop websites in Ukrainian, Russian and English, with SEO optimization for each language."
+          "title": "Do you build multilingual systems?",
+          "answer": "Yes. Systems ship in Ukrainian, Russian and English, with full search architecture configured for each language."
         },
         "questionEight": {
-          "title": "How is the website handed over to the client?",
-          "answer": "After development is complete, we transfer all files, access to hosting, the admin panel and documentation so you can manage the website yourself."
+          "title": "How is the system handed over?",
+          "answer": "On completion you receive full source, hosting access, admin panel and documentation — the system is yours to operate and extend."
         },
         "questionNine": {
-          "title": "Can I order full ongoing website support?",
-          "answer": "Yes, we offer support packages that include content updates, technical support, SEO optimization and security monitoring."
+          "title": "Can I get ongoing system support?",
+          "answer": "Yes. Support packages cover content operations, technical support, SEO tuning and security monitoring on an ongoing basis."
         }
       }
     }

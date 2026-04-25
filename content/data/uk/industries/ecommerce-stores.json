@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "slug": "ecommerce-stores",
+    "title": "[ПЛЕЙСХОЛДЕР: SEO title]",
+    "description": "[ПЛЕЙСХОЛДЕР]",
+    "ogImage": "/images/og/uk/ecommerce-stores.jpg",
+    "schemaType": "Service",
+    "industryIds": ["ecommerce", "ecommerce-stores"]
+  },
+  "hero": {
+    "eyebrow": "[ПЛЕЙСХОЛДЕР]",
+    "h1": "Інтернет-магазин на коді: швидкий каталог на 50 000+ товарів і нативні українські інтеграції",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "facts": ["[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]", "[ПЛЕЙСХОЛДЕР]"],
+    "ctaPrimary": { "text": "Отримати розбір", "url": "#lead-magnet" },
+    "ctaSecondary": { "text": "Дивитися кейси", "url": "#cases" }
+  },
+  "painPoints": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "items": [
+      { "number": "01", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" },
+      { "number": "02", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" },
+      { "number": "03", "title": "[ПЛЕЙСХОЛДЕР]", "text": "[ПЛЕЙСХОЛДЕР]" }
+    ],
+    "scrollLabel": "Що ми з цим робимо ↓"
+  },
+  "features": { "h2": "[ПЛЕЙСХОЛДЕР]", "subtitle": "[ПЛЕЙСХОЛДЕР]", "groups": [] },
+  "cases": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "caseIds": [],
+    "ctaText": "Усі кейси",
+    "ctaUrl": "/uk/portfolio?industry=ecommerce"
+  },
+  "integrations": { "h2": "[ПЛЕЙСХОЛДЕР]", "description": "[ПЛЕЙСХОЛДЕР]", "logos": [] },
+  "comparison": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "columns": ["Параметр", "Shopify", "WooCommerce", "Кодовий сайт"],
+    "rows": [],
+    "highlightColumnIndex": 3,
+    "ctaPrimary": { "text": "Порівняння", "url": "/uk/vs/constructors" },
+    "ctaSecondary": { "text": "Чи можна на WordPress?", "url": "/uk/vs/wordpress" }
+  },
+  "pricing": {
+    "h2": "[ПЛЕЙСХОЛДЕР]",
+    "tiers": [
+      {
+        "name": "Базовий",
+        "priceFrom": 5000,
+        "displayPrice": "від $5 000",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Хочу базовий"
+      },
+      {
+        "name": "Розширений",
+        "priceFrom": 9000,
+        "displayPrice": "від $9 000",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "highlighted": true,
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Хочу розширений"
+      },
+      {
+        "name": "Преміум",
+        "priceFrom": 18000,
+        "displayPrice": "від $18 000",
+        "duration": "[ПЛЕЙСХОЛДЕР]",
+        "features": ["[ПЛЕЙСХОЛДЕР]"],
+        "cta": "Обговорити"
+      }
+    ]
+  },
+  "faq": { "h2": "Часті питання", "items": [] },
+  "leadMagnet": {
+    "h2": "Отримайте безкоштовний розбір вашого магазину",
+    "subtitle": "[ПЛЕЙСХОЛДЕР]",
+    "benefits": ["[ПЛЕЙСХОЛДЕР]"],
+    "promise": "Жодних зобов'язань.",
+    "formFields": {
+      "name": { "label": "Ім'я", "placeholder": "Як до вас звертатися" },
+      "email": { "label": "Email", "placeholder": "your@email.com" },
+      "websiteUrl": { "label": "Посилання на ваш сайт", "placeholder": "https://..." }
+    },
+    "ctaText": "Отримати розбір за 24 години",
+    "smallText": "Без спаму."
+  }
+}

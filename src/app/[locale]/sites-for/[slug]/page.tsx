@@ -15,6 +15,10 @@ interface NichePageProps {
   params: Promise<{ slug: string; locale: Locale }>;
 }
 
+// Parent layout metadata reads request headers, so this route cannot be fully static.
+// Force dynamic rendering to avoid DYNAMIC_SERVER_USAGE 500 in production.
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   const slugs = await getAllNicheSlugs();
   return slugs.map((slug) => ({ slug }));

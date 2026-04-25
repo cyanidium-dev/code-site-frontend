@@ -109,7 +109,7 @@ export function getAlternateLanguages(pathname: string): Record<string, string> 
 }
 
 export async function getDefaultMetadata(locale: string): Promise<Metadata> {
-  const t = await getTranslations("metadata");
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   // отримуємо рядок keywords із перекладу
   const keywordsString = t("keywords");

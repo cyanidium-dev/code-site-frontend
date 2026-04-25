@@ -19,9 +19,13 @@ interface NicheLeadMagnetProps {
 interface AuditFormValues {
   name: string;
   email: string;
+  phone: string;
   websiteUrl: string;
   hp: string;
 }
+
+const TELEGRAM_NICK_REGEX = /^@?[a-zA-Z0-9_]{5,32}$/;
+const PHONE_REGEX = /^[0-9+\-()\s]{7,20}$/;
 
 const ValidationSchema = Yup.object({
   name: Yup.string()
@@ -30,7 +34,21 @@ const ValidationSchema = Yup.object({
     .required("Обов'язкове поле"),
   email: Yup.string()
     .trim()
-    .email("Некоректний email")
+    .test(
+      "email-or-telegram",
+      "Вкажіть email або Telegram-нік (наприклад, @username)",
+      (value) => {
+        const v = (value ?? "").trim();
+        if (!v) return false;
+        return Yup.string().email().isValidSync(v) || TELEGRAM_NICK_REGEX.test(v);
+      }
+    )
+    .required("Обов'язкове поле"),
+  phone: Yup.string()
+    .trim()
+    .test("phone", "Некоректний номер телефону", (value) =>
+      PHONE_REGEX.test((value ?? "").trim())
+    )
     .required("Обов'язкове поле"),
   websiteUrl: Yup.string()
     .trim()
@@ -46,6 +64,7 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
   const initialValues: AuditFormValues = {
     name: "",
     email: "",
+    phone: "",
     websiteUrl: "",
     hp: "",
   };
@@ -65,6 +84,7 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
       await axios.post("/api/audit-request", {
         name: values.name.trim(),
         email: values.email.trim(),
+        phone: values.phone.trim(),
         websiteUrl: values.websiteUrl.trim(),
         niche: slug,
       });
@@ -131,8 +151,17 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
                   />
                   <CustomizedInput
                     fieldName="email"
-                    inputType="email"
+                    inputType="text"
                     placeholder={data.formFields.email.placeholder}
+                    isRequired
+                    errors={errors}
+                    touched={touched}
+                    variant="gradient"
+                  />
+                  <CustomizedInput
+                    fieldName="phone"
+                    inputType="tel"
+                    placeholder={data.formFields.phone?.placeholder ?? "+380 (__) ___-__-__"}
                     isRequired
                     errors={errors}
                     touched={touched}

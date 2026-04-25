@@ -112,6 +112,7 @@ export interface NicheLeadMagnet {
   formFields: {
     name: NicheLeadMagnetField;
     email: NicheLeadMagnetField;
+    phone?: NicheLeadMagnetField;
     websiteUrl: NicheLeadMagnetField;
   };
   ctaText: string;

@@ -82,6 +82,21 @@ export default function Header() {
         isHeaderMenuOpened={isHeaderMenuOpened}
         setIsHeaderMenuOpened={setIsHeaderMenuOpened}
       />
+      {!isHeaderMenuOpened && (
+        <div
+          className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-4 pt-8 pointer-events-none bg-gradient-to-t from-black via-black/85 to-transparent"
+          style={{ paddingBottom: "max(env(safe-area-inset-bottom), 16px)" }}
+        >
+          <div className="pointer-events-auto max-w-[420px] mx-auto">
+            <ClientApplication
+              buttonText={t("discuss")}
+              variant="gradient"
+              buttonClassName="h-[52px]"
+              source="mobile-sticky"
+            />
+          </div>
+        </div>
+      )}
     </header>
   );
 }

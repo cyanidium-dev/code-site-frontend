@@ -31,6 +31,14 @@ function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
+function isValidTelegramNick(value: string): boolean {
+  return /^@?[a-zA-Z0-9_]{5,32}$/.test(value);
+}
+
+function isValidPhone(value: string): boolean {
+  return /^[0-9+\-()\s]{7,20}$/.test(value);
+}
+
 function isValidUrl(value: string): boolean {
   try {
     const u = new URL(value);
@@ -50,6 +58,7 @@ function escapeHtml(value: string): string {
 interface AuditRequestBody {
   name?: unknown;
   email?: unknown;
+  phone?: unknown;
   websiteUrl?: unknown;
   niche?: unknown;
   hp?: unknown;
@@ -77,6 +86,7 @@ export async function POST(request: NextRequest) {
 
   const name = typeof body.name === "string" ? body.name.trim() : "";
   const email = typeof body.email === "string" ? body.email.trim() : "";
+  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
   const websiteUrl =
     typeof body.websiteUrl === "string" ? body.websiteUrl.trim() : "";
   const niche = typeof body.niche === "string" ? body.niche.trim() : "";
@@ -84,8 +94,11 @@ export async function POST(request: NextRequest) {
   if (name.length < 2) {
     return NextResponse.json({ error: "Invalid name" }, { status: 400 });
   }
-  if (!isValidEmail(email)) {
-    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+  if (!isValidEmail(email) && !isValidTelegramNick(email)) {
+    return NextResponse.json({ error: "Invalid contact" }, { status: 400 });
+  }
+  if (!isValidPhone(phone)) {
+    return NextResponse.json({ error: "Invalid phone" }, { status: 400 });
   }
   if (!isValidUrl(websiteUrl)) {
     return NextResponse.json({ error: "Invalid websiteUrl" }, { status: 400 });
@@ -97,7 +110,8 @@ export async function POST(request: NextRequest) {
   const text =
     `🆕 <b>Запит на безкоштовний аудит</b> (UA · niche: ${escapeHtml(niche)})\n\n` +
     `👤 <b>Імʼя:</b> ${escapeHtml(name)}\n` +
-    `📧 <b>Email:</b> ${escapeHtml(email)}\n` +
+    `📧 <b>Email / Telegram:</b> ${escapeHtml(email)}\n` +
+    `📱 <b>Телефон:</b> ${escapeHtml(phone)}\n` +
     `🔗 <b>Сайт:</b> ${escapeHtml(websiteUrl)}\n` +
     `🏷️ <b>Ніша:</b> ${escapeHtml(niche)}\n\n` +
     `IP: ${escapeHtml(ip)} | Час: ${new Date().toISOString()}`;

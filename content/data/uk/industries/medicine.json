@@ -289,7 +289,8 @@
     "promise": "Жодних зобов'язань. Корисно, навіть якщо вирішите працювати з іншим підрядником.",
     "formFields": {
       "name": { "label": "Ім'я", "placeholder": "Як до вас звертатися" },
-      "email": { "label": "Email", "placeholder": "your@email.com" },
+      "email": { "label": "Імейл або нік у Telegram", "placeholder": "Імейл або нік у Telegram" },
+      "phone": { "label": "Телефон", "placeholder": "+380 (__) ___-__-__" },
       "websiteUrl": { "label": "Посилання на ваш сайт", "placeholder": "https://..." }
     },
     "ctaText": "Отримати розбір за 24 години",

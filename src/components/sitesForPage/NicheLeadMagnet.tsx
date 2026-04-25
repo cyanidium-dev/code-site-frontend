@@ -100,7 +100,7 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
   return (
     <section
       id="lead-magnet"
-      className="py-[80px] lg:py-[140px] bg-[radial-gradient(circle_at_top_right,_rgba(8,153,252,0.15)_0%,_transparent_50%),radial-gradient(circle_at_bottom_left,_rgba(255,73,184,0.18)_0%,_transparent_55%)]"
+      className="py-[56px] sm:py-[80px] lg:py-[140px] bg-[radial-gradient(circle_at_top_right,_rgba(8,153,252,0.15)_0%,_transparent_50%),radial-gradient(circle_at_bottom_left,_rgba(255,73,184,0.18)_0%,_transparent_55%)]"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">

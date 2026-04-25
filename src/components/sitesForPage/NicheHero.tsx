@@ -8,7 +8,7 @@ interface NicheHeroProps {
 
 export default function NicheHero({ data }: NicheHeroProps) {
   return (
-    <section className="pt-[120px] sm:pt-[140px] lg:pt-[180px] pb-[60px] md:pb-[80px] lg:pb-[120px]">
+    <section className="pt-[120px] sm:pt-[140px] lg:pt-[180px] pb-[40px] sm:pb-[60px] md:pb-[80px] lg:pb-[120px]">
       <Container>
         <div className="relative isolate grid grid-cols-1 md:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] xl:grid-cols-[minmax(0,620px)_minmax(0,1fr)] gap-8 md:gap-6 lg:gap-10 xl:gap-0 items-center">
           <div className="relative z-10 order-2 md:order-1 max-w-[620px]">

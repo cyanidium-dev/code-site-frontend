@@ -11,7 +11,7 @@ export default function NicheFeatures({ data }: NicheFeaturesProps) {
   if (!data.groups.length) return null;
 
   return (
-    <section id="features" className="py-[80px] lg:py-[120px]">
+    <section id="features" className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <SectionTitle
           variant="blue"
@@ -19,7 +19,7 @@ export default function NicheFeatures({ data }: NicheFeaturesProps) {
         >
           {data.h2}
         </SectionTitle>
-        <p className="max-w-[760px] mb-12 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
+        <p className="max-w-[760px] mb-8 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
           {data.subtitle}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">

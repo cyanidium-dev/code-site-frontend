@@ -8,11 +8,11 @@ interface NichePricingProps {
 
 export default function NichePricing({ data }: NichePricingProps) {
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <SectionTitle
           variant="pink"
-          className="max-w-[900px] mb-12 lg:mb-16 text-[32px] sm:text-[40px] lg:text-[64px] leading-[1.05]"
+          className="max-w-[900px] mb-8 lg:mb-16 text-[32px] sm:text-[40px] lg:text-[64px] leading-[1.05]"
         >
           {data.h2}
         </SectionTitle>
@@ -49,7 +49,7 @@ export default function NichePricing({ data }: NichePricingProps) {
                 </p>
               ) : null}
 
-              <ul className="mt-5 mb-8 flex flex-col gap-2.5">
+              <ul className="mt-5 flex flex-col gap-2.5">
                 {tier.features.map((f) => (
                   <li
                     key={f}
@@ -63,9 +63,30 @@ export default function NichePricing({ data }: NichePricingProps) {
                 ))}
               </ul>
 
+              {tier.notIncluded && tier.notIncluded.length > 0 ? (
+                <div className="mt-5 pt-5 border-t border-white/10">
+                  <p className="mb-2.5 font-actay text-[11px] lg:text-[12px] font-bold uppercase tracking-wider text-white/50">
+                    Не входить
+                  </p>
+                  <ul className="flex flex-col gap-2">
+                    {tier.notIncluded.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-[13px] lg:text-[14px] leading-[145%] text-white/55"
+                      >
+                        <span className="mt-1 text-white/40" aria-hidden="true">
+                          —
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
               <a
-                href="#lead-magnet"
-                className="mt-auto inline-flex items-center justify-center h-[48px] px-6 rounded-full bg-main-light text-white font-actay font-bold text-[13px] uppercase transition hover:opacity-90"
+                href={tier.ctaUrl ?? "#project-form"}
+                className="mt-8 inline-flex items-center justify-center h-[48px] px-6 rounded-full bg-main-light text-white font-actay font-bold text-[13px] uppercase transition hover:opacity-90"
               >
                 {tier.cta}
               </a>

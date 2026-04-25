@@ -14,7 +14,7 @@ interface BenefitsSectionProps {
 
 export default function BenefitsSection({ data }: BenefitsSectionProps) {
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <SectionTitle
           variant="pink"
@@ -22,13 +22,13 @@ export default function BenefitsSection({ data }: BenefitsSectionProps) {
         >
           {data.h2}
         </SectionTitle>
-        <p className="max-w-[760px] mb-12 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
+        <p className="max-w-[760px] mb-8 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
           {data.subtitle}
         </p>
 
         {data.highlight ? <HighlightCard data={data.highlight} /> : null}
 
-        <div className="flex flex-col gap-12 lg:gap-20">
+        <div className="flex flex-col gap-10 lg:gap-20">
           {data.blocks.map((block, idx) => (
             <BenefitsRow key={block.title} block={block} index={idx} />
           ))}
@@ -40,7 +40,7 @@ export default function BenefitsSection({ data }: BenefitsSectionProps) {
 
 function HighlightCard({ data }: { data: BenefitsHighlight }) {
   return (
-    <article className="mb-12 lg:mb-16 p-6 lg:p-10 rounded-3xl border border-transparent bg-[linear-gradient(135deg,_rgba(8,153,252,0.18)_0%,_rgba(255,73,184,0.14)_100%)] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 items-center">
+    <article className="mb-10 lg:mb-16 p-5 sm:p-6 lg:p-10 rounded-3xl border border-transparent bg-[linear-gradient(135deg,_rgba(8,153,252,0.18)_0%,_rgba(255,73,184,0.14)_100%)] grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-5 lg:gap-12 items-center">
       <div className="flex flex-col">
         <span className="font-actay text-[56px] sm:text-[72px] lg:text-[96px] font-bold leading-none text-transparent bg-clip-text bg-[linear-gradient(112deg,_#ffffff_22.37%,_#FFB5E6_93.04%)]">
           {data.metric}
@@ -48,6 +48,11 @@ function HighlightCard({ data }: { data: BenefitsHighlight }) {
         {data.metricLabel ? (
           <span className="mt-2 max-w-[300px] text-[14px] lg:text-[16px] leading-[140%] text-white/85">
             {data.metricLabel}
+          </span>
+        ) : null}
+        {data.metricNote ? (
+          <span className="mt-2 max-w-[300px] text-[12px] lg:text-[13px] italic leading-[140%] text-white/55">
+            {data.metricNote}
           </span>
         ) : null}
       </div>

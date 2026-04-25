@@ -11,7 +11,7 @@ export default function TestimonialSection({ data }: TestimonialSectionProps) {
   const initials = getInitials(data.authorName);
 
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <article className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-[0_30px_80px_-20px_rgba(8,153,252,0.18)]">

@@ -11,7 +11,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative z-40 pb-10 lg:pb-20">
+    <footer className="relative z-40 pb-[110px] lg:pb-20">
       <Container>
         <div className="md:flex justify-between">
           <div className="mb-[54px] md:mb-[68px]">

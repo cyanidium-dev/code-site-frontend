@@ -16,9 +16,25 @@ export default function ScrollDownLink({
         const el = document.getElementById(targetId);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
-      className="inline-flex items-center gap-2 text-[14px] lg:text-[16px] font-actay font-bold uppercase tracking-wider text-white/80 hover:text-white transition cursor-pointer"
+      aria-label={`Перейти до секції: ${label}`}
+      className="group inline-flex items-center gap-3 px-6 lg:px-8 py-3 lg:py-4 rounded-full border border-white/30 text-[13px] lg:text-[15px] font-actay font-bold uppercase tracking-wider text-white/85 transition cursor-pointer hover:bg-[linear-gradient(125deg,_rgba(8,153,252,0.18)_0%,_rgba(255,73,184,0.18)_100%)] hover:border-transparent hover:text-white"
     >
-      {label}
+      <span>{label}</span>
+      <svg
+        viewBox="0 0 20 20"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        className="transition-transform group-hover:translate-y-0.5"
+      >
+        <path d="M10 4v12" />
+        <path d="M5 11l5 5 5-5" />
+      </svg>
     </button>
   );
 }

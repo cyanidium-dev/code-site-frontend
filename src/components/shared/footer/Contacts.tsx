@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { PHONE, EMAIL } from "@/constants/constants";
+import { PHONE, EMAIL, TELEGRAM_LINK } from "@/constants/constants";
 import { headerPhoneRegex } from "@/regex/regex";
 
 export default function Contacts() {
@@ -24,6 +24,20 @@ export default function Contacts() {
       >
         {EMAIL}
       </a>
+      <p className="text-[12px] font-normal leading-[150%]">
+        {t("forWriting")}
+      </p>
+      <a
+        href={TELEGRAM_LINK}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="font-actay text-[12px] font-bold leading-[150%] xl:hover:text-blue-light focus-visible:text-blue-light transition duration-300 ease-in-out"
+      >
+        @fedirdev
+      </a>
+      <p className="text-[12px] font-normal leading-[150%]">
+        {t("telegramFast")}
+      </p>
     </div>
   );
 }

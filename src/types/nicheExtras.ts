@@ -27,6 +27,7 @@ export interface BeforeAfterArchitecture {
 export interface BeforeAfterData {
   eyebrow?: string;
   h2: string;
+  caption?: string;
   subtitle: string;
   before: BeforeAfterColumn;
   after: BeforeAfterColumn;
@@ -46,6 +47,7 @@ export interface BenefitsBlock {
 export interface BenefitsHighlight {
   metric: string;
   metricLabel?: string;
+  metricNote?: string;
   extras: string[];
 }
 
@@ -66,8 +68,28 @@ export interface TestimonialData {
   imageAlt: string;
 }
 
+export interface ProjectFormFieldDef {
+  label: string;
+  placeholder: string;
+}
+
+export interface NicheProjectFormData {
+  h2: string;
+  subtitle: string;
+  formFields: {
+    name: ProjectFormFieldDef;
+    contact: ProjectFormFieldDef;
+    message: ProjectFormFieldDef;
+  };
+  ctaText: string;
+  altContactPrefix: string;
+  altContactLabel: string;
+  altContactUrl: string;
+}
+
 export interface NicheExtras {
   beforeAfter?: BeforeAfterData;
   benefits?: BenefitsData;
   testimonial?: TestimonialData;
+  projectForm?: NicheProjectFormData;
 }

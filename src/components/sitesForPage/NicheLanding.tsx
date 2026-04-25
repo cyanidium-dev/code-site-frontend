@@ -12,6 +12,7 @@ import NicheComparison from "./NicheComparison";
 import NichePricing from "./NichePricing";
 import NicheFaq from "./NicheFaq";
 import NicheLeadMagnet from "./NicheLeadMagnet";
+import NicheProjectForm from "./NicheProjectForm";
 
 interface NicheLandingProps {
   data: NicheLandingData;
@@ -35,6 +36,9 @@ export default function NicheLanding({ data }: NicheLandingProps) {
       <NicheCases data={data.cases} />
       <NicheIntegrations data={data.integrations} />
       <NicheComparison data={data.comparison} />
+      {extras?.projectForm ? (
+        <NicheProjectForm data={extras.projectForm} slug={data.meta.slug} />
+      ) : null}
       <NichePricing data={data.pricing} />
       <NicheFaq data={data.faq} />
       <NicheLeadMagnet data={data.leadMagnet} slug={data.meta.slug} />

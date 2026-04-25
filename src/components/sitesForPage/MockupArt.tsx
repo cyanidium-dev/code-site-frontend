@@ -482,11 +482,8 @@ function MockupChat({ className }: { className?: string }) {
       <circle cx="34" cy="22" r="13" fill="url(#ch-gradient)" />
       <rect x="22" y="18" width="10" height="2" fill="#ffffff" opacity="0.85" />
       <rect x="22" y="22" width="14" height="2" fill="#ffffff" opacity="0.85" />
-      <rect x="56" y="14" width="100" height="6" fill="#ffffff" opacity="0.92" />
-      <rect x="56" y="26" width="56" height="4" fill="#28c840" />
-      <text x="56" y="32" fontSize="6" fill="#ffffff" opacity="0.55">
-        в мережі
-      </text>
+      <rect x="56" y="16" width="120" height="6" fill="#ffffff" opacity="0.92" />
+      <rect x="56" y="26" width="80" height="4" fill="#ffffff" opacity="0.4" />
 
       {/* Message bubbles */}
       {/* Their bubble (left) */}
@@ -522,14 +519,6 @@ function MockupChat({ className }: { className?: string }) {
           strokeWidth="1.4"
           fill="none"
         />
-      </g>
-
-      {/* Reaction sticker */}
-      <g transform="translate(420, 244)">
-        <circle r="14" cx="0" cy="0" fill="#0a0d18" stroke="#ffffff" strokeOpacity="0.15" />
-        <text x="0" y="4" textAnchor="middle" fontSize="14">
-          🔥
-        </text>
       </g>
 
       {/* Their reply */}

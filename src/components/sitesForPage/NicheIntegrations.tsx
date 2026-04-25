@@ -10,7 +10,7 @@ export default function NicheIntegrations({ data }: NicheIntegrationsProps) {
   if (!data.logos.length) return null;
 
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <SectionTitle
           variant="blue"
@@ -18,7 +18,7 @@ export default function NicheIntegrations({ data }: NicheIntegrationsProps) {
         >
           {data.h2}
         </SectionTitle>
-        <p className="max-w-[760px] mb-12 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
+        <p className="max-w-[760px] mb-8 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
           {data.description}
         </p>
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">

@@ -70,7 +70,7 @@
     "discuss": "обговорити проєкт"
   },
   "footer": {
-    "description": "Ми працюємо на ваш результат і наше задоволення",
+    "description": "Code-site.art — кастомна розробка сайтів з 2023 року. Команда в Україні, проєкти в Україні, ЄС та США.",
     "home": "Головна",
     "portfolio": "Портфоліо",
     "blog": "Блог",
@@ -81,7 +81,9 @@
     "offer": "Оферта",
     "policy": "Конфіденційність",
     "forCalls": "Для дзвінків",
-    "rights": "© 2023-{year} Code-site.art"
+    "forWriting": "Для письмового зв'язку",
+    "telegramFast": "Telegram — швидкий зв'язок",
+    "rights": "© Code-site.art, {year}"
   },
   "forms": {
     "namePlaceholder": "Ім'я",

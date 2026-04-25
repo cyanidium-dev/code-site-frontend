@@ -13,7 +13,7 @@ interface BeforeAfterSectionProps {
 
 export default function BeforeAfterSection({ data }: BeforeAfterSectionProps) {
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         {data.eyebrow ? (
           <p className="inline-block mb-5 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[12px] lg:text-[13px] uppercase tracking-wider text-white/70">
@@ -22,11 +22,16 @@ export default function BeforeAfterSection({ data }: BeforeAfterSectionProps) {
         ) : null}
         <SectionTitle
           variant="blue"
-          className="max-w-[900px] mb-6 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.05]"
+          className="max-w-[900px] mb-3 lg:mb-4 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.05]"
         >
           {data.h2}
         </SectionTitle>
-        <p className="max-w-[820px] mb-12 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
+        {data.caption ? (
+          <p className="mb-6 text-[12px] lg:text-[14px] uppercase tracking-wider text-white/50">
+            {data.caption}
+          </p>
+        ) : null}
+        <p className="max-w-[820px] mb-8 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
           {data.subtitle}
         </p>
 
@@ -35,7 +40,7 @@ export default function BeforeAfterSection({ data }: BeforeAfterSectionProps) {
           <BeforeAfterColumn variant="after" column={data.after} />
         </div>
 
-        <p className="mx-auto mt-12 lg:mt-16 max-w-[720px] text-center text-[15px] lg:text-[18px] leading-[150%] text-white/85">
+        <p className="mx-auto mt-8 lg:mt-16 max-w-[720px] text-center text-[15px] lg:text-[18px] leading-[150%] text-white/85">
           {data.conclusion}
         </p>
 
@@ -120,7 +125,7 @@ function BeforeAfterColumn({
 
 function ArchitectureBlock({ data }: { data: BeforeAfterArchitecture }) {
   return (
-    <article className="mt-16 lg:mt-24 p-6 lg:p-10 rounded-3xl border border-white/10 bg-[linear-gradient(180deg,_rgba(8,153,252,0.08)_0%,_rgba(255,73,184,0.06)_100%)]">
+    <article className="mt-10 lg:mt-24 p-5 sm:p-6 lg:p-10 rounded-3xl border border-white/10 bg-[linear-gradient(180deg,_rgba(8,153,252,0.08)_0%,_rgba(255,73,184,0.06)_100%)]">
       <h3 className="font-actay text-[22px] sm:text-[26px] lg:text-[36px] font-bold leading-[1.15] uppercase text-transparent bg-clip-text bg-[linear-gradient(112deg,_#ffffff_22.37%,_#B5DAFF_93.04%)]">
         {data.h3}
       </h3>

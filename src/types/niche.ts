@@ -81,7 +81,9 @@ export interface NichePricingTier {
   highlighted?: boolean;
   includesPrevious?: string;
   features: string[];
+  notIncluded?: string[];
   cta: string;
+  ctaUrl?: string;
 }
 
 export interface NichePricing {

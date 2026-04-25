@@ -11,11 +11,11 @@ export default function NicheComparison({ data }: NicheComparisonProps) {
   if (!data.rows.length) return null;
 
   return (
-    <section className="py-[80px] lg:py-[120px]">
+    <section className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
         <SectionTitle
           variant="blue"
-          className="max-w-[1000px] mb-12 lg:mb-16 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.05]"
+          className="max-w-[1000px] mb-8 lg:mb-16 text-[32px] sm:text-[40px] lg:text-[56px] leading-[1.05]"
         >
           {data.h2}
         </SectionTitle>
@@ -23,14 +23,14 @@ export default function NicheComparison({ data }: NicheComparisonProps) {
         <div className="overflow-x-auto rounded-2xl border border-white/10">
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
-              <tr className="bg-white/[0.04]">
+              <tr>
                 {data.columns.map((col, i) => (
                   <th
                     key={col}
                     className={`px-4 lg:px-6 py-4 lg:py-5 font-actay text-[13px] lg:text-[15px] font-bold uppercase tracking-wider ${
                       i === data.highlightColumnIndex
-                        ? "text-transparent bg-clip-text bg-[linear-gradient(112deg,_#ffffff_22.37%,_#FFB5E6_93.04%)]"
-                        : "text-white/70"
+                        ? "text-white bg-[linear-gradient(180deg,_rgba(255,73,184,0.30)_0%,_rgba(8,153,252,0.20)_100%)] border-x border-[#FF49B8]/40"
+                        : "text-white/70 bg-white/[0.04]"
                     }`}
                   >
                     {col}
@@ -49,7 +49,7 @@ export default function NicheComparison({ data }: NicheComparisonProps) {
                       key={cIdx}
                       className={`px-4 lg:px-6 py-4 lg:py-5 text-[14px] lg:text-[15px] leading-[145%] ${
                         cIdx === data.highlightColumnIndex
-                          ? "text-white font-medium bg-white/[0.04]"
+                          ? "text-white font-semibold bg-[linear-gradient(180deg,_rgba(255,73,184,0.10)_0%,_rgba(8,153,252,0.06)_100%)] border-x border-[#FF49B8]/30"
                           : "text-white/75"
                       }`}
                     >

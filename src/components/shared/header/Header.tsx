@@ -28,6 +28,9 @@ export default function Header() {
   const locale = useLocale();
   const isContacts =
     pathname === `/${locale}/contacts` || pathname === "/contacts";
+  const isSitesForSubpage =
+    /^\/(uk|ru|en)\/sites-for\/[^/]+/.test(pathname) ||
+    /^\/sites-for\/[^/]+/.test(pathname);
 
   const width = useScreenWidth();
 
@@ -36,52 +39,54 @@ export default function Header() {
   });
 
   return (
-    <header
-      className="fixed top-0 left-0 z-50 py-6 xl:py-10 w-dvw"
-      style={
-        isIos
-          ? {
-              transform: "translateZ(0)",
-              WebkitBackfaceVisibility: "hidden" as const,
-              backfaceVisibility: "hidden",
-              touchAction: "manipulation",
-            }
-          : undefined
-      }
-    >
-      <Container className="relative flex items-center justify-between">
-        <div
-          className={`absolute -top-3 md:-top-6 lg:-top-3 xl:-top-3.5 left-0 w-full h-16 xl:h-17 rounded-full z-[-20] transition duration-500 ease-in-out ${
-            isScrolled
-              ? isIos
-                ? "bg-black/20 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
-                : "bg-black/20 backdrop-blur-md shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
-              : "bg-transparent"
-          }`}
-        />
-        <Logo
-          className="z-[60]"
-          variant={isContacts && width >= 1024 ? "dark" : "blue"}
-        />
-        <div className="flex items-center gap-x-6 md:gap-x-8 xl:gap-x-12">
-          <NavMenu className="hidden md:flex" />
-          <LocaleSwitcher />
-          <ClientApplication
-            buttonText={t("discuss")}
-            variant="white"
-            className="hidden lg:block"
-            buttonClassName="w-[210px] h-[39px]"
+    <>
+      <header
+        className="fixed top-0 left-0 z-50 py-6 xl:py-10 w-dvw"
+        style={
+          isIos
+            ? {
+                transform: "translateZ(0)",
+                WebkitBackfaceVisibility: "hidden" as const,
+                backfaceVisibility: "hidden",
+                touchAction: "manipulation",
+              }
+            : undefined
+        }
+      >
+        <Container className="relative flex items-center justify-between">
+          <div
+            className={`absolute -top-3 md:-top-6 lg:-top-3 xl:-top-3.5 left-0 w-full h-16 xl:h-17 rounded-full z-[-20] transition duration-500 ease-in-out ${
+              isScrolled
+                ? isIos
+                  ? "bg-black/20 shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
+                  : "bg-black/20 backdrop-blur-md shadow-[inset_0px_2px_16px_rgba(255,255,255,0.25)]"
+                : "bg-transparent"
+            }`}
           />
-          <BurgerMenuButton
-            isHeaderMenuOpened={isHeaderMenuOpened}
-            toggleHeaderMenuOpen={toggleHeaderMenuOpen}
+          <Logo
+            className="z-[60]"
+            variant={isContacts && width >= 1024 ? "dark" : "blue"}
           />
-        </div>
-      </Container>
-      <BurgerMenu
-        isHeaderMenuOpened={isHeaderMenuOpened}
-        setIsHeaderMenuOpened={setIsHeaderMenuOpened}
-      />
+          <div className="flex items-center gap-x-6 md:gap-x-8 xl:gap-x-12">
+            <NavMenu className="hidden md:flex" />
+            <LocaleSwitcher />
+            <ClientApplication
+              buttonText={t("discuss")}
+              variant="white"
+              className="hidden lg:block"
+              buttonClassName="w-[210px] h-[39px]"
+            />
+            <BurgerMenuButton
+              isHeaderMenuOpened={isHeaderMenuOpened}
+              toggleHeaderMenuOpen={toggleHeaderMenuOpen}
+            />
+          </div>
+        </Container>
+        <BurgerMenu
+          isHeaderMenuOpened={isHeaderMenuOpened}
+          setIsHeaderMenuOpened={setIsHeaderMenuOpened}
+        />
+      </header>
       {!isHeaderMenuOpened && (
         <div
           className="lg:hidden fixed bottom-0 left-0 right-0 z-40 px-4 pt-8 pointer-events-none bg-gradient-to-t from-black via-black/85 to-transparent"
@@ -97,6 +102,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

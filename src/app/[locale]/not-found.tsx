@@ -1,10 +1,13 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Container from "@/components/shared/container/Container";
 import PageTitle from "@/components/shared/titles/PageTitle";
 
+export const dynamic = "force-dynamic";
+
 export default async function NotFound() {
-  const t = await getTranslations("notFoundPage");
+  const locale = await getLocale();
+  const t = await getTranslations({ locale, namespace: "notFoundPage" });
 
   return (
     <section className="py-20 min-h-[60vh] flex items-center">

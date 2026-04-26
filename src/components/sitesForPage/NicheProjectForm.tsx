@@ -2,13 +2,9 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { Form, Formik, FormikHelpers } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import Container from "@/components/shared/container/Container";
-import SectionTitle from "@/components/shared/titles/SectionTitle";
-import CustomizedInput from "@/components/shared/formComponents/CustomizedInput";
-import SubmitButton from "@/components/shared/formComponents/SubmitButton";
 import type { NicheProjectFormData } from "@/types/nicheExtras";
 
 interface NicheProjectFormProps {
@@ -80,68 +76,41 @@ export default function NicheProjectForm({
   return (
     <section
       id="project-form"
-      className="py-[56px] sm:py-[80px] lg:py-[140px] bg-[radial-gradient(circle_at_top_left,_rgba(255,73,184,0.18)_0%,_transparent_55%),radial-gradient(circle_at_bottom_right,_rgba(8,153,252,0.15)_0%,_transparent_55%)]"
+      className="cmp"
     >
-      <Container>
-        <div className="max-w-[680px] mx-auto">
-          <SectionTitle
-            variant="pink"
-            className="mb-6 text-[28px] sm:text-[36px] lg:text-[52px] leading-[1.05]"
-          >
+      <div className="cmp-bg" />
+      <div className="cmp-inner">
+        <div className="cmp-contact">
+          <div className="cmp-contact-inner">
+          <h2 className="cmp-contact-h">
             {data.h2}
-          </SectionTitle>
-          <p className="mb-8 lg:mb-10 text-[15px] lg:text-[17px] leading-[150%] text-white/80">
+          </h2>
+          <p className="cmp-contact-sub">
             {data.subtitle}
           </p>
 
-          <div className="p-6 lg:p-8 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-sm">
             <Formik
               initialValues={initialValues}
               validationSchema={ValidationSchema}
               onSubmit={submit}
             >
               {({ errors, touched, dirty, isValid }) => (
-                <Form className="flex flex-col gap-y-4">
+                <Form className="cmp-form">
                   <input type="hidden" name="niche" value={slug} />
-                  <CustomizedInput
-                    fieldName="name"
-                    placeholder={data.formFields.name.placeholder}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="contact"
-                    placeholder={data.formFields.contact.placeholder}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="message"
-                    as="textarea"
-                    placeholder={data.formFields.message.placeholder}
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="hp"
-                    placeholder=""
-                    errors={errors}
-                    touched={touched}
-                    labelClassName="absolute left-[-9999px] w-px h-px overflow-hidden"
-                  />
-                  <SubmitButton
-                    variant="gradient"
-                    dirty={dirty}
-                    isValid={isValid}
-                    isLoading={isLoading}
-                    text={data.ctaText}
-                    className="mt-2 h-[52px]"
-                  />
+                  <Field name="name" type="text" className="cmp-input" placeholder={data.formFields.name.placeholder} />
+                  <ErrorMessage name="name" component="p" className="text-[11px] text-red-400 -mt-1 text-left" />
+                  <Field name="contact" type="text" className="cmp-input" placeholder={data.formFields.contact.placeholder} />
+                  <ErrorMessage name="contact" component="p" className="text-[11px] text-red-400 -mt-1 text-left" />
+                  <Field name="message" as="textarea" className="cmp-textarea" placeholder={data.formFields.message.placeholder} />
+                  <ErrorMessage name="message" component="p" className="text-[11px] text-red-400 -mt-1 text-left" />
+                  <Field name="hp" type="text" className="hidden" tabIndex={-1} autoComplete="off" />
+                  <button
+                    type="submit"
+                    disabled={!(dirty && isValid) || isLoading}
+                    className="cmp-submit mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? "Надсилаємо..." : data.ctaText}
+                  </button>
                   {status === "success" ? (
                     <p
                       role="status"
@@ -161,21 +130,20 @@ export default function NicheProjectForm({
                 </Form>
               )}
             </Formik>
-          </div>
-
-          <p className="mt-6 text-center text-[13px] lg:text-[14px] text-white/65">
+          <p className="cmp-contact-foot">
             {data.altContactPrefix}{" "}
             <a
               href={data.altContactUrl}
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="font-actay font-bold text-white underline-offset-4 hover:underline"
+              className="underline-offset-4 hover:underline"
             >
               {data.altContactLabel}
             </a>
           </p>
         </div>
-      </Container>
+      </div>
+      </div>
     </section>
   );
 }

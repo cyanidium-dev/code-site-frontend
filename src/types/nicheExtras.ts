@@ -12,7 +12,12 @@ export interface BeforeAfterColumn {
   imagePath?: string;
   imageAlt: string;
   items: string[];
+  itemsHtml?: string[];
   note?: string;
+  versionLabel?: string;
+  tagline?: string;
+  domain?: string;
+  taglineState?: "bad" | "good";
 }
 
 export interface BeforeAfterArchitecture {
@@ -26,22 +31,44 @@ export interface BeforeAfterArchitecture {
 
 export interface BeforeAfterData {
   eyebrow?: string;
+  eyebrowLabel?: string;
+  eyebrowEmphasis?: string;
   h2: string;
+  h2Html?: string;
   caption?: string;
   subtitle: string;
+  subtitleHtml?: string;
+  metaItems?: Array<{
+    value: string;
+    label: string;
+  }>;
   before: BeforeAfterColumn;
   after: BeforeAfterColumn;
   conclusion: string;
+  results?: Array<{
+    tag: string;
+    value: string;
+    label: string;
+  }>;
+  ctaText?: string;
+  ctaLink?: {
+    text: string;
+    url: string;
+  };
   architecture?: BeforeAfterArchitecture;
 }
 
 export interface BenefitsBlock {
   title: string;
+  titleHtml?: string;
   items: string[];
+  itemsHtml?: string[];
   mockup?: MockupKind;
   imagePath?: string;
   imageAlt: string;
   imageOnRight?: boolean;
+  featureLabel?: string;
+  visualUrl?: string;
 }
 
 export interface BenefitsHighlight {
@@ -49,11 +76,28 @@ export interface BenefitsHighlight {
   metricLabel?: string;
   metricNote?: string;
   extras: string[];
+  extrasHtml?: string[];
 }
 
 export interface BenefitsData {
   h2: string;
+  h2Html?: string;
   subtitle: string;
+  subtitleHtml?: string;
+  recapLabel?: string;
+  recapText?: string;
+  recapTextHtml?: string;
+  architectureLabel?: string;
+  architectureH3?: string;
+  architectureH3Html?: string;
+  architectureIntro?: string;
+  architectureIntroHtml?: string;
+  architectureLeftTitle?: string;
+  architectureLeftItems?: string[];
+  architectureLeftItemsHtml?: string[];
+  architectureRightTitle?: string;
+  architectureRightItems?: string[];
+  architectureRightItemsHtml?: string[];
   highlight?: BenefitsHighlight;
   blocks: BenefitsBlock[];
 }

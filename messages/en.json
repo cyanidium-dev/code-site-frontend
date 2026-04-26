@@ -70,7 +70,7 @@
     "discuss": "discuss project"
   },
   "footer": {
-    "description": "We build systems that produce revenue, not impressions",
+    "description": "Code-site.art — custom website development since 2023. Team in Ukraine, projects in Ukraine, EU and USA.",
     "home": "Home",
     "portfolio": "Portfolio",
     "blog": "Blog",
@@ -81,7 +81,9 @@
     "offer": "Offer",
     "policy": "Privacy",
     "forCalls": "For calls",
-    "rights": "© 2023-{year} Code-site.art"
+    "forWriting": "For written communication",
+    "telegramFast": "Telegram — quick chat",
+    "rights": "© Code-site.art, {year}"
   },
   "forms": {
     "namePlaceholder": "Name",

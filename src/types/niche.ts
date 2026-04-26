@@ -19,18 +19,52 @@ export interface NicheHero {
   facts: string[];
   ctaPrimary: NicheCtaLink;
   ctaSecondary: NicheCtaLink;
+  h1Lines?: string[];
+  h1Accent?: {
+    value: string;
+    label: string;
+  };
+  featuresDetailed?: Array<{
+    label: string;
+    sub: string;
+  }>;
+  stats?: Array<{
+    value: string;
+    label: string;
+  }>;
+  tickerItems?: string[];
+  imagePath?: string;
+  imageAlt?: string;
+  floatingTags?: Array<{
+    label: string;
+    value?: string;
+  }>;
 }
 
 export interface NichePainPointItem {
   number: string;
   title: string;
   text: string;
+  tag?: string;
+  titleHtml?: string;
+  textHtml?: string;
+  stat?: {
+    value: string;
+    label: string;
+    source: string;
+  };
 }
 
 export interface NichePainPoints {
   h2: string;
   items: NichePainPointItem[];
   scrollLabel: string;
+  eyebrow?: string;
+  eyebrowMeta?: string;
+  h2Html?: string;
+  metaRows?: string[];
+  footerText?: string;
+  footerCta?: NicheCtaLink;
 }
 
 export interface NicheFeatureGroup {

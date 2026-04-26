@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/shared/container/Container";
-import SectionTitle from "@/components/shared/titles/SectionTitle";
+import NicheSectionHeading from "./NicheSectionHeading";
 import type { NicheCases as NicheCasesData } from "@/types/niche";
 
 interface NicheCasesProps {
@@ -18,12 +18,9 @@ export default function NicheCases({ data }: NicheCasesProps) {
   return (
     <section id="cases" className="py-[56px] sm:py-[80px] lg:py-[120px]">
       <Container>
-        <SectionTitle
-          variant="blue"
-          className="max-w-[900px] mb-6 text-[32px] sm:text-[40px] lg:text-[64px] leading-[1.05]"
-        >
+        <NicheSectionHeading variant="blue" className="max-w-[900px] mb-6">
           {data.h2}
-        </SectionTitle>
+        </NicheSectionHeading>
         <p className="max-w-[760px] mb-8 lg:mb-16 text-[15px] lg:text-[17px] leading-[150%] text-white/75">
           {data.subtitle}
         </p>

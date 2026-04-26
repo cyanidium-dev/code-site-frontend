@@ -2,13 +2,9 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { Form, Formik, FormikHelpers } from "formik";
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
-import Container from "@/components/shared/container/Container";
-import SectionTitle from "@/components/shared/titles/SectionTitle";
-import CustomizedInput from "@/components/shared/formComponents/CustomizedInput";
-import SubmitButton from "@/components/shared/formComponents/SubmitButton";
 import type { NicheLeadMagnet as NicheLeadMagnetData } from "@/types/niche";
 
 interface NicheLeadMagnetProps {
@@ -100,110 +96,62 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
   return (
     <section
       id="lead-magnet"
-      className="py-[56px] sm:py-[80px] lg:py-[140px] bg-[radial-gradient(circle_at_top_right,_rgba(8,153,252,0.15)_0%,_transparent_50%),radial-gradient(circle_at_bottom_left,_rgba(255,73,184,0.18)_0%,_transparent_55%)]"
+      className="audit"
     >
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          <div>
-            <SectionTitle
-              variant="blue"
-              className="mb-6 text-[28px] sm:text-[36px] lg:text-[52px] leading-[1.05]"
-            >
-              {data.h2}
-            </SectionTitle>
-            <p className="mb-8 text-[15px] lg:text-[17px] leading-[150%] text-white/80">
+      <div className="audit-bg" />
+      <div className="audit-inner">
+        <div className="audit-text">
+            <h2 className="audit-h">{data.h2}</h2>
+            <p className="audit-sub">
               {data.subtitle}
             </p>
-            <ul className="flex flex-col gap-3">
+            <ul className="audit-list">
               {data.benefits.map((b) => (
-                <li
-                  key={b}
-                  className="flex items-start gap-3 text-[14px] lg:text-[16px] leading-[145%] text-white/85"
-                >
-                  <span className="mt-1 text-blue-light" aria-hidden="true">
+                <li key={b}>
+                  <span className="audit-check" aria-hidden="true">
                     ✓
                   </span>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-8 text-[13px] lg:text-[14px] text-white/60 italic">
+            <p className="audit-foot">
               {data.promise}
             </p>
           </div>
 
-          <div className="p-6 lg:p-8 rounded-3xl border border-white/10 bg-black/40 backdrop-blur-sm">
+          <div className="audit-form-card">
             <Formik
               initialValues={initialValues}
               validationSchema={ValidationSchema}
               onSubmit={submit}
             >
               {({ errors, touched, dirty, isValid }) => (
-                <Form className="flex flex-col gap-y-4">
+                <Form className="flex flex-col gap-y-3">
                   <input type="hidden" name="niche" value={slug} />
-                  <CustomizedInput
-                    fieldName="name"
-                    placeholder={data.formFields.name.placeholder}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="email"
-                    inputType="text"
-                    placeholder={data.formFields.email.placeholder}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="phone"
-                    inputType="tel"
-                    placeholder={data.formFields.phone?.placeholder ?? "+380 (__) ___-__-__"}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="websiteUrl"
-                    inputType="url"
-                    placeholder={data.formFields.websiteUrl.placeholder}
-                    isRequired
-                    errors={errors}
-                    touched={touched}
-                    variant="gradient"
-                  />
-                  <CustomizedInput
-                    fieldName="hp"
-                    placeholder=""
-                    errors={errors}
-                    touched={touched}
-                    labelClassName="absolute left-[-9999px] w-px h-px overflow-hidden"
-                  />
-                  <SubmitButton
-                    variant="gradient"
-                    dirty={dirty}
-                    isValid={isValid}
-                    isLoading={isLoading}
-                    text={data.ctaText}
-                    className="mt-2 h-[52px]"
-                  />
+                  <Field name="name" type="text" className="audit-input" placeholder={data.formFields.name.placeholder} />
+                  <ErrorMessage name="name" component="p" className="text-[11px] text-red-400 -mt-1" />
+                  <Field name="email" type="text" className="audit-input" placeholder={data.formFields.email.placeholder} />
+                  <ErrorMessage name="email" component="p" className="text-[11px] text-red-400 -mt-1" />
+                  <Field name="phone" type="tel" className="audit-input" placeholder={data.formFields.phone?.placeholder ?? "+380 (__) ___-__-__"} />
+                  <ErrorMessage name="phone" component="p" className="text-[11px] text-red-400 -mt-1" />
+                  <Field name="websiteUrl" type="url" className="audit-input" placeholder={data.formFields.websiteUrl.placeholder} />
+                  <ErrorMessage name="websiteUrl" component="p" className="text-[11px] text-red-400 -mt-1" />
+                  <Field name="hp" type="text" className="hidden" tabIndex={-1} autoComplete="off" />
+                  <button
+                    type="submit"
+                    disabled={!(dirty && isValid) || isLoading}
+                    className="audit-submit mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? "Надсилаємо..." : data.ctaText}
+                  </button>
                   {status === "success" ? (
-                    <p
-                      role="status"
-                      className="mt-2 text-[13px] lg:text-[14px] text-emerald-300"
-                    >
+                    <p role="status" className="mt-2 text-[13px] text-emerald-300">
                       Дякуємо! Надішлемо розбір протягом 24 годин.
                     </p>
                   ) : null}
                   {status === "error" ? (
-                    <p
-                      role="alert"
-                      className="mt-2 text-[13px] lg:text-[14px] text-red-400"
-                    >
+                    <p role="alert" className="mt-2 text-[13px] text-red-400">
                       Щось пішло не так. Спробуйте ще раз або напишіть нам у
                       Telegram.
                     </p>
@@ -211,12 +159,11 @@ export default function NicheLeadMagnet({ data, slug }: NicheLeadMagnetProps) {
                 </Form>
               )}
             </Formik>
-            <p className="mt-5 text-[12px] lg:text-[13px] text-white/55 leading-[145%]">
+            <p className="audit-disclaim">
               {data.smallText}
             </p>
           </div>
-        </div>
-      </Container>
+      </div>
     </section>
   );
 }

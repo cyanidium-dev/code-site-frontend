@@ -83,7 +83,7 @@ export async function generateMetadata() {
 
   if (pageKey) {
     try {
-      const t = await getTranslations("metadataPages");
+      const t = await getTranslations({ locale, namespace: "metadataPages" });
       const pageTitle = t(`${pageKey}.title`);
       const pageDescription = t(`${pageKey}.description`);
       if (pageTitle) title = pageTitle;
@@ -154,7 +154,7 @@ export default async function RootLayout({
         className={`${montserrat.variable} ${actay.variable} ${guanoApes.variable} ${parkia.variable} flex min-h-screen flex-col antialiased overflow-hidden`}
       >
         {/* Google Tag Manager */}
-        <Script id="gtm" strategy="beforeInteractive">
+        <Script id="gtm" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

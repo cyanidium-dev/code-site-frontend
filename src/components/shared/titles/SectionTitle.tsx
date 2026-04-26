@@ -42,7 +42,7 @@ export default function SectionTitle({
       viewport={{ once: true, amount: 0.2 }}
       className={twMerge(
         `relative w-fit font-actay text-[48px] lg:text-[96px] font-bold leading-none`,
-        className
+        className,
       )}
     >
       {/* Тінь */}

@@ -3,6 +3,19 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+  // Цей проєкт — старий фронтенд на code-site-frontend.vercel.app. Живий сайт
+  // www.code-site.art збирається з репозиторію code-site-solutions. Дзеркало
+  // лишається доступним людям, але Google не повинен його індексувати.
+  // robots.txt свідомо не закриває сканування: інакше Google не побачить
+  // цей заголовок і залишить уже знайдені URL в індексі.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
